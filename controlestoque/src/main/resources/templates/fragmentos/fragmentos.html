@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<title></title>
+<meta name="author" content="Paulino Rodrigues"> 
+<link rel="stylesheet" href="css/navbarCss.css" />
+<script src="https://kit.fontawesome.com/006642858d.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+
+</head>
+<body>
+
+	<header th:fragment = "cabecalho">
+
+		<nav class="navbar navbar-expand-lg  "style="background-color:#00008B;">
+
+			<a class="navbar-brand" th:href="@{admin}">Controllestoque</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"data-target="#navbarNavDropdown"
+			 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+<!-- Produto -->
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" 
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-cubes" aria-hidden="true"></i> Produtos
+						</a>
+						<div class="dropdown-menu"	aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" th:href="@{inserirProduto}"> 
+								<i class="fas fa-plus-circle"></i> Cadastrar</a>
+								<div class="dropdown-divider"></div>
+						 	<a class="dropdown-item" th:href="@{lista-produto}">
+						 		<i class="far fa-list-alt"></i> Lista</a>
+						 		<div class="dropdown-divider"></div> 
+							<a class="dropdown-item" th:href="@{secao}">Seção</a>
+								<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Excluir</a>
+						</div>
+					</li>
+
+<!-- Solicitações -->
+					<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" 
+					role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fa fa-shopping-basket" aria-hidden="true"></i> Pedidos
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" th:href="@{/novo-pedido}">Novo</a>
+							<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#">Abertos</a>
+							<div class="dropdown-divider"></div>
+						 <a class="dropdown-item" href="#">Em analise</a>
+						 	<div class="dropdown-divider"></div> 
+							<a class="dropdown-item" href="#">Fechadas</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Concluídas</a>
+						</div>
+					</li>
+
+<!-- Funcionarios -->
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"><i
+							class="fa fa-users" aria-hidden="true"></i> Funcionário</a>
+
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+
+							<a class="dropdown-item" href="#">Cadastrar</a>
+							<div class="dropdown-divider"></div>
+						 	<a class="dropdown-item" href="#">Alterar</a>
+						 	<div class="dropdown-divider"></div> 
+							<a class="dropdown-item" href="#">Excluir</a>
+						</div>
+					</li>
+					
+<!-- Estoque -->
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"><i
+							class="fa fa-cart-arrow-down" aria-hidden="true"></i> Estoque</a>
+
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="#">Consulta</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Ajuste</a>
+							
+						</div>
+					</li>
+				</ul>
+
+			</div>
+
+			<div id="navMobile"
+				class="navbar-collapse collapse justify-content-end">
+				<a class=" nav-link btn-danger " th:href=@{login}><i class="fas fa-times"></i>
+					Sair</a>
+			</div>
+
+		</nav>
+
+	</header>
+	
+	<div class="centro">
+		<h3 style="background-position: center;color: #fff;font: bold;" >Sistema de gerenciamento
+			de estoque CD 994</h3>
+		<figure>
+			  <img src="/img/luiza+lu.jpg" alt="Minha Figura" class="lu centro">
+		</figure>
+	</div>
+	
+	<footer th:fragment="rodape">
+		<div class="center rodape">
+			<span>Todos os direitos reservados - 2021 &copy; Paulino Rodrigues</span>
+		</div>
+	</footer>
+
+	<script src="/webjars/jqrey/3.6.0/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/css/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+	
+	
+</body>
+</html>

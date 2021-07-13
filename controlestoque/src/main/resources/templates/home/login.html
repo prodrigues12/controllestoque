@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<title>Login</title>
+<meta name="author" content="Paulino Rodrigues"> 
+<link rel="stylesheet" href="css/loginCss.css" />
+<script src="https://kit.fontawesome.com/006642858d.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+</head>
+<body>
+
+
+<div class="Login-form">
+			<div class="container">
+				<div class="main-div">
+					<div class="texto-header">
+						<h2>Admin login</h2>
+						<p>Insira suas credenciais para login!
+					</div>
+					
+				<form  method="post"  > 
+						<div class="alert alert-danger" role="alert" th:if=${msg}>
+							<strong th:text="${msg}"></strong>
+						</div>
+					
+						<div class="form-group">
+							<input class="form-control" type="text" placeholder="Login"  />
+						</div>
+						
+						<div class="form-group">
+					
+							<input class="form-control" type="password" style="font-style: italic; " placeholder="Senha"   />
+							
+						</div>
+						
+						<a class="btn btn-primary" th:href="@{admin}">Login</a>
+						
+						<button type="submit" class="btn btn-info">Voltar</button>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+
+	<div th:replace="fragmentos/fragmentos :: rodape"></div>	
+	<script src="/webjars/jqrey/3.6.0/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/css/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+a{
+	cursor: pointer;
+	font-weight: bold;	
+	color: #fff;
+	font-size: 15px;
+}
+
+
+.dropdown-item{
+/* 	nome=  sub-menu */
+	color: #00008B;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 14px;
+	display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+   
+}
+.rodape{
+	background-color: #00008B;
+	color:	 #fff;
+	position: absolute;
+}
+.pagina{
+	
+	position: relative;
+} 
+
+ 
+
+
+
