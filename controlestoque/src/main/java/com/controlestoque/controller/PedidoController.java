@@ -17,6 +17,7 @@ import com.controlestoque.Repository.ProdutoRepository;
 import com.controlestoque.model.Item;
 import com.controlestoque.model.Pedido;
 import com.controlestoque.model.Produto;
+import com.controlestoque.model.Secao;
 import com.controlestoque.service.PedidoService;
 
 
@@ -55,6 +56,5 @@ public class PedidoController {
 		ModelAndView mv = new ModelAndView("/pedido/acompanharPedido");
 		return mv;
 	}
-
 
 }

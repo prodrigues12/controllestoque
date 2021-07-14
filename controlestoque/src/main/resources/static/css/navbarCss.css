@@ -31,7 +31,20 @@ a{
 	position: relative;
 } 
 
+.table .thead-dark th {
+    color: #fff;
+    background-color:  #0e87fe;
+    border-color: #000;
  
+}
 
+.btn-info {
+    color: #fff;
+    background-color: #0e87fe;
+    border-color: #17a2b8;
+}
 
+.table-bordered td, .table-bordered th {
+    border: 1px solid #000;
+}
 
