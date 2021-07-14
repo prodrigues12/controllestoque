@@ -30,9 +30,10 @@ public class ItemController {
 	@RequestMapping("/lista-item")
 	public ModelAndView pedido() {
 		ModelAndView mv = new ModelAndView("/item/formItem");
-		mv.addObject("produto", new Produto());
+		
 		Iterable<Produto> produto = prodRepository.findAll();
 		mv.addObject("produtoList", produto);
+		
 		Iterable<Item> item = itemRepository.findAll();
 		mv.addObject("itemList", item);
 		return mv;
