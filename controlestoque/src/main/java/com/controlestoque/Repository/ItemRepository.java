@@ -9,13 +9,14 @@ import com.controlestoque.model.Item;
 
 
 
+
 public interface ItemRepository  extends JpaRepository<Item, Long>{
 	
 
-	@Query("select i.idItem from Item as i, Pedido as r where i.pedido=r.idPedido and r.idPedido=9")
-	public Iterable<Item>ListProduto(); 
+//	@Query("select i from Item i, Pedido p, Produto pr where i.produtos=pr.idProduto and p.idPedido = :cod")
+	@Query("select i from Item i where i.pedido= :id")
+	Iterable<Item>ListProduto(Long id);
+
+//	select produto.nome, qtd_saida from produto, item  where item.produtos_id_produto=produto.id_produto and item.pedido_id_pedido=12;
 
 }
-//select produto.nome from produto, item  where item.produtos_id_produto=produto.id_produto and item.pedido_id_pedido=9;
-
-//@Query("select i.idItem from Item as i, Pedido as r where i.pedido=r.idPedido and r.idPedido=9")

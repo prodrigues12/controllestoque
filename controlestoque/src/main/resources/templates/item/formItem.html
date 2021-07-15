@@ -53,19 +53,19 @@
 	<table class="table table-bordered table-houver table-striped table-sm" >
 			<thead class="thead-dark" style="text-align: center">
 				<th class="col-sm-1"> Código</th>
-				<th class="col-sm-6"> Nome</th>
+				<th class="col-sm-4"> Produto</th>
 				<th class="col-sm-2"> Quantidade</th>
 				<th class="col-sm-3">Ação</th>
 			</thead>
 			
 			<tbody>
-				<tr scope="row" th:each="item :${itemList}">
+				<tr scope="row" th:each="item :${itemList}" >
 					<td style="text-align: center" th:text=${item.idItem}></td>
-					<td style="text-align: center"></td>
+					<td style="text-align: center"   ></td>
 					<td style="text-align: center" th:text=${item.qtdSaida}></td>
 					<td style="text-align: center">
-						<a class="btn btn-dark btn-sm"> 
-							<i class="fas fa-edit"></i> 
+						<a class="btn btn-info btn-sm"> 
+							<i class="fas fa-edit"></i>Alterar
 						</a>
 					 	&nbsp; &nbsp; &nbsp;
 					 	<a class="btn btn-danger btn-sm"> 
