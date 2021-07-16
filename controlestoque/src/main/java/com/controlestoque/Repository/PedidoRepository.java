@@ -9,5 +9,8 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 
 	@Query("SELECT MAX(p.idPedido) FROM Pedido p" )
 	public Long lastIdPedido();
+	
+	@Query("SELECT p FROM Pedido p where p.status='Novo'" )
+	Iterable<Pedido> listNovos();
 //	
 }

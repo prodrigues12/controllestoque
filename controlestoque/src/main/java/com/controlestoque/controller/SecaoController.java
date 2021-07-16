@@ -57,7 +57,7 @@ public class SecaoController {
 	}
 	
 	@GetMapping("/excluirSecao/{id}")
-	public String excluirAluno(@PathVariable("id") Long id) {
+	public String excluirSecao(@PathVariable("id") Long id) {
 		sr.deleteById(id);
 		return "redirect:/secao";
 		

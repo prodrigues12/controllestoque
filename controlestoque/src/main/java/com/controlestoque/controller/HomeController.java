@@ -35,13 +35,6 @@ public class HomeController {
 		mv.setViewName("pedido/formPedido");
 		return mv;
 		
-	}@GetMapping("/admin")
-	public ModelAndView admController() {
-		ModelAndView mv = new ModelAndView("home/admin");
-		Iterable<Pedido> pedido = pedRepository.findAll();
-		mv.addObject("pedidoList", pedido);
-
-		return mv;
 	}
 	
 	

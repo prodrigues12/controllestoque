@@ -1,58 +1,67 @@
 * {
-	margin: 10px;
+	margin: 0px;
 	padding: 0;
 	box-sizing: content-box;
+		
 }
 
-.sombra {
-	min-height: 10px;
+.Login-form{
+	min-height: 600px;
+	background-image: url('/img/wallpaper2.jpg');
+	background-position: center;
 	background-size: cover;
-	background-position: top;
 	background-repeat: no-repeat;
-	position: relative;
-	background-color: #fff;
-	color: #000;
 }
 
+.Login-form{
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;	
+}
+
+.main-div{
+	background: #fff;
+	border-radius: 5px;
+	margin: 0 auto;
+	max-width: 50%;
+	padding: 70px 100px;
+	
+}
 .centro {
 	text-align: center;
 	width: 800px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 100px;
+	margin-top: 30px;	
+}
+
+.container {
+
+	margin-top: 40px;
 	
 }
-
-.p-container {
-	max-width: 1280px;
-	padding: 2% 2%;
-	margin: 0 auto;
-	margin-top: 80px;
-}
-
-
-
-/* nome-sistema */
-.texto-centro {
+.nomesys{
 	text-align: center;
+	font-size: 1.8em;
 	position: relative;
-	font-size: 30px;
-	font-family: "Arial";
-	/* 	font:Arial; */
-	/* 	margin-top: 10cm; */
+	font-family:  Felt, fantasy;
 }
 
-.wm {
-	width: 50%;
-	float: left;
+
+.magalup{
+	width: 50mm;
+	height: 15mm;
 }
+
 
 .bttn {
 	width: 200px;
-
-	background-color: #191970;
+	background-color:#0e87fe;
 	color: #FFFFFF;
-	padding: 10px 42px;
+	padding: 10px 22px;
 	text-align: center;
  	-webkit-transition-duration: 0.5s; 
 	transition-duration: 0.1s;
@@ -62,25 +71,16 @@
 	margin-top: 100px;
 	color: #ffffff;
 	font-family: "Arial";
-	
+	border-radius: 20px;
 }
 
-
 .bttn:hover {
-	background-color: #4169E1;
+	background-color: #000080;
 
 }
 
 .bttn:active {
-	box-shadow: 0 5px #4169E1;
+	box-shadow: 0 5px #380B61;
 	transform: translateY(5px);
 }
 
-.botoes {
-	padding: 2% 15%;
-}
-
-#demo {
--webkit-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
-box-shadow: 5px 5px 5px 0px #000000, inset 4px 4px 15px 0px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
-}

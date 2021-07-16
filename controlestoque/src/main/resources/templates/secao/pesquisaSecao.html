@@ -55,14 +55,16 @@
 						<td th:text=${secao.idSecao}></td>
 						<td th:text=${secao.nomesecao}></td>
 
-						<td style="text-align: center"><a class="btn btn-dark btn-sm"
-							th:href="@{alterarSecao/{id}(id=${secao.idSecao})}"> <i
-								class="fas fa-edit"></i> Editar
-						</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; <a
-							class="btn btn-danger btn-sm"
-							th:href="@{excluirSecao/{id}(id=${secao.idSecao})}"> <i
-								class="fas fa-trash-alt"></i> Excluir
-						</a></td>
+						<td style="text-align: center">
+							<a class="btn btn-dark btn-sm" th:href="@{alterarSecao/{id}(id=${secao.idSecao})}"> 
+								<i class="fas fa-edit"></i> Editar
+							</a> 
+							&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 
+						
+							<a class="btn btn-danger btn-sm" th:href="@{excluirSecao/{id}(id=${secao.idSecao})}">
+						 		<i class="fas fa-trash-alt"></i> Excluir
+							</a>
+						</td>
 					</tr>
 				</tbody>
 			</table>

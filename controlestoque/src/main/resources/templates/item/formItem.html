@@ -23,20 +23,22 @@
 		
 		<form class="container" method="post" >
 			
-			<div class="form ">
-				<div class="form-row ">
+			<div class="form-inline">
+				<div class="form-inline ">
 					<label >Selecione um Item: </label> 
+						 &nbsp; &nbsp;
 					<select  class="form-control" name="produtos" >
 						<option th:each="produto : ${produtoList}"  th:value="${produto.idProduto}" th:text="${produto.nome}"/>
 					</select>
 				</div>
 				 &nbsp; &nbsp;
-				<div class="form-row">
+				<div class="form-inline">
 					<label> Quantidade: </label>
+						 &nbsp; &nbsp;
 					<input  class="form-control " name=qtdSaida placeholder="Ex:10">
 				</div>
 				 &nbsp; &nbsp;
-				<div class="form-row ">	
+				<div class="form-inline ">	
 			
 					<button class="btn btn-success" type="submit" >
 						<i class="fas fa-plus"></i>
@@ -52,25 +54,21 @@
 
 	<table class="table table-bordered table-houver table-striped table-sm" >
 			<thead class="thead-dark" style="text-align: center">
-				<th class="col-sm-1"> Código</th>
+				
 				<th class="col-sm-4"> Produto</th>
 				<th class="col-sm-2"> Quantidade</th>
 				<th class="col-sm-3">Ação</th>
 			</thead>
 			
 			<tbody>
-				<tr scope="row" th:each="item :${itemList}" >
-					<td style="text-align: center" th:text=${item.idItem}></td>
-					<td style="text-align: center"   ></td>
+				<tr scope="row" th:each="item :${itemList}"  >
+					<td style="text-align: center"  ></td>
 					<td style="text-align: center" th:text=${item.qtdSaida}></td>
 					<td style="text-align: center">
-						<a class="btn btn-info btn-sm"> 
-							<i class="fas fa-edit"></i>Alterar
-						</a>
-					 	&nbsp; &nbsp; &nbsp;
-					 	<a class="btn btn-danger btn-sm"> 
-					 		<i class="fas fa-trash-alt"></i> Remover
-						</a>
+						
+					 	<a class="btn btn-danger btn-sm" th:href="@{excluirItem/{id}(id=${item.idItem})}">
+						 		<i class="fas fa-trash-alt"></i> Excluir
+							</a>
 					</td>
 				</tr>
 			
