@@ -25,7 +25,7 @@ public class EstoqueController {
 		mv.addObject("listProduto", proRepository.findAll());
 		return mv;
 	}
-	
+//	verificar esse metodo
 	@PostMapping("/ajustarEstoque")
 	public String alterar(@PathVariable("etq") int etq, Produto produto) {
 		produto.setQtdEstoque(etq);
