@@ -72,10 +72,13 @@
 	color: #ffffff;
 	font-family: "Arial";
 	border-radius: 20px;
+	
 }
 
 .bttn:hover {
 	background-color: #000080;
+	text-decoration: none;
+	color: #fff;
 
 }
 
@@ -83,4 +86,17 @@
 	box-shadow: 0 5px #380B61;
 	transform: translateY(5px);
 }
+
+.admin{
+	color: #0e87fe;
+}
+.admin:hover {
+	text-decoration: none;
+	color:#8B008B;
+	font-weight: bold;
+	
+
+}
+
+
 

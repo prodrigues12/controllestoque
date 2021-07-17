@@ -12,5 +12,8 @@ public interface PedidoRepository extends JpaRepository<Pedido, Long>{
 	
 	@Query("SELECT p FROM Pedido p where p.status='Novo'" )
 	Iterable<Pedido> listNovos();
+	
+	@Query("select p from Pedido p where p.idPedido = :ped")
+	Iterable<Pedido> pesquisaPedido(Long ped);
 //	
 }
