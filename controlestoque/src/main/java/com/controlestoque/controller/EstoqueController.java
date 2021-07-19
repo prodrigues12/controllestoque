@@ -6,6 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -19,28 +22,46 @@ public class EstoqueController {
 	@Autowired
 	ProdutoRepository proRepository;
 	
-	@GetMapping("**/consulta-estoque")
+	@GetMapping("/estoque")
 	public ModelAndView consutarEstoque() {
-		ModelAndView mv = new ModelAndView("estoque/consultaEstoque");
-		mv.addObject("listProduto", proRepository.findAll());
+		ModelAndView mv = new ModelAndView("estoque/estoque");
+		Iterable<Produto> produto = proRepository.findAll();
+		mv.addObject("produtoList", produto);
 		return mv;
 	}
-//	verificar esse metodo
-	@PostMapping("/ajustarEstoque")
-	public String alterar(@PathVariable("etq") int etq, Produto produto) {
-		produto.setQtdEstoque(etq);
-		return"redirect:/consulta-estoque";
+
+	@GetMapping("/ajustaEstoque/{id}")
+	public ModelAndView ajustaEstoque(@PathVariable("id") Long id) {
+		ModelAndView mv = new ModelAndView("estoque/ajustaEstoque");
+		Produto produto = proRepository.getOne(id);
+		mv.addObject("produto" , produto);
+		return mv;
 	}
 	
-//	@GetMapping("/alterar/{idProduto}")
-//	public ModelAndView alterar(@PathVariable("idProduto") Long idProduto) {
-//		ModelAndView mv = new ModelAndView();
-//		mv.setViewName("produto/alterarProduto");
-//		Produto produto = pr.getById(idProduto);
-//		mv.addObject("produto", produto);
-//		Iterable<Secao> secao = sr.findAll();
-//		mv.addObject("secaoList", secao);
+	@PostMapping("/ajustarEstoque")
+	public ModelAndView ajustarEstoque(Produto produto) {
+		ModelAndView mv = new ModelAndView("redirect:/estoque");
+		Long prod = produto.getIdProduto();
+		proRepository.AjusteEtq(3, prod);
+		
+		return mv;
+	}
+	
+	@PostMapping("/pesquisa-estoque")
+	public ModelAndView pesquisaEst(@RequestParam("nomePesquisa") String nomepesquisa) {
+		ModelAndView mv = new ModelAndView("estoque/pesquisaEstoque");
+		mv.addObject("estListResult", proRepository.findByNomeContainingIngnoreCase(nomepesquisa));
+		mv.addObject("produto", new Produto());
+		return mv;
+	}
+
+	
+//	@PostMapping("**/pesquisa-secao")
+//	public ModelAndView pesquisarSecao(@RequestParam("nomepesquisa") String nomepesquisa) {
+//		ModelAndView mv = new ModelAndView("secao/pesquisaSecao");
+//		mv.addObject("secaoListResult", sr.findByNomeContainingIngnoreCase(nomepesquisa));
+//		mv.addObject("secao" , new Secao());
 //		return mv;
-//		
 //	}
+	
 }

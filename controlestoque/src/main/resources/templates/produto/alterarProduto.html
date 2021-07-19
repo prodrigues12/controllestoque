@@ -45,11 +45,16 @@
 				<div class=" form-row">
 		
 			<!-- Descrição -->
-					<div class="form-group col-md-12">
+					<div class="form-group col-md-11">
 						<label>Descrição</label>
 						<input class="form-control" th:field="*{descricao}">
 					</div>
 					
+					<!-- Estoque -->
+					<div class="form-group col-md-1">
+						<label>Estoque</label>
+						<input class="form-control" th:field="*{qtdEstoque} " readonly>
+					</div>
 				</div>
 			
 				<div class=" form-row">

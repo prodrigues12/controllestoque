@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<title>Conulta estoque</title>
+<meta name="author" content="Paulino Rodrigues">
+<link rel="stylesheet" href="css/navbarCss.css" />
+<script src="https://kit.fontawesome.com/006642858d.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+</head>
+
+<body>
+
+	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+	<hr>
+
+	<div class="container table-responsive" style="margin-top: 5px;">
+		<a style="font-size: 23px;">Consulta Estoque</a>
+	<hr>
+
+		<!-- Tabela -->
+		<div class="container table-responsive" style="margin-top: 30px;">
+			<a style="font-size: 24px;">Pesquise um produto</a>
+
+			<hr>
+			<!-- 		Pesquisa -->
+
+<!-- 			<form action="pesquisa-estoque" method="post"> -->
+<!-- 				<div class=""> -->
+<!-- 					<input name="nomepesquisa" placeholder="Nome do Produto"> -->
+<!-- 					&nbsp; -->
+<!-- 					<button class="btn btn-info" type="submit" value=""> -->
+<!-- 						<i class="fas fa-search"></i> Pesquisa -->
+<!-- 					</button> -->
+<!-- 				</div> -->
+<!-- 			</form> -->
+
+			<table
+				class="table table-bordered table-houver table-striped table-sm"
+				style="text-align: center;">
+				<thead class="thead-dark" style="text-align: center">
+					<th>ID</th>
+					<th>Nome</th>
+					<th>Estoque</th>
+					<th>Ajustar</th>
+					
+				</thead>
+
+				<tbody>
+					<tr th:each="produto : ${produtoList}">
+						<td class="col-2" th:text=${produto.idProduto}></td>
+						<td class="col-6" th:text=${produto.nome}></td>
+						<td class="col-2" th:text=${produto.qtdEstoque}>
+						<td class="col-2" >
+							<a class="btn btn-dark btn-sm" th:href="@{ajustaEstoque/{id}(id=${produto.idProduto})}"  >
+						<i class="fas fa-edit"></i> Ajustar
+						</a>
+							
+								</td>
+								
+					</tr>
+					
+				</tbody>
+			</table>
+		</div>
+		<a class="btn btn-dark" th:href="@{admin}"> <i class="fas fa-undo"></i>
+			Voltar
+		</a>
+	</div>
+
+
+
+	<script src="/webjars/jqrey/3.6.0/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/css/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

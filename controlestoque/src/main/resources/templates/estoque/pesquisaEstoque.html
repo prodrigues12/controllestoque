@@ -21,18 +21,18 @@
 	<hr>
 
 	<div class="container table-responsive" style="margin-top: 5px;">
-		<a style="font-size: 23px;">Consulta Estoque</a>
+		<a style="font-size: 23px;"> Estoque</a>
 	<hr>
 
 		<!-- Tabela -->
 		<div class="container table-responsive" style="margin-top: 30px;">
-			<a style="font-size: 24px;">Resultado da busca</a>
+			<a style="font-size: 24px;">Pesquise um produto</a>
 
 			<hr>
 			<!-- 		Pesquisa -->
 
 			<form action="pesquisa-secao" method="post">
-				<div class="table">
+				<div class="">
 					<input name="nomepesquisa" placeholder="Nome do Produto">
 					&nbsp;
 					<button class="btn btn-info" type="submit" value="">
@@ -48,6 +48,7 @@
 					<th>ID</th>
 					<th>Nome</th>
 					<th>Estoque</th>
+					<th>Ajustar</th>
 					
 				</thead>
 
@@ -55,12 +56,12 @@
 					<tr th:each="produto : ${listProduto}">
 						<td class="col-2" th:text=${produto.idProduto}></td>
 						<td class="col-6" th:text=${produto.nome}></td>
-						<td class="col-4">
-						<form method="post" action="/ajustarEstoque" autocomplete="off">
-						<input th:placeholder=${produto.qtdEstoque} name="qtdEstoque">
-							<button class="bttn btn-info btn-sm" type="submit" >
-								<i class="fas fa-edit"></i>Ajustar</button>
-								</form>
+						<td class="col-2">
+						<td class="col-2" th:text=${produto.qtdEstoque}>
+							<a class="btn btn-dark btn-sm" th:href="@{alterar-estoque/{idProduto}(idProduto=${produto.idProduto})}"  >
+						<i class="fas fa-edit"></i> Ajustar
+						</a>
+							
 								</td>
 								
 					</tr>
