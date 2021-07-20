@@ -31,19 +31,24 @@
 	font-size: 15px;
 	height: 50px;
 	line-height: 50px;
-	border: 2px solid #0000CD;
+	border: 2px solid #0e87fe;
 }
 .form-group{
 	margin: 10px;
 }
 .btn.btn-primary{
-	background: #0000CD;
+	background: #0e87fe;
 	border-color: #d4d4d4;
-	font-size: 1.1em;
-	padding: 0;
-	height: 60px;
 	width: 70%;
-	margin: 10px;
+	-webkit-transition-duration: 0.5s; 
+	transition-duration: 0.1s;
+	margin: 16px 0 !important;
+	text-decoration: none;
+	text-align: center;
+	margin-top: 100px;
+	color: #ffffff;
+	font-family: "Arial";
+
 }
 
 .btn.btn-info{
@@ -55,4 +60,16 @@
 	width: 50%;
 	margin: 10px;
 	
+}
+
+.btn.btn-primary:hover {
+	background-color: #000080;
+	text-decoration: none;
+	color: #fff;
+
+}
+
+.btn.btn-primary:active {
+	box-shadow: 0 5px #380B61;
+	transform: translateY(5px);
 }

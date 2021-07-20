@@ -30,19 +30,26 @@ public class EstoqueController {
 		return mv;
 	}
 
-	@GetMapping("/ajustaEstoque/{id}")
+//	@GetMapping(path = {"/{id}"})
+	@GetMapping("/ajustaEstoque/{id}") 
 	public ModelAndView ajustaEstoque(@PathVariable("id") Long id) {
 		ModelAndView mv = new ModelAndView("estoque/ajustaEstoque");
 		Produto produto = proRepository.getOne(id);
 		mv.addObject("produto" , produto);
 		return mv;
-	}
+		}
 	
 	@PostMapping("/ajustarEstoque")
 	public ModelAndView ajustarEstoque(Produto produto) {
 		ModelAndView mv = new ModelAndView("redirect:/estoque");
-		Long prod = produto.getIdProduto();
-		proRepository.AjusteEtq(3, prod);
+		
+		Produto temp = new Produto ();
+		temp = proRepository.AjusteEtq(produto.getIdProduto());
+		temp.setQtdEstoque(produto.getQtdEstoque());
+		produto = temp;
+		proRepository.save(produto);
+		
+		
 		
 		return mv;
 	}
