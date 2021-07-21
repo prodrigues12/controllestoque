@@ -54,19 +54,25 @@
 
 	<table class="table table-bordered table-houver table-striped table-sm" >
 			<thead class="thead-dark" style="text-align: center">
-				
 				<th class="col-sm-4"> Produto</th>
 				<th class="col-sm-2"> Quantidade</th>
 				<th class="col-sm-3">Ação</th>
 			</thead>
 			
 			<tbody>
-				<tr scope="row" th:each="item :${itemList}"  >
-					<td style="text-align: center"  ></td>
+				<tr scope="row" th:each="item :${itemList}">
+					<td>
+						<table>
+							<tbody>
+							<tr scope= "row" th:each="produtoNome :${produtoNome}">
+								<td style="text-align: center" th:text=${produtoNome.nome}></td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
 					<td style="text-align: center" th:text=${item.qtdSaida}></td>
 					<td style="text-align: center">
-						
-					 	<a class="btn btn-danger btn-sm" th:href="@{excluirItem/{id}(id=${item.idItem})}">
+						<a class="btn btn-danger btn-sm" th:href="@{excluirItem/{id}(id=${item.idItem})}">
 						 		<i class="fas fa-trash-alt"></i> Excluir
 							</a>
 					</td>

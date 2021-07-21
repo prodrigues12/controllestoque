@@ -17,7 +17,7 @@
 
 	<header th:fragment = "cabecalho">
 
-		<nav class="navbar navbar-expand-lg  "style="background-color:#00008B;">
+		<nav class="navbar navbar-expand-lg">
 
 			<a class="navbar-brand" th:href="@{admin}">Controllestoque-CD 994</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"data-target="#navbarNavDropdown"
@@ -40,9 +40,11 @@
 						 	<a class="dropdown-item" th:href="@{lista-produto}">
 						 		<i class="far fa-list-alt"></i> Lista</a>
 						 		<div class="dropdown-divider"></div> 
-							<a class="dropdown-item" th:href="@{secao}">Seção</a>
+							<a class="dropdown-item" th:href="@{secao}">
+							<i class="fas fa-boxes"></i> Seção</a>
 								<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Excluir</a>
+							<a class="dropdown-item" href="#">
+							<i class="fas fa-trash-alt"></i> Excluir</a>
 						</div>
 					</li>
 
@@ -53,15 +55,16 @@
 						<i class="fa fa-shopping-basket" aria-hidden="true"></i> Pedidos
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" th:href="@{/novo-pedido}">Novo</a>
+						<a class="dropdown-item" th:href="@{/novo-pedido}">
+						<i class="far fa-folder"></i> Novo</a>
 							<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Abertos</a>
+						<a class="dropdown-item" href="#">
+						<i class="far fa-folder-open"></i> Abertos</a>
 							<div class="dropdown-divider"></div>
-						 <a class="dropdown-item" href="#">Em analise</a>
+						 <a class="dropdown-item" href="#"><i class="fas fa-folder-open"></i> Em analise</a>
 						 	<div class="dropdown-divider"></div> 
-							<a class="dropdown-item" href="#">Fechadas</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Concluídas</a>
+							
+							<a class="dropdown-item" href="#"><i class="fas fa-folder"></i> Concluídas</a>
 						</div>
 					</li>
 
@@ -75,11 +78,15 @@
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
 
-							<a class="dropdown-item" href="#">Cadastrar</a>
+							<a class="dropdown-item" href="#">
+							<i class="fas fa-plus-circle"></i>
+							Cadastrar</a>
 							<div class="dropdown-divider"></div>
-						 	<a class="dropdown-item" href="#">Alterar</a>
+						 	<a class="dropdown-item" href="#">
+						 	<i class="fas fa-edit"></i> Alterar</a>
 						 	<div class="dropdown-divider"></div> 
-							<a class="dropdown-item" href="#">Excluir</a>
+							<a class="dropdown-item" href="#">
+							<i class="fas fa-trash-alt"></i> Excluir</a>
 						</div>
 					</li>
 					
@@ -92,9 +99,21 @@
 
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" th:href="@{/estoque}">Consulta</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Ajuste</a>
+							<a class="dropdown-item" th:href="@{/estoque}">
+							<i class="fas fa-search"></i> Consulta</a>							
+						</div>
+					</li>
+	<!-- Relatorio -->
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"><i class="fas fa-file-invoice"></i>
+						 Relatório</a>
+
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" th:href="@{/estoque}"><i class="fas fa-plus-circle"></i> Criar relatório</a>
+							
 							
 						</div>
 					</li>

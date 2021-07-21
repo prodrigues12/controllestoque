@@ -1,14 +1,25 @@
+.navbar-brand{
+	color: #000;
+}
+
+
+.navbar{
+	background-color: #0e87fe;
+}
+
+
 a{
 	cursor: pointer;
 	font-weight: bold;	
-	color: #fff;
+	color: #000;
 	font-size: 15px;
 }
 
 
+
 .dropdown-item{
 /* 	nome=  sub-menu */
-	color: #00008B;
+	color: #0e87fe;
 	cursor: pointer;
 	font-weight: bold;
 	font-size: 14px;
@@ -21,6 +32,20 @@ a{
     background-color: transparent;
    
 }
+
+.dropdown-item:hover {
+	text-decoration: none;
+	color:#000;
+	font-weight: bold;
+
+}
+
+.nav-link:hover{
+	color: #fff;
+	
+	
+}
+
 .rodape{
 	background-color: #00008B;
 	color:	 #fff;
@@ -49,5 +74,6 @@ a{
 	background-color:  #0e87fe;
 	color: #fff;
 	
-	
 }
+
+

@@ -1,7 +1,5 @@
 package com.controlestoque.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +14,6 @@ import com.controlestoque.Repository.ProdutoRepository;
 import com.controlestoque.model.Item;
 import com.controlestoque.model.Pedido;
 import com.controlestoque.model.Produto;
-import com.controlestoque.model.Secao;
 
 @Controller
 public class ItemController {

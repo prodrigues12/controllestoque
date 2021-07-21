@@ -42,15 +42,11 @@ public class EstoqueController {
 	@PostMapping("/ajustarEstoque")
 	public ModelAndView ajustarEstoque(Produto produto) {
 		ModelAndView mv = new ModelAndView("redirect:/estoque");
-		
 		Produto temp = new Produto ();
 		temp = proRepository.AjusteEtq(produto.getIdProduto());
 		temp.setQtdEstoque(produto.getQtdEstoque());
 		produto = temp;
 		proRepository.save(produto);
-		
-		
-		
 		return mv;
 	}
 	
