@@ -19,7 +19,7 @@ import com.controlestoque.model.Produto;
 public class ItemController {
 	
 	@Autowired
-	ItemRepository itemRepository;
+	ItemRepository iteRepository;
 	
 	@Autowired
 	ProdutoRepository prodRepository;
@@ -35,9 +35,12 @@ public class ItemController {
 		Iterable<Produto> produto = prodRepository.findAll();
 		mv.addObject("produtoList", produto);
 		
-	
+//		Iterable<Item> prod = prodRepository.n;
+//		mv.addObject("produtoList", prod);
+		
+		
 		pedRepository.lastIdPedido();
-		Iterable<Item> item = itemRepository.ListProduto();
+		Iterable<Item> item = iteRepository.ListProduto();
 		mv.addObject("itemList", item);
 		return mv;
 	}
@@ -47,12 +50,12 @@ public class ItemController {
 		Pedido ped =new Pedido();
 		ped.setIdPedido(pedRepository.lastIdPedido());
 		item.setPedido(ped);
-		itemRepository.save(item);
+		iteRepository.save(item);
 		return "redirect:/lista-item";
 	}
 	@GetMapping("/excluirItem/{id}")
 	public String excluirItem(@PathVariable("id") Long id) {
-		itemRepository.deleteById(id);
+		iteRepository.deleteById(id);
 		return "redirect:/lista-item";
 	}
 }

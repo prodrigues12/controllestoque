@@ -61,20 +61,12 @@
 			
 			<tbody>
 				<tr scope="row" th:each="item :${itemList}">
-					<td>
-						<table>
-							<tbody>
-							<tr scope= "row" th:each="produtoNome :${produtoNome}">
-								<td style="text-align: center" th:text=${produtoNome.nome}></td>
-								</tr>
-							</tbody>
-						</table>
-					</td>
+					<td></td>
 					<td style="text-align: center" th:text=${item.qtdSaida}></td>
 					<td style="text-align: center">
 						<a class="btn btn-danger btn-sm" th:href="@{excluirItem/{id}(id=${item.idItem})}">
 						 		<i class="fas fa-trash-alt"></i> Excluir
-							</a>
+						</a>
 					</td>
 				</tr>
 			

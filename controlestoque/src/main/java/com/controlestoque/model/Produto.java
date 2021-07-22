@@ -28,8 +28,15 @@ public class Produto implements Serializable{
 	
 	@ManyToOne
 	private Secao secoes;
+	
+	@ManyToOne
+	private Grupo grupos;
+	
+	@ManyToOne
+	private Rua ruas;
 
 //	###*** Get's and Set's ***###
+
 
 	public Long getIdProduto() {
 		return idProduto;
@@ -71,13 +78,21 @@ public class Produto implements Serializable{
 		this.secoes = secoes;
 	}
 
-//	public Item getItem() {
-//		return item;
-//	}
-//
-//	public void setItem(Item item) {
-//		this.item = item;
-//	}
+	public Grupo getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(Grupo grupos) {
+		this.grupos = grupos;
+	}
+	
+	public Rua getRuas() {
+		return ruas;
+	}
+
+	public void setRuas(Rua ruas) {
+		this.ruas = ruas;
+	}
 	
 
 }

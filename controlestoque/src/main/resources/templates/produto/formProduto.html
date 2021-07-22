@@ -58,8 +58,10 @@
 		
 <!--  			Grupo -->
 				<div class="form-group col-md-4">
-					<label for="inputCity">Grupo</label>
-					 <input type="text" class="form-control" >
+					<label for="inputState">Grupo</label> 
+					<select id="inputState" class="form-control" th:field="*{grupos}">
+						<option th:each="grupo : ${grupoList}"  th:value="${grupo.idgrupo}" th:text="${grupo.nomeGrupo}"/>
+					</select>
 				</div>
 		
 <!-- 				Sub-grupo -->
