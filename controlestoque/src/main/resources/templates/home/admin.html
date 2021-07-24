@@ -15,12 +15,34 @@
 </head>
 <body >
 	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
-	
+
 	<div class="container table-responsive" style ="margin-top: 50px;">
-		<a style="font-size: 23px;">Pedidos</a>
+		<a style="font-size: 23px;">Informações</a>
 		<hr>
 
-			<table class="table table-bordered table-houver table-striped table-sm" style="text-align: center">
+		<ul class="nav nav-tabs" id="myTab" role="tablist" style="background-color: #0e87fe; border: 1px;">
+			<li class="nav-item" role="presentation"><a
+				class="nav-link active" id="home-tab" data-toggle="tab" href="#home"
+				role="tab" aria-controls="home" aria-selected="true"><i class="fas fa-exclamation-triangle"></i> Alerta Estoque</a></li>
+			<li class="nav-item" role="presentation"><a class="nav-link"
+				id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+				aria-controls="profile" aria-selected="false">Novos pedidos</a></li>
+			<li class="nav-item" role="presentation"><a class="nav-link"
+				id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+				aria-controls="contact" aria-selected="false">Pedidos em analise </a></li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="home" role="tabpanel"
+				aria-labelledby="home-tab">
+				<p>
+				<h4>[Exibirá os produtos cujo o estoque esteja igual ou inferior ao valor minino passado pelo ADM CONTROLLER. ]</h4>
+				
+				
+				</div>
+			<div class="tab-pane fade" id="profile" role="tabpanel"
+				aria-labelledby="profile-tab">
+				
+				<table class="table table-bordered table-houver table-striped table-sm " style="text-align: center; margin-top: 10px;" >
 			<thead class="thead-dark" style="text-align: center">
 					<th scope="col">Pedido</th>
 					<th scope="col">Solicitante</th>
@@ -41,7 +63,17 @@
 					</tr>
 				</tbody>
 			</table>
+				
+				
+				
+				</div>
+			<div class="tab-pane fade" id="contact" role="tabpanel"
+				aria-labelledby="contact-tab">
+				<p>
+				<h4>[Exibirá os pedidos com status EM ANALISE.]</h4>
+		</div>
 		
+		</div>
 			
 	</div>
 

@@ -22,7 +22,7 @@
 			<a class="navbar-brand" th:href="@{admin}">Controllestoque-CD 994</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"data-target="#navbarNavDropdown"
 			 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
+				<span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -34,17 +34,24 @@
 							<i class="fa fa-cubes" aria-hidden="true"></i> Produtos
 						</a>
 						<div class="dropdown-menu"	aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" th:href="@{inserirProduto}"> 
-								<i class="fas fa-plus-circle"></i> Cadastrar</a>
-								<div class="dropdown-divider"></div>
+							
 						 	<a class="dropdown-item" th:href="@{lista-produto}">
-						 		<i class="far fa-list-alt"></i> Lista</a>
+						 		<i class="fas fa-box" aria-hidden="true"></i> Produto</a>
 						 		<div class="dropdown-divider"></div> 
 							<a class="dropdown-item" th:href="@{secao}">
-							<i class="fas fa-boxes"></i> Seção</a>
+								<i class="fas fa-boxes"></i> Seção</a>
 								<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">
-							<i class="fas fa-trash-alt"></i> Excluir</a>
+								<i class="fa fa-cubes"></i> Grupo</a>
+								<div class="dropdown-divider"></div> 
+							<a class="dropdown-item" href="#">
+								<i class="fas fa-road"></i> Rua</a>
+								<div class="dropdown-divider"></div> 
+							<a class="dropdown-item" href="#">
+								<i class="far fa-building"></i> Apartamento</a>
+								<div class="dropdown-divider"></div> 
+							<a class="dropdown-item" href="#">
+								<i class="fab fa-buromobelexperte"></i> Andar</a>
 						</div>
 					</li>
 

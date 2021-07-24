@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.controlestoque.Repository.GrupoRepository;
 import com.controlestoque.Repository.ItemRepository;
 import com.controlestoque.Repository.ProdutoRepository;
 import com.controlestoque.Repository.SecaoRepository;
+import com.controlestoque.model.Grupo;
 import com.controlestoque.model.Item;
 import com.controlestoque.model.Produto;
 import com.controlestoque.model.Secao;
@@ -26,6 +28,9 @@ public class ProdutoController {
 	@Autowired
 	ItemRepository ir;
 	
+	@Autowired
+	GrupoRepository gr;
+	
 	@GetMapping("/inserirProduto")
 	public ModelAndView insertProduto() {
 		ModelAndView mv = new ModelAndView();
@@ -33,6 +38,9 @@ public class ProdutoController {
 		mv.addObject("produto", new Produto());
 		Iterable<Secao> secao = sr.findAll();
 		mv.addObject("secaoList", secao);
+		Iterable<Grupo> grupo = gr.findAll();
+		mv.addObject("grupoList", grupo);
+		
 		return mv;
 		
 	}
@@ -62,6 +70,8 @@ public class ProdutoController {
 		mv.addObject("produto", produto);
 		Iterable<Secao> secao = sr.findAll();
 		mv.addObject("secaoList", secao);
+		Iterable<Grupo> grupo = gr.findAll();
+		mv.addObject("grupoList", grupo);
 		return mv;
 		
 	}

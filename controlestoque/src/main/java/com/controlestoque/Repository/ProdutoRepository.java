@@ -15,4 +15,7 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long>{
 	
 	@Query("select p from Produto p where p.idProduto = :id")
 	public Produto AjusteEtq(Long id);
+	
+	@Query("select p from Produto p where p.qtdEstoque <= 8")
+	public List<Produto> AjusteEtq();
 }

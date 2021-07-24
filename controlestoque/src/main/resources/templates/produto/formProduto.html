@@ -29,7 +29,7 @@
 			<div class="form-row">
 				<div class="form-group col-md-1">
 					<label>Codigo</label> 
-					<input class="form-control" type="text" th:field="*{idProduto}" readonly>
+					<input class="form-control" type="text" th:field="*{idProduto}" readonly placeholder="00000">
 				</div>
 	
 			<!-- 		Produto -->
@@ -41,9 +41,16 @@
 
 			<!-- DEscrição -->
 			<div class=" form-row">
-				<div class="form-group col-md-12">
+				<div class="form-group col-md-10">
 					<label>Descrição</label>
 					<input class="form-control" th:field="*{descricao}">
+				</div>
+			
+			<!-- Valor minino ETQ -->
+	
+				<div class="form-group col-md-2">
+					<label>Valor min. Estoque</label>
+					<input class="form-control">
 				</div>
 			</div>
 
@@ -60,7 +67,7 @@
 				<div class="form-group col-md-4">
 					<label for="inputState">Grupo</label> 
 					<select id="inputState" class="form-control" th:field="*{grupos}">
-						<option th:each="grupo : ${grupoList}"  th:value="${grupo.idgrupo}" th:text="${grupo.nomeGrupo}"/>
+						<option th:each="grupo : ${grupoList}"  th:value="${grupo.idGrupo}" th:text="${grupo.nomeGrupo}"/>
 					</select>
 				</div>
 		
