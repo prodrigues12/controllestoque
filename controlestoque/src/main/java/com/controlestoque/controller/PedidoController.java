@@ -59,15 +59,7 @@ public class PedidoController {
 		return mv;
 	}
 	
-	@GetMapping("/admin")
-	public ModelAndView admController() {
-	ModelAndView mv = new ModelAndView("home/admin");
-	Iterable<Pedido> pedido = pedRepository.listNovos();
-	mv.addObject("pedidoList", pedido);
-
-	return mv;
 	
-	}
 	@PostMapping("**/pesquisa-pedido")
 	public ModelAndView pesquisaPeddido(@RequestParam("pedido") Long ped) {
 		ModelAndView mv = new ModelAndView("pedido/acompanharPedido");

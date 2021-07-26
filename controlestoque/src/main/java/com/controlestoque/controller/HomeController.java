@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.controlestoque.Repository.PedidoRepository;
+import com.controlestoque.Repository.ProdutoRepository;
 import com.controlestoque.model.Pedido;
+import com.controlestoque.model.Produto;
 
 
 @Controller
@@ -14,6 +16,8 @@ public class HomeController {
 	
 	@Autowired
 	PedidoRepository pedRepository;
+	@Autowired
+	ProdutoRepository proRepository;
 	
 	@GetMapping("/")
 	public ModelAndView index() {
@@ -35,7 +39,19 @@ public class HomeController {
 		mv.setViewName("pedido/formPedido");
 		return mv;
 		
-	}
-//	
 	
+	}
+	
+	@GetMapping("/admin")
+	public ModelAndView admController() {
+	ModelAndView mv = new ModelAndView("home/admin");
+	Iterable<Pedido> pedido = pedRepository.listNovos();
+	mv.addObject("pedidoList", pedido);
+	
+	Iterable<Produto> produto = proRepository.baixoEtq();
+	mv.addObject("produtoList", produto);
+
+	return mv;
+	
+	}
 }

@@ -35,7 +35,34 @@
 			<div class="tab-pane fade show active" id="home" role="tabpanel"
 				aria-labelledby="home-tab">
 				<p>
-				<h4>[Exibirá os produtos cujo o estoque esteja igual ou inferior ao valor minino passado pelo ADM CONTROLLER. ]</h4>
+				<table class="table table-bordered table-houver table-striped table-sm" style="text-align: center">
+			<thead class="thead-dark" style="text-align: center">
+				<th class="col-1" > Código</th>
+				<th class="col-4" > Nome</th>
+				<th class="col-4"> Estoque</th>
+				<th class="col-3" >Ação</th>
+			</thead>
+			
+			<tbody>
+				<tr  th:each="produtos : ${produtoList}" >
+					<td th:text=${produtos.idProduto}></td>
+					<td th:text=${produtos.nome}></td>
+					<td th:text=${produtos.qtdEstoque}></td>
+					
+					<td style="text-align: center">
+					<a class="btn btn-dark btn-sm" th:href="@{alterar/{idProduto}(idProduto=${produtos.idProduto})}"  >
+						<i class="fas fa-edit"></i> Editar
+						</a>
+				
+						<a class="btn btn-danger btn-sm"  th:href="@{excluir/{idProduto}(idProduto=${produtos.idProduto})}">
+						<i class="fas fa-trash-alt"></i> Excluir
+						</a>
+					</td>
+				</tr>
+			
+			</tbody>
+			
+		</table>
 				
 				
 				</div>
