@@ -1,16 +1,19 @@
 * {
 	margin: 0px;
-	padding: 0;
+	padding: 0px;
 	box-sizing: content-box;
 		
 }
 
 .Login-form{
-	min-height: 600px;
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+	min-height:auto;
 	background-image: url('/img/wallpaper2.jpg');
 	background-position: center;
 	background-size: cover;
-	background-repeat: no-repeat;
+	background-repeat:repeat-x;
 }
 
 .Login-form{
@@ -23,8 +26,11 @@
 }
 
 .main-div{
-	background: #fff;
-	border-radius: 5px;
+	background:#fff;
+	border-style: outset;
+	border-radius: 50px;
+	border-width: 15px;
+	border-color: #0e87fe;
 	margin: 0 auto;
 	max-width: 50%;
 	padding: 70px 100px;
@@ -94,9 +100,10 @@
 	text-decoration: none;
 	color:#8B008B;
 	font-weight: bold;
-	
 
 }
-
+.center{
+	 text-align: center;
+}
 
 

@@ -26,6 +26,10 @@ public class Produto implements Serializable{
 	
 	private int qtdEstoque;
 	
+	private int qtdEstMin;
+	
+	
+
 	@ManyToOne
 	private Secao secoes;
 	
@@ -68,6 +72,14 @@ public class Produto implements Serializable{
 
 	public void setQtdEstoque(int qtdEstoque) {
 		this.qtdEstoque = qtdEstoque;
+	}
+	
+	public int getQtdEstMin() {
+		return qtdEstMin;
+	}
+
+	public void setQtdEstMin(int qtdEstMin) {
+		this.qtdEstMin = qtdEstMin;
 	}
 
 	public Secao getSecoes() {

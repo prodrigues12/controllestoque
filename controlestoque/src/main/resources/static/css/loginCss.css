@@ -1,6 +1,9 @@
 
 .Login-form{
-	min-height: 700px;
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+	min-height: auto;
 	background-image: url('/img/wallpaper.jpg');
 	background-position: center;
 	background-size: cover;
@@ -73,3 +76,7 @@
 	box-shadow: 0 5px #380B61;
 	transform: translateY(5px);
 }
+.center{
+	 text-align: center;
+}
+

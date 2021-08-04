@@ -38,7 +38,7 @@ public class SecaoController {
 		return "redirect:/secao";
 	}
 	
-	@GetMapping("/alterarSecao/{id}")
+	@GetMapping("/secao/{id}")
 	public ModelAndView alterarSecao(@PathVariable("id") Long id) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("secao/alterarSecao");

@@ -39,15 +39,19 @@
 						<label>Nome</label> 
 						<input class="form-control" placeholder="Ex: Caneta vermelha" th:field="*{nome}">
 					</div>
-				
 				</div>
-
 				<div class=" form-row">
 		
 			<!-- Descrição -->
-					<div class="form-group col-md-11">
+					<div class="form-group col-md-9">
 						<label>Descrição</label>
 						<input class="form-control" th:field="*{descricao}">
+					</div>
+					
+					<!-- Estoque Min-->
+					<div class="form-group col-md-2">
+						<label>Estoque mínimo</label>
+						<input class="form-control" th:field="*{qtdEstMin} ">
 					</div>
 					
 					<!-- Estoque -->
@@ -55,6 +59,8 @@
 						<label>Estoque</label>
 						<input class="form-control" th:field="*{qtdEstoque} " readonly>
 					</div>
+					
+					
 				</div>
 			
 				<div class=" form-row">

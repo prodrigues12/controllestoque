@@ -46,10 +46,13 @@ public class HomeController {
 	public ModelAndView admController() {
 	ModelAndView mv = new ModelAndView("home/admin");
 	Iterable<Pedido> pedido = pedRepository.listNovos();
-	mv.addObject("pedidoList", pedido);
+	mv.addObject("pedidoListNovo", pedido);
 	
 	Iterable<Produto> produto = proRepository.baixoEtq();
 	mv.addObject("produtoList", produto);
+	
+	Iterable<Pedido> pedido2 = pedRepository.listAnalise();
+	mv.addObject("pedidoListAnalise", pedido2);
 
 	return mv;
 	

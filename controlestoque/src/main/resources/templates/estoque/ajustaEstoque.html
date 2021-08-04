@@ -21,7 +21,11 @@
 
 	<div>
 		<form method="post" action="/ajustarEstoque" th:object="${produto}" autocomplete="off">
+		
 		<!-- 		Id -->
+		
+		<div class="panel-body">
+		<input type="hidden" th:field="*{idProduto}">
 			<div class="form-row">
 				<div class="form-group col-md-1">
 					<label>Codigo</label> 
@@ -37,6 +41,7 @@
 					<label>Estoque</label> 
 					<input class="form-control" name="etq" th:field="*{qtdEstoque}">
 				</div>
+			</div>
 			</div>
 			<br>
 			

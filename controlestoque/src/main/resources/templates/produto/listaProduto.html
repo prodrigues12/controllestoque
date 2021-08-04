@@ -41,7 +41,7 @@
 					<td th:text=${produtos.descricao}></td>
 					
 					<td style="text-align: center">
-					<a class="btn btn-dark btn-sm" th:href="@{alterar/{idProduto}(idProduto=${produtos.idProduto})}"  >
+					<a class="btn btn-dark btn-sm" th:href="@{{idProduto}(idProduto=${produtos.idProduto})}"  >
 						<i class="fas fa-edit"></i> Editar
 						</a>
 				
