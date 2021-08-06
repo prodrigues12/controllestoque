@@ -84,4 +84,28 @@ a{
 	color: #228B22;
 }
 
+.navbar-brand{
+	color: #fff;
+}
+.navbar-toggler-icon{
+	color: #fff;
+}
+
+.card-header{
+	background:#191970;
+	color: #fff;
+	border-style:solid;
+	border-color: #191970;
+}
+.card-body{
+	border-style:solid;
+	border-color: #191970; 
+	text-align: center;
+}
+
+.nav-link active{
+	background: #E0FFFF;
+	color: #E0FFFF;
+}
+
 

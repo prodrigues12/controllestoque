@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Pedido implements Serializable{
@@ -25,9 +26,20 @@ public class Pedido implements Serializable{
 	@OneToMany
 	private List<Item> itens;
 	
+	@OneToOne
+	private Funcionario funcionario;
+	
 //	###*** Get's and Set's ***###
 	
 	
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+
 	public Long getIdPedido() {
 		return idPedido;
 	}
