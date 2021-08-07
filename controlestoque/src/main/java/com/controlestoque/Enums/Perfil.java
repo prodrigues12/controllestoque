@@ -2,9 +2,9 @@ package com.controlestoque.Enums;
 
 public enum Perfil {
 	
-	ADMINISTRADOR("ADMINISTRADOR"),
-	GERENCIA("GERENCIA"),
-	FUNCIONARIO("FUNCIONARIO");
+	FUNCIONÁRIO("FUNCIONARIO"),
+	GERÊNCIA("GERENCIA"),
+	ADMINISTRADOR("ADMINISTRADOR");
 	
 	private String perfil;
 	

@@ -13,33 +13,39 @@
 	rel="stylesheet" />
 <link type="text/css" rel="stylesheet"
 	href="materialize/css/materialize.min.css" media="screen,projection" />
+
 </head>
-
 <body>
-
 	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
-	<hr>
 
-	<div class="container table-responsive" style="margin-top: 5px;">
+	<div class="container table-responsive" style="margin-top: 20px;">
 		<a style="font-size: 23px;">Seção</a>
-	<hr>
 
-		<!-- Tabela -->
-		<div class="container table-responsive" style="margin-top: 30px;">
-			<a style="font-size: 24px;">Resultado da busca</a>
+		<p>
 
-			<hr>
+			<a type="button" class="btn btn-primary" th:href="@{/insert-secao}">
+				<i class="fas fa-plus-circle"></i> Seção
+			</a>
+			
+		<p>
+		
+		<div class="card">
+			<div class="card-header ">Resultado da pesquisa</div>
+			<div class="card-body">
+
+				<!-- Tabela -->
+				<div class="container table-responsive">
 			<!-- 		Pesquisa -->
 
 			<form action="pesquisa-secao" method="post">
-				<div class="table">
-					<input name="nomepesquisa" placeholder="Buscar seção">
-					&nbsp;
-					<button class="btn btn-info" type="submit" value="">
-						<i class="fas fa-search"></i> Pesquisa
-					</button>
-				</div>
-			</form>
+						<div class="form-group">
+							<input class="col-sm-3 col-form-label" name="nomepesquisa"
+								placeholder="Buscar seção">
+							<button class="btn btn-secondary" type="submit" value="">
+								<i class="fas fa-search"></i> Pesquisa
+							</button>
+						</div>
+					</form>
 
 			<table
 				class="table table-bordered table-houver table-striped table-sm"
@@ -50,24 +56,25 @@
 					<th>Ação</th>
 				</thead>
 
-				<tbody>
-					<tr th:each="secao : ${secaoListResult}">
-						<td th:text=${secao.idSecao}></td>
-						<td th:text=${secao.nomesecao}></td>
+						<tbody>
+							<tr scope="row" th:each="secao : ${secaoListResult}">
+								<td th:text=${secao.idSecao}></td>
+								<td th:text=${secao.nomesecao}></td>
 
-						<td style="text-align: center">
-							<a class="btn btn-dark btn-sm" th:href="@{alterarSecao/{id}(id=${secao.idSecao})}"> 
-								<i class="fas fa-edit"></i> Editar
-							</a> 
-							&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 
-						
-							<a class="btn btn-danger btn-sm" th:href="@{excluirSecao/{id}(id=${secao.idSecao})}">
-						 		<i class="fas fa-trash-alt"></i> Excluir
-							</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+								<td style="text-align: center"><a
+									class="btn btn-dark btn-sm"
+									th:href="@{alterarSecao/{id}(id=${secao.idSecao})}"> <i
+										class="fas fa-edit"></i> Editar
+								</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; <a
+									class="btn btn-danger btn-sm"
+									th:href="@{excluirSecao/{id}(id=${secao.idSecao})}"> <i
+										class="fas fa-trash-alt"></i> Excluir
+								</a></td>
+							</tr>
+						</tbody>
+					</table>
+		</div>
+		</div>
 		</div>
 		<a class="btn btn-dark" th:href="@{secao}"> <i class="fas fa-undo"></i>
 			Voltar

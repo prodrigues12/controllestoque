@@ -15,11 +15,15 @@
 
 <body>
 
+	
 	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
-
-	<div class="container" style="margin-top: 50px;">
-		<h4>Alterar produto</h4>
-		<hr>
+	
+	<div class="container" style ="margin-top: 20px;">
+	
+		
+		<div class="card">
+			<div class="card-header ">Alterar de Produto</div>
+			<div class="card-body">
 		
 		<div>
 			<form method="post" action="/alterar" th:object="${produto}" autocomplete="off">
@@ -130,6 +134,8 @@
 			</div>
 	
 		</form>
+	</div>
+	</div>
 	</div>
 	</div>
 

@@ -19,14 +19,51 @@
 	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
 
 	<div class="container table-responsive" style="margin-top: 10px;">
-		<a style="font-size: 23px;"> Novo Funcionario</a>
+		<a style="font-size: 23px;"> Novo Funcionário</a>
 		<hr>
 
 
 		<div class="card">
 			<div class="card-header ">Cadastro de Funcionário</div>
 
-			<div class="card-body"></div>
+			<div class="card-body">
+
+				<form method="post" action="salvar-funcionario"
+					th:object="${funcionario}">
+
+
+					<div class="form-row">
+						<div class="form-group col-md-3">
+							<label>Identificação</label> <input class="form-control"
+								placeholder="ID Magalu" th:field="*{identificacao}">
+						</div>
+
+						<!-- nome -->
+						<div class="form-group col-md-5">
+							<label>Nome</label> <input class="form-control"
+								placeholder="Nome do colaborador" th:field="*{nomeFuncionario}">
+						</div>
+
+						<!-- Perfil -->
+						<div class="form-group col-md-4">
+							<label>Perfil</label> 
+							<select class="form-control" th:field=*{perfil}>
+								<option th:each="perfil : ${T(com.controlestoque.Enums.Perfil).values()}" 
+									th:value="${perfil}" th:text="${perfil}"></option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-row">
+						<a type="button" class="btn btn-danger offset-md-10"
+							th:href="@{/produto/inserirProduto}">Cancelar</a> &nbsp; &nbsp;
+						<button type="submit" class="btn btn-success offset"
+							th:href="@{secao}">Salvar</button>
+					</div>
+
+				</form>
+
+			</div>
 		</div>
 
 	</div>

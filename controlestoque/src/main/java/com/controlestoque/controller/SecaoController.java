@@ -1,8 +1,7 @@
 package com.controlestoque.controller;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,25 +16,36 @@ import org.springframework.web.servlet.ModelAndView;
 import com.controlestoque.Repository.SecaoRepository;
 import com.controlestoque.model.Secao;
 
+
 @Controller
+
 public class SecaoController {
 	
 	@Autowired
 	SecaoRepository sr;
 	
 	
-	@RequestMapping("/secao")
+	@GetMapping("/secao")
 	public ModelAndView listaSecoes(){
-		ModelAndView mv = new ModelAndView("secao/formSecao");
+		ModelAndView mv = new ModelAndView("secao/listSecao");
 		Iterable<Secao> secao = sr.findAll();
 		mv.addObject("secaoList", secao);
 		return mv;
 	}
 	
-	@RequestMapping(value="/secao", method=RequestMethod.POST)
+	@GetMapping("insert-secao")
+	public ModelAndView inserirSecao() {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("secao" ,new Secao() );
+		mv.setViewName("secao/formSecao");
+		return mv;
+				
+	}
+	
+	@PostMapping("salvar-secao")
 	public String form( Secao secao) {
 		sr.save(secao);
-		return "redirect:/secao";
+		return "redirect:/insert-secao";
 	}
 	
 	@GetMapping("/secao/{id}")
@@ -71,6 +81,8 @@ public class SecaoController {
 		mv.addObject("secao" , new Secao());
 		return mv;
 	}
+	
+	
 	
 	@GetMapping("secaoNome")
 	public ModelAndView listaNomeSecoes(){

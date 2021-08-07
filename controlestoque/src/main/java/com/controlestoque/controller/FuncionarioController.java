@@ -19,20 +19,24 @@ public class FuncionarioController {
 	@GetMapping("funcionario")
 	public ModelAndView funcionario(){
 		ModelAndView mv = new ModelAndView("funcionario/funcionario");
+		mv.addObject("listFuncionario", funRepository.findAll());
 		return mv;
 	}
 	
 	@GetMapping("/inserir-funcionario")
 	public ModelAndView insertFuncionario() {
 		ModelAndView mv = new ModelAndView("funcionario/formFuncionario");
+		mv.addObject("funcionario" , new Funcionario());
 		return mv;
 	}
 	
 	@PostMapping("/salvar-funcionario")
-	public ModelAndView salvarFuncionario(Funcionario fun) {
+	public ModelAndView salvarFuncionario(Funcionario funcionario) {
 		ModelAndView mv = new ModelAndView();
-		funRepository.save(fun);
+		funRepository.save(funcionario);
 		mv.setViewName( "redirect:/funcionario");
 		return mv;
 	}
+	
+	
 }

@@ -34,7 +34,7 @@
 				<form action="" method="post">
 					<div class="form-group row">
 						<input class="col-sm-2 col-form-label" name="nomepesquisa"
-							placeholder="Buscar produto">
+							placeholder="Buscar Funcionário">
 						<button class="btn btn-info" type="submit" value="">
 							<i class="fas fa-search"></i> Pesquisa
 						</button>
@@ -46,17 +46,18 @@
 					style="text-align: center">
 					<thead class="thead-dark" style="text-align: center">
 						<th class="col-1">Código</th>
-						<th class="col-4">ID / CPF</th>
+						<th class="col-2">ID / CPF</th>
 						<th class="col-4">Nome</th>
-						<th class="col-3">Perfil</th>
-						<th class="col-3">Ação</th>
+						<th class="col-2">Perfil</th>
+						<th class="col-2">Ação</th>
 					</thead>
 
 					<tbody>
-						<tr >
-							<td ></td>
-							<td ></td>
-							<td ></td>
+						<tr th:each="funcionario : ${listFuncionario}">
+							<td th:text="${funcionario.id}"></td>
+							<td th:text="${funcionario.identificacao}"></td>
+							<td th:text="${funcionario.nomeFuncionario}"></td>
+							<td th:text="${funcionario.perfil}"></td>
 
 							<td style="text-align: center"><a
 								class="btn btn-dark btn-sm"

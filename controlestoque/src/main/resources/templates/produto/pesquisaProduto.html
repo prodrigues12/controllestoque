@@ -15,14 +15,16 @@
 </head>
 <body>
 
+
 	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
 
 	<div class="container table-responsive" style="margin-top: 10px;">
 		<a style="font-size: 23px;">Lista dos Produtos</a>
 		<hr>
-			<a class="btn btn-info" th:href="@{inserirProduto}"> <i
+		<a class="btn btn-info" th:href="@{inserirProduto}"> <i
 			class="fas fa-plus-circle"></i> Produto
-			</a>
+		</a>
+
 		<p>
 		<div class="card">
 			<div class="card-header ">Meus produtos</div>
@@ -51,7 +53,7 @@
 					</thead>
 
 					<tbody>
-						<tr th:each="produtos : ${produtoList}">
+						<tr th:each="produtos : ${produtoListResult}">
 							<td th:text=${produtos.idProduto}></td>
 							<td th:text=${produtos.nome}></td>
 							<td th:text=${produtos.descricao}></td>

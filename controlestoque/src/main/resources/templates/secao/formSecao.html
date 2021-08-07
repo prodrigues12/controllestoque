@@ -17,93 +17,49 @@
 </head>
 <body>
 	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
-	<hr>
-	<div class="container table-responsive" style="margin-top: 5px;">
-		<a style="font-size: 23px;">Seção</a>
-		<hr>
 
-		<!-- Modal -->
+	<div class="container table-responsive" style="margin-top: 20px;">
 
-		<button type="button" class="btn btn-secondary" data-toggle="modal"
-			data-target="#exampleModal">
-			 <i class="fas fa-plus-circle"></i> Adicionar Seção
-		</button>
+		<div class="card">
+			<div class="card-header ">Cadastro de Seção</div>
+			<div class="card-body">
 
-		<div class="modal fade" id="exampleModal" tabindex="-1"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Nova Seção</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form class="container" method="post">
-							Nome: <input type="text" value="" name="nomesecao" />
+				<div>
+					<form method="post" action="salvar-secao" th:object="${secao}"
+						autocomplete="off">
 
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Sair</button>
-								<button class=" btn btn-success" type="submit">Salvar</button>
+						<!-- 		ID -->
+						<div class="form-row">
+							<div class="form-group col-md-1">
+								<label>Codigo</label> <input class="form-control" type="text"
+									th:field="*{idSecao}" readonly placeholder="00000">
 							</div>
-						</form>
-					</div>
-				</div>
+
+							<!-- 		Produto -->
+							<div class="form-group col-md-11">
+								<label>Nome</label> <input class="form-control"
+									placeholder="Ex: Nome da seção" th:field="*{nomesecao}">
+							</div>
+						</div>
+						<!-- 				Botões -->
+						<div class="form-row">
+							<a type="button" class="btn btn-danger offset-md-10"
+								th:href="@{/secao}">Cancelar</a> &nbsp; &nbsp;
+							<button type="submit" class="btn btn-success offset">Salvar</button>
+						</div>
+				</form>
 			</div>
 		</div>
-		<hr>
-
+	</div>
 	
-		<!-- Tabela -->
-		<div class="container table-responsive" style="margin-top: 30px;">
-			<a style="font-size: 23px;">Lista dos Produtos</a>
-			<hr>
-			
-				<!-- 		Pesquisa -->
-	
-			<form action="pesquisa-secao" method="post">
-			<div class="form-group row">
-				<input   class="col-sm-2 col-form-label" name="nomepesquisa" placeholder="Buscar seção">
-				<button class="btn btn-info" type="submit" value="">
-					<i class="fas fa-search"></i> Pesquisa
-				</button>
-			</div>
-		</form>
-		
-			<table
-				class="table table-bordered table-houver table-striped table-sm"
-				style="text-align: center; width: 25cm;">
-				<thead class="thead-dark" style="text-align: center">
-					<th scope="col">ID</th>
-					<th scope="col">Nome</th>
-					<th scope="col">Ação</th>
-				</thead>
-
-				<tbody>
-					<tr scope="row" th:each="secao : ${secaoList}">
-						<td th:text=${secao.idSecao}></td>
-						<td th:text=${secao.nomesecao}></td>
-
-						<td style="text-align: center"><a class="btn btn-dark btn-sm"
-							th:href="@{secao/{id}(id=${secao.idSecao})}"> <i
-								class="fas fa-edit"></i> Editar
-						</a> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; <a
-							class="btn btn-danger btn-sm"
-							th:href="@{excluirSecao/{id}(id=${secao.idSecao})}"> <i
-								class="fas fa-trash-alt"></i> Excluir
-						</a></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-			
+	<p>
+	<div class="form-row">
+		<a type="button" class="btn btn-secondary"
+				th:href="@{/secao}">Voltar</a>
 	</div>
 
 
-
+</div>
 
 	<script src="/webjars/jqrey/3.6.0/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/css/bootstrap.min.js"></script>

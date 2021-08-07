@@ -72,6 +72,15 @@ a{
 	color: #fff;
 	
 }
+.form-group{
+	font-weight: bold;
+	
+}
+
+.form-control{
+	border-width: 2px;
+	border-color: #191970;
+}
 
 .fa-info-circle{
 	color: #0e87fe;
@@ -96,16 +105,24 @@ a{
 	color: #fff;
 	border-style:solid;
 	border-color: #191970;
+	font-weight: bold;
 }
 .card-body{
 	border-style:solid;
 	border-color: #191970; 
-	text-align: center;
+	font-weight: bold;
+	color: #191970;
 }
 
 .nav-link active{
 	background: #E0FFFF;
 	color: #E0FFFF;
+}
+
+.card{
+	width: auto;
+	left: auto;
+
 }
 
 
