@@ -45,7 +45,6 @@
 					class="table table-bordered table-houver table-striped table-sm"
 					style="text-align: center">
 					<thead class="thead-dark" style="text-align: center">
-						<th class="col-1">Código</th>
 						<th class="col-2">ID / CPF</th>
 						<th class="col-4">Nome</th>
 						<th class="col-2">Perfil</th>
@@ -54,8 +53,7 @@
 
 					<tbody>
 						<tr th:each="funcionario : ${listFuncionario}">
-							<td th:text="${funcionario.id}"></td>
-							<td th:text="${funcionario.identificacao}"></td>
+							<td th:text="${funcionario.idFuncionario}"></td>
 							<td th:text="${funcionario.nomeFuncionario}"></td>
 							<td th:text="${funcionario.perfil}"></td>
 

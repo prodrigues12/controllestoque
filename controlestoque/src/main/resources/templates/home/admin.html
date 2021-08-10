@@ -50,11 +50,11 @@
 						<!-- 				Alerta Estoque -->
 
 						<table
-							class="table table-bordered table-houver table-striped table-sm table-responsive "
-							style="text-align: center; margin-top: 10px;"><thead class="thead-dark" style="text-align: center">
+							class="table table-bordered table-houver table-striped table-sm  ">
+							<thead class="thead-dark" >
 							<th class="col-1">Código</th>
-							<th class="col-4">Nome</th>
-							<th class="col-1">Estoque</th>
+							<th class="col-7">Nome</th>
+							<th class="col-2">Estoque</th>
 							<th class="col-2">Estoque Mín.</th>
 
 						</thead>
@@ -90,7 +90,7 @@
 							<tbody>
 								<tr scope="row" th:each="pedido : ${pedidoListNovo}">
 									<td th:text=${pedido.idPedido}></td>
-									<td></td>
+									<td th:text=${pedido.funcionario.nomeFuncionario}></td>
 									<td th:text=${pedido.data}></td>
 									<td th:text=${pedido.status}></td>
 									<td><i id="info" class="fas fa-info-circle"></i> <i

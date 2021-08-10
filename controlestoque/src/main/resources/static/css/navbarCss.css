@@ -124,5 +124,13 @@ a{
 	left: auto;
 
 }
+.table {
+	text-align: center; 
+	margin-top: 10px;
+	text-align: center;
+}
+.thead-dark{
+	text-align: center;
+}
 
 

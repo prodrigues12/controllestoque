@@ -37,6 +37,7 @@ public class PedidoController {
 	@RequestMapping(value = "novo-pedido", method = RequestMethod.GET)
 	public ModelAndView pedido() {
 		ModelAndView mv = new ModelAndView("/pedido/formPedido");
+		mv.addObject("pedido" , new Pedido());
 		return mv;
 	}
 	
@@ -46,12 +47,14 @@ public class PedidoController {
 		return dateFormat.format(date);
 	}
 	
-	@RequestMapping(value = "novo-pedido", method = RequestMethod.POST)
-	public String savePedido(Pedido pedido) {
-		pedido.setData(getDateTime());
-		pedido.setStatus("NOVO");
+	@PostMapping("criar-pedido")
+	public ModelAndView savePedido(Pedido pedido) {
+		ModelAndView mv = new ModelAndView();
+//		pedido.setData(getDateTime());
+//		pedido.setStatus("NOVO");
 		pedRepository.save(pedido);
-		return "redirect:/lista-item";
+		mv.setViewName("redirect:/lista-item");
+		return mv;
 	}
 	@RequestMapping(value = "acompanhar-pedido", method = RequestMethod.GET)
 	public ModelAndView acompanharPedido() {

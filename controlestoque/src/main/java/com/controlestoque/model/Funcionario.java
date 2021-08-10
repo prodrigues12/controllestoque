@@ -13,11 +13,9 @@ import com.controlestoque.Enums.Perfil;
 public class Funcionario {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long idFuncionario;
 
-	private String identificacao;
-
+	
 	private String nomeFuncionario;
 
 	@Enumerated(EnumType.STRING)
@@ -27,22 +25,15 @@ public class Funcionario {
 
 //	Get's and Set's
 
-	public Long getId() {
-		return id;
+	public Long getIdFuncionario() {
+		return idFuncionario;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setIdFuncionario(Long id) {
+		this.idFuncionario = id;
 	}
 
-	public String getIdentificacao() {
-		return identificacao;
-	}
-
-	public void setIdentificacao(String identificacao) {
-		this.identificacao = identificacao;
-	}
-
+	
 	public String getNomeFuncionario() {
 		return nomeFuncionario;
 	}

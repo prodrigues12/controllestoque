@@ -16,18 +16,18 @@
 
 <div th:replace="fragmentos/fragmentos2 :: cabecalho2"></div>
 	
-	<div class="container" style ="margin-top: 50px;">
+	<div class="container" style ="margin-top: 20px;">
 		<h4>Novo pedido</h4>
 		<hr>
 		</div>
 	
 	<div class="container">	
-	<form method="post">
+	<form method="post" action="criar-pedido" th:object="${pedido}">
   		<div class="form row">
     		<label class=" col-form-label">Informe sua matricula/cpf: </label>
     		&nbsp;
     	<div class="">
-      		<input type="text" class="form-control" id="colFormLabel">
+      		<input type="text" class="form-control" th:field="*{funcionario}">
     		</div>
     		&nbsp;
     		<div class="">

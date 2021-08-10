@@ -35,9 +35,9 @@ public class ItemController {
 		Iterable<Produto> produto = prodRepository.findAll();
 		mv.addObject("produtoList", produto);
 		
-//		Iterable<Item> prod = prodRepository.n;
+//		Iterable<Item> prod = prodRepository.l;
 //		mv.addObject("produtoList", prod);
-		
+	
 		
 		pedRepository.lastIdPedido();
 		Iterable<Item> item = iteRepository.ListProduto();
@@ -45,7 +45,7 @@ public class ItemController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/lista-item", method=RequestMethod.POST)
+	@RequestMapping(value="/salvar-item", method=RequestMethod.POST)
 	public String form(Item item) {
 		Pedido ped =new Pedido();
 		ped.setIdPedido(pedRepository.lastIdPedido());
