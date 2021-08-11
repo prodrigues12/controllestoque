@@ -20,8 +20,8 @@ public class FuncionarioController {
 	FuncionarioRepository funRepository;
 	
 	@GetMapping("/funcionario")
-	public ModelAndView funcionario(){
-		ModelAndView mv = new ModelAndView("funcionario/funcionario");
+	public ModelAndView listaFuncionario(){
+		ModelAndView mv = new ModelAndView("funcionario/listFuncionario");
 		mv.addObject("listFuncionario", funRepository.findAll());
 		return mv;
 	}
@@ -42,14 +42,15 @@ public class FuncionarioController {
 	}
 	
 	@GetMapping("/funcionario/{id}")
-	public ModelAndView alterar(@PathVariable("id") Long id) {
+	public ModelAndView editarFuncionario(@PathVariable("id") Long id) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("funcionario/alterarFun");
 		Funcionario fun = funRepository.getOne(id);
 		mv.addObject("funcionario", fun);
 		return mv;
-		
 	}
+
+	
 	@PostMapping("/alterar-funcionario")
 	public ModelAndView alterarFuncionario(Funcionario funcionario) {
 		ModelAndView mv = new ModelAndView();
@@ -58,11 +59,10 @@ public class FuncionarioController {
 		return mv;
 	}
 	
-	@GetMapping("/excluir-funcionario/{idFuncionario}")
-	public String excluirFuncionario(@PathVariable("idFuncionario") Long id) {
+	@GetMapping("/excluir-funcionario/{id}")
+	public String excluirFuncionario(@PathVariable("id") Long id) {
 		funRepository.deleteById(id);
 		return "redirect:/funcionario";
-		
 	}
 	
 	@GetMapping("FuncionarioNome")

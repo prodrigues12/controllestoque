@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<title>Add_Funcionario</title>
+<title>Alterar_Funcionario</title>
 <meta name="author" content="Paulino Rodrigues">
-<link rel="stylesheet" href="css/navbarCss.css" />
+<link rel="stylesheet" href="/css/navbarCss.css" />
 <script src="https://kit.fontawesome.com/006642858d.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet" />
@@ -16,21 +16,16 @@
 
 </head>
 <body>
-
-
 	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
 
-	<div class="container table-responsive" style="margin-top: 10px;">
-		<a style="font-size: 23px;"> Novo Funcionário</a>
-		<hr>
-
+	<div class="container table-responsive" style="margin-top: 50px;">
 
 		<div class="card">
-			<div class="card-header ">Cadastro de Funcionário</div>
+			<div class="card-header ">Editar funcionario</div>
 
 			<div class="card-body">
 
-				<form method="post" action="salvar-funcionario"
+				<form method="post" action="/alterar-funcionario"
 					th:object="${funcionario}">
 
 
