@@ -45,7 +45,6 @@ public class FuncionarioController {
 	public ModelAndView alterar(@PathVariable("id") Long id) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("funcionario/alterarFun");
-		
 		Funcionario fun = funRepository.getOne(id);
 		mv.addObject("funcionario", fun);
 		return mv;
