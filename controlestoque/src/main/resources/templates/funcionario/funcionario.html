@@ -31,11 +31,11 @@
 			<div class="card-header ">Lista dos funcionarios</div>
 			<div class="card-body">
 
-				<form action="" method="post">
-					<div class="form-group row">
-						<input class="col-sm-2 col-form-label" name="nomepesquisa"
+				<form action="/pesquisa-funcionario" method="post">
+					<div class="form-group">
+						<input class="col-sm-4 col-form-label" name="nomepesquisa"
 							placeholder="Buscar Funcionário">
-						<button class="btn btn-info" type="submit" value="">
+						<button class="btn btn-info" type="submit" value="nomepesquisa">
 							<i class="fas fa-search"></i> Pesquisa
 						</button>
 					</div>
@@ -59,12 +59,13 @@
 
 							<td style="text-align: center"><a
 								class="btn btn-dark btn-sm"
-								href="#">
+								th:href="@{/funcionario/{id}(id=${funcionario.idFuncionario})}">
 									<i class="fas fa-edit"></i> Editar
 							</a> <a class="btn btn-danger btn-sm"
-								href="#">
+								th:href="@{/excluir-funcionario/{id}(idFu=${funcionario.idFuncionario})}">
 									<i class="fas fa-trash-alt"></i> Excluir
 							</a></td>
+							
 						</tr>
 
 					</tbody>

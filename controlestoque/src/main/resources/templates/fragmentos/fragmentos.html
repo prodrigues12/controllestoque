@@ -56,52 +56,39 @@
 					</li>
 
 <!-- Solicitações -->
-					<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" 
-					role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<i class="fa fa-shopping-basket" aria-hidden="true"></i> Pedidos
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-haspopup="true" aria-expanded="false"> <i
+							class="fa fa-shopping-basket" aria-hidden="true"></i> Pedidos
 					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" th:href="@{/novo-pedido}">
-						<i class="far fa-folder"></i> Novo</a>
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" th:href="@{/adicionar-pedido}"> <i
+								class="fas fa-plus-circle"></i> Criar pedido
+							</a>
 							<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">
-						<i class="far fa-folder-open"></i> Abertos</a>
+							<a class="dropdown-item" th:href="@{/adicionar-pedido}"> <i class="fas fa-folder-plus"></i> Novos
+							</a>
 							<div class="dropdown-divider"></div>
-						 <a class="dropdown-item" href="#"><i class="fas fa-folder-open"></i> Em analise</a>
-						 	<div class="dropdown-divider"></div> 
-							
-							<a class="dropdown-item" href="#"><i class="fas fa-folder"></i> Concluídas</a>
-						</div>
-					</li>
+							<a class="dropdown-item" href="#"><i
+								class="fas fa-folder-open"></i> Em analise</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#"><i class="fas fa-folder"></i>
+								Concluídas</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" th:href="@{/adicionar-pedido}">
+								<i class="fas fa-clipboard-list"></i> Todos</a>
+						</div></li>
 
-<!-- Funcionarios -->
+					<!-- Funcionarios -->
 
-					 <li class="nav-item active">
-        <a class="nav-link" th:href="@{funcionario}">Funcionário <span class="sr-only">(current)</span></a>
-      </li>
-<!-- 					<li class="nav-item dropdown"><a -->
-<!-- 						class="nav-link dropdown-toggle" th:href="@{funcionario}" -->
-<!-- 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" -->
-<!-- 						aria-haspopup="true" aria-expanded="false"><i -->
-<!-- 							class="fa fa-users" aria-hidden="true"></i> Funcionário</a> -->
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{funcionario}"><i class="fas fa-user"> </i>
+							Funcionário <span class="sr-only"></span></a></li>
 
-<!-- 						<div class="dropdown-menu" -->
-<!-- 							aria-labelledby="navbarDropdownMenuLink"> -->
 
-<!-- 							<a class="dropdown-item" > -->
-<!-- 							<i class="fas fa-plus-circle"></i> -->
-<!-- 							Cadastrar</a> -->
-<!-- 							<div class="dropdown-divider"></div> -->
-<!-- 						 	<a class="dropdown-item" href="#"> -->
-<!-- 						 	<i class="fas fa-edit"></i> Alterar</a> -->
-<!-- 						 	<div class="dropdown-divider"></div>  -->
-<!-- 							<a class="dropdown-item" href="#"> -->
-<!-- 							<i class="fas fa-trash-alt"></i> Excluir</a> -->
-<!-- 						</div> -->
-<!-- 					</li> -->
-					
-<!-- Estoque -->
+					<!-- Estoque -->
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#"
 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"

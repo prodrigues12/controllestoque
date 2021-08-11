@@ -95,8 +95,8 @@ public class ProdutoController {
 		return mv;
 	}
 	
-	@GetMapping("/excluir/{idProduto}")
-	public String excluirAluno(@PathVariable("idProduto") Long id) {
+	@GetMapping("/excluir-produto/{idProduto}")
+	public String excluirProduto(@PathVariable("idProduto") Long id) {
 		pr.deleteById(id);
 		return "redirect:/lista-produto";
 	}
@@ -116,13 +116,7 @@ public class ProdutoController {
 		
 	}
 		
-//		@PostMapping("**/pesquisa-secao")
-//	public ModelAndView pesquisarSecao(@RequestParam("nomepesquisa") String nomepesquisa) {
-//		ModelAndView mv = new ModelAndView("secao/pesquisaSecao");
-//		mv.addObject("secaoListResult", sr.findByNomeContainingIngnoreCase(nomepesquisa));
-//		mv.addObject("secao" , new Secao());
-//		return mv;
-//	}
+
 		 
 	
 }

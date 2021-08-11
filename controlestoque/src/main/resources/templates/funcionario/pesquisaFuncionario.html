@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<title>Admin</title>
+<title>Funcionario</title>
 <meta name="author" content="Paulino Rodrigues"> 
 <link rel="stylesheet" href="css/navbarCss.css" />
 <script src="https://kit.fontawesome.com/006642858d.js"></script>
@@ -19,26 +19,25 @@
 	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
 
 	<div class="container table-responsive" style="margin-top: 10px;">
-		<a style="font-size: 23px;">Lista dos Produtos</a>
+		<a style="font-size: 23px;">Funcionario</a>
 		<hr>
-		<a class="btn btn-info" th:href="@{inserirProduto}"> <i
-			class="fas fa-plus-circle"></i> Produto
+
+		<a class="btn btn-info" th:href="@{/inserir-funcionario}"> <i
+			class="fas fa-plus-circle"></i> Funcionário
 		</a>
 
-		<p>
+<p>
 		<div class="card">
-			<div class="card-header ">Resultado da Pesquisa</div>
+			<div class="card-header ">Resultado da pesquisa</div>
 			<div class="card-body">
 
-				<form action="pesquisa-produto" method="post">
+				<form action="/pesquisa-funcionario" method="post">
 					<div class="form-group">
 						<input class="col-sm-4 col-form-label" name="nomepesquisa"
-							placeholder="Buscar produto">
-						<button class="btn btn-secondary" type="submit" value="nomepesquisa">
+							placeholder="Buscar Funcionário">
+						<button class="btn btn-info" type="submit" value="nomepesquisa">
 							<i class="fas fa-search"></i> Pesquisa
 						</button>
-						
-						
 					</div>
 				</form>
 
@@ -46,27 +45,27 @@
 					class="table table-bordered table-houver table-striped table-sm"
 					style="text-align: center">
 					<thead class="thead-dark" style="text-align: center">
-						<th class="col-1">Código</th>
+						<th class="col-2">ID / CPF</th>
 						<th class="col-4">Nome</th>
-						<th class="col-6">Descrição</th>
-						<th class="col-'1">Ação</th>
+						<th class="col-2">Perfil</th>
+						<th class="col-2">Ação</th>
 					</thead>
 
 					<tbody>
-						<tr th:each="produtos : ${produtoListResult}">
-							<td th:text=${produtos.idProduto}></td>
-							<td th:text=${produtos.nome}></td>
-							<td th:text=${produtos.descricao}></td>
-<!-- 							<td colspan="6"> Nenum resultado encontrado</td> -->
+						<tr th:each="funcionario : ${funcionarioListResult}">
+							<td th:text="${funcionario.idFuncionario}"></td>
+							<td th:text="${funcionario.nomeFuncionario}"></td>
+							<td th:text="${funcionario.perfil}"></td>
 
 							<td style="text-align: center"><a
 								class="btn btn-dark btn-sm"
-								th:href="@{{idProduto}(idProduto=${produtos.idProduto})}">
-									<i class="fas fa-edit"></i>
+								th:href="@{/funcionario/{idFuncionario}(idFuncionario=${funcionario.idFuncionario})}">
+									<i class="fas fa-edit"></i> Editar
 							</a> <a class="btn btn-danger btn-sm"
-								th:href="@{excluir/{idProduto}(idProduto=${produtos.idProduto})}">
-									<i class="fas fa-trash-alt"></i>
+								th:href="@{/excluir-funcionario/{idFuncionario}(idFuncionario=${funcionario.idFuncionario})}">
+									<i class="fas fa-trash-alt"></i> Excluir
 							</a></td>
+							
 						</tr>
 
 					</tbody>
