@@ -64,21 +64,16 @@
 					</a>
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" th:href="@{/lista-pedidos}">
+								<i class="fas fa-clipboard-list"></i> Meus pedidos</a>
+								<div class="dropdown-divider"></div>
 							<a class="dropdown-item" th:href="@{/adicionar-pedido}"> <i
 								class="fas fa-plus-circle"></i> Criar pedido
 							</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" th:href="@{/adicionar-pedido}"> <i class="fas fa-folder-plus"></i> Novos
+							<a class="dropdown-item" th:href="@{/pedidos-concluidos}"> <i
+								 class="fas fa-clipboard-check"></i> Concluídos
 							</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#"><i
-								class="fas fa-folder-open"></i> Em analise</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#"><i class="fas fa-folder"></i>
-								Concluídas</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" th:href="@{/adicionar-pedido}">
-								<i class="fas fa-clipboard-list"></i> Todos</a>
 						</div></li>
 
 					<!-- Funcionarios -->

@@ -45,13 +45,13 @@ public class HomeController {
 	@GetMapping("/admin")
 	public ModelAndView admController() {
 	ModelAndView mv = new ModelAndView("home/admin");
-	Iterable<Pedido> pedido = pedRepository.listNovos();
+	Iterable<Pedido> pedido = pedRepository.findAllNovo();
 	mv.addObject("pedidoListNovo", pedido);
 	
 	Iterable<Produto> produto = proRepository.baixoEtq();
 	mv.addObject("produtoList", produto);
 	
-	Iterable<Pedido> pedido2 = pedRepository.listAnalise();
+	Iterable<Pedido> pedido2 = pedRepository.findAllAberto();
 	mv.addObject("pedidoListAnalise", pedido2);
 
 	return mv;

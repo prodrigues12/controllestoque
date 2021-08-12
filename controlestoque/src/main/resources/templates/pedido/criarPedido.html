@@ -16,32 +16,34 @@
 </head>
 <body>
 
-	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+	<div th:replace="fragmentos/fragmentos2 :: cabecalho2"></div>
 
 	<div class="container table-responsive" style="margin-top: 20px;">
 
 		<div class="card">
-			<div class="card-header ">Cadastro de Seção</div>
+			<div class="card-header ">Novo pedido</div>
 			<div class="card-body">
 
 				<div>
-					<form method="post" action="criar-pedido" th:object="${pedido}">
+					<form method="post" action="salvar-pedido" th:object="${pedido}">
 						<div class="form row">
-							<label class=" col-form-label">Informe sua matricula/cpf:
+							<label class=" col-form-label">Informe sua ID Magalu
 							</label> &nbsp;
 							<div class="">
 								<input type="text" class="form-control"
-									th:field="*{funcionario}">
+									th:field="*{funcionario}" name="idMagalu">
 							</div>
 							&nbsp;
 							<div class="">
-								<button type="submit" class="btn btn-info">Fazer pedido</button>
+								<button type="submit" class="btn btn-info" value="idMagalu">Fazer pedido</button>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
+		<p>
+		<button type="button" class="btn btn-dark btn-sm">Primeira vez aqui</button>
 	</div>
 
 

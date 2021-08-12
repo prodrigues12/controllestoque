@@ -80,10 +80,9 @@
 							class="table table-bordered table-houver table-striped table-sm "
 							style="text-align: center; margin-top: 10px;">
 							<thead class="thead-dark" style="text-align: center">
-								<th scope="col">Pedido</th>
+								<th scope="col">Nº Pedido</th>
 								<th scope="col">Solicitante</th>
 								<th scope="col">Data</th>
-								<th scope="col">Status</th>
 								<th scope="col">Ação</th>
 							</thead>
 
@@ -92,7 +91,7 @@
 									<td th:text=${pedido.idPedido}></td>
 									<td th:text=${pedido.funcionario.nomeFuncionario}></td>
 									<td th:text=${pedido.data}></td>
-									<td th:text=${pedido.status}></td>
+		
 									<td><i id="info" class="fas fa-info-circle" ></i> <i
 										class="fas fa-times-circle"></i> <i
 										class="fas fa-check-circle"></i></td>
@@ -110,19 +109,17 @@
 							class="table table-bordered table-houver table-striped table-sm "
 							style="text-align: center; margin-top: 10px;">
 							<thead class="thead-dark" style="text-align: center">
-								<th scope="col">Pedido</th>
+								<th scope="col">Nº Pedido</th>
 								<th scope="col">Solicitante</th>
 								<th scope="col">Data</th>
-								<th scope="col">Status</th>
 								<th scope="col">Ação</th>
 							</thead>
 
 							<tbody>
 								<tr scope="row" th:each="pedido : ${pedidoListAnalise}">
 									<td th:text=${pedido.idPedido}></td>
-									<td></td>
-									<td th:text=${pedido.data}></td>
-									<td th:text=${pedido.status}></td>
+									<td th:text=${pedido.funcionario.nomeFuncionario}></td>
+									<td th:text=${pedido.data}></td>	
 									<td><i id="info" class="fas fa-info-circle"></i> <i
 										class="fas fa-times-circle"></i> <i
 										class="fas fa-check-circle"></i></td>

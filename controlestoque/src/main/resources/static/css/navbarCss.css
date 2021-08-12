@@ -101,7 +101,7 @@ a{
 }
 
 .card-header{
-	background:#191970;
+	background:#0e87fe;
 	color: #fff;
 	border-style:solid;
 	border-color: #191970;
@@ -131,6 +131,13 @@ a{
 }
 .thead-dark{
 	text-align: center;
+}
+
+.btn-primeira {
+	border-style:solid;
+	border-color: #191970; 
+	font-weight: bold;
+	color: #000;;
 }
 
 

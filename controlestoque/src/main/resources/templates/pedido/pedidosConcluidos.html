@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<title>Adicionar_Pedido</title>
+<title>Novo_pedidos</title>
 <meta name="author" content="Paulino Rodrigues">
 <link rel="stylesheet" href="/css/navbarCss.css" />
 <script src="https://kit.fontawesome.com/006642858d.js"></script>
@@ -13,40 +13,42 @@
 	rel="stylesheet" />
 <link type="text/css" rel="stylesheet"
 	href="materialize/css/materialize.min.css" media="screen,projection" />
+
 </head>
 <body>
-
 	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
 
-	<div class="container table-responsive" style="margin-top: 20px;">
+	<div class="container table-responsive" style="margin-top: 50px;">
 
-		<div class="card-sm">
-			<div class="card-header ">Cadastro de Seção</div>
+		<div class="card">
+			<div class="card-header ">Novos Pedidos</div>
+
 			<div class="card-body">
 
-				<div>
-					<form method="post" action="salvar-pedido" th:object="${pedido}">
-						<div class="form row">
-							<label class=" col-form-label">Informe sua matricula/cpf:
-							</label> &nbsp;
-							<div class="">
-								<input type="text" class="form-control"
-									th:field="*{funcionario}">
-							</div>
-							&nbsp;
-							<div class="">
-								<button type="submit" class="btn btn-info">Fazer pedido</button>
-							</div>
-						</div>
-					</form>
-				</div>
+
+				<table
+					class="table table-bordered table-houver table-striped table-sm "
+					style="text-align: center; margin-top: 10px;">
+					<thead class="thead-dark" style="text-align: center">
+						<th scope="col-1">Pedido</th>
+						<th scope="col-4">Solicitante</th>
+						<th scope="col-1">Data</th>
+						<th scope="col-2">Status</th>
+						<th scope="col-4">Ação</th>
+					</thead>
+
+					<tbody>
+						<tr scope="row" th:each="pedido : ${pedidoListConcluido}">
+							<td th:text=${pedido.idPedido}></td>
+							<td th:text=${pedido.funcionario.nomeFuncionario}></td>
+							<td th:text=${pedido.data}></td>
+							<td th:text=${pedido.status}></td>
+							<td><i id="info" class="fas fa-info-circle"></i></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-		</div>
-	</div>
-	<p>
-	<div class="container">
-		<div class="form-group row">
-			<a class="btn btn-light" th:href="@{/lista-item}">Lista item</a>
+
 		</div>
 	</div>
 
