@@ -80,6 +80,8 @@ a{
 .form-control{
 	border-width: 2px;
 	border-color: #191970;
+	border-top-right-radius: .2rem !important;
+  border-bottom-right-radius: .2rem !important;
 }
 
 .fa-info-circle{

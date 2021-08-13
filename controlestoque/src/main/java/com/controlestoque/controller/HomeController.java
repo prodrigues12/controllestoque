@@ -51,7 +51,7 @@ public class HomeController {
 	Iterable<Produto> produto = proRepository.baixoEtq();
 	mv.addObject("produtoList", produto);
 	
-	Iterable<Pedido> pedido2 = pedRepository.findAllAberto();
+	Iterable<Pedido> pedido2 = pedRepository.findAllAnalise();
 	mv.addObject("pedidoListAnalise", pedido2);
 
 	return mv;

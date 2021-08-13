@@ -7,6 +7,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.controlestoque.Repository.FuncionarioRepository;
+import com.controlestoque.model.Pedido;
 
 public class PedidoService {
 	
@@ -20,8 +21,7 @@ public class PedidoService {
 		return dateFormat.format(date);
 	}
 	
-	public Long tenhoCadastro(Long id) {
-		 Long usuario = funRepository.tenhoCadastro(id);
-		return usuario;
+	public void tenhoCadastro(Pedido pedido) throws Exception {
+	
 	}
 }

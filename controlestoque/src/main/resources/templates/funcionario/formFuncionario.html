@@ -18,27 +18,38 @@
 <body>
 	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
 
-	<div class="container table-responsive" style="margin-top: 50px;">
+	<div class="container table-responsive" style="margin-top: 20px;">
 
-		<div class="card">
-			<div class="card-header ">Novo funcionario</div>
+		<form method="post" action="salvar-funcionario"
+			th:object="${funcionario}">
+			
+			<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+				<div th:each="detailedError : ${#fields.detailedErrors()}">
+					<span th:text="${detailedError.message}" > </span>
+				</div>
+			</div>
 
-			<div class="card-body">
+			<div class="card">
+				<div class="card-header ">Novo funcionario</div>
 
-				<form method="post" action="salvar-funcionario"
-					th:object="${funcionario}">
-
+				<div class="card-body">
 
 					<div class="form-row">
-						<div class="form-group col-md-3">
+					
+						<!-- ID -->
+						<div class="form-group col-md-3" th:classappend="${#fields.hasErrors('idFuncionario')} ? invalid">
 							<label>Identificação</label> <input class="form-control"
 								placeholder="ID Magalu" th:field="*{idFuncionario}">
 						</div>
 
 						<!-- nome -->
-						<div class="form-group col-md-5">
-							<label>Nome</label> <input class="form-control"
+
+
+						<div class="form-group col-md-5 " th:classappend="${#fields.hasErrors('nomeFuncionario')}? has-error">
+							<label>Nome</label> 
+							<input class="form-control fix-rounded-right" 
 								placeholder="Nome do colaborador" th:field="*{nomeFuncionario}">
+   
 						</div>
 
 						<!-- Perfil -->
@@ -50,6 +61,8 @@
 									th:value="${perfil}" th:text="${perfil}"></option>
 							</select>
 						</div>
+						
+						
 					</div>
 
 					<div class="form-row">
@@ -59,12 +72,13 @@
 							th:href="@{secao}">Salvar</button>
 					</div>
 
-				</form>
 
+
+				</div>
 			</div>
-		</div>
-
+		</form>
 	</div>
+
 
 	<script src="/webjars/jqrey/3.6.0/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/css/bootstrap.min.js"></script>

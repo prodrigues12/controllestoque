@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Produto implements Serializable{
@@ -19,13 +22,16 @@ public class Produto implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idProduto;
 	
-
+	@Size(min = 7, max = 40, message = "Nome do PRODUTO deve contar no minimo 7 caracteres")
+	@NotEmpty
+	@NotNull
 	private String nome;
 	
 	private String descricao;
 	
 	private int qtdEstoque;
 	
+//	@Size(min = 0, message = "VALOR ESTOQUE MINIMO não pode ser menor que 0.")
 	private int qtdEstMin;
 	
 	

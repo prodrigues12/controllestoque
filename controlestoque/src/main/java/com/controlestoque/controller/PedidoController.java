@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.controlestoque.Repository.FuncionarioRepository;
 import com.controlestoque.Repository.ItemRepository;
 import com.controlestoque.Repository.PedidoRepository;
 import com.controlestoque.Repository.ProdutoRepository;
@@ -34,6 +35,9 @@ public class PedidoController {
 	@Autowired
 	ItemRepository itemRepository;
 	
+	@Autowired
+	FuncionarioRepository funRepository;
+	
 	PedidoService pedService;
 	
 	
@@ -46,14 +50,20 @@ public class PedidoController {
 	}
 	
 	@PostMapping("salvar-pedido")
-	public ModelAndView salvarPedido(@PathVariable("IdMagalu") Long idMagalu, Pedido pedido) {
+	public ModelAndView salvarPedido (Pedido pedido) {
 		ModelAndView mv = new ModelAndView();
-		 pedService.tenhoCadastro(idMagalu);
+	
+//			if(funRepository.tenhoCadastro(pedido.getFuncionario().getIdFuncionario())!= null) {
+//				
+//				
+//			}
+			pedido.setData(getDateTime());
+			pedido.setStatus("NOVO");
+			pedRepository.save(pedido);
+			mv.setViewName("redirect:/lista-item");
+			
+	
 		
-		pedido.setData(getDateTime());
-		pedido.setStatus("NOVO");
-		pedRepository.save(pedido);
-		mv.setViewName("redirect:/lista-item");
 		return mv;
 	}
 	

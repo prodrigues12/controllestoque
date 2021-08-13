@@ -6,6 +6,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.controlestoque.Enums.Perfil;
 
@@ -13,15 +17,17 @@ import com.controlestoque.Enums.Perfil;
 public class Funcionario {
 
 	@Id
+	@NotNull(message = "Campo ID obrigatorio")
+//	@NotEmpty (message = "Campo ID obrigatorio")
 	private Long idFuncionario;
 
-	
+	@Size(min = 7, max = 40, message = "Nome deve contar no minimo 7 caracteres")
+	@NotEmpty(message = "Campo NOME deve ser preenchido.")
+	@NotNull(message = "nullllll  Campo NOME deve ser preenchido.")
 	private String nomeFuncionario;
 
 	@Enumerated(EnumType.STRING)
 	private Perfil perfil;
-	
-	
 
 //	Get's and Set's
 
@@ -33,7 +39,6 @@ public class Funcionario {
 		this.idFuncionario = id;
 	}
 
-	
 	public String getNomeFuncionario() {
 		return nomeFuncionario;
 	}

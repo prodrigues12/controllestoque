@@ -1,7 +1,11 @@
 package com.controlestoque.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,10 +38,16 @@ public class FuncionarioController {
 	}
 	
 	@PostMapping("/salvar-funcionario")
-	public ModelAndView salvarFuncionario(Funcionario funcionario) {
+	public ModelAndView salvarFuncionario(@Validated
+		Funcionario funcionario , BindingResult br) {
 		ModelAndView mv = new ModelAndView();
-		funRepository.save(funcionario);
+		if(br.hasErrors()) {
+			mv.setViewName( "funcionario/formFuncionario");
+			mv.addObject("funcionario");
+		}else {
 		mv.setViewName( "redirect:/funcionario");
+		funRepository.save(funcionario);
+		}
 		return mv;
 	}
 	

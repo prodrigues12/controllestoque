@@ -13,6 +13,6 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 	List<Funcionario> findByNomeContainingIngnoreCase(String nomepesquisa);
 
 	@Query("select p from Funcionario p where p.idFuncionario = :id")
-	public Long tenhoCadastro (Long id); 
+	Funcionario tenhoCadastro (Long id); 
 
 }

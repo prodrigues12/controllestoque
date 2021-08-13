@@ -2,6 +2,8 @@ package com.controlestoque.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,10 +62,15 @@ public class ProdutoController {
 	}
 
 	@PostMapping("salvar-Produto")
-	public ModelAndView insertProduto(Produto produto) {
+	public ModelAndView insertProduto(@Validated Produto produto, BindingResult br) {
 		ModelAndView mv = new ModelAndView();
-		pr.save(produto);
+		if(br.hasErrors()) {
+			mv.setViewName("produto/formProduto");
+			mv.addObject("produto");
+	}else {
 		mv.setViewName("redirect:/lista-produto");
+		pr.save(produto);
+	}
 		return mv;
 	}
 
