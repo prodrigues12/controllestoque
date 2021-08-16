@@ -61,12 +61,6 @@ public class EstoqueController {
 
 	
 	
-//	@PostMapping("**/pesquisa-secao")
-//	public ModelAndView pesquisarSecao(@RequestParam("nomepesquisa") String nomepesquisa) {
-//		ModelAndView mv = new ModelAndView("secao/pesquisaSecao");
-//		mv.addObject("secaoListResult", sr.findByNomeContainingIngnoreCase(nomepesquisa));
-//		mv.addObject("secao" , new Secao());
-//		return mv;
-//	}
+
 	
 }
