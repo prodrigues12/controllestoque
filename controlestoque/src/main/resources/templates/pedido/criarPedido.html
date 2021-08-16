@@ -25,17 +25,19 @@
 			<div class="card-body">
 
 				<div>
-					<form method="post" action="salvar-pedido" th:object="${pedido}">
+					<form method="post" action="verificar-funcionario"
+						th:object="${funcionario}">
 						<div class="form row">
-							<label class=" col-form-label">Informe sua ID Magalu
-							</label> &nbsp;
+							<label class=" col-form-label">Informe sua ID Magalu </label>
+							&nbsp;
 							<div class="">
 								<input type="text" class="form-control"
-									th:field="*{funcionario}">
+									th:field="*{idFuncionario}">
 							</div>
 							&nbsp;
 							<div class="">
-								<button type="submit" class="btn btn-info" >Fazer pedido</button>
+								<button type="submit" class="btn btn-info">Fazer
+									pedido</button>
 							</div>
 						</div>
 					</form>
@@ -43,7 +45,8 @@
 			</div>
 		</div>
 		<p>
-		<a type="button" class="btn btn-dark btn-sm" th:href="@{criar-funcionario}">Primeira vez aqui</a>
+			<a type="button" class="btn btn-dark btn-sm"
+				th:href="@{criar-funcionario}">Primeira vez aqui</a>
 	</div>
 
 

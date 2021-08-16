@@ -112,7 +112,33 @@ public class FuncionarioController {
 		
 	}
 	
+	@GetMapping("criar-pedido")
+	public ModelAndView pedido() {
+		ModelAndView mv = new ModelAndView("/funcionario/verificarFuncionario");
+		mv.addObject("funcionario" , new Funcionario());
+		return mv;
+	}
 	
+	@PostMapping("verificar-funcionario")
+	public ModelAndView verificarPedido (Funcionario fun) {
+		ModelAndView mv = new ModelAndView();
+	
+		if(funRepository.tenhoCadastro(fun.getIdFuncionario()).toString().isEmpty()) {
+			System.out.println("");
+			System.out.println("                 .................>>>>>> entoru no if .............<<<<<<<<<");
+			System.out.println("");
+			mv.setViewName("redirect:/criar-pedido");
+		}else {
+			System.out.println("");
+			System.out.println("                 .................>>>>>> entoru no else .............<<<<<<<<<");
+			System.out.println("");
+			mv.setViewName("redirect:/lista-item");
+			
+		}
+	
+		
+		return mv;
+	}
 	
 	
 	

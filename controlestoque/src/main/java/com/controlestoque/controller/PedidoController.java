@@ -42,30 +42,26 @@ public class PedidoController {
 	
 	
 //	######## Usuario - PT-BR ##################
-	@GetMapping("criar-pedido")
-	public ModelAndView pedido() {
-		ModelAndView mv = new ModelAndView("/pedido/criarPedido");
-		mv.addObject("pedido" , new Pedido());
-		return mv;
-	}
-	
-	@PostMapping("salvar-pedido")
-	public ModelAndView salvarPedido (Pedido pedido) {
-		ModelAndView mv = new ModelAndView();
-	
-//			if(funRepository.tenhoCadastro(pedido.getFuncionario().getIdFuncionario())!= null) {
-//				
-//				
-//			}
-			pedido.setData(getDateTime());
-			pedido.setStatus("NOVO");
-			pedRepository.save(pedido);
-			mv.setViewName("redirect:/lista-item");
-			
-	
-		
-		return mv;
-	}
+//	@GetMapping("criar-pedido")
+//	public ModelAndView pedido() {
+//		ModelAndView mv = new ModelAndView("/pedido/criarPedido");
+//		mv.addObject("pedido" , new Pedido());
+//		return mv;
+//	}
+//	
+//	@PostMapping("salvar-pedido")
+//	public ModelAndView salvarPedido (Pedido pedido) {
+//		ModelAndView mv = new ModelAndView();
+//	
+//			pedido.setData(getDateTime());
+//			pedido.setStatus("NOVO");
+//			pedRepository.save(pedido);
+//			mv.setViewName("redirect:/lista-item");
+//			
+//	
+//		
+//		return mv;
+//	}
 	
 //	######## ADMIN  EN-US ##################
 	@GetMapping("adicionar-pedido")

@@ -14,5 +14,8 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
 
 	@Query("select p from Funcionario p where p.idFuncionario = :id")
 	Funcionario tenhoCadastro (Long id); 
+	
+	@Query("select p from Funcionario p where p.idFuncionario =:id")
+	List<Funcionario> findByNomeContainingIngnoreCase(Long id);
 
 }
