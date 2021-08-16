@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<title>Novo Funcionario</title>
+<meta name="author" content="Paulino Rodrigues">
+<link rel="stylesheet" href="/css/navbarCss.css" />
+<script src="https://kit.fontawesome.com/006642858d.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+</head>
+<body>
+	<div th:replace="fragmentos/fragmentos2 :: cabecalho2"></div>
+
+	<div class="container table-responsive" style="margin-top: 20px;">
+
+		<form method="post" action="save-funcionario"
+			th:object="${funcionario}">
+			
+			<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+				<div th:each="detailedError : ${#fields.detailedErrors()}">
+					<span th:text="${detailedError.message}" > </span>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-header ">Novo funcionario</div>
+
+				<div class="card-body">
+
+					<div class="form-row">
+					
+						<!-- ID -->
+						<div class="form-group col-md-3" th:classappend="${#fields.hasErrors('idFuncionario')} ? invalid">
+							<label>Identificação</label> <input class="form-control"
+								placeholder="ID Magalu" th:field="*{idFuncionario}">
+						</div>
+
+						<!-- nome -->
+
+
+						<div class="form-group col-md-5 " th:classappend="${#fields.hasErrors('nomeFuncionario')}? has-error">
+							<label>Nome</label> 
+							<input class="form-control fix-rounded-right" 
+								placeholder="Nome do colaborador" th:field="*{nomeFuncionario}">
+   
+						</div>
+
+						<!-- Perfil -->
+						<div class="form-group col-md-4">
+							<label>Perfil</label> <select class="form-control"
+								th:field=*{perfil}>
+								<option
+									th:each="perfil : ${T(com.controlestoque.Enums.Perfil).values()}"
+									th:value="${perfil}" th:text="${perfil}"></option>
+							</select>
+						</div>
+						
+						
+					</div>
+
+					<div class="form-row">
+						<a type="button" class="btn btn-danger offset-md-10"
+							th:href="@{/produto/inserirProduto}">Cancelar</a> &nbsp; &nbsp;
+						<button type="submit" class="btn btn-success offset"
+							th:href="@{secao}">Salvar</button>
+					</div>
+
+
+
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<script src="/webjars/jqrey/3.6.0/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/css/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -51,6 +51,28 @@ public class FuncionarioController {
 		return mv;
 	}
 	
+	
+	@GetMapping("/criar-funcionario")
+	public ModelAndView criarFuncionario() {
+		ModelAndView mv = new ModelAndView("funcionario/criarFuncionario");
+		mv.addObject("funcionario" , new Funcionario());
+		return mv;
+	}
+	
+	@PostMapping("/save-funcionario")
+	public ModelAndView saveFuncionario(@Validated
+		Funcionario funcionario , BindingResult br) {
+		ModelAndView mv = new ModelAndView();
+		if(br.hasErrors()) {
+			mv.setViewName( "funcionario/formFuncionario");
+			mv.addObject("funcionario");
+		}else {
+		mv.setViewName( "redirect:/criar-pedido");
+		funRepository.save(funcionario);
+		}
+		return mv;
+	}
+	
 	@GetMapping("/funcionario/{id}")
 	public ModelAndView editarFuncionario(@PathVariable("id") Long id) {
 		ModelAndView mv = new ModelAndView();
