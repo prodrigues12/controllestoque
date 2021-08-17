@@ -1,5 +1,7 @@
 package com.controlestoque.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,18 +124,18 @@ public class FuncionarioController {
 	@PostMapping("verificar-funcionario")
 	public ModelAndView verificarPedido (Funcionario fun) {
 		ModelAndView mv = new ModelAndView();
+		
 	
-		if(funRepository.tenhoCadastro(fun.getIdFuncionario()).toString().isEmpty()) {
-			System.out.println("");
+		if(funRepository.existsById(fun.getIdFuncionario())) {
+			
 			System.out.println("                 .................>>>>>> entoru no if .............<<<<<<<<<");
-			System.out.println("");
-			mv.setViewName("redirect:/criar-pedido");
+			mv.setViewName("redirect:/lista-item");
+			
 		}else {
 			System.out.println("");
 			System.out.println("                 .................>>>>>> entoru no else .............<<<<<<<<<");
 			System.out.println("");
-			mv.setViewName("redirect:/lista-item");
-			
+			mv.setViewName("redirect:/criar-pedido");
 		}
 	
 		
