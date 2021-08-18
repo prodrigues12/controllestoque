@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Item   implements Serializable{
+public class Item implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 		
@@ -27,7 +27,22 @@ public class Item   implements Serializable{
 	
 	private int qtdSaida;
 	
-//	###*** Get's and Set's ***###
+//	## Construtor
+	
+	public Item() {
+		
+	}
+	
+public Item(Long idItem, Produto produtos, Pedido pedido, int qtdSaida) {
+	super();
+	this.idItem = idItem;
+	this.produtos = produtos;
+	this.pedido = pedido;
+	this.qtdSaida = qtdSaida;
+}
+
+
+//	## Get's and Set's 
 
 	public Long getIdItem() {
 		return idItem;
@@ -60,6 +75,35 @@ public class Item   implements Serializable{
 	public void setQtdSaida(int qtdSaida) {
 		this.qtdSaida = qtdSaida;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idItem == null) ? 0 : idItem.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Item other = (Item) obj;
+		if (idItem == null) {
+			if (other.idItem != null)
+				return false;
+		} else if (!idItem.equals(other.idItem))
+			return false;
+		return true;
+	}
+	
+//	## hasCode and equals
+	
+	
 	
 	
 

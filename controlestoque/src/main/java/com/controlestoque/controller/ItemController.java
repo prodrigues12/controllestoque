@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,10 +46,11 @@ public class ItemController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/salvar-item", method=RequestMethod.POST)
+	@PostMapping("/salvar-item")
 	public String form(Item item) {
 		Pedido ped =new Pedido();
 		ped.setIdPedido(pedRepository.lastIdPedido());
+		item.setPedido(ped);
 		item.setPedido(ped);
 		iteRepository.save(item);
 		return "redirect:/lista-item";

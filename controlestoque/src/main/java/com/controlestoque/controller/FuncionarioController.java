@@ -125,12 +125,10 @@ public class FuncionarioController {
 	public ModelAndView verificarPedido (Funcionario fun) {
 		ModelAndView mv = new ModelAndView();
 		
-		List<Object> nomeFuncionario = funRepository.nomeFuncionario("jac");
+//		List<Object> nomeFuncionario = funRepository.nomeFuncionario("jac");
+//		nomeFuncionario.forEach(nome-> System.out.println("nome: "+ nome));		
 		
-		nomeFuncionario.forEach(nome-> System.out.println("nome: "+ nome));
-		
-		if(funRepository.tenhoCadastro(fun.getIdFuncionario()).isPresent()) {
-			
+		if(funRepository.existsById(fun.getIdFuncionario())){
 			System.out.println("                 .................>>>>>> entoru no if .............<<<<<<<<<");
 			mv.setViewName("redirect:/lista-item");
 			

@@ -23,8 +23,21 @@ public class Secao implements Serializable{
 	@OneToMany
 	private List<Produto> produtos;
 	
+//	## Construtor
 	
-//	##### Get's and Set's #####
+	public Secao() {
+		
+	}
+	
+public Secao(Long idSecao, String nomesecao, List<Produto> produtos) {
+	super();
+	this.idSecao = idSecao;
+	this.nomesecao = nomesecao;
+	this.produtos = produtos;
+}
+
+
+//	## Get's and Set's 
 	
 	public Long getIdSecao() {
 		return idSecao;
@@ -50,6 +63,33 @@ public class Secao implements Serializable{
 
 	public void setNomesecao(String nomesecao) {
 		this.nomesecao = nomesecao;
+	}
+	
+//	## hasCode and equals
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idSecao == null) ? 0 : idSecao.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Secao other = (Secao) obj;
+		if (idSecao == null) {
+			if (other.idSecao != null)
+				return false;
+		} else if (!idSecao.equals(other.idSecao))
+			return false;
+		return true;
 	}
 
 

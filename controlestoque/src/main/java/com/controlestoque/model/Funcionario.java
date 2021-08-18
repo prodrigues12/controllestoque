@@ -1,5 +1,7 @@
 package com.controlestoque.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,7 +16,10 @@ import javax.validation.constraints.Size;
 import com.controlestoque.Enums.Perfil;
 
 @Entity
-public class Funcionario {
+public class Funcionario implements Serializable {
+	
+// serialzable , construtor e hasCode Equals
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@NotNull(message = "Campo ID obrigatorio")
@@ -29,7 +34,21 @@ public class Funcionario {
 	@Enumerated(EnumType.STRING)
 	private Perfil perfil;
 
-//	Get's and Set's
+//	## Construtor
+	
+	public Funcionario() {
+	}
+
+	public Funcionario(@NotNull(message = "Campo ID obrigatorio") Long idFuncionario,
+			@Size(min = 7, max = 40, message = "Nome deve contar no minimo 7 caracteres") @NotEmpty(message = "Campo NOME deve ser preenchido.") @NotNull(message = "nullllll  Campo NOME deve ser preenchido.") String nomeFuncionario,
+			Perfil perfil) {
+		super();
+		this.idFuncionario = idFuncionario;
+		this.nomeFuncionario = nomeFuncionario;
+		this.perfil = perfil;
+	}
+
+//	## Get's and Set's
 
 	public Long getIdFuncionario() {
 		return idFuncionario;
@@ -54,5 +73,34 @@ public class Funcionario {
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
+	
+//	## hashCode and equals
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idFuncionario == null) ? 0 : idFuncionario.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Funcionario other = (Funcionario) obj;
+		if (idFuncionario == null) {
+			if (other.idFuncionario != null)
+				return false;
+		} else if (!idFuncionario.equals(other.idFuncionario))
+			return false;
+		return true;
+	}
+	
+	
 
 }

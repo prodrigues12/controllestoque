@@ -33,8 +33,6 @@ public class Produto implements Serializable{
 	
 //	@Size(min = 0, message = "VALOR ESTOQUE MINIMO não pode ser menor que 0.")
 	private int qtdEstMin;
-	
-	
 
 	@ManyToOne
 	private Secao secoes;
@@ -44,8 +42,32 @@ public class Produto implements Serializable{
 	
 	@ManyToOne
 	private Rua ruas;
+	
+	
+//	## Construtor
+	
+	public Produto() {
+		
+	}
 
-//	###*** Get's and Set's ***###
+	
+	
+public Produto(Long idProduto,
+		@Size(min = 7, max = 40, message = "Nome do PRODUTO deve contar no minimo 7 caracteres") @NotEmpty @NotNull String nome,
+		String descricao, int qtdEstoque, int qtdEstMin, Secao secoes, Grupo grupos, Rua ruas) {
+	super();
+	this.idProduto = idProduto;
+	this.nome = nome;
+	this.descricao = descricao;
+	this.qtdEstoque = qtdEstoque;
+	this.qtdEstMin = qtdEstMin;
+	this.secoes = secoes;
+	this.grupos = grupos;
+	this.ruas = ruas;
+}
+
+
+//	## Get's and Set's
 
 
 	public Long getIdProduto() {
@@ -111,6 +133,38 @@ public class Produto implements Serializable{
 	public void setRuas(Rua ruas) {
 		this.ruas = ruas;
 	}
+
+//	## hasCode and equals
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+		return result;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (!descricao.equals(other.descricao))
+			return false;
+		return true;
+	}
+	
+
+	
 	
 
 }
