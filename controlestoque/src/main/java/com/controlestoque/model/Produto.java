@@ -22,7 +22,7 @@ public class Produto implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idProduto;
 	
-	@Size(min = 7, max = 40, message = "Nome do PRODUTO deve contar no minimo 7 caracteres")
+	@Size(min = 7, max = 40, message = "Nome do PRODUTO deve contar no minimo 7 caracteres no max 40")
 	@NotEmpty
 	@NotNull
 	private String nome;

@@ -6,11 +6,13 @@
 <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <title>Funcionario</title>
-<meta name="author" content="Paulino Rodrigues"> 
+<meta name="author" content="Paulino Rodrigues">
 <link rel="stylesheet" href="css/navbarCss.css" />
 <script src="https://kit.fontawesome.com/006642858d.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet" />
-<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
 
 </head>
 <body>
@@ -22,11 +24,9 @@
 		<a style="font-size: 23px;">Funcionario</a>
 		<hr>
 
-		<a class="btn btn-info" th:href="@{/inserir-funcionario}"> <i
-			class="fas fa-plus-circle"></i> Funcionário
-		</a>
 
-<p>
+
+		<p>
 		<div class="card">
 			<div class="card-header ">Lista dos funcionarios</div>
 			<div class="card-body">
@@ -38,6 +38,11 @@
 						<button class="btn btn-info" type="submit" value="nomepesquisa">
 							<i class="fas fa-search"></i> Pesquisa
 						</button>
+
+
+						<a class="btn btn-info offset-md-5" th:href="@{/inserir-funcionario}"> <i
+							class="fas fa-plus-circle"></i> Funcionário
+						</a>
 					</div>
 				</form>
 
@@ -65,7 +70,7 @@
 								th:href="@{/excluir-funcionario/{id}(id=${funcionario.idFuncionario})}">
 									<i class="fas fa-trash-alt"></i> Excluir
 							</a></td>
-							
+
 						</tr>
 
 					</tbody>
@@ -80,7 +85,8 @@
 	<script src="/webjars/jqrey/3.6.0/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/css/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-	
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
