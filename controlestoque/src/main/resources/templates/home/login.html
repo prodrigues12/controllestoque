@@ -15,6 +15,12 @@
 
 
 <div class="Login-form">
+<div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
 			<div class="container">
 				<div class="main-div">
 					<div class="texto-header">
@@ -22,22 +28,22 @@
 						<p>Insira suas credenciais para login!
 					</div>
 					
-				<form  method="post"  > 
+				<form th:action="@{/login}" method="post">
 						<div class="alert alert-danger" role="alert" th:if=${msg}>
 							<strong th:text="${msg}"></strong>
 						</div>
 					
 						<div class="form-group">
-							<input class="form-control" type="text" placeholder="Login"  />
+							<input type="text" name="username" placeholder="Login"  />
 						</div>
 						
 						<div class="form-group">
 					
-							<input class="form-control" type="password" style="font-style: italic; " placeholder="Senha"   />
+							<input type="password" name="password" style="font-style: italic; " placeholder="Senha"   />
 							
 						</div>
 						
-						<a class="btn btn-primary" th:href="@{admin}">Login</a>
+						<button class="btn btn-primary" type="submit">Login</button>
 						
 						<button type="submit" class="btn btn-info">Voltar</button>
 						
@@ -51,3 +57,10 @@
 	<script src="/webjars/bootstrap/css/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+    
+        
+            
+           
+       
