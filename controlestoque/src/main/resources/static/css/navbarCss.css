@@ -1,138 +1,134 @@
-.navbar-brand{
+/* ###########  NAVBAR ############ */
+.navbar-brand {
 	color: #000;
 }
-.navbar{
-	background-color:  #0e87fe;
-}
-.navbar-collapse{
-	background-color: #000;
+
+.navbar {
+	background-color: #0e87fe;
 }
 
-a{
+
+.nav-item {
+	color: #fff;
+	background-color: #fff;
+}
+
+.nav-link {
+	background-color: #0e87fe;
+}
+
+.nav-link:hover {
+	color: #fff;
+}
+
+.navbar-brand {
+	color: #fff;
+}
+
+.navbar-toggler-icon {
+	color: #fff;
+}
+
+.nav-link active {
+	background: #E0FFFF;
+	color: #E0FFFF;
+}
+
+/* ############# CARD ############# */
+.card {
+	width: auto;
+	left: auto;
+}
+
+.card-header {
+	background-color: #191970;
+	font-weight: bold;
+	color: #fff;
+}
+
+a {
 	cursor: pointer;
-	font-weight: bold;	
+	font-weight: bold;
 	color: #fff;
 	font-size: 15px;
 }
 
-.dropdown-item{
-/* 	nome=  sub-menu */
+.dropdown-item {
+	/* 	nome=  sub-menu */
 	color: #0e87fe;
 	cursor: pointer;
 	font-weight: bold;
 	font-size: 14px;
 	display: block;
-    width: 100%;
-    padding: .25rem 1.5rem;
-    clear: both;
-    text-align: inherit;
-    white-space: nowrap;
-    background-color: transparent;
-   
+	width: 100%;
+	padding: .25rem 1.5rem;
+	clear: both;
+	text-align: inherit;
+	white-space: nowrap;
+	background-color: transparent;
 }
 
 .dropdown-item:hover {
 	text-decoration: none;
-	color:#000;
+	color: #000;
 	font-weight: bold;
-
 }
 
-.nav-item{
-	color: #fff;
-	background-color: #fff;
-}
-
-.nav-link:hover{
-	color: #fff;
-	
-	
-}
-
-.rodape{
+.rodape {
 	background-color: #00008B;
-	color:	 #fff;
+	color: #fff;
 	position: absolute;
 }
-.pagina{
-	
+
+.pagina {
 	position: relative;
-} 
+}
 
 .table .thead-dark th {
-    color: #fff;
-    background-color:  #0e87fe;
-   
+	color: #fff;
+	background-color: #0e87fe;
 }
 
 .btn-info {
-    color:#fff;
-    background-color: #0e87fe;
-    
-}
-
-.container2{
-	text-align: center;
-	background-color:  #0e87fe;
 	color: #fff;
-	
-}
-.form-group{
-	font-weight: bold;
-	
+	background-color: #0e87fe;
 }
 
-.form-control{
+.container2 {
+	text-align: center;
+	background-color: #0e87fe;
+	color: #fff;
+}
+
+.form-group {
+	font-weight: bold;
+}
+
+.form-control {
 	border-width: 2px;
 	border-color: #191970;
 	border-top-right-radius: .2rem !important;
-  border-bottom-right-radius: .2rem !important;
+	border-bottom-right-radius: .2rem !important;
 }
 
-.fa-info-circle{
+.fa-info-circle {
 	color: #0e87fe;
 }
 
-.fa-times-circle{
+.fa-times-circle {
 	color: #FF0000;
 }
-.fa-check-circle{
+
+.fa-check-circle {
 	color: #228B22;
 }
 
-.navbar-brand{
-	color: #fff;
-}
-.navbar-toggler-icon{
-	color: #fff;
-}
-
-
-
-.nav-link active{
-	background: #E0FFFF;
-	color: #000;
-}
-
-.card{
-	width: auto;
-	left: auto;
-	
-}
-
-.card-header{
-background-color: #191970;	
-font-weight: bold;
-color: #fff;
-}
 .table {
-	text-align: center; 
+	text-align: center;
 	margin-top: 10px;
 	text-align: center;
 }
-.thead-dark{
+
+.thead-dark {
 	text-align: center;
 }
-
-
-
