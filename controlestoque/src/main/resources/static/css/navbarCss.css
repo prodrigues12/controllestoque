@@ -4,6 +4,9 @@
 .navbar{
 	background-color:  #0e87fe;
 }
+.navbar-collapse{
+	background-color: #000;
+}
 
 a{
 	cursor: pointer;
@@ -108,13 +111,19 @@ a{
 
 .nav-link active{
 	background: #E0FFFF;
-	color: #E0FFFF;
+	color: #000;
 }
 
 .card{
 	width: auto;
 	left: auto;
+	
+}
 
+.card-header{
+background-color: #191970;	
+font-weight: bold;
+color: #fff;
 }
 .table {
 	text-align: center; 
