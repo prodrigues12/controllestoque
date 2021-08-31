@@ -1,12 +1,9 @@
 .navbar-brand{
 	color: #000;
 }
-
-
 .navbar{
-	background-color: #0e87fe;
+	background-color:  #0e87fe;
 }
-
 
 a{
 	cursor: pointer;
@@ -36,6 +33,11 @@ a{
 	color:#000;
 	font-weight: bold;
 
+}
+
+.nav-item{
+	color: #fff;
+	background-color: #fff;
 }
 
 .nav-link:hover{
@@ -102,19 +104,7 @@ a{
 	color: #fff;
 }
 
-.card-header{
-	background:#0e87fe;
-	color: #fff;
-	border-style:solid;
-	border-color: #191970;
-	font-weight: bold;
-}
-.card-body{
-	border-style:solid;
-	border-color: #191970; 
-	font-weight: bold;
-	color: #191970;
-}
+
 
 .nav-link active{
 	background: #E0FFFF;
@@ -135,11 +125,5 @@ a{
 	text-align: center;
 }
 
-.btn-primeira {
-	border-style:solid;
-	border-color: #191970; 
-	font-weight: bold;
-	color: #000;;
-}
 
 

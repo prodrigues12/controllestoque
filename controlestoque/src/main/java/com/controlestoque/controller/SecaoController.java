@@ -18,7 +18,6 @@ import com.controlestoque.model.Secao;
 
 
 @Controller
-
 public class SecaoController {
 	
 	@Autowired
