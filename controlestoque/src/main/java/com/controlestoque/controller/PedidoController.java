@@ -24,6 +24,7 @@ import com.controlestoque.model.Pedido;
 import com.controlestoque.model.Produto;
 import com.controlestoque.model.Secao;
 import com.controlestoque.service.PedidoService;
+import com.controlestoque.venda.TabelaItensPedido;
 
 
 @Controller
@@ -38,7 +39,14 @@ public class PedidoController {
 	@Autowired
 	FuncionarioRepository funRepository;
 	
+	@Autowired
+	ProdutoRepository proReposiotory;
+	
+	@Autowired
 	PedidoService pedService;
+	
+	@Autowired
+	TabelaItensPedido tab;
 	
 	
 //	######## Usuario - PT-BR ##################
@@ -133,7 +141,11 @@ public class PedidoController {
 		return mv;
 	}
 	
-	
+//	public ModelAndView adicionarItem(Long idProduto) {
+//		Produto produto = proReposiotory.findOne(idProduto);
+//		tab.adicionarItem(produto, 1);
+//		System.out.println(">>> total de itens: "+ tab.to);
+//	}
 	
 	
 }
