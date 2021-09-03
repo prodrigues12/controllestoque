@@ -11,8 +11,7 @@
 <script src="https://kit.fontawesome.com/006642858d.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet" />
-<link type="text/css" rel="stylesheet"
-	href="materialize/css/materialize.min.css" media="screen,projection" />
+
 
 </head>
 <body>
@@ -38,7 +37,7 @@
 					
 						<!-- ID -->
 						<div class="form-group col-md-3" th:classappend="${#fields.hasErrors('idFuncionario')} ? invalid">
-							<label>Identificação</label> <input class="form-control"
+							<label>Identificação</label> <input class="form-control js-idMagalu"
 								placeholder="ID Magalu" th:field="*{idFuncionario}">
 						</div>
 
@@ -79,12 +78,11 @@
 		</form>
 	</div>
 
-
-	<script src="/webjars/jqrey/3.6.0/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/css/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/mascaras.js"></script>
 
 </body>
 </html>
