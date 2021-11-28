@@ -1,148 +1,98 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:data="http://www.thymeleaf.org/extras/data">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<title></title>
-<meta name="author" content="Paulino Rodrigues"> 
-<link rel="stylesheet" th:href="css/navbarCss.css" />
-<script src="https://kit.fontawesome.com/006642858d.js"></script>
-
+<title>Dashboard</title>
+<meta name="author" content="Paulino Rodrigues">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+<link rel="stylesheet" href="/css/sindebar.css" />
+<!-- <link rel="stylesheet" href="/css/brewerCss.css" /> -->
 
 </head>
-<body>
 
-	<header th:fragment = "cabecalho">
+<body id="body-pd">
 
-		<nav class="navbar navbar-expand-lg">
-
-			<a class="navbar-brand" th:href="@{admin}">Controllestoque-CD 994</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"data-target="#navbarNavDropdown"
-			 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarNavDropdown">
-				<ul class="navbar-nav">
-<!-- Produto -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" 
-						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<i class="fa fa-cubes" aria-hidden="true"></i> Produtos
-						</a>
-						<div class="dropdown-menu"	aria-labelledby="navbarDropdownMenuLink">
-							
-						 	<a class="dropdown-item" th:href="@{lista-produto}">
-						 		<i class="fas fa-box" aria-hidden="true"></i> Produto</a>
-						 		<div class="dropdown-divider"></div> 
-							<a class="dropdown-item" th:href="@{secao}">
-								<i class="fas fa-boxes"></i> Seção</a>
-								<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">
-								<i class="fa fa-cubes"></i> Grupo</a>
-								<div class="dropdown-divider"></div> 
-							<a class="dropdown-item" href="#">
-								<i class="fas fa-road"></i> Rua</a>
-								<div class="dropdown-divider"></div> 
-							<a class="dropdown-item" href="#">
-								<i class="far fa-building"></i> Apartamento</a>
-								<div class="dropdown-divider"></div> 
-							<a class="dropdown-item" href="#">
-								<i class="fab fa-buromobelexperte"></i> Andar</a>
-						</div>
-					</li>
-
-<!-- Solicitações -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#"
-						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"> <i
-							class="fa fa-shopping-basket" aria-hidden="true"></i> Pedidos
-					</a>
-						<div class="dropdown-menu"
-							aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" th:href="@{/lista-pedidos}">
-								<i class="fas fa-clipboard-list"></i> Meus pedidos</a>
-								<div class="dropdown-divider"></div>
-							<a class="dropdown-item" th:href="@{/adicionar-pedido}"> <i
-								class="fas fa-plus-circle"></i> Criar pedido
-							</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" th:href="@{/pedidos-concluidos}"> <i
-								 class="fas fa-clipboard-check"></i> Concluídos
-							</a>
-						</div></li>
-
-					<!-- Funcionarios -->
-
-					<li class="nav-item active"><a class="nav-link"
-						th:href="@{funcionario}"><i class="fas fa-user"> </i>
-							Funcionário <span class="sr-only"></span></a></li>
-
-
-					<!-- Estoque -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#"
-						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"><i
-							class="fa fa-cart-arrow-down" aria-hidden="true"></i> Estoque</a>
-
-						<div class="dropdown-menu"
-							aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" th:href="@{/estoque}">
-							<i class="fas fa-search"></i> Consulta</a>							
-						</div>
-					</li>
-	<!-- Relatorio -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#"
-						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false"><i class="fas fa-file-invoice"></i>
-						 Relatório</a>
-
-						<div class="dropdown-menu"
-							aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" th:href="@{/estoque}"><i class="fas fa-plus-circle"></i> Criar relatório</a>
-							
-							
-						</div>
-					</li>
-				</ul>
-
-			</div>
-
-			<div id="navMobile"
-				class="navbar-collapse collapse justify-content-end">
-				<a class=" nav-link btn-danger " th:href=@{login}><i class="fas fa-times"></i>
-					Sair</a>
-			</div>
-
-		</nav>
-
-	</header>
-	
-	<div class="centro">
-		<h3 style="background-position: center;color: #fff;font: bold;" >Sistema de gerenciamento
-			de estoque CD 994</h3>
-		<figure>
-			  <img src="/img/luiza+lu.jpg" alt="Minha Figura" class="lu centro">
-		</figure>
-	</div>
-	
-	<footer  class="footer" th:fragment="rodape">
-		<div class="center">
-			<span>Todos os direitos reservados - 2021 &copy; Paulino Rodrigues</span>
+	<header class="header" id="header" th:fragment=header>
+		<div class="header_toggle">
+			<i class='bx bx-menu' id="header-toggle"></i>
 		</div>
-	</footer>
+		<div class="header_img">
+			<img src="img/user.png" alt="">
+		</div>
+	</header>
+	<div class="l-navbar" id="nav-bar" th:fragment=sindebar>
+		<nav class="nav">
+			<div>
+				<a class="nav_logo"> <i class='bx bx-menu nav_logo-icon'></i> <span
+					class="nav_logo-name">CD-994</span>
+				</a>
+				<div class="nav_list">
+					<a th:href="@{/}" class="nav_link active"> <i
+						class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span>
 
-	<script src="/webjars/jqrey/3.6.0/jquery.min.js"></script>
-	<script src="/webjars/bootstrap/css/bootstrap.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-	
-	
+					</a> <a href="#" class="nav_link"> <i class='bx bx-cart nav_icon'></i>
+						<span class="nav_name">Vendas</span>
+
+					</a> <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i>
+						<span class="nav_name">Usuarios</span>
+
+					</a> <a class=" nav_link " data-bs-toggle="collapse"
+						href="#collapseExample" role="button" aria-expanded="false"
+						aria-controls="collapseExample"><i
+						class='bx bx-plus-circle nav_icon'></i> Produto </a>
+
+					<div class="collapse" id="collapseExample">
+						<a href="#" class="nav_link"> <i
+							class='bx bx-chevron-right nav_icon'></i> <span class="nav_name">Novo</span>
+
+						</a> <a href="#" class="nav_link"> <i
+							class='bx bx-chevron-right nav_icon'></i> <span class="nav_name">Consulta</span>
+						</a>
+					</div>
+
+
+					<a href="#" class="nav_link"> <i
+						class='bx bx-coin-stack nav_icon'></i> <span class="nav_name">Estoque</span>
+
+					</a> <a href="#" class="nav_link"> <i
+						class='bx bx-clipboard nav_icon'></i> <span class="nav_name">Relatorio</span>
+
+					</a>
+
+				</div>
+
+
+			</div>
+						<a th:href="@{/logout}" class="nav_link"><i
+							class='bx bx-log-out nav_icon'></i> <span class="navbar-text"
+						></span></a>
+			<a class=" nav-link"><i class="fas fa-sign-out-alt"></i></a>
+		</nav>
+	</div>
+
+
+
+		<footer class="aw-layout-footer  js-content"
+			th:fragment="footer">
+			<div class="container-fluid">
+				<span class="aw-footer-disclaimer">&copy; Paulino Rodrigues.
+					Todos os direitos reservados.</span>
+			</div>
+		</footer>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="/js/sindebar.js"></script>
+
 </body>
 </html>
