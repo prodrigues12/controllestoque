@@ -34,13 +34,18 @@ public class Produto implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idProduto;
+	private Long codigo;
 	
-//	@Size(min = 7, max = 40, message = "Nome do PRODUTO deve contar no minimo 7 caracteres no max 40")
+	@Size(min = 7, max = 40, message = "Nome do PRODUTO deve contar no minimo 7 caracteres no max 40")
 	@NotBlank
 	private String nome;
 	
 	private String descricao;
+//	
+//	@NotNull(message = "A seção é obrigatório")
+//	@ManyToOne
+//	@JoinColumn(name = "codigo_secao")
+//	private SecaoProduto secaoProduto;
 	
 	@NumberFormat (pattern = "#,##0.00")
 	private BigDecimal qtdEstoque;
@@ -55,8 +60,8 @@ public class Produto implements Serializable{
 	@DecimalMin(value = "1.0", message = "Estoque deve ser no mínimo 1")
 	@NumberFormat (pattern = "#,##0.00")
 	private BigDecimal qtdEstMin;
-
-	@NotNull(message = "A seção é obrigatório")
+	
+//	@NotNull(message = "A seção é obrigatório")
 //	@ManyToOne
 //	@JoinColumn(name = "codigo_secao")
 //	private Secao secoes;
@@ -68,19 +73,86 @@ public class Produto implements Serializable{
 //	@Embedded
 //	private Endereco endereco;
 	
-//	## Construtor
-	
-	public Produto() {
-		
+
+
+	public Long getCodigo() {
+		return codigo;
 	}
 
 
-//	## Get's and Set's
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+
+	public BigDecimal getQtdEstoque() {
+		return qtdEstoque;
+	}
+
+
+	public void setQtdEstoque(BigDecimal qtdEstoque) {
+		this.qtdEstoque = qtdEstoque;
+	}
+
+
+	public BigDecimal getQtdEstMin() {
+		return qtdEstMin;
+	}
+
+
+	public void setQtdEstMin(BigDecimal qtdEstMin) {
+		this.qtdEstMin = qtdEstMin;
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
+	}
 
 
 	
-
-//	## hasCode and equals
 
 	
 	

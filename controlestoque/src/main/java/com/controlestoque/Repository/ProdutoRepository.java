@@ -13,7 +13,7 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long>{
 	@Query("select p from Produto p where p.nome like %?1%")
 	public List<Produto>findByNomeContainingIngnoreCase(String nome); 
 	
-	@Query("select p from Produto p where p.idProduto = :id")
+	@Query("select p from Produto p where p.codigo = :id")
 	public Produto AjusteEtq(Long id);
 	
 	@Query("select p from Produto p where p.qtdEstoque <= p.qtdEstMin")
