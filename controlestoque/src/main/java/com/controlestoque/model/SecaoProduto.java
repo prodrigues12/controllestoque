@@ -8,43 +8,41 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
-@Entity
-public class Secao implements Serializable{
+//@Entity
+public class SecaoProduto implements Serializable {
 	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idSecao;
+	private Long codigo;
 	
-	private String nomesecao;
+	 
+	@NotBlank(message = "Nome da seção é obrigatório.")
+	@Size (min = 3 , max = 30 ,message = "O tamanha do nome dever conter entre {min} e {max}.")
+	private String nome;
 	
-	@OneToMany
-	private List<Produto> produtos;
-	
-//	## Construtor
-	
-	public Secao() {
-		
-	}
-	
-public Secao(Long idSecao, String nomesecao, List<Produto> produtos) {
-	super();
-	this.idSecao = idSecao;
-	this.nomesecao = nomesecao;
-	this.produtos = produtos;
-}
+	@OneToMany(mappedBy = "secao")
+	private  List<Produto> produtos;
 
-
-//	## Get's and Set's 
-	
-	public Long getIdSecao() {
-		return idSecao;
+	public Long getCodigo() {
+		return codigo;
 	}
 
-	public void setIdSecao(Long idSecao) {
-		this.idSecao = idSecao;
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public List<Produto> getProdutos() {
@@ -55,23 +53,11 @@ public Secao(Long idSecao, String nomesecao, List<Produto> produtos) {
 		this.produtos = produtos;
 	}
 
-	
-
-	public String getNomesecao() {
-		return nomesecao;
-	}
-
-	public void setNomesecao(String nomesecao) {
-		this.nomesecao = nomesecao;
-	}
-	
-//	## hasCode and equals
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((idSecao == null) ? 0 : idSecao.hashCode());
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		return result;
 	}
 
@@ -83,15 +69,15 @@ public Secao(Long idSecao, String nomesecao, List<Produto> produtos) {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Secao other = (Secao) obj;
-		if (idSecao == null) {
-			if (other.idSecao != null)
+		SecaoProduto other = (SecaoProduto) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
 				return false;
-		} else if (!idSecao.equals(other.idSecao))
+		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
 	}
-
-
 	
+	
+
 }

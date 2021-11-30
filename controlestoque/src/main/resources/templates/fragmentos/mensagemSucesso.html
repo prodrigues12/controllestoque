@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+	<div class="alert alert-danger alert-dismissible" role="alert"
+		th:if="${not #strings.isEmpty(mensagem)}">
+		<button type="button" class="btn-success" data-bs-dismiss="alert" aria-label="Close">
+	</button>
+		<span th:text="${mensagem}"></span>
+	</div>
+
+</html>
+
