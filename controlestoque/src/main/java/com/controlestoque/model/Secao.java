@@ -11,9 +11,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-//@Entity
-public class SecaoProduto implements Serializable {
-	
+@Entity
+public class Secao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -69,7 +68,7 @@ public class SecaoProduto implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		SecaoProduto other = (SecaoProduto) obj;
+		Secao other = (Secao) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;

@@ -100,11 +100,20 @@ a {
 	color: #fff;
 }
 
-.form-group {
+.col-form-label {
 	font-weight: bold;
+	font-size: 20px;
+
 }
 
 .form-control {
+	border-width: 2px;
+	border-color: #191970;
+	border-top-right-radius: .2rem !important;
+	border-bottom-right-radius: .2rem !important;
+}
+
+.form-select{
 	border-width: 2px;
 	border-color: #191970;
 	border-top-right-radius: .2rem !important;

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<meta name="author" content="Paulino Rodrigues">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+
+<link rel="stylesheet" href="/css/controller.css" />
+</head>
+
+<!-- Modal -->
+<div class="modal fade" id=secaoModal tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true"  th:fragment="modalSecao">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="secaoModalLabel">Nova Seção</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+		
+				<form method="post" th:action="@{/secao/novo}">
+
+					<div class="row">
+						<div class="alert" role="alert" >
+							<label class="col-sm-2 col-form-label">Nome:</label> 
+							
+							<input
+								class="form-control" placeholder="Nome da seção"
+								>
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary"
+					data-bs-dismiss="modal">Cancelar</button>
+				<button type="button" class="btn btn-primary">Salvar</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</body>
+</html>

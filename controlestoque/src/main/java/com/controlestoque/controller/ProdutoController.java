@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.controlestoque.Repository.ProdutoRepository;
-
+import com.controlestoque.Repository.SecaoRepository;
 import com.controlestoque.model.Produto;
 
 @Controller
@@ -26,10 +26,14 @@ public class ProdutoController {
 
 	@Autowired
 	ProdutoRepository pr;
+	
+	@Autowired
+	SecaoRepository sr;
 
 	@RequestMapping("/novo")
 	public ModelAndView novo(Produto produto) {
 		ModelAndView mv = new ModelAndView("produto/novoProduto");
+		mv.addObject("secao", sr.findAll());
 		return mv;
 	}
 

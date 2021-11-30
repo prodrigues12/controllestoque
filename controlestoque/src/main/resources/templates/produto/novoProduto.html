@@ -13,6 +13,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 <link rel="stylesheet" href="/css/sindebar.css" />
+<link rel="stylesheet" href="/css/controller.css" />
 </head>
 
 <body id="body-pd">
@@ -21,9 +22,9 @@
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
 	<form method="post" th:action="@{/produto/novo}" th:object="${produto}">
-	
-	<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
-				<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
+
+		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
+		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
 
 		<div class="card">
 			<div class="card-header">
@@ -40,12 +41,12 @@
 
 				<div class="row">
 					<div class=" col-md-1">
-						<label class=" col-form-label">Codigo</label> <input
+						<label class=" col-form-label">Codigo:</label> <input
 							class="form-control" type="text" readonly placeholder="00000" />
 					</div>
 
 					<div class="col-md-11">
-						<label class="col-form-label">Nome</label> <input
+						<label class="col-form-label">Nome:</label> <input
 							class="form-control" placeholder="Ex: Caneta vermelha"
 							th:field="*{nome}">
 					</div>
@@ -53,24 +54,37 @@
 
 				<div class="row">
 					<div class="col-md-12">
-						<label class=" col-form-label">Dsscrição</label>
+						<label class=" col-form-label">Descrição:</label>
 						<textarea class="form-control" th:field="*{descricao}"></textarea>
 					</div>
 				</div>
 				<div class=" row">
 					<div class="col-md-4">
-						<label for="seção" class="col-form-label">Seção</label> <input
-							type="text" class="form-control" id="seção">
+						
+							<label for="secao" class="col-form-label">Seção:</label> <select
+								id="secao" class="form-select">
+								<option selected>Selecione uma Seção</option>
+								<option class="form-control-label" th:each="secao : ${secao}"
+									th:value="${secao.codigo}" th:text="${secao.nome}"></option>
+							</select>
+						
+						<div>
+							<a href="#" data-bs-toggle="modal" data-bs-target="#secaoModal">
+								<i class='bx bxs-plus-circle' style="background-color: #000080;"></i>
+							</a>
+						</div>
+
 					</div>
+
 					<div class="col-md-4">
-						<label for="Grupo" class="col-form-label">Grupo</label> <select
-							id="Grupo" class="form-select">
+						<label for="Grupo" class="col-form-label">Grupo:</label> <select
+							id="Grupo" class="form-select form-control">
 							<option selected>Choose...</option>
 							<option>...</option>
 						</select>
 					</div>
 					<div class="col-md-4">
-						<label for="subGrupo" class="col-form-label">Sub-Grupo</label> <select
+						<label for="subGrupo" class="col-form-label">Sub-Grupo:</label> <select
 							id="subGrupo" class="form-select">
 							<option selected>Choose...</option>
 							<option>...</option>
@@ -82,13 +96,13 @@
 
 					<!-- 				Rua -->
 					<div class=" col-md-4">
-						<label for="rua" class="col-form-label">Rua</label> <input
+						<label for="rua" class="col-form-label">Rua:</label> <input
 							type="text" class="form-control" id="rua">
 					</div>
 
 					<!-- 				Andar -->
 					<div class=" col-md-4">
-						<label for="inputState" class="col-form-label">Andar</label> <select
+						<label for="inputState" class="col-form-label">Andar:</label> <select
 							id="inputState" class="form-control">
 							<option selected>Selecione um andar...</option>
 							<option>1</option>
@@ -103,6 +117,7 @@
 							type="text" class="form-control">
 					</div>
 				</div>
+				
 				<p>
 					<!-- 				Botões -->
 				<div class="form-row">
@@ -121,7 +136,7 @@
 
 
 	<div th:replace="fragmentos/fragmentos :: footer"></div>
-
+	<div th:replace="secao/cadastroRapido :: modalSecao"></div>
 
 
 
