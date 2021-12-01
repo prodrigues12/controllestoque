@@ -43,7 +43,7 @@ Controlestoque.SecaoCadastroRapido = (function() {
 			error: onErroSalvandoSecao.bind(this),
 			success: onSecaoSalvo.bind(this)
 		});
-		console.log(nomeSecao)
+		
 	}
 
 	function onErroSalvandoSecao(obj) {
