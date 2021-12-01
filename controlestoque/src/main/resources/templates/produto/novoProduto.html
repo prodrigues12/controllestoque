@@ -29,10 +29,10 @@
 		<div class="card">
 			<div class="card-header">
 				<div class="row">
-					<div class="col-9">
+					<div class=" col-md-10">
 						<h4>Novo Produto</h4>
 					</div>
-					<div class="col-2">
+					<div class="col-md-2">
 						<a class="btn btn-primary">Pesquisar</a>
 					</div>
 				</div>
@@ -59,18 +59,18 @@
 					</div>
 				</div>
 				<div class=" row">
-					<div class="col-md-4">
-						
-							<label for="secao" class="col-form-label">Seção:</label> <select
-								id="secao" class="form-select">
-								<option selected>Selecione uma Seção</option>
-								<option class="form-control-label" th:each="secao : ${secao}"
-									th:value="${secao.codigo}" th:text="${secao.nome}"></option>
-							</select>
-						
+					<div class="col-md-4"
+						th:classappend="${#fields.hasErrors('secao')} ? has-error">
+						<label for="secao" class="col-form-label">Seção:</label> 
+						<select id="secao" class="form-select" th:field="*{secao}">
+							<option value="">Selecione uma Seção</option>
+							<option class="form-control-label" th:each="secao : ${secao}"
+								th:value="${secao.codigo}" th:text="${secao.nome}"></option>
+						</select>
+
 						<div>
 							<a href="#" data-bs-toggle="modal" data-bs-target="#secaoModal">
-								<i class='bx bxs-plus-circle' style="background-color: #000080;"></i>
+								<i class="bx bxs-plus-circle"></i>
 							</a>
 						</div>
 
@@ -117,7 +117,7 @@
 							type="text" class="form-control">
 					</div>
 				</div>
-				
+
 				<p>
 					<!-- 				Botões -->
 				<div class="form-row">
@@ -136,7 +136,7 @@
 
 
 	<div th:replace="fragmentos/fragmentos :: footer"></div>
-	<div th:replace="secao/cadastroRapido :: modalSecao"></div>
+	<div th:replace="secao/cadastroRapidoSecao :: modalSecao"></div>
 
 
 
@@ -146,5 +146,6 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 	<script src="/js/sindebar.js"></script>
+	<script src="/js/secao.cadastro-rapido.js"></script>
 </body>
 </html>

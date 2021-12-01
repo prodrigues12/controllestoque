@@ -16,7 +16,8 @@
 
 <!-- Modal -->
 <div class="modal fade" id=secaoModal tabindex="-1"
-	aria-labelledby="exampleModalLabel" aria-hidden="true"  th:fragment="modalSecao">
+	aria-labelledby="exampleModalLabel" aria-hidden="true"
+	th:fragment="modalSecao">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -25,26 +26,25 @@
 					aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-		
+
 				<form method="post" th:action="@{/secao/novo}">
 
 					<div class="row">
-						<div class="alert" role="alert" >
-							<label class="col-sm-2 col-form-label">Nome:</label> 
-							
-							<input
-								class="form-control" placeholder="Nome da seção"
-								>
+						<div class="alert js-mensagem-cadastro-rapido-secao" role="alert">
+							<label class="col-sm-2 col-form-label" for="nomeSecao">Nome:</label>
+
+							<input id="nomeSecao" class="form-control" type="text"
+								placeholder="Nome da seção" autofocus="autofocus">
 						</div>
 					</div>
 
 				</form>
-
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary"
-					data-bs-dismiss="modal">Cancelar</button>
-				<button type="button" class="btn btn-primary">Salvar</button>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-bs-dismiss="modal">Cancelar</button>
+					<button type="button"
+						class="btn btn-primary js-modal-cadastro-secao-salvar-btn">Salvar</button>
+				</div>
 			</div>
 		</div>
 	</div>
