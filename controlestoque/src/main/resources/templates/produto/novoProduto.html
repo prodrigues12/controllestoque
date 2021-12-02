@@ -78,7 +78,7 @@
 
 					<div class="col-md-4">
 						<label for="grupo" class="col-form-label">Grupo:</label> <select
-							id="grupo" class="form-select form-control"th:field="*{grupo}">
+							id="grupo" class="form-select form-control">
 							<option value=" ">Selecione um Grupo</option>
 							<option class="form-control-label" th:each="grupo : ${grupo}"
 							th:value="${grupo.codigo}" th:text="${grupo.nome}"></option>
