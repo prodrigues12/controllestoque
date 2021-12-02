@@ -1,32 +1,41 @@
 package com.controlestoque.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Secao implements Serializable {
+@Table(name="subGrupo")
+public class SubGrupo implements Serializable{
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	 
-	@NotBlank(message = "O campo 'Nome' é obrigatório")
-	@Size (min = 3 , max = 30 ,message = "O tamanha do 'Nome' dever conter de {min} à {max} caracteries")
+	@NotBlank(message = "Nome é obrigatório")
 	private String nome;
 	
-	@OneToMany(mappedBy = "secao")
-	private  List<Produto> produtos;
+	@NotNull(message = "Grupo é obrigatório")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "codigo_estado")
+	@JsonIgnore
+	private Grupo grupo;
 
 	public Long getCodigo() {
 		return codigo;
@@ -44,12 +53,12 @@ public class Secao implements Serializable {
 		this.nome = nome;
 	}
 
-	public List<Produto> getProdutos() {
-		return produtos;
+	public Grupo getGrupo() {
+		return grupo;
 	}
 
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+	public void setGrupo(Grupo grupo) {
+		this.grupo = grupo;
 	}
 
 	@Override
@@ -68,7 +77,7 @@ public class Secao implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Secao other = (Secao) obj;
+		SubGrupo other = (SubGrupo) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;

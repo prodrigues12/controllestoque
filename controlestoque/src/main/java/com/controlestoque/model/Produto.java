@@ -37,13 +37,13 @@ public class Produto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	@Size(min = 7, max = 40, message = "Nome do PRODUTO deve contar no minimo 7 caracteres no max 40")
+	@Size(min = 7, max = 40, message = "O campo ''Nome'' deve contar de 7 à 40 caracteries")
 	@NotBlank
 	private String nome;
 
 	private String descricao;
 	
-	@NotNull(message = "A seção é obrigatório")
+	@NotNull(message = "Campo 'Seção' é obrigatório")
 	@ManyToOne
 	@JoinColumn(name = "codigo_secao")
 	private Secao secao;
@@ -62,9 +62,9 @@ public class Produto implements Serializable {
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal qtdEstMin;
 
-	
-//	@ManyToOne
-//	private Grupo grupos;
+	@JsonIgnore
+	@Embedded
+	private Agrupar agrupar;
 
 //	@JsonIgnore
 //	@Embedded

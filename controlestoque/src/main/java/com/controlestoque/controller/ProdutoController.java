@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.controlestoque.Repository.GrupoRepository;
 import com.controlestoque.Repository.ProdutoRepository;
 import com.controlestoque.Repository.SecaoRepository;
 import com.controlestoque.model.Produto;
@@ -25,15 +26,19 @@ import com.controlestoque.model.Produto;
 public class ProdutoController {
 
 	@Autowired
-	ProdutoRepository pr;
+	ProdutoRepository proRepository;
 	
 	@Autowired
 	SecaoRepository sr;
+	
+	@Autowired
+	GrupoRepository gruRepsitory;
 
 	@RequestMapping("/novo")
 	public ModelAndView novo(Produto produto) {
 		ModelAndView mv = new ModelAndView("produto/novoProduto");
 		mv.addObject("secao", sr.findAll());
+		mv.addObject("grupos", gruRepsitory.findAll());
 		return mv;
 	}
 
@@ -43,7 +48,7 @@ public class ProdutoController {
 		if (result.hasErrors()) {
 			return novo(produto);
 		} else {
-			pr.save(produto);
+			proRepository.save(produto);
 			atributes.addFlashAttribute("mensagem", "Salvo com sucesso");
 			return new ModelAndView("redirect:/produto/novo");
 		}

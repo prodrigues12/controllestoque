@@ -1,56 +1,50 @@
 package com.controlestoque.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.persistence.Table;
 
 @Entity
-public class Secao implements Serializable {
+@Table(name = "grupo")
+public class Grupo  implements Serializable{
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	 
-	@NotBlank(message = "O campo 'Nome' é obrigatório")
-	@Size (min = 3 , max = 30 ,message = "O tamanha do 'Nome' dever conter de {min} à {max} caracteries")
-	private String nome;
 	
-	@OneToMany(mappedBy = "secao")
-	private  List<Produto> produtos;
+	private String nome;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getCodigo() {
 		return codigo;
 	}
+
 
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 
+
 	public String getNome() {
 		return nome;
 	}
+
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-	public List<Produto> getProdutos() {
-		return produtos;
-	}
-
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
 
 	@Override
 	public int hashCode() {
@@ -60,6 +54,7 @@ public class Secao implements Serializable {
 		return result;
 	}
 
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -68,7 +63,7 @@ public class Secao implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Secao other = (Secao) obj;
+		Grupo other = (Grupo) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;

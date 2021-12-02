@@ -77,10 +77,11 @@
 					</div>
 
 					<div class="col-md-4">
-						<label for="Grupo" class="col-form-label">Grupo:</label> <select
-							id="Grupo" class="form-select form-control">
-							<option selected>Choose...</option>
-							<option>...</option>
+						<label for="grupo" class="col-form-label">Grupo:</label> <select
+							id="grupo" class="form-select form-control"th:field="*{grupo}">
+							<option value=" ">Selecione um Grupo</option>
+							<option class="form-control-label" th:each="grupo : ${grupo}"
+							th:value="${grupo.codigo}" th:text="${grupo.nome}"></option>
 						</select>
 					</div>
 					<div class="col-md-4">

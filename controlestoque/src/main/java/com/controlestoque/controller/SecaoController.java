@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.controlestoque.Repository.SecaoRepository;
 import com.controlestoque.model.Secao;
 import com.controlestoque.service.SecaoService;
+import com.controlestoque.service.exception.NomeSecaoExistenteException;
 
 @Controller
 @RequestMapping("/secao")
@@ -24,7 +25,7 @@ public class SecaoController {
 
 	@Autowired
 	SecaoRepository secRepository;
-	
+
 	@Autowired
 	SecaoService secService;
 
@@ -39,22 +40,30 @@ public class SecaoController {
 
 		if (result.hasErrors()) {
 			return novo(secao);
-		} else {
-			secRepository.save(secao);
+		}
+		
+		try {
+			secService.salvarSecao(secao);
+			
+		} catch (NomeSecaoExistenteException e) {
+			result.rejectValue("nome", e.getMessage(), e.getMessage());
+			return novo(secao);
+		}
+
 			attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
 			return new ModelAndView("redirect:/secao/novo");
 		}
-	}
 	
+
 	@RequestMapping(method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
-	public @ResponseBody ResponseEntity<?> salvar(@RequestBody @Valid Secao secao, BindingResult result ){
-		if(result.hasErrors()) {
+	public @ResponseBody ResponseEntity<?> salvar(@RequestBody @Valid Secao secao, BindingResult result) {
+		if (result.hasErrors()) {
 			return ResponseEntity.badRequest().body(result.getFieldError("nome").getDefaultMessage());
 		}
-		
+
 		secao = secService.salvarSecao(secao);
-		
+
 		return ResponseEntity.ok(secao);
 	}
-	
+
 }

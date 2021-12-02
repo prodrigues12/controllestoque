@@ -18,8 +18,9 @@ public class SecaoService {
 	public Secao salvarSecao(Secao secao) {
 		Optional<Secao> secaoOptional = secRepository.findByNomeIgnoreCase(secao.getNome());
 		
+		
 		if(secaoOptional.isPresent()) {
-			throw new NomeSecaoExistenteException("Nome da Seção já existente.");
+			throw new NomeSecaoExistenteException("Nome: ''" +secao.getNome() + "'' já existente");
 		}
 		
 		return secRepository.saveAndFlush(secao);
