@@ -40,11 +40,13 @@
 			<div class="card-body">
 
 				<div class="row">
+					<!-- 				Codigo -->
 					<div class=" col-md-1">
 						<label class=" col-form-label">Codigo:</label> <input
 							class="form-control" type="text" readonly placeholder="00000" />
 					</div>
 
+					<!-- 				Nome -->
 					<div class="col-md-11">
 						<label class="col-form-label">Nome:</label> <input
 							class="form-control" placeholder="Ex: Caneta vermelha"
@@ -53,16 +55,19 @@
 				</div>
 
 				<div class="row">
+					<!-- 				Descrição -->
 					<div class="col-md-12">
 						<label class=" col-form-label">Descrição:</label>
 						<textarea class="form-control" th:field="*{descricao}"></textarea>
 					</div>
 				</div>
 				<div class=" row">
+
+					<!-- 				Seção -->
 					<div class="col-md-4"
 						th:classappend="${#fields.hasErrors('secao')} ? has-error">
-						<label for="secao" class="col-form-label">Seção:</label> 
-						<select id="secao" class="form-select" th:field="*{secao}">
+						<label for="secao" class="col-form-label">Seção:</label> <select
+							id="secao" class="form-select" th:field="*{secao}">
 							<option value="">Selecione uma Seção</option>
 							<option class="form-control-label" th:each="secao : ${secao}"
 								th:value="${secao.codigo}" th:text="${secao.nome}"></option>
@@ -76,20 +81,53 @@
 
 					</div>
 
+					<!-- 		Grupo -->
 					<div class="col-md-4">
-						<label for="grupo" class="col-form-label">Grupo:</label> <select
-							id="grupo" class="form-select form-control">
-							<option value=" ">Selecione um Grupo</option>
+						<label for="grupos" class="col-form-label">Grupo:</label> <select
+							id="grupos" class="form-select form-control"
+							th:field="*{agrupar.grupo}">
+							<option value=" ">Selecionar um Grupo</option>
 							<option class="form-control-label" th:each="grupo : ${grupo}"
-							th:value="${grupo.codigo}" th:text="${grupo.nome}"></option>
+								th:value="${grupo.codigo}" th:text="${grupo.nome}"></option>
 						</select>
 					</div>
+
+					<!-- 					Sub-grupo -->
 					<div class="col-md-4">
-						<label for="subGrupo" class="col-form-label">Sub-Grupo:</label> <select
-							id="subGrupo" class="form-select">
-							<option selected>Choose...</option>
-							<option>...</option>
+						<label for="subGrupo" class="col-form-label">Sub-Grupo:</label>
+						<div>
+							<input type="hidden" id="inputHiddenSubGrupoSelecionada"
+								th:value="*{agrupar.subGrupo} != null ? *{agrupar.subGrupo.codigo}" />
+							<select id="subGrupo" class="form-select" data:url="@{/subGrupo}"
+								th:filed="*{agrupar.subGrupo}">
+								<option value="">Selecione um Sub-grupo</option>
+							</select>
+							<div class="js-img-loading" style="display: none">
+								<img th:src="@{/img/mini-loading.gif}" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+
+					<!-- 				Unidade de Media -->
+					<div class=" col-md-4">
+						<label for="uniMedida" class="col-form-label">Unid. de
+							medida:</label> <select id="uniMedida" class="form-select"
+							th:field="*{uniMedida}">
+							<option value="">Selecione</option>
+							<option class="form-control-label"
+								th:each="uniMedida : ${uniMedida}" th:value="${uniMedida}"
+								th:text="${uniMedida.descricao}">a</option>
 						</select>
+					</div>
+
+					<!-- 				Estoque minimo -->
+					<div class=" col-md-3">
+						<label for="estoqueMin" class="col-form-label">Estoque
+							minimo:</label> <input id="estoqueMin" type="text" class="form-control">
+
 					</div>
 				</div>
 
@@ -116,6 +154,15 @@
 					<div class=" col-md-4">
 						<label for="inputZip" class="col-form-label">Apartamento</label> <input
 							type="text" class="form-control">
+					</div>
+				</div>
+
+				<p>
+				<div class="row">
+					<div class="form-check form-switch">
+						<label class="form-check-label" for="status"> Ativo</label> <input
+							class="form-check-input" type="checkbox" role="switch"
+							id="status" checked>
 					</div>
 				</div>
 
@@ -148,5 +195,6 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/secao.cadastro-rapido.js"></script>
+	<script src="/js/produto.combo-grupo-subGrupo.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.controlestoque.model.Secao;
 
 @Repository
-public interface SecaoRepository extends JpaRepository<Secao, Long> {
+public interface Secoes extends JpaRepository<Secao, Long> {
 
 	public Optional<Secao> findByNomeIgnoreCase(String nome);
 }

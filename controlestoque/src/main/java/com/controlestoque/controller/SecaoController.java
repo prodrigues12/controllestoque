@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.controlestoque.Repository.SecaoRepository;
+import com.controlestoque.Repository.Secoes;
 import com.controlestoque.model.Secao;
 import com.controlestoque.service.SecaoService;
 import com.controlestoque.service.exception.NomeSecaoExistenteException;
@@ -24,7 +24,7 @@ import com.controlestoque.service.exception.NomeSecaoExistenteException;
 public class SecaoController {
 
 	@Autowired
-	SecaoRepository secRepository;
+	Secoes secRepository;
 
 	@Autowired
 	SecaoService secService;

@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.controlestoque.model.Produto;
 
 
-public interface ProdutoRepository extends JpaRepository<Produto, Long>{
+public interface Produtos extends JpaRepository<Produto, Long>{
 
 	@Query("select p from Produto p where p.nome like %?1%")
 	public List<Produto>findByNomeContainingIngnoreCase(String nome); 

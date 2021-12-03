@@ -33,7 +33,7 @@ public class SubGrupo implements Serializable{
 	
 	@NotNull(message = "Grupo é obrigatório")
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "codigo_estado")
+	@JoinColumn(name = "codigo_grupo")
 	@JsonIgnore
 	private Grupo grupo;
 

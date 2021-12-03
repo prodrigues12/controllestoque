@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.controlestoque.Repository.GrupoRepository;
-import com.controlestoque.Repository.ProdutoRepository;
-import com.controlestoque.Repository.SecaoRepository;
+import com.controlestoque.Enums.UnidadeMedia;
+import com.controlestoque.Repository.Grupos;
+import com.controlestoque.Repository.Produtos;
+import com.controlestoque.Repository.Secoes;
 import com.controlestoque.model.Produto;
 
 @Controller
@@ -26,19 +27,20 @@ import com.controlestoque.model.Produto;
 public class ProdutoController {
 
 	@Autowired
-	ProdutoRepository proRepository;
+	Produtos proRepository;
 	
 	@Autowired
-	SecaoRepository sr;
+	Secoes sr;
 	
 	@Autowired
-	GrupoRepository gruRepsitory;
+	Grupos gruRepsitory;
 
 	@RequestMapping("/novo")
 	public ModelAndView novo(Produto produto) {
 		ModelAndView mv = new ModelAndView("produto/novoProduto");
 		mv.addObject("secao", sr.findAll());
 		mv.addObject("grupo", gruRepsitory.findAll());
+		mv.addObject("uniMedida", UnidadeMedia.values());
 		return mv;
 	}
 

@@ -1,6 +1,5 @@
 package com.controlestoque.model;
 
-
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -23,10 +22,8 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.NumberFormat;
 
-
+import com.controlestoque.Enums.UnidadeMedia;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 
 @Entity
 public class Produto implements Serializable {
@@ -42,33 +39,33 @@ public class Produto implements Serializable {
 	private String nome;
 
 	private String descricao;
-	
+
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal qtdEstoque;
+
+	// @NotNull(message = "Campo é obrigatória")
+	@DecimalMin(value = "1.0", message = "Estoque deve ser no mínimo 1")
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal qtdEstMin;
+
 	@NotNull(message = "Campo 'Seção' é obrigatório")
 	@ManyToOne
 	@JoinColumn(name = "codigo_secao")
 	private Secao secao;
 
-
-	@NumberFormat(pattern = "#,##0.00")
-	private BigDecimal qtdEstoque;
-
-//	@NotNull(message = "O unidade de medida é obrigatório")
-//	@ManyToOne
-//	@JoinColumn(name = "codigo_estilo")
-//	private UnidadeMedida unidadeMedia;
-
-//	@NotNull(message = "Campo é obrigatória")
-	@DecimalMin(value = "1.0", message = "Estoque deve ser no mínimo 1")
-	@NumberFormat(pattern = "#,##0.00")
-	private BigDecimal qtdEstMin;
-
 	@JsonIgnore
 	@Embedded
 	private Agrupar agrupar;
 
+	@NotNull(message = "O unidade de medida é obrigatório")
+	@Enumerated
+	private UnidadeMedia uniMedida;
+
 //	@JsonIgnore
 //	@Embedded
 //	private Endereco endereco;
+
+	
 
 	public Long getCodigo() {
 		return codigo;
@@ -110,13 +107,28 @@ public class Produto implements Serializable {
 		this.qtdEstMin = qtdEstMin;
 	}
 
-
 	public Secao getSecao() {
 		return secao;
 	}
 
 	public void setSecao(Secao secao) {
 		this.secao = secao;
+	}
+
+	public Agrupar getAgrupar() {
+		return agrupar;
+	}
+
+	public void setAgrupar(Agrupar agrupar) {
+		this.agrupar = agrupar;
+	}
+
+	public UnidadeMedia getUniMedida() {
+		return uniMedida;
+	}
+
+	public void setUniMedida(UnidadeMedia uniMedida) {
+		this.uniMedida = uniMedida;
 	}
 
 	@Override
