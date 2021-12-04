@@ -45,6 +45,12 @@
 	font-weight: bold;
 	color: #fff;
 }
+.card-body{
+	
+    
+   
+	
+}
 
 a {
 	cursor: pointer;
@@ -100,9 +106,10 @@ a {
 	color: #fff;
 }
 
-.col-form-label {
+.col-form-label-sm {
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 17px;
+	font-weight: bolder;
 
 }
 
@@ -140,4 +147,9 @@ a {
 
 .thead-dark {
 	text-align: center;
+}
+
+.ce-field-action{
+	display: flex;
+	
 }

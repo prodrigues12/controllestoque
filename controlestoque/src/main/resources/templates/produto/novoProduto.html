@@ -42,23 +42,25 @@
 				<div class="row">
 					<!-- 				Codigo -->
 					<div class=" col-md-1">
-						<label class=" col-form-label">Codigo:</label> <input
-							class="form-control" type="text" readonly placeholder="00000" />
+						<label class=" col-form-label-sm">Codigo:</label> <input
+							class="form-control form-control-sm" type="text" readonly
+							placeholder="00000" />
 					</div>
 
 					<!-- 				Nome -->
 					<div class="col-md-11">
-						<label class="col-form-label">Nome:</label> <input
-							class="form-control" placeholder="Ex: Caneta vermelha"
-							th:field="*{nome}">
+						<label class="col-form-label-sm">Nome:</label> <input
+							class="form-control form-control-sm"
+							placeholder="Ex: Caneta vermelha" th:field="*{nome}">
 					</div>
 				</div>
 
 				<div class="row">
 					<!-- 				Descrição -->
 					<div class="col-md-12">
-						<label class=" col-form-label">Descrição:</label>
-						<textarea class="form-control" th:field="*{descricao}"></textarea>
+						<label class=" col-form-label-sm">Descrição:</label>
+						<textarea class="form-control form-control-sm"
+							th:field="*{descricao}"></textarea>
 					</div>
 				</div>
 				<div class=" row">
@@ -66,11 +68,12 @@
 					<!-- 				Seção -->
 					<div class="col-md-4"
 						th:classappend="${#fields.hasErrors('secao')} ? has-error">
-						<label for="secao" class="col-form-label">Seção:</label> <select
-							id="secao" class="form-select" th:field="*{secao}">
+						<label for="secao" class="col-form-label-sm">Seção:</label> <select
+							id="secao" class="form-select form-select-sm" th:field="*{secao}">
 							<option value="">Selecione uma Seção</option>
-							<option class="form-control-label" th:each="secao : ${secao}"
-								th:value="${secao.codigo}" th:text="${secao.nome}"></option>
+							<option class="form-control-label form-control-sm"
+								th:each="secao : ${secao}" th:value="${secao.codigo}"
+								th:text="${secao.nome}"></option>
 						</select>
 
 						<div>
@@ -83,8 +86,8 @@
 
 					<!-- 		Grupo -->
 					<div class="col-md-4">
-						<label for="grupos" class="col-form-label">Grupo:</label> <select
-							id="grupos" class="form-select form-control"
+						<label for="grupo" class="col-form-label-sm">Grupo:</label> <select
+							id="grupo" class="form-select form-control form-select-sm"
 							th:field="*{agrupar.grupo}">
 							<option value=" ">Selecionar um Grupo</option>
 							<option class="form-control-label" th:each="grupo : ${grupo}"
@@ -94,15 +97,15 @@
 
 					<!-- 					Sub-grupo -->
 					<div class="col-md-4">
-						<label for="subGrupo" class="col-form-label">Sub-Grupo:</label>
-						<div>
+						<label for="subGrupo" class="col-form-label-sm">Sub-Grupo:</label>
+						<div class="ce-field-action">
 							<input type="hidden" id="inputHiddenSubGrupoSelecionada"
 								th:value="*{agrupar.subGrupo} != null ? *{agrupar.subGrupo.codigo}" />
-							<select id="subGrupo" class="form-select" data:url="@{/subGrupo}"
-								th:filed="*{agrupar.subGrupo}">
+							<select id="subGrupo" class="form-select form-select-sm"
+								data:url="@{/subgrupo}" th:filed="*{agrupar.subGrupo}">
 								<option value="">Selecione um Sub-grupo</option>
 							</select>
-							<div class="js-img-loading" style="display: none">
+							<div class="" style="display: none">
 								<img th:src="@{/img/mini-loading.gif}" />
 							</div>
 						</div>
@@ -112,12 +115,13 @@
 				<div class="row">
 
 					<!-- 				Unidade de Media -->
-					<div class=" col-md-4">
-						<label for="uniMedida" class="col-form-label">Unid. de
-							medida:</label> <select id="uniMedida" class="form-select"
+					<div class=" col-md-3">
+						<label for="uniMedida" class="col-form-label-sm">Unid. de
+							medida:</label> <select id="uniMedida" class="form-select form-select-sm"
 							th:field="*{uniMedida}">
 							<option value="">Selecione</option>
-							<option class="form-control-label"
+							<option class="form-control-label-sm
+					"
 								th:each="uniMedida : ${uniMedida}" th:value="${uniMedida}"
 								th:text="${uniMedida.descricao}">a</option>
 						</select>
@@ -125,9 +129,13 @@
 
 					<!-- 				Estoque minimo -->
 					<div class=" col-md-3">
-						<label for="estoqueMin" class="col-form-label">Estoque
-							minimo:</label> <input id="estoqueMin" type="text" class="form-control">
+						<label for="estoqueMin" class="col-form-label-sm">Estoque
+							minimo:</label> <input id="estoqueMin" type="text"
+							class="form-control form-control-sm">
 
+					</div>
+					<div style="display: none">
+						<img th:src="@{/img/mini-loading.gif}" />
 					</div>
 				</div>
 
@@ -135,14 +143,14 @@
 
 					<!-- 				Rua -->
 					<div class=" col-md-4">
-						<label for="rua" class="col-form-label">Rua:</label> <input
-							type="text" class="form-control" id="rua">
+						<label for="rua" class="col-form-label-sm">Rua:</label> <input
+							type="text" class="form-control form-control-sm" id="rua">
 					</div>
 
 					<!-- 				Andar -->
 					<div class=" col-md-4">
-						<label for="inputState" class="col-form-label">Andar:</label> <select
-							id="inputState" class="form-control">
+						<label for="inputState" class="col-form-label-sm">Andar:</label> <select
+							id="inputState" class="form-control form-control-sm">
 							<option selected>Selecione um andar...</option>
 							<option>1</option>
 							<option>2</option>
@@ -152,8 +160,8 @@
 
 					<!-- 				Apartamento -->
 					<div class=" col-md-4">
-						<label for="inputZip" class="col-form-label">Apartamento</label> <input
-							type="text" class="form-control">
+						<label for="inputZip" class="col-form-label-sm">Apartamento:</label>
+						<input type="text" class="form-control form-control-sm">
 					</div>
 				</div>
 
@@ -181,6 +189,8 @@
 			</div>
 		</div>
 	</form>
+
+
 
 
 	<div th:replace="fragmentos/fragmentos :: footer"></div>
