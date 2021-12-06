@@ -58,7 +58,7 @@ public class Produto implements Serializable {
 	private Agrupar agrupar;
 
 	@NotNull(message = "O unidade de medida é obrigatório")
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private UnidadeMedia uniMedida;
 
 //	@JsonIgnore

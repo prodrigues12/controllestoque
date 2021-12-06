@@ -39,7 +39,8 @@
 			</div>
 			<div class="card-body">
 
-				<div class="row">
+				<div class="row mb-3">
+
 					<!-- 				Codigo -->
 					<div class=" col-md-1">
 						<label class=" col-form-label-sm">Codigo:</label> <input
@@ -55,7 +56,7 @@
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row mb-3">
 					<!-- 				Descrição -->
 					<div class="col-md-12">
 						<label class=" col-form-label-sm">Descrição:</label>
@@ -63,25 +64,23 @@
 							th:field="*{descricao}"></textarea>
 					</div>
 				</div>
-				<div class=" row">
+				<div class=" row mb-3">
 
 					<!-- 				Seção -->
 					<div class="col-md-4"
 						th:classappend="${#fields.hasErrors('secao')} ? has-error">
-						<label for="secao" class="col-form-label-sm">Seção:</label> <select
-							id="secao" class="form-select form-select-sm" th:field="*{secao}">
-							<option value="">Selecione uma Seção</option>
-							<option class="form-control-label form-control-sm"
-								th:each="secao : ${secao}" th:value="${secao.codigo}"
-								th:text="${secao.nome}"></option>
-						</select>
-
-						<div>
-							<a href="#" data-bs-toggle="modal" data-bs-target="#secaoModal">
-								<i class="bx bxs-plus-circle"></i>
+						<label for="secao" class="col-form-label-sm">Seção:</label>
+						<div class="input-group">
+							<select id="secao" class="form-select form-select-sm"
+								th:field="*{secao}">
+								<option value="">Selecione uma Seção</option>
+								<option class="form-control-label form-control-sm"
+									th:each="secao : ${secao}" th:value="${secao.codigo}"
+									th:text="${secao.nome}"></option>
+							</select> <a href="#" data-bs-toggle="modal" data-bs-target="#secaoModal">
+								<i class="bx bxs-plus-circle ce-icon"></i>
 							</a>
 						</div>
-
 					</div>
 
 					<!-- 		Grupo -->
@@ -112,7 +111,7 @@
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row mb-3">
 
 					<!-- 				Unidade de Media -->
 					<div class=" col-md-3">
@@ -120,8 +119,7 @@
 							medida:</label> <select id="uniMedida" class="form-select form-select-sm"
 							th:field="*{uniMedida}">
 							<option value="">Selecione</option>
-							<option class="form-control-label-sm
-					"
+							<option class="form-control-label-sm"
 								th:each="uniMedida : ${uniMedida}" th:value="${uniMedida}"
 								th:text="${uniMedida.descricao}">a</option>
 						</select>
@@ -131,42 +129,45 @@
 					<div class=" col-md-3">
 						<label for="estoqueMin" class="col-form-label-sm">Estoque
 							minimo:</label> <input id="estoqueMin" type="text"
-							class="form-control form-control-sm">
+							th:field="*{qtdEstMin}" class="form-control form-control-sm">
 
-					</div>
-					<div style="display: none">
-						<img th:src="@{/img/mini-loading.gif}" />
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row mb-3">
 
 					<!-- 				Rua -->
-					<div class=" col-md-4">
+					<div class=" col-md-3">
 						<label for="rua" class="col-form-label-sm">Rua:</label> <input
 							type="text" class="form-control form-control-sm" id="rua">
 					</div>
 
-					<!-- 				Andar -->
-					<div class=" col-md-4">
-						<label for="inputState" class="col-form-label-sm">Andar:</label> <select
-							id="inputState" class="form-control form-control-sm">
-							<option selected>Selecione um andar...</option>
+					<!-- 				Bloco -->
+					<div class=" col-md-3">
+						<label for="bloco" class="col-form-label-sm">Bloco:</label> <select
+							id="bloco" class="form-control form-control-sm">
+							<option selected>Selecione um bloco...</option>
 							<option>1</option>
 							<option>2</option>
 							<option>3</option>
 						</select>
 					</div>
+					
+<!-- 					Sala -->
+					<div class=" col-md-3">
+						<label for="sala" class="col-form-label-sm">Sala:</label>
+						<input type="text" class="form-control form-control-sm" id="sala">
+					</div>
 
 					<!-- 				Apartamento -->
-					<div class=" col-md-4">
-						<label for="inputZip" class="col-form-label-sm">Apartamento:</label>
-						<input type="text" class="form-control form-control-sm">
+					<div class=" col-md-3">
+						<label for="apartamento" class="col-form-label-sm">Apartamento:</label>
+						<input type="text" class="form-control form-control-sm" id="apartamento">
 					</div>
 				</div>
 
 				<p>
-				<div class="row">
+				<div class="row mb-3">
 					<div class="form-check form-switch">
 						<label class="form-check-label" for="status"> Ativo</label> <input
 							class="form-check-input" type="checkbox" role="switch"

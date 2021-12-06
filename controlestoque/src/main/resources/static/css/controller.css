@@ -45,12 +45,7 @@
 	font-weight: bold;
 	color: #fff;
 }
-.card-body{
-	
-    
-   
-	
-}
+
 
 a {
 	cursor: pointer;
@@ -152,4 +147,10 @@ a {
 .ce-field-action{
 	display: flex;
 	
+	
+}
+
+.ce-icon{
+	color: #000080;
+	font-size: 2em;
 }

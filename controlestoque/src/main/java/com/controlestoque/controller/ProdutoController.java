@@ -21,24 +21,28 @@ import com.controlestoque.Repository.Grupos;
 import com.controlestoque.Repository.Produtos;
 import com.controlestoque.Repository.Secoes;
 import com.controlestoque.model.Produto;
+import com.controlestoque.service.ProdutoService;
 
 @Controller
 @RequestMapping("/produto")
 public class ProdutoController {
 
 	@Autowired
-	Produtos proRepository;
+	 private Produtos proRepository;
 	
 	@Autowired
-	Secoes sr;
+	private Secoes sessaoRepository;
 	
 	@Autowired
-	Grupos gruRepsitory;
+	private Grupos gruRepsitory;
+	
+	@Autowired
+	 ProdutoService prodService;
 
 	@RequestMapping("/novo")
 	public ModelAndView novo(Produto produto) {
 		ModelAndView mv = new ModelAndView("produto/novoProduto");
-		mv.addObject("secao", sr.findAll());
+		mv.addObject("secao", sessaoRepository.findAll());
 		mv.addObject("grupo", gruRepsitory.findAll());
 		mv.addObject("uniMedida", UnidadeMedia.values());
 		return mv;
@@ -50,7 +54,7 @@ public class ProdutoController {
 		if (result.hasErrors()) {
 			return novo(produto);
 		} else {
-			proRepository.save(produto);
+			prodService.salvar(produto);
 			atributes.addFlashAttribute("mensagem", "Salvo com sucesso");
 			return new ModelAndView("redirect:/produto/novo");
 		}
