@@ -2,6 +2,7 @@ package com.controlestoque.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -12,11 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.DecimalMax;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -61,9 +60,8 @@ public class Produto implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private UnidadeMedia uniMedida;
 
-//	@JsonIgnore
-//	@Embedded
-//	private Endereco endereco;
+	@OneToMany
+	private List<Endereco> endereco;
 
 	
 
