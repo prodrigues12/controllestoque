@@ -52,15 +52,4 @@ public class GrupoController {
 		return new ModelAndView("redirect:/grupo/novo");
 	}
 
-//	@RequestMapping(method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
-//	public @ResponseBody ResponseEntity<?> salvar(@RequestBody @Valid Grupo grupo, BindingResult result) {
-//		if (result.hasErrors()) {
-//			return ResponseEntity.badRequest().body(result.getFieldError("nome").getDefaultMessage());
-//		}
-//
-//		grupo = grupoService.salvarGrupo(grupo);
-//
-//		return ResponseEntity.ok(grupo);
-//	}
-
 }

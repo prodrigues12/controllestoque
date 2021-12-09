@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.controlestoque.Enums.UnidadeMedia;
 import com.controlestoque.Repository.Grupos;
 import com.controlestoque.Repository.Produtos;
+import com.controlestoque.Repository.Ruas;
 import com.controlestoque.Repository.Secoes;
 import com.controlestoque.Repository.filter.ProdutoFilter;
 import com.controlestoque.controller.page.PageWrapper;
@@ -37,6 +38,9 @@ public class ProdutoController {
 	@Autowired
 	private Grupos gruRepsitory;
 	
+	@Autowired 
+	private Ruas ruaRepository;
+	
 	@Autowired
 	 ProdutoService prodService;
 
@@ -46,6 +50,7 @@ public class ProdutoController {
 		mv.addObject("secao", sessaoRepository.findAll());
 		mv.addObject("grupo", gruRepsitory.findAll());
 		mv.addObject("uniMedida", UnidadeMedia.values());
+		mv.addObject("rua", ruaRepository.findAll());
 		return mv;
 	}
 

@@ -8,17 +8,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 @Embeddable
-public class Agrupar implements Serializable{
+public class Agrupar implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "codigo_subGrupo")
 	private SubGrupo subGrupo;
-	
+
 	@Transient
 	private Grupo grupo;
 
@@ -38,13 +38,11 @@ public class Agrupar implements Serializable{
 		this.grupo = grupo;
 	}
 
-public String getNomeSubgrupoPelaGrupo() {
-	if(this.subGrupo !=null ) {
-		return this.subGrupo.getNome() + "/"+ this.subGrupo.getGrupo().getNome();
+	public String getNomeSubgrupoPelaGrupo() {
+		if (this.subGrupo != null) {
+			return this.subGrupo.getNome() + "/" + this.subGrupo.getGrupo().getNome();
+		}
+		return null;
 	}
-	return null;
-}
-	
-	
 
 }

@@ -137,9 +137,14 @@
 				<div class="row mb-3">
 
 					<!-- 				Rua -->
-					<div class=" col-md-3">
-						<label for="rua" class="col-form-label-sm">Rua:</label> <input
-							type="text" class="form-control form-control-sm" id="rua">
+					<div class="col-md-4">
+						<label for="rua" class="col-form-label-sm">Rua:</label> <select
+							id="rua" class="form-select form-control form-select-sm"
+							th:field="*{endereco.rua}">
+							<option value=" ">Selecionar um Grupo</option>
+							<option class="form-control-label" th:each="rua : ${rua}"
+								th:value="${rua.codigo}" th:text="${rua.nome}"></option>
+						</select>
 					</div>
 
 					<!-- 				Bloco -->
@@ -156,13 +161,13 @@
 <!-- 					Sala -->
 					<div class=" col-md-3">
 						<label for="sala" class="col-form-label-sm">Sala:</label>
-						<input type="text" class="form-control form-control-sm" id="sala">
+						<input type="text" class="form-control form-control-sm" id="sala" placeholder="Selecione um Sala" readonly="readonly">
 					</div>
 
 					<!-- 				Apartamento -->
 					<div class=" col-md-3">
 						<label for="apartamento" class="col-form-label-sm">Apartamento:</label>
-						<input type="text" class="form-control form-control-sm" id="apartamento">
+						<input type="text" class="form-control form-control-sm" id="apartamento"placeholder="Selecione um apartamento" readonly="readonly">
 					</div>
 				</div>
 
