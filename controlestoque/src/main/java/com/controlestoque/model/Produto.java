@@ -128,6 +128,14 @@ public class Produto implements Serializable {
 	public void setUniMedida(UnidadeMedia uniMedida) {
 		this.uniMedida = uniMedida;
 	}
+	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 
 	@Override
 	public int hashCode() {

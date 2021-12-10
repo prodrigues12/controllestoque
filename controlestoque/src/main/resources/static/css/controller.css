@@ -34,10 +34,17 @@
 	color: #E0FFFF;
 }
 
+.header {
+
+	font-weight: bold;
+	color: #000;
+}
+
 /* ############# CARD ############# */
 .card {
 	width: auto;
 	left: auto;
+	background-color: #c0c0c0;
 }
 
 .card-header {
@@ -113,6 +120,11 @@ a {
 	border-color: #191970;
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 14px;
+	
+	
 }
 
 .form-select{
@@ -120,6 +132,9 @@ a {
 	border-color: #191970;
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
+	font-weight: bold;
+	font-size: 14px;
+	
 }
 
 .fa-info-circle {

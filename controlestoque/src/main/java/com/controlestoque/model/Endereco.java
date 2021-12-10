@@ -13,12 +13,17 @@ public class Endereco  implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Transient
+	private Rua rua;
+	
 	@ManyToOne
 	@JoinColumn(name = "codigo_bloco")
 	private Bloco bloco;
 	
-	@Transient
-	private Rua rua;
+	@ManyToOne
+	@JoinColumn(name = "codigo_apartamento")
+	private Apartamento apartamento;
+
 
 	public Bloco getBloco() {
 		return bloco;
@@ -36,11 +41,21 @@ public class Endereco  implements Serializable{
 		this.rua = rua;
 	}
 	
+	public Apartamento getApartamento() {
+		return apartamento;
+	}
+
+	public void setApartamento(Apartamento apartamento) {
+		this.apartamento = apartamento;
+	}
+	
 	public String getNomeBlcoPelaRua() {
 		if(this.bloco != null) {
 			return this.bloco.getNome() + "/"+ this.bloco.getRua().getNome();
 		}
 		return null;
 	}	
+	
+	
 
 }

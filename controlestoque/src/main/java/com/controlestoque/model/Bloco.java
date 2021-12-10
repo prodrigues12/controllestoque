@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,9 +28,10 @@ public class Bloco implements Serializable {
 	private Long codigo;
 	
 	@NotBlank(message = "Nome é obrigatório")
+	@Size(min = 3 ,max =20 , message = "Nome deve conter de 3 à 20 caracteres")
 	private String nome;
 	
-	@NotNull
+	@NotNull(message = "Rua de ser selecionada")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="codigo_rua")
 	@JsonIgnore

@@ -10,9 +10,6 @@ import javax.persistence.Transient;
 @Embeddable
 public class Agrupar implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne

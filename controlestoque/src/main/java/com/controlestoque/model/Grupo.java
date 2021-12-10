@@ -7,21 +7,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "grupo")
 public class Grupo  implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	
+	@NotBlank(message = "Campo nome de ser preenchido")
+	@Size(min = 3, max = 20, message = "Campo nome dever conter de 3 à 20 caracteres")
 	private String nome;
 
 	@Id
