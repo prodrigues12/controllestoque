@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.controlestoque.Enums.UnidadeMedia;
+import com.controlestoque.Repository.Apartamentos;
+import com.controlestoque.Repository.Blocos;
 import com.controlestoque.Repository.Grupos;
 import com.controlestoque.Repository.Produtos;
 import com.controlestoque.Repository.Ruas;
@@ -41,6 +42,11 @@ public class ProdutoController {
 	@Autowired 
 	private Ruas ruaRepository;
 	
+	@Autowired Blocos blocoRepository;
+	
+	@Autowired
+	private Apartamentos apRepository;
+	
 	@Autowired
 	 ProdutoService prodService;
 
@@ -51,6 +57,8 @@ public class ProdutoController {
 		mv.addObject("grupo", gruRepsitory.findAll());
 		mv.addObject("uniMedida", UnidadeMedia.values());
 		mv.addObject("rua", ruaRepository.findAll());
+		mv.addObject("bloco", blocoRepository.findAll());
+		mv.addObject("apartamento", apRepository.findAll());
 		return mv;
 	}
 

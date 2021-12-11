@@ -11,11 +11,11 @@ Controllestoque.ComboRua = (function() {
 	}
 
 	ComboRua.prototype.iniciar = function() {
-		this.combo.on('change', onRuaAlterado.bind(this));
+		this.combo.on('change', onRuaAlterada.bind(this));
 
 	}
 
-	function onRuaAlterado() {
+	function onRuaAlterada() {
 		this.emitter.trigger('alterado', this.combo.val())
 	}
 
@@ -29,17 +29,17 @@ Controllestoque.ComboBloco = (function() {
 	function ComboBloco(comboRua) {
 		this.comboRua = comboRua;
 		this.combo = $('#bloco');
-		this.imgLoading = $('.js-img-loading');
+		this.imgLoading = $('.js-img-loading-bloco');
 		this.inputHiddenBlocoSelecionado = $('#inputHiddenBlocoSelecionado')
 	}
 	ComboBloco.prototype.iniciar = function() {
 		reset.call(this);
-		this.comboRua.on('alterado', onRuaAlterado.bind(this));
+		this.comboRua.on('alterado', onRuaAlterada.bind(this));
 		var codigoRua = this.comboRua.combo.val();
 		inicializarBlocos.call(this, codigoRua);
 	}
 
-	function onRuaAlterado(evento, codigoRua) {
+	function onRuaAlterada(evento, codigoRua) {
 		
 		this.inputHiddenBlocoSelecionado.val('');
 		inicializarBlocos.call(this, codigoRua);
@@ -70,14 +70,14 @@ Controllestoque.ComboBloco = (function() {
 		this.combo.html(options.join(''));
 		this.combo.removeAttr('disabled');
 
-		var codigoBlocosSelecionado = this.inputHiddenBlocoSelecionado.val();
-		if (codigoBlocosSelecionado) {
-			this.combo.val(codigoBlocosSelecionado);
+		var codigoBlocoSelecionado = this.inputHiddenBlocoSelecionado.val();
+		if (codigoBlocoSelecionado) {
+			this.combo.val(codigoBlocoSelecionado);
 		}
 	}
 
 	function reset() {
-		this.combo.html('<option value="">Selecione um Bloco </option>');
+		this.combo.html('<option value="">Selecione o Bloco </option>');
 		this.combo.val('');
 		this.combo.attr('disabled', 'disabled');
 	}
@@ -93,8 +93,8 @@ Controllestoque.ComboBloco = (function() {
 
 	return ComboBloco;
 
-}());
 
+}());
 
 
 $(function() {
@@ -104,4 +104,6 @@ $(function() {
 
 	var comboBloco = new Controllestoque.ComboBloco(comboRua);
 	comboBloco.iniciar();
+	
+	
 });

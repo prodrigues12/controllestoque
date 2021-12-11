@@ -23,15 +23,13 @@
 		<div class="header_toggle">
 			<i class='bx bx-menu' id="header-toggle"></i>
 		</div>
-		
-		<div>
-		Sistema de Gerenciamento de Estoque CD-994
-		</div>
+
+		<div>Sistema de Gerenciamento de Estoque CD-994</div>
 		<div class="header_img">
 			<img src="/img/user.png" alt="">
 		</div>
 	</header>
-	
+
 	<div class="l-navbar" id="nav-bar" th:fragment=sindebar>
 		<nav class="nav">
 			<div>
@@ -75,22 +73,21 @@
 
 
 			</div>
-						<a th:href="@{/logout}" class="nav_link"><i
-							class='bx bx-log-out nav_icon'></i> <span class="navbar-text"
-						></span></a>
-<!-- 			<a class=" nav-link"><i class="fas fa-sign-out-alt"></i></a> -->
+			<a th:href="@{/logout}" class="nav_link"><i
+				class='bx bx-log-out nav_icon'></i> <span
+				class="nav_name navbar-text">Sair</span></a>
+
 		</nav>
 	</div>
 
 
 
-		<footer class="aw-layout-footer  js-content"
-			th:fragment="footer">
-			<div class="container-fluid">
-				<span class="aw-footer-disclaimer">&copy; Paulino Rodrigues.
-					Todos os direitos reservados.</span>
-			</div>
-		</footer>
+	<footer class="aw-layout-footer  js-content" th:fragment="footer">
+		<div class="container-fluid">
+			<span class="aw-footer-disclaimer">&copy; Paulino Rodrigues.
+				Todos os direitos reservados.</span>
+		</div>
+	</footer>
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script

@@ -29,8 +29,8 @@ Controllestoque.ComboSubGrupo = (function() {
 	function ComboSubGrupo(comboGrupo) {
 		this.comboGrupo = comboGrupo;
 		this.combo = $('#subGrupo');
-		this.imgLoading = $('.js-img-loading');
-		this.inputHiddenSubGrupoSelecionada = $('#inputHiddenSubGrupoSelecionada')
+		this.imgLoading = $('.js-img-loading-sub-grupo');
+		this.inputHiddenSubGrupoSelecionado = $('#inputHiddenSubGrupoSelecionado')
 	}
 	ComboSubGrupo.prototype.iniciar = function() {
 		reset.call(this);
@@ -41,7 +41,7 @@ Controllestoque.ComboSubGrupo = (function() {
 
 	function onGrupoAlterado(evento, codigoGrupo) {
 		
-		this.inputHiddenSubGrupoSelecionada.val('');
+		this.inputHiddenSubGrupoSelecionado.val('');
 		inicializarSubGrupos.call(this, codigoGrupo);
 	}
 
@@ -70,9 +70,9 @@ Controllestoque.ComboSubGrupo = (function() {
 		this.combo.html(options.join(''));
 		this.combo.removeAttr('disabled');
 
-		var codigoSubGrupoSelecionada = this.inputHiddenSubGrupoSelecionada.val();
-		if (codigoSubGrupoSelecionada) {
-			this.combo.val(codigoSubGrupoSelecionada);
+		var codigoSubGrupoSelecionado = this.inputHiddenSubGrupoSelecionado.val();
+		if (codigoSubGrupoSelecionado) {
+			this.combo.val(codigoSubGrupoSelecionado);
 		}
 	}
 

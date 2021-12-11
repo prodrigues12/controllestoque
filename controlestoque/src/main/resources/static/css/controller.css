@@ -44,13 +44,17 @@
 .card {
 	width: auto;
 	left: auto;
-	background-color: #c0c0c0;
+	border-width: 2px;
+	border-color: #191970;
+	border-top-right-radius: .2rem !important;
+	border-bottom-right-radius: .2rem !important;
+	
 }
 
 .card-header {
 	background-color: #191970;
 	font-weight: bold;
-	color: #fff;
+	color: #FAF2F2;
 }
 
 
@@ -102,52 +106,49 @@ a {
 	background-color: #0e87fe;
 }
 
-.container2 {
-	text-align: center;
-	background-color: #0e87fe;
-	color: #fff;
-}
 
-.col-form-label-sm {
+/* .col-form-label-sm { */
+/* 	font-weight: bold; */
+/* 	font-size: 17px; */
+/* } */
+
+/* .form-control { */
+/* 	border-width: 2px; */
+/* 	border-color: #191970; */
+/* 	border-top-right-radius: .2rem !important; */
+/* 	border-bottom-right-radius: .2rem !important; */
+/* 	font-weight: bold; */
+	
+/* 	font-size: 14px; */
+	
+	
+/* } */
+
+/* .control-form { */
+/* 	border-width: 2px; */
+/* 	border-color: #191970; */
+/* 	border-top-right-radius: .2rem !important; */
+/* 	border-bottom-right-radius: .2rem !important; */
+/* 	font-weight: bold; */
+/* 	font-size: 14px; */
+/* } */
+/* .form-select{ */
+/* 	border-width: 2px; */
+/* 	border-color: #191970; */
+/* 	border-top-right-radius: .2rem !important; */
+/* 	border-bottom-right-radius: .2rem !important; */
+/* 	font-size: 14px; */
+	
+/* }  */
+
+.form-check-label{
+
+	
 	font-weight: bold;
 	font-size: 17px;
-	font-weight: bolder;
-
-}
-
-.form-control {
-	border-width: 2px;
-	border-color: #191970;
-	border-top-right-radius: .2rem !important;
-	border-bottom-right-radius: .2rem !important;
-	font-weight: bold;
-	font-style: italic;
-	font-size: 14px;
-	
 	
 }
 
-.form-select{
-	border-width: 2px;
-	border-color: #191970;
-	border-top-right-radius: .2rem !important;
-	border-bottom-right-radius: .2rem !important;
-	font-weight: bold;
-	font-size: 14px;
-	
-}
-
-.fa-info-circle {
-	color: #0e87fe;
-}
-
-.fa-times-circle {
-	color: #FF0000;
-}
-
-.fa-check-circle {
-	color: #228B22;
-}
 
 .table {
 	text-align: center;
@@ -166,6 +167,14 @@ a {
 }
 
 .ce-icon{
-	color: #000080;
+	color: #191970;
 	font-size: 2em;
+}
+
+.bw-field-action {
+	display: flex;
+}
+
+.bw-field-action__icon {
+	margin: 6px 0 0 5px;
 }
