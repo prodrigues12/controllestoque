@@ -16,7 +16,7 @@ Controllestoque.ComboRua = (function() {
 	}
 
 	function onRuaAlterada() {
-		this.emitter.trigger('alterado', this.combo.val())
+		this.emitter.trigger('alterada', this.combo.val())
 	}
 
 	return ComboRua;
@@ -34,7 +34,7 @@ Controllestoque.ComboBloco = (function() {
 	}
 	ComboBloco.prototype.iniciar = function() {
 		reset.call(this);
-		this.comboRua.on('alterado', onRuaAlterada.bind(this));
+		this.comboRua.on('alterada', onRuaAlterada.bind(this));
 		var codigoRua = this.comboRua.combo.val();
 		inicializarBlocos.call(this, codigoRua);
 	}
@@ -93,8 +93,8 @@ Controllestoque.ComboBloco = (function() {
 
 	return ComboBloco;
 
-
 }());
+
 
 
 $(function() {
@@ -104,6 +104,4 @@ $(function() {
 
 	var comboBloco = new Controllestoque.ComboBloco(comboRua);
 	comboBloco.iniciar();
-	
-	
 });

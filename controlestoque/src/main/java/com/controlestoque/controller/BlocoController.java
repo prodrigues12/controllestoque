@@ -63,7 +63,7 @@ public class BlocoController implements Serializable {
 	}
 	
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody List<Bloco>pesquisarPorCodigoGrupo(
+	public  @ResponseBody List<Bloco>pesquisarPorCodigoRua(
 			@RequestParam(name = "rua", defaultValue = "0") Long codigoRua){
 		try {
 			Thread.sleep(800);
