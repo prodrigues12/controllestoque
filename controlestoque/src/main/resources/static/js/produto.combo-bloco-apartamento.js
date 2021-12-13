@@ -3,23 +3,23 @@ var Controllestoque = Controllestoque || {};
 
 Controllestoque.ComboBloco = (function() {
 	
-	function ComboBloco() {
+	function ComboBloco1() {
 		this.combo = $('#bloco');
 		this.emitter = $({});
 		this.on = this.emitter.on.bind(this.emitter);
 
 	}
 
-	ComboBloco.prototype.iniciar = function() {
-		this.combo.on('change', onBlocoAlterado.bind(this));
+	ComboBloco1.prototype.iniciar = function() {
+		this.combo.on('change', onBlocoTrocado.bind(this));
 
 	}
 
-	function onBlocoAlterado() {
+	function onBlocoTrocado() {
 		this.emitter.trigger('alterado', this.combo.val())
 	}
 
-	return ComboBloco;
+	return ComboBloco1;
 
 
 }());
@@ -34,12 +34,12 @@ Controllestoque.ComboApartamento = (function() {
 	}
 	ComboApartamento.prototype.iniciar = function() {
 		reset.call(this);
-		this.comboBloco.on('alterado', onBlocoAlterado.bind(this));
+		this.comboBloco.on('alterado', onBlocoTrocado.bind(this));
 		var codigoBloco = this.comboBloco.combo.val();
 		inicializarApartamentos.call(this, codigoBloco);
 	}
 
-	function onBlocoAlterado(evento, codigoBloco) {
+	function onBlocoTrocado(evento, codigoBloco) {
 		
 		this.inputHiddenApartamentoSelecionado.val('');
 		inicializarApartamentos.call(this, codigoBloco);
@@ -63,7 +63,7 @@ Controllestoque.ComboApartamento = (function() {
 
 	function onBuscarpartamentosFinalizado(apartamento) {
 		var options = [];
-		bloco.forEach(function(apartamento) {
+		apartamento.forEach(function(apartamento) {
 			options.push('<option value="' + apartamento.codigo + '">' + apartamento.nome + '</option>');
 		});
 
@@ -95,9 +95,9 @@ Controllestoque.ComboApartamento = (function() {
 
 }());
 
-	var comboBloco = new Controllestoque.ComboBloco();
-	comboBloco.iniciar();
+	var comboBloco1 = new Controllestoque.ComboBloco1();
+	comboBloco1.iniciar();
 	
-	var comboApartamento = new Controllestoque.ComboApartamento(comboBloco);
+	var comboApartamento = new Controllestoque.ComboApartamento(comboBloco1);
 	comboApartamento.iniciar();
 

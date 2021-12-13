@@ -22,8 +22,6 @@ import com.controlestoque.model.Bloco;
 import com.controlestoque.service.BlocoService;
 import com.controlestoque.service.exception.NomeBlocoExistenteException;
 
-
-
 @Controller
 @RequestMapping("/bloco")
 public class BlocoController implements Serializable {

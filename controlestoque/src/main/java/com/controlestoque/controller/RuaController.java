@@ -44,7 +44,7 @@ public class RuaController {
 			}
 
 			attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
-			return new ModelAndView("redirect:/bloco/novo");
+			return new ModelAndView("redirect:/rua/novo");
 		}
 
 	}
