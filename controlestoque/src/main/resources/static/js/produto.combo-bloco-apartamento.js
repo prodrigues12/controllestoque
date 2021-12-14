@@ -1,7 +1,7 @@
 var Controllestoque = Controllestoque || {};
 
 
-Controllestoque.ComboBloco = (function() {
+Controllestoque.ComboBloco1 = (function() {
 	
 	function ComboBloco1() {
 		this.combo = $('#bloco');
@@ -16,7 +16,7 @@ Controllestoque.ComboBloco = (function() {
 	}
 
 	function onBlocoTrocado() {
-		this.emitter.trigger('alterado', this.combo.val())
+		this.emitter.trigger('trocado', this.combo.val());
 	}
 
 	return ComboBloco1;
@@ -30,11 +30,11 @@ Controllestoque.ComboApartamento = (function() {
 		this.comboBloco = comboBloco;
 		this.combo = $('#apartamento');
 		this.imgLoading = $('.js-img-loading-apartamento');
-		this.inputHiddenBlocoSelecionado = $('#inputHiddenApartamentoSelecionado')
+		this.inputHiddenApartamentoSelecionado = $('#inputHiddenApartamentoSelecionado')
 	}
 	ComboApartamento.prototype.iniciar = function() {
 		reset.call(this);
-		this.comboBloco.on('alterado', onBlocoTrocado.bind(this));
+		this.comboBloco.on('trocado', onBlocoTrocado.bind(this));
 		var codigoBloco = this.comboBloco.combo.val();
 		inicializarApartamentos.call(this, codigoBloco);
 	}
@@ -70,7 +70,7 @@ Controllestoque.ComboApartamento = (function() {
 		this.combo.html(options.join(''));
 		this.combo.removeAttr('disabled');
 
-		var codigoApartamentosSelecionado = this.inputHiddenApartamentosSelecionado.val();
+		var codigoApartamentosSelecionado = this.inputHiddenApartamentoSelecionado.val();
 		if (codigoApartamentosSelecionado) {
 			this.combo.val(codigoApartamentosSelecionado);
 		}

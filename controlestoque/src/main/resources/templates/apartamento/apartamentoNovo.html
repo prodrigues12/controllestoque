@@ -46,7 +46,7 @@
 
 						<label for="rua" class="col-form-label">Rua:</label> <select
 							id="rua" class="form-select form-control ">
-							<option value=" ">Selecionar Rua</option>
+							<option value="">Selecionar Rua</option>
 							<option class="form-control-label" th:each="rua : ${rua}"
 								th:value="${rua.codigo}" th:text="${rua.nome}"></option>
 						</select>
@@ -55,18 +55,25 @@
 					<!-- Bloco -->
 
 					<div class="col-md-3">
-						<label for="bloco" class="col-form-label">Bloco:</label> 
-						<input type="hidden" id="inputHiddenBlocoSelecionado"><select
-							id="bloco" class="form-select form-control" th:field="*{bloco}" data:url="@{/bloco}">
-							<option value=" ">Selecionar um Bloco</option>
-							<option class="form-control-label" th:each="bloco : ${bloco}"
-								th:value="${bloco.codigo}" th:text="${bloco.nome}"></option>
-						</select>
+						<label for="bloco" class="col-form-label">Bloco:</label>
+						<div class="ce-field-action">
+							<input type="hidden" id="inputHiddenBlocoSelecionado"
+								th:value="*{bloco} != null ? *{bloco.codigo}"><select
+								id="bloco" class="form-select form-control" data:url="@{/bloco}"
+								th:field="*{bloco}">
+								<option value="">Selecionar um Bloco</option>
+							</select>
+							<div class="bw-field-action__icon  js-img-loading-bloco"
+								style="display: none">
+								<img th:src="@{/img/mini-loading.gif}" />
+							</div>
+						</div>
 					</div>
 
 					<div class="col-md-6">
 						<label class="col-form-label">Apartamento:</label> <input
-							class="form-control" th:field="*{nome}" placeholder="Nome da rua">
+							class="form-control" th:field="*{nome}"
+							placeholder="Nome da apartamento">
 					</div>
 
 					<p>
