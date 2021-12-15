@@ -64,7 +64,7 @@ Controllestoque.ComboSubGrupo = (function() {
 	function onBuscarSubGruposFinalizado(subGrupo) {
 		var options = [];
 		subGrupo.forEach(function(subGrupo) {
-			options.push('<option value="' + subGrupo.codigo + '">' + subGrupo.nome + '</option>');
+			options.push('<option class="form-control" value="' + subGrupo.codigo + '">' + subGrupo.nome + '</option>');
 		});
 
 		this.combo.html(options.join(''));

@@ -67,7 +67,7 @@ Controllestoque.ComboBloco = (function() {
 	function onBuscarBlocosFinalizado(bloco) {
 		var options = [];
 		bloco.forEach(function(bloco) {
-			options.push('<option value="' + bloco.codigo + '">' + bloco.nome + '</option>');
+			options.push('<option class="form-control" value="' + bloco.codigo + '">' + bloco.nome + '</option>');
 		});
 
 		this.combo.html(options.join(''));

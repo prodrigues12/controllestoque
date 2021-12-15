@@ -64,7 +64,7 @@ Controllestoque.ComboApartamento = (function() {
 	function onBuscarpartamentosFinalizado(apartamento) {
 		var options = [];
 		apartamento.forEach(function(apartamento) {
-			options.push('<option value="' + apartamento.codigo + '">' + apartamento.nome + '</option>');
+			options.push('<option class="form-control" value="' + apartamento.codigo + '">' + apartamento.nome + '</option>');
 		});
 
 		this.combo.html(options.join(''));

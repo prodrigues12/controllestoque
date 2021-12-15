@@ -1,5 +1,7 @@
 package com.controlestoque.Repository.helper.produtos;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -19,6 +21,7 @@ import org.springframework.util.StringUtils;
 
 import com.controlestoque.Repository.filter.ProdutoFilter;
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
+import com.controlestoque.dto.ProdutoDTO;
 import com.controlestoque.model.Produto;
 
 public class ProdutosImpl implements ProdutosQueries {
@@ -71,12 +74,23 @@ public class ProdutosImpl implements ProdutosQueries {
 			}
 
 			
-
 		}
+	}
+	
+	@Override
+	public List<ProdutoDTO> porNome(String porNome) {
+		String jpql = "select new com.controlestoque.dto.ProdutoDTO (codigo, nome, secao, estoque, uniMedida)"
+				+ "from Produto where lower(nome) like lower(:porNome)";
+		List<ProdutoDTO> produtosFiltrados = manager.createQuery(jpql, ProdutoDTO.class)
+				.setParameter("nome", "%"+porNome+"%").getResultList();
+				
+		return produtosFiltrados;
 	}
 
 	private boolean isSecaoPresente(ProdutoFilter filtro) {
 		return filtro.getSecao() != null && filtro.getSecao().getCodigo() != null;
 	}
+
+	
 
 }

@@ -33,7 +33,7 @@
 						<h4>Novo Produto</h4>
 					</div>
 					<div class="col-md-2">
-						<a th:href="@{/produto}"class="btn btn-primary">Pesquisar</a>
+						<a th:href="@{/produto}"class="btn btn-primary btn-sm">Pesquisar</a>
 					</div>
 				</div>
 			</div>
@@ -72,7 +72,7 @@
 						th:classappend="${#fields.hasErrors('secao')} ? has-error">
 						<label for="secao" class="col-form-label-sm">Seção:</label>
 						<div class="input-group">
-							<select id="secao" class="form-select form-select-sm"
+							<select id="secao" class=" form-control form-select form-select-sm"
 								th:field="*{secao}">
 								<option value="">Selecione uma Seção</option>
 								<option class="form-control-label form-control-sm"
@@ -104,7 +104,7 @@
 						<div class="ce-field-action">
 							<input type="hidden" id="inputHiddenSubGrupoSelecionado"
 								th:value="*{agrupar.subGrupo} != null ? *{agrupar.subGrupo.codigo}" />
-							<select id="subGrupo" class="form-select form-select-sm"
+							<select id="subGrupo" class="form-control form-select form-select-sm"
 								data:url="@{/subgrupo}" th:filed="*{agrupar.subGrupo}">
 								<option value="">Selecione um Sub-grupo - html</option>
 							</select>
@@ -119,9 +119,9 @@
 				<div class="row mb-3">
 
 					<!-- 				Unidade de Media -->
-					<div class=" col-md-3">
+					<div class=" col-md-2">
 						<label for="uniMedida" class="col-form-label-sm">Unid. de
-							medida:</label> <select id="uniMedida" class="form-select form-select-sm"
+							medida:</label> <select id="uniMedida" class=" form-control form-select form-select-sm"
 							th:field="*{uniMedida}">
 							<option value="">Selecione</option>
 							<option class="form-control" th:each="uniMedida : ${uniMedida}"
@@ -130,10 +130,10 @@
 					</div>
 
 					<!-- 				Estoque minimo -->
-					<div class=" col-md-3">
+					<div class=" col-md-2">
 						<label for="estoqueMin" class="col-form-label-sm">Estoque
 							minimo:</label> <input id="estoqueMin" type="text"
-							th:field="*{qtdEstMin}" class="form-control form-control-sm">
+							th:field="*{qtdEstMin}" class="form-control form-control-sm" placeholder="1">
 
 					</div>
 				</div>
@@ -145,10 +145,10 @@
 						<label for="rua" class="col-form-label-sm">Rua:</label>
 						<div class="ce-field-action ">
 							<select id="rua"
-								class="form-select form-control form-select-sm"
+								class="form-control form-select  form-select-sm"
 								th:field="*{endereco.rua}">
 								<option value="">Selecionar Rua</option>
-								<option class="form-control-label" th:each="rua : ${rua}"
+								<option class="form-control form-control-label" th:each="rua : ${rua}"
 									th:value="${rua.codigo}" th:text="${rua.nome}"></option>
 							</select>
 						</div>
@@ -160,9 +160,9 @@
 						<div class="ce-field-action">
 							<input type="hidden" id="inputHiddenBlocoSelecionado"
 								th:value="*{endereco.bloco} != null ? *{endereco.bloco.codigo}" />
-							<select id="bloco" class="form-select form-select-sm"
+							<select id="bloco" class=" form-control form-select form-select-sm"
 								data:url="@{/bloco}" th:filed="*{endereco.bloco}">
-								<option value="">Selecione um bloco - html</option>
+								<option  class="form-control" value="">Selecione um bloco - html</option>
 							</select>
 							<div class="bw-field-action__icon  js-img-loading-bloco"
 								style="display: none">
@@ -177,7 +177,7 @@
 						<div class="ce-field-action">
 							<input type="hidden" id="inputHiddenApartamentoSelecionado"
 								th:value="*{endereco.apartamento} != null ? *{endereco.apartamento.codigo}" />
-							<select id="apartamento" class="form-select form-select-sm"
+							<select id="apartamento" class=" form-control form-select form-select-sm"
 								data:url="@{/apartamento}" th:filed="*{endereco.apartamento}">
 								<option value="">Selecione o Apartamento</option>
 							</select>
