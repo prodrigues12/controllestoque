@@ -14,4 +14,10 @@ public class DashboardController {
 		
 	}
 
+	@GetMapping("/menu")
+	public ModelAndView menu() {
+		ModelAndView mv = new ModelAndView("fragmentos/fragmentos2");
+		return mv;
+		
+	}
 }

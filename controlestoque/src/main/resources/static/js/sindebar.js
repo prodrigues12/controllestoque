@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				// show navbar
 				nav.classList.toggle('show-barra')
 				// change icon
-				toggle.classList.toggle('bx-x')
+//				toggle.classList.toggle('bx-x')
 				// add padding to body
 				bodypd.classList.toggle('body-pd')
 				// add padding to header
@@ -35,4 +35,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	linkColor.forEach(l => l.addEventListener('click', colorLink))
 
 	// Your code to run since DOM is loaded and ready
-});
+});	

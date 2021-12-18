@@ -14,7 +14,10 @@
 *,
 ::before,
 ::after {
-    box-sizing: border-box
+    box-sizing: border-box;
+    margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
@@ -76,6 +79,7 @@ a {
     padding: .5rem 1rem 0 0;
     transition: .5s;
     z-index: var(--z-fixed)
+    
 }
 
 .nav {
@@ -83,7 +87,9 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden
+    overflow: hidden;
+     margin: 0 auto !important;
+    
 }
 
 .nav_logo,
@@ -96,7 +102,7 @@ a {
 }
 
 .nav_logo {
-    margin-bottom: 2rem
+    margin-bottom: 1rem
 }
 
 .nav_logo-icon {
@@ -128,15 +134,21 @@ a {
 }
 
 .nav_icon {
-    font-size: 1.30rem
+    font-size: 1rem
+}
+
+.nav_icon_mini {
+    font-size: 0,8 rem;
+    padding-left: 1cm;
 }
 
 .show {
-    left: 0
+    left: 10cm;
 }
 
 .body-pd {
-    padding-left: calc(var(--nav-width) + 1rem)
+    padding-left: calc(var(--nav-width) + 1rem);
+  
 }
 
 .active {
@@ -178,7 +190,8 @@ a {
 
     .l-navbar {
         left: 0;
-        padding: 1rem 1rem 0 0
+        padding: 1rem 1rem 0 0;     
+        
     }
 
     

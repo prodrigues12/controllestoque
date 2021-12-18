@@ -20,7 +20,8 @@
 
 	<header class="header" id="header" th:fragment=header>
 		<div class="header_toggle">
-			<i class='bx bx-chevron-right' id="header-toggle"></i>
+<!-- 			<i class='bx bx-chevron-right'  -->
+<!-- 				style="padding: 0, 1cm"></i> -->
 		</div>
 
 		<div>Sistema de Gerenciamento de Estoque CD-994</div>
@@ -32,63 +33,74 @@
 	<div class="l-navbar" id="nav-bar" th:fragment=sindebar>
 		<nav class="nav">
 			<div>
-				<a class="nav_logo"> <i class='bx bx-sidebar nav_logo-icon'></i>
+				<a class="nav_logo"> <i  id="header-toggle" class=" bx bx-sidebar nav_logo-icon"></i>
 					<span class="nav_logo-name">CD-994</span>
 				</a>
+				
 				<div class="nav_list">
-					<a th:href="@{/}" class="nav_link active"> <i
-						class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span>
-
-					</a> <a href="#" class="nav_link"> <i class='bx bx-cart nav_icon'></i>
+				<div class="nav_link active">
+					 <i  
+						class=" header-toggle bx bx-grid-alt nav_icon"></i>
+						
+						<a th:href="@{/}" >
+						 <span class="nav_name">Dashboard</span>
+</a>
+					
+					</div>
+					
+					 <a href="#" class="nav_link"> <i class='bx bx-cart nav_icon'></i>
 						<span class="nav_name">Vendas</span>
+
+					</a> <a th:href="@{/produto}" class="nav_link "> <i
+						class='bx bxs-component nav_icon'></i> <span class="nav_name">Produto
+					</span></a> <a class="nav_link" data-bs-toggle="collapse"
+						href="#collapseExample" role="button" aria-expanded="false"
+						aria-controls="collapseExample"> <i
+						class='bx bx bx bx-map nav_icon'></i> <span
+						class="nav_name">Endereço</span>
+					</a>
+					<div class="collapse" id="collapseExample">
+
+						<a href="#" class="nav_link"> <i
+							class='bx bx bxs-building-house nav_icon_mini'></i> <span
+							class="nav_name">Rua</span>
+
+						</a> <a href="#" class="nav_link"> <i
+							class='bx bxs-building-house nav_icon_mini'></i> <span class="nav_name">Bloco</span>
+
+
+						</a> <a href="#" class="nav_link"> <i class='bx bx-home-circle nav_icon_mini'></i>
+							<span class="nav_name">Apatamento</span>
+
+						</a> <a href="#" class="nav_link"> <i class='bx bx-user nav_icon_mini'></i>
+							<span class="nav_name">Sala</span>
+
+						</a>
+
+					</div>
+
+
+					 <a href="#" class="nav_link"> <i
+						class='bx bx-coin-stack nav_icon'></i> <span class="nav_name">Estoque</span>
+
 
 					</a> <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i>
 						<span class="nav_name">Usuarios</span>
 
-					</a> <a class=" nav_link " data-bs-toggle="collapse"
-						href="#collapseExample" role="button" aria-expanded="false"
-						aria-controls="collapseExample"><i
-						class='bx bx-plus-circle nav_icon'></i> Cadastro </a>
-
-					<div class="collapse" id="collapseExample">
-						<a th:href="@{/produto/novo}" class="nav_link"> <span
-							class="nav_name">Produto</span>
-
-						</a> <a th:href="@{/secao/novo}" class="nav_link"> <span
-							class="nav_name">Secao</span>
-						</a>
-					</div>
-
-
-					<a class="nav_link " type="button"
-						id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-						<li><button class="dropdown-item" type="button">Produto</button></li>
-						<li><button class="dropdown-item" type="button">Seção</button></li>
-						<li><a class="nav_link " type="button"
-								id="dropdownMenu3" data-bs-toggle="dropdown"
-								aria-expanded="true">Endereço</a>
-							<ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
-								<li><button class="dropdown-item" type="button">Rua</button></li>
-								<li><button class="dropdown-item" type="button">Bloco</button></li>
-								<li><button class="dropdown-item" type="button">Apartamento</button></li>
-								<li><button class="dropdown-item" type="button">Sala</button></li>
-							</ul></li>
-					</ul>
-
-
-
-					<a href="#" class="nav_link"> <i
-						class='bx bx-coin-stack nav_icon'></i> <span class="nav_name">Estoque</span>
-
 					</a> <a href="#" class="nav_link"> <i
-						class='bx bx-clipboard nav_icon'></i> <span class="nav_name">Relatorio</span>
-
+						class='bx bx-clipboard nav_icon iconAtivo'></i> <span
+						class="nav_name">Relatorio</span>
 					</a>
 
+
+					<!-- 					########################### -->
+
+
+
+
+
+
 				</div>
-
-
 			</div>
 			<!-- 			<a th:href="@{/logout}" class="nav_link"><i -->
 			<!-- 				class='bx bx-log-out nav_icon'></i> <span -->
@@ -96,6 +108,8 @@
 
 		</nav>
 	</div>
+
+
 
 
 
