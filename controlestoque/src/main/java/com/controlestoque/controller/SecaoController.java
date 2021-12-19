@@ -1,12 +1,16 @@
 package com.controlestoque.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.controlestoque.Repository.Secoes;
+import com.controlestoque.Repository.filter.SecaoFilter;
+import com.controlestoque.controller.page.PageWrapper;
 import com.controlestoque.model.Secao;
 import com.controlestoque.service.SecaoService;
 import com.controlestoque.service.exception.NomeSecaoExistenteException;
@@ -65,5 +71,19 @@ public class SecaoController {
 
 		return ResponseEntity.ok(secao);
 	}
+	@GetMapping
+	public ModelAndView pesquisarSecao(SecaoFilter secaoFilter , BindingResult result,
+			@PageableDefault(size = 3) Pageable pageable, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView("secao/pesquisarSecao");
+		mv.addObject("secao", secRepository.findAll());
+		
+		
+PageWrapper<Secao> paginaWrapper = new PageWrapper<>(secRepository.filtrar(secaoFilter, pageable), 
+		httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+	}
+	
+	
 
 }
