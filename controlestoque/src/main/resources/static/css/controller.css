@@ -157,6 +157,20 @@ a {
 	font-size: 25px;
 }
 
+.bx-edit:hover{
+	color:#32CD32;
+}
+
+.bx-trash:hover{
+	color: #FF0000;
+
+}
+
+.bx-error-circle:hover{
+	color:#00BFFF;
+	
+}
+
 .bw-field-action {
 	display: flex;
 }

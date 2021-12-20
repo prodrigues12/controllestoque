@@ -134,12 +134,12 @@ a {
 }
 
 .nav_icon {
-    font-size: 1rem
+    font-size: 1.4rem
 }
 
 .nav_icon_mini {
     font-size: 0,8 rem;
-    padding-left: 1cm;
+/*     padding-left: 1cm; */
 }
 
 .nav_sub-icon_mini {

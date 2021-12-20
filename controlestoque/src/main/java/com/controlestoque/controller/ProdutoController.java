@@ -99,5 +99,18 @@ PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.filtrar(pro
 		return proRepository.porNome(nome);
 	}
 	
+	@RequestMapping("/estoque")
+	public ModelAndView estoque (Produto produto) {
+		ModelAndView mv = new ModelAndView("estoque/estoque");
+	
+		return mv;
+	}
+	
+	@RequestMapping("/estoque/ajusteEstoque")
+	public ModelAndView estoqueAjuste (Produto produto) {
+		ModelAndView mv = new ModelAndView("estoque/ajusteEstoque");
+	
+		return mv;
+	}
 
 }
