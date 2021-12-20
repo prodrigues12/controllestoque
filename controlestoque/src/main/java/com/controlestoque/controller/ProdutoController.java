@@ -82,7 +82,7 @@ public class ProdutoController {
 
 	@GetMapping
 	public ModelAndView pesquisar(ProdutoFilter produtoFilter , BindingResult result,
-			@PageableDefault(size = 3) Pageable pageable, HttpServletRequest httpServletRequest) {
+			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("produto/pesquisarProduto");
 		mv.addObject("secao", sessaoRepository.findAll());
 		mv.addObject("grupo", gruRepsitory.findAll());

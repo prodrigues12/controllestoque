@@ -118,12 +118,12 @@ a {
 .nav_link {
     position: relative;
     color: var(--first-color-light);
-    margin-bottom: 1.0rem;
+/*     margin-bottom: 0rem; */
     transition: .3s
 }
 
 .nav_link:hover {
-    color: var(--white-color)
+    color:  #FF8C00
 }
 
 .nav_link2 {
@@ -140,6 +140,12 @@ a {
 .nav_icon_mini {
     font-size: 0,8 rem;
     padding-left: 1cm;
+}
+
+.nav_sub-icon_mini {
+    font-size: 0,8 rem;
+/*     padding-left: 1cm; */
+    color:#87CEFA
 }
 
 .show {

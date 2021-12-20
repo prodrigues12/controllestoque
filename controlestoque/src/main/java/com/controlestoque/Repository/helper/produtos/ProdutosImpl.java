@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
@@ -17,7 +16,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-
 
 import com.controlestoque.Repository.filter.ProdutoFilter;
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
@@ -51,7 +49,7 @@ public class ProdutosImpl implements ProdutosQueries {
 	}
 
 	private void adicionarFiltro(ProdutoFilter filtro, Criteria criteria) {
-		// TODO Auto-generated method stub
+	
 		if (filtro != null) {
 			if (!StringUtils.isEmpty(filtro.getCodigo())) {
 				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));

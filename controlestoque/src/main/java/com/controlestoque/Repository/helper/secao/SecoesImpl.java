@@ -1,5 +1,7 @@
 package com.controlestoque.Repository.helper.secao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.controlestoque.Repository.filter.SecaoFilter;
@@ -26,7 +29,7 @@ public class SecoesImpl implements SecoesQueries {
 	@Autowired
 	private PaginacaoUtil paginacaoUtil;
 
-	@Override
+	@Transactional(readOnly = true)
 	public Page<Secao> filtrar(SecaoFilter filtro, Pageable pageable) {
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Secao.class);
 
@@ -34,7 +37,6 @@ public class SecoesImpl implements SecoesQueries {
 		adicionarFiltro(filtro, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filtro));
-
 	}
 
 	private Long total(SecaoFilter filtro) {
@@ -48,14 +50,24 @@ public class SecoesImpl implements SecoesQueries {
 	private void adicionarFiltro(SecaoFilter filtro, Criteria criteria) {
 
 		if (filtro != null) {
+			
+			if (!StringUtils.isEmpty(filtro.getCodigo())) {
+				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
+			}
 			if (!StringUtils.isEmpty(filtro.getNome())) {
 				criteria.add(Restrictions.ilike("nome", filtro.getNome(), MatchMode.ANYWHERE));
 			}
-			if (!StringUtils.isEmpty(filtro.getCodigo())) {
-				criteria.add(Restrictions.ilike("nome", filtro.getCodigo()));
-			}
+			
 		}
 
 	}
+//	public List<SecaoDTO> porCodigoOuNome(String porCodigoOuNome) {
+//		String jpql="select new com.controlestoque.dto.SecaoDTO(codigo, nome) "
+//				+ "from Secao where lower(codigo) like lower(:codigoOuNome) or lower(nome) like lower(:codigoOuNome)";
+//		List<SecaoDTO> secaoFiltradas = manager.createQuery(jpql , SecaoDTO.class)
+//				.setParameter("codigoOuNome" , "%"+porCodigoOuNome +"%")
+//				.getResultList();
+//		return secaoFiltradas;
+//	}
 
 }

@@ -1,5 +1,7 @@
 package com.controlestoque.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -47,19 +49,18 @@ public class SecaoController {
 		if (result.hasErrors()) {
 			return novo(secao);
 		}
-		
+
 		try {
 			secService.salvarSecao(secao);
-			
+
 		} catch (NomeSecaoExistenteException e) {
 			result.rejectValue("nome", e.getMessage(), e.getMessage());
 			return novo(secao);
 		}
 
-			attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
-			return new ModelAndView("redirect:/secao/novo");
-		}
-	
+		attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
+		return new ModelAndView("redirect:/secao/novo");
+	}
 
 	@RequestMapping(method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public @ResponseBody ResponseEntity<?> salvar(@RequestBody @Valid Secao secao, BindingResult result) {
@@ -71,19 +72,23 @@ public class SecaoController {
 
 		return ResponseEntity.ok(secao);
 	}
+
 	@GetMapping
-	public ModelAndView pesquisarSecao(SecaoFilter secaoFilter , BindingResult result,
+	public ModelAndView pesquisarSecao(SecaoFilter secaoFilter, BindingResult result,
 			@PageableDefault(size = 3) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("secao/pesquisarSecao");
 		mv.addObject("secao", secRepository.findAll());
-		
-		
-PageWrapper<Secao> paginaWrapper = new PageWrapper<>(secRepository.filtrar(secaoFilter, pageable), 
-		httpServletRequest);
+
+		PageWrapper<Secao> paginaWrapper = new PageWrapper<>(secRepository.filtrar(secaoFilter, pageable),
+				httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}
-	
-	
+
+//	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+//	public @ResponseBody List<SecaoDTO> pesquisar(String codigoOuNome) {
+//		return secRepository.porCodigoOuNome(codigoOuNome);
+//
+//	}
 
 }

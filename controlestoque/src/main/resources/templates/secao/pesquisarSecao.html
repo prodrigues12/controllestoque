@@ -21,41 +21,46 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
-		<div class="card">
-			<div class="card-header">
-				<div class="row">
-					<div class=" col-md-10">
-						<h4>Pesquisa Seção</h4>
-					</div>
-					<div class="col-md-2">
-						<a th:href="@{/secao/novo}"class="btn btn-primary btn-sm">Nova Secão</a>
-					</div>
+	<div class="card">
+		<div class="card-header">
+			<div class="row">
+				<div class=" col-md-10">
+					<h4>Pesquisa Produto</h4>
+				</div>
+				<div class="col-md-2">
+					<a class="btn btn-primary btn-sm" th:href="@{/secao/novo}">Novo Produto</a>
 				</div>
 			</div>
-
-			<div class="card-body"></div>
-
-
-
-			<div class="row mb-3">
-				<form action="" method="get" th:object="${secaoFilter}">
-					<!-- 				Nome -->
-					<div class=" col-md-12">
-						 <input
-							class="form-control form-control-sm" type="text"
-							th:field="*{nome}" placeholder="codigo ou nome" />
-					</div>
-
-					<div class="form-row">
-						<button type="submit" class="btn btn-primary btn-sm">Pesquisar</button>
-						<a type="submit" class="btn btn-outline-warning btn-sm"
-							th:href="@{/secao/}">Limpar filtro</a>
-					</div>
-				</form>
-			</div>
 		</div>
-	
-	
+		<div class="card-body">
+
+			<form action="" method="get" th:object="${secaoFilter}">
+
+				<div class="row mb-3">
+
+					<!-- 				Codigo -->
+					<div class=" col-md-1">
+						<label class=" col-form-label-sm">Codigo:</label> <input
+							class="form-control form-control-sm" type="text" th:field="*{codigo}"/>
+					</div>
+
+					<!-- 				Nome -->
+					<div class="col-md-11">
+						<label class="col-form-label-sm">Nome:</label> <input
+							class="form-control form-control-sm" th:field="*{nome}">
+					</div>
+					<!-- 				Seção -->
+
+				</div>
+
+
+				<div class="form-row">
+					<button type="submit" class="btn btn-primary btn-sm">Pesquisar</button>
+					<a type="submit" class="btn btn-outline-warning btn-sm" th:href="@{/secao/}">Limpar filtro</a>
+				</div>
+			</form>
+		</div>
+	</div>
 	<div class="table-responsive">
 		<table class="table table-bordered table-houver  table-sm"
 			style="text-align: center">
@@ -68,7 +73,7 @@
 				<th class="col-4"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Nome')"></th:block>
 				</th>
-				
+
 				<th class="col-2">Ação</th>
 
 			</thead>
@@ -104,7 +109,7 @@
 			</ul>
 		</nav>
 	</div>
-	
+
 
 	<div th:replace="fragmentos/fragmentos :: footer"></div>
 	<div th:replace="secao/cadastroRapidoSecao :: modalSecao"></div>

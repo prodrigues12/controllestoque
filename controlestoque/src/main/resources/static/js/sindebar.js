@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				// show navbar
 				nav.classList.toggle('show-barra')
 				// change icon
-//				toggle.classList.toggle('bx-x')
-				// add padding to body
+				toggle.classList.toggle('bx-x')
+//				 add padding to body
 				bodypd.classList.toggle('body-pd')
 				// add padding to header
 				headerpd.classList.toggle('body-pd')
