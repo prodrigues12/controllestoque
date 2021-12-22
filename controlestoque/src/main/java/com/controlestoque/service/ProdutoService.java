@@ -2,17 +2,22 @@ package com.controlestoque.service;
 
 import java.math.BigDecimal;
 
+import javax.persistence.PersistenceException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import com.controlestoque.Repository.Produtos;
 import com.controlestoque.model.Produto;
+import com.controlestoque.service.exception.ImpossivelExcluirEntidadeException;
 
 @Service
 public class ProdutoService {
 	
 	@Autowired
-	private Produtos produtoRepository;
+	private Produtos prodRepository;
 	
 	
 	public Produto salvar (Produto produto) {
@@ -21,9 +26,21 @@ public class ProdutoService {
 			produto.setQtdEstMin(BigDecimal.ONE);
 		}
 		
-		produtoRepository.save(produto);
+		prodRepository.save(produto);
 		
 		return produto;
+	}
+	
+	@Transactional
+	public void excluir(Produto produto) {
+		
+		try {
+
+		prodRepository.delete(produto);
+		prodRepository.flush();
+	}catch (PersistenceException e) {
+		throw new ImpossivelExcluirEntidadeException("Impossivel apagar cerveja. Existe movimentação.");
+	}
 	}
 
 }

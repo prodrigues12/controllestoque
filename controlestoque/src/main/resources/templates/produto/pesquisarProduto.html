@@ -114,8 +114,10 @@
 					<td th:text="${produto.secao.nome}">Limpeza</td>
 					<td th:text="${produto.qtdEstoque}">4</td>
 					<td th:text="${produto.uniMedida}">L</td>
-					<td><a><i class=" bx bx-edit ce-icon"></i>
-					</a> &nbsp;&nbsp;<a> <i class="bx bx-trash ce-icon"></i>
+					<td><a title="Editar"
+						th:href="@{/produto/{codigo}(codigo=${produto.codigo})}"><i
+							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp;<a> <i
+							class="bx bx-trash ce-icon"></i>
 					</a>&nbsp;&nbsp;<a><i class="bx bx-error-circle ce-icon"></i></a></td>
 				</tr>
 				<tr th:if="${pagina.vazia}">

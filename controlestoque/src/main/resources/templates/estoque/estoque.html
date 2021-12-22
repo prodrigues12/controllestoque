@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<title>Pesquisa Produto</title>
+<title>Estoque</title>
 <meta name="author" content="Paulino Rodrigues">
 <script src="https://kit.fontawesome.com/006642858d.js"></script>
 <link rel="stylesheet"
@@ -27,30 +27,33 @@
 			<div class="row">
 				<div class=" col-md-10">
 					<h4>Estoque</h4>
-				</div>
-				<!-- 				<div class="col-md-2"> -->
-				<!-- 					<a class="btn btn-primary btn-sm" th:href="@{/produto/novo}">Novo -->
-				<!-- 						Produto</a> -->
-				<!-- 				</div> -->
+				</div>				
+				<div class="col-md-2">
+			<a class="btn btn-dark btn-sm " th:href="@{dashboard}"> 
+			 Voltar
+			</a>
+			
+		</div>
 			</div>
 		</div>
 		<div class="card-body">
 
 			<!-- 			<form action="pesquisa-estoque" method="post"> -->
-			<div class="row mb-3">
+			<div class=" row mb-3">
 
 					<!-- 				Nome -->
-					<div class="col-md-9">
+					<div class="col-md-12">
 						<label class="col-form-label-sm">Nome:</label> <input
 							class="form-control form-control-sm"
 							placeholder="Ex: Caneta vermelha">
 					</div>
 					
-				&nbsp;
+				<p>
 				
-				<button class=" btn btn-info" type="submit" value="">
-					<i class="fas fa-search"></i> Pesquisa
-				</button>
+				<div class="form-row">
+						<button type="submit" class="btn btn-primary">
+							Pesquisar</button>
+					</div>
 			</div>
 			</div>
 			<!-- 			</form> -->
@@ -81,13 +84,8 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="form-row">
-			<a class="btn btn-dark btn-sm offset-md-11" th:href="@{admin}"> <i
-				class="fas fa-undo"></i> Voltar
-			</a>
-			<p>
-		</div>
-	</div>
+		
+	
 
 
 

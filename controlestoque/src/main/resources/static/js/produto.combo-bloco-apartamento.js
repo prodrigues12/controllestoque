@@ -1,9 +1,9 @@
 var Controllestoque = Controllestoque || {};
 
 
-Controllestoque.ComboBloco1 = (function() {
+Controllestoque.ComboBloco = (function() {
 	
-	function ComboBloco1() {
+	function ComboBloco() {
 		this.combo = $('#bloco');
 		this.emitter = $({});
 		this.on = this.emitter.on.bind(this.emitter);
@@ -95,9 +95,9 @@ Controllestoque.ComboApartamento = (function() {
 
 }());
 
-	var comboBloco1 = new Controllestoque.ComboBloco1();
+	var comboBloco = new Controllestoque.ComboBloco();
 	comboBloco1.iniciar();
 	
-	var comboApartamento = new Controllestoque.ComboApartamento(comboBloco1);
+	var comboApartamento = new Controllestoque.ComboApartamento(comboBloco);
 	comboApartamento.iniciar();
 

@@ -1,18 +1,15 @@
 var Controllestoque = Controllestoque || {};
 
-
 Controllestoque.ComboGrupo = (function() {
 
 	function ComboGrupo() {
 		this.combo = $('#grupo');
 		this.emitter = $({});
 		this.on = this.emitter.on.bind(this.emitter);
-
 	}
 
 	ComboGrupo.prototype.iniciar = function() {
 		this.combo.on('change', onGrupoAlterado.bind(this));
-
 	}
 
 	function onGrupoAlterado() {
@@ -20,7 +17,6 @@ Controllestoque.ComboGrupo = (function() {
 	}
 
 	return ComboGrupo;
-
 
 }());
 
@@ -32,6 +28,7 @@ Controllestoque.ComboSubGrupo = (function() {
 		this.imgLoading = $('.js-img-loading-sub-grupo');
 		this.inputHiddenSubGrupoSelecionado = $('#inputHiddenSubGrupoSelecionado')
 	}
+	
 	ComboSubGrupo.prototype.iniciar = function() {
 		reset.call(this);
 		this.comboGrupo.on('alterado', onGrupoAlterado.bind(this));
