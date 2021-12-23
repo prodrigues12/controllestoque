@@ -13,31 +13,36 @@ public class Agrupar implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
-	@JoinColumn(name = "codigo_subGrupo")
-	private SubGrupo subGrupo;
+	@JoinColumn(name = "codigo_subgrupo")
+	private Subgrupo subgrupo;
 
 	@Transient
 	private Grupo grupo;
+		
 
-	public SubGrupo getSubGrupo() {
-		return subGrupo;
+	public Subgrupo getSubgrupo() {
+		return subgrupo;
 	}
 
-	public void setSubGrupo(SubGrupo subGrupo) {
-		this.subGrupo = subGrupo;
+
+	public void setSubgrupo(Subgrupo subgrupo) {
+		this.subgrupo = subgrupo;
 	}
+
 
 	public Grupo getGrupo() {
 		return grupo;
 	}
 
+
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
 	}
 
+
 	public String getNomeSubgrupoPelaGrupo() {
-		if (this.subGrupo != null) {
-			return this.subGrupo.getNome() + "/" + this.subGrupo.getGrupo().getNome();
+		if (this.subgrupo != null) {
+			return this.subgrupo.getNome() + "/" + this.subgrupo.getGrupo().getNome();
 		}
 		return null;
 	}

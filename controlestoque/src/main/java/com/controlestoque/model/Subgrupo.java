@@ -16,8 +16,8 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="subGrupo")
-public class SubGrupo implements Serializable{
+@Table(name="subgrupo")
+public class Subgrupo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -74,7 +74,7 @@ public class SubGrupo implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		SubGrupo other = (SubGrupo) obj;
+		Subgrupo other = (Subgrupo) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;

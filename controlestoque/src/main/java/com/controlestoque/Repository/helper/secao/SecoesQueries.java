@@ -1,6 +1,5 @@
 package com.controlestoque.Repository.helper.secao;
 
-import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

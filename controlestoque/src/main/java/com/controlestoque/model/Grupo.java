@@ -19,7 +19,7 @@ public class Grupo  implements Serializable{
 	
 	private Long codigo;
 	
-	@NotBlank(message = "Campo nome de ser preenchido")
+	@NotBlank(message = "Campo 'nome' de ser preenchido")
 	@Size(min = 3, max = 20, message = "Campo nome dever conter de 3 à 20 caracteres")
 	private String nome;
 

@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.controlestoque.Repository.Grupos;
 import com.controlestoque.Repository.SubGrupos;
-import com.controlestoque.model.SubGrupo;
+import com.controlestoque.model.Subgrupo;
 import com.controlestoque.service.SubGrupoService;
 import com.controlestoque.service.exception.NomeSubGrupoExisteException;
 
@@ -38,14 +38,14 @@ public class SubGrupoController implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@RequestMapping("/novo")
-	public ModelAndView novo(SubGrupo subGrupo) {
+	public ModelAndView novo(Subgrupo subGrupo) {
 		ModelAndView mv = new ModelAndView("subGrupo/subGrupoNovo");
 		mv.addObject("grupo", grupoRepository.findAll());
 		return mv;
 	}
 
 	@PostMapping("/novo")
-	public ModelAndView salvar(@Valid SubGrupo subGrupo, BindingResult result, RedirectAttributes attributes) {
+	public ModelAndView salvar(@Valid Subgrupo subGrupo, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return novo(subGrupo);
 		}
@@ -61,7 +61,7 @@ public class SubGrupoController implements Serializable {
 	}
 	
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public  @ResponseBody List<SubGrupo>pesquisarPorCodigoGrupo(
+	public  @ResponseBody List<Subgrupo>pesquisarPorCodigoGrupo(
 			@RequestParam(name = "grupo", defaultValue = "0") Long condigoGrupo){
 		try {
 			Thread.sleep(800);

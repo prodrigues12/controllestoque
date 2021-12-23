@@ -1,19 +1,22 @@
 package com.controlestoque.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.controlestoque.Repository.Grupos;
+import com.controlestoque.Repository.filter.GrupoFilter;
+import com.controlestoque.controller.page.PageWrapper;
 import com.controlestoque.model.Grupo;
 import com.controlestoque.service.GrupoService;
 import com.controlestoque.service.exception.NomeGrupoExistenteException;
@@ -24,7 +27,10 @@ import com.controlestoque.service.exception.NomeGrupoExistenteException;
 public class GrupoController {
 
 	@Autowired
-	GrupoService grupoService;
+	private GrupoService grupoService;
+	
+	@Autowired
+	private Grupos gruRepository;
 
 	@RequestMapping("/novo")
 	public ModelAndView novo(Grupo grupo) {
@@ -51,5 +57,18 @@ public class GrupoController {
 		attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
 		return new ModelAndView("redirect:/grupo/novo");
 	}
+	
+	@GetMapping
+	public ModelAndView pesquisarGrupo(GrupoFilter grupoFilter, BindingResult result,
+			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView("grupo/pesquisaGrupo");
+		mv.addObject("grupo", gruRepository.findAll());
 
+		PageWrapper<Grupo> paginaWrapper = new PageWrapper<>(gruRepository.filtrar(grupoFilter, pageable),
+				httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+	}
+	
+	
 }

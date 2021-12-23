@@ -24,7 +24,7 @@ Controllestoque.ComboSubGrupo = (function() {
 
 	function ComboSubGrupo(comboGrupo) {
 		this.comboGrupo = comboGrupo;
-		this.combo = $('#subGrupo');
+		this.combo = $('#subgrupo');
 		this.imgLoading = $('.js-img-loading-sub-grupo');
 		this.inputHiddenSubGrupoSelecionado = $('#inputHiddenSubGrupoSelecionado')
 	}
@@ -58,10 +58,10 @@ Controllestoque.ComboSubGrupo = (function() {
 		}
 	}
 
-	function onBuscarSubGruposFinalizado(subGrupo) {
+	function onBuscarSubGruposFinalizado(subgrupos) {
 		var options = [];
-		subGrupo.forEach(function(subGrupo) {
-			options.push('<option class="form-control" value="' + subGrupo.codigo + '">' + subGrupo.nome + '</option>');
+		subgrupos.forEach(function(subgrupo) {
+			options.push('<option class="form-control" value="' + subgrupo.codigo + '">' + subgrupo.nome + '</option>');
 		});
 
 		this.combo.html(options.join(''));

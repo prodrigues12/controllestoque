@@ -7,12 +7,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.controlestoque.model.Grupo;
-import com.controlestoque.model.SubGrupo;
+import com.controlestoque.model.Subgrupo;
 
 @Repository
-public interface SubGrupos extends JpaRepository<SubGrupo, Long> {
+public interface SubGrupos extends JpaRepository<Subgrupo, Long> {
 
-	public List<SubGrupo> findByGrupoCodigo(Long codigoGrupo);
+	public List<Subgrupo> findByGrupoCodigo(Long codigoGrupo);
 
-	public Optional<SubGrupo> findByNomeAndGrupo(String nome, Grupo grupo);
+	public Optional<Subgrupo> findByNomeAndGrupo(String nome, Grupo grupo);
 }

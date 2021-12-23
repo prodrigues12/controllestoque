@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.controlestoque.Repository.SubGrupos;
-import com.controlestoque.model.SubGrupo;
+import com.controlestoque.model.Subgrupo;
 import com.controlestoque.service.exception.NomeSubGrupoExisteException;
 
 @Service
@@ -18,8 +18,8 @@ public class SubGrupoService {
 	SubGrupos subGrupoRepository;
 
 	@Transactional
-	public void salvar(SubGrupo subGrupo) {
-		Optional<SubGrupo> subGrupoExiste = subGrupoRepository.findByNomeAndGrupo(subGrupo.getNome(),
+	public void salvar(Subgrupo subGrupo) {
+		Optional<Subgrupo> subGrupoExiste = subGrupoRepository.findByNomeAndGrupo(subGrupo.getNome(),
 				subGrupo.getGrupo());
 		
 		if(subGrupoExiste.isPresent()) {

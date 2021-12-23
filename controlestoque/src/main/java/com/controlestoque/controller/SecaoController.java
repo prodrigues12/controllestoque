@@ -85,10 +85,5 @@ public class SecaoController {
 		return mv;
 	}
 
-//	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-//	public @ResponseBody List<SecaoDTO> pesquisar(String codigoOuNome) {
-//		return secRepository.porCodigoOuNome(codigoOuNome);
-//
-//	}
 
 }
