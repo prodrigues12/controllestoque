@@ -40,11 +40,6 @@ public class Agrupar implements Serializable {
 	}
 
 
-	public String getNomeSubgrupoPelaGrupo() {
-		if (this.subgrupo != null) {
-			return this.subgrupo.getNome() + "/" + this.subgrupo.getGrupo().getNome();
-		}
-		return null;
-	}
+	
 
 }

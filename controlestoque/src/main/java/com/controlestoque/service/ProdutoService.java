@@ -19,11 +19,14 @@ public class ProdutoService {
 	@Autowired
 	private Produtos prodRepository;
 	
-	
-	public Produto salvar (Produto produto) {
+	@Transactional
+	public Produto salvar(Produto produto) {
 		
 		if(produto.getQtdEstMin()== null) {
 			produto.setQtdEstMin(BigDecimal.ONE);
+		}
+		if(produto.getQtdEstoque()== null) {
+			produto.setQtdEstoque(BigDecimal.ZERO);
 		}
 		
 		prodRepository.save(produto);
@@ -39,7 +42,7 @@ public class ProdutoService {
 		prodRepository.delete(produto);
 		prodRepository.flush();
 	}catch (PersistenceException e) {
-		throw new ImpossivelExcluirEntidadeException("Impossivel apagar cerveja. Existe movimentação.");
+		throw new ImpossivelExcluirEntidadeException("Impossivel apagar Produto. Existe movimentação.");
 	}
 	}
 

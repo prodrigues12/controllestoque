@@ -89,11 +89,11 @@
 					<div class="col-md-4">
 						<label for="grupo" class="col-form-label-sm">Grupo:</label>
 						<div class="ce-field-action ">
-							<select id="grupo"
+							<select id="grupos"
 								class="form-select form-control form-select-sm"
 								th:field="*{agrupar.grupo}">
 								<option value="">Selecionar um Grupo</option>
-								<option class="form-control-label" th:each="grupo : ${grupo}"
+								<option class="form-control-label" th:each="grupo : ${grupos}"
 									th:value="${grupo.codigo}" th:text="${grupo.nome}"></option>
 							</select>
 						</div>
@@ -217,7 +217,8 @@
 					<p>
 						<!-- 				Botões -->
 					<div class="form-row">
-						<button type="submit" class="btn btn-danger offset-md-10">Cancelar</button>
+						<a type="button" th:href="@{/produto}"class="btn btn-danger offset-md-10">Cancelar</a
+					>
 						&nbsp; &nbsp;
 						<button type="submit" class="btn btn-success offset">
 							<!-- 								th:href="@{secao}" -->

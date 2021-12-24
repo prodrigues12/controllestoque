@@ -1,9 +1,9 @@
-var Controllestoque = Controllestoque || {};
+ var Controllestoque = Controllestoque || {};
 
 Controllestoque.ComboGrupo = (function() {
 
 	function ComboGrupo() {
-		this.combo = $('#grupo');
+		this.combo = $('#grupos');
 		this.emitter = $({});
 		this.on = this.emitter.on.bind(this.emitter);
 	}
