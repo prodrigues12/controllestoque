@@ -3,7 +3,7 @@
 Controllestoque.ComboGrupo = (function() {
 
 	function ComboGrupo() {
-		this.combo = $('#grupos');
+		this.combo = $('#grupo');
 		this.emitter = $({});
 		this.on = this.emitter.on.bind(this.emitter);
 	}

@@ -89,11 +89,11 @@
 					<div class="col-md-4">
 						<label for="grupo" class="col-form-label-sm">Grupo:</label>
 						<div class="ce-field-action ">
-							<select id="grupos"
+							<select id="grupo"
 								class="form-select form-control form-select-sm"
 								th:field="*{agrupar.grupo}">
 								<option value="">Selecionar um Grupo</option>
-								<option class="form-control-label" th:each="grupo : ${grupos}"
+								<option class="form-control-label" th:each="grupo : ${grupo}"
 									th:value="${grupo.codigo}" th:text="${grupo.nome}"></option>
 							</select>
 						</div>
@@ -248,7 +248,7 @@
 	<script src="/js/secao.cadastro-rapido.js"></script>
 	<script src="/js/produto.combo-grupo-subGrupo.js"></script>
 	<script src="/js/produto.combo-rua-bloco.js"></script>
-	<script src="/js/produto.combo-bloco-apartamento.js"></script>
+<!-- 	<script src="/js/produto.combo-bloco-apartamento.js"></script> -->
 	<script src="/js/controllestoque.js"></script>
 </body>
 </html>

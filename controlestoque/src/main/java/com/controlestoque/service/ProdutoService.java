@@ -29,6 +29,7 @@ public class ProdutoService {
 			produto.setQtdEstoque(BigDecimal.ZERO);
 		}
 		
+		
 		prodRepository.save(produto);
 		
 		return produto;

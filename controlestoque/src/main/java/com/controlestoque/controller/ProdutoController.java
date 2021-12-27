@@ -66,7 +66,7 @@ public class ProdutoController {
 	public ModelAndView novo(Produto produto) {
 		ModelAndView mv = new ModelAndView("produto/novoProduto");
 		mv.addObject("secao", sessaoRepository.findAll());
-		mv.addObject("grupos", gruRepsitory.findAll());
+		mv.addObject("grupo", gruRepsitory.findAll());
 		mv.addObject("uniMedida", UnidadeMedia.values());
 //		mv.addObject("rua", ruaRepository.findAll());
 //		mv.addObject("bloco", blocoRepository.findAll());

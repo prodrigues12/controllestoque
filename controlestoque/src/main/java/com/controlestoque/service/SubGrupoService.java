@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.controlestoque.Repository.SubGrupos;
+import com.controlestoque.Repository.Subgrupos;
 import com.controlestoque.model.Subgrupo;
 import com.controlestoque.service.exception.NomeSubGrupoExisteException;
 
@@ -15,7 +15,7 @@ import com.controlestoque.service.exception.NomeSubGrupoExisteException;
 public class SubGrupoService {
 
 	@Autowired
-	SubGrupos subGrupoRepository;
+	Subgrupos subGrupoRepository;
 
 	@Transactional
 	public void salvar(Subgrupo subGrupo) {
