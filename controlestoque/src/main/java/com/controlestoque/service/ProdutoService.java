@@ -29,6 +29,7 @@ public class ProdutoService {
 			produto.setQtdEstoque(BigDecimal.ZERO);
 		}
 		
+		System.out.println("    ##### Subgrupo>>>>>>> "+produto.getAgrupar().getSubgrupo());
 		
 		prodRepository.save(produto);
 		

@@ -77,21 +77,21 @@
 			style="text-align: center">
 			<thead class="thead-dark" style="text-align: center">
 
-				<th class="col-1">
-<!-- 								<th:block th:replace="fragmentos/ordenacao :: order (${pagina}, 'grupo' , 'Grupo')"></th:block> -->
+				<th class="col-3">
+								<th:block th:replace="fragmentos/ordenacao :: order (${pagina}, 'grupo' , 'Grupo')"></th:block>
 								</th>
 								
-								<th class="col-9">
-<!-- 								<th:block th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Subgrupo')"></th:block> -->
+								<th class="col-6">
+								<th:block th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Subgrupo')"></th:block>
 								
 								</th>
-								<th class="col-2">Ação</th>
+								<th class="col-3">Ação</th>
 							</thead>
 
 
 			<tbody>
 				<tr th:each="subgrupo :${pagina.conteudo}">
-					<td th:text="${subgrupo.codigo}">1</td>
+					<td th:text="${subgrupo.grupo.nome}">1</td>
 					<td th:text="${subgrupo.nome}">Produto Teste</td>
 					<td><a> <i class=" bx bx-pencil ce-icon"></i>
 					</a> <a> <i class="bx bx-trash ce-icon"></i>

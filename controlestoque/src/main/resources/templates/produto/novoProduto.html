@@ -143,77 +143,77 @@
 					</div>
 				</div>
 
-				<div class="row mb-3">
+<!-- 				<div class="row mb-3"> -->
 
-					<!-- 				Rua -->
-					<div class="col-md-3">
-						<label for="rua" class="col-form-label-sm">Rua:</label>
-						<div class="ce-field-action ">
-							<select id="rua" class="form-control form-select  form-select-sm"
-								th:field="*{endereco.rua}">
-								<option value="">Selecionar Rua</option>
-								<option class="form-control form-control-label"
-									th:each="rua : ${rua}" th:value="${rua.codigo}"
-									th:text="${rua.nome}"></option>
-							</select>
-						</div>
-					</div>
+<!-- 									Rua -->
+<!-- 					<div class="col-md-3"> -->
+<!-- 						<label for="rua" class="col-form-label-sm">Rua:</label> -->
+<!-- 						<div class="ce-field-action "> -->
+<!-- 							<select id="rua" class="form-control form-select  form-select-sm" -->
+<!-- 								th:field="*{endereco.rua}"> -->
+<!-- 								<option value="">Selecionar Rua</option> -->
+<!-- 								<option class="form-control form-control-label" -->
+<!-- 									th:each="rua : ${rua}" th:value="${rua.codigo}" -->
+<!-- 									th:text="${rua.nome}"></option> -->
+<!-- 							</select> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 
-					<!-- 					Bloco -->
-					<div class="col-md-3">
-						<label for="bloco" class="col-form-label-sm">Bloco:</label>
-						<div class="ce-field-action">
-							<input type="hidden" id="inputHiddenBlocoSelecionado"
-								th:value="*{endereco.bloco} != null ? *{endereco.bloco.codigo}" />
-							<select id="bloco"
-								class=" form-control form-select form-select-sm"
-								data:url="@{/bloco}" th:filed="*{endereco.bloco}">
-								<option class="form-control" value="">Selecione um
-									bloco - html</option>
-							</select>
-							<div class="bw-field-action__icon  js-img-loading-bloco"
-								style="display: none">
-								<img th:src="@{/img/mini-loading.gif}" />
-							</div>
-						</div>
-					</div>
+<!-- 										Bloco -->
+<!-- 					<div class="col-md-3"> -->
+<!-- 						<label for="bloco" class="col-form-label-sm">Bloco:</label> -->
+<!-- 						<div class="ce-field-action"> -->
+<!-- 							<input type="hidden" id="inputHiddenBlocoSelecionado" -->
+<!-- 								th:value="*{endereco.bloco} != null ? *{endereco.bloco.codigo}" /> -->
+<!-- 							<select id="bloco" -->
+<!-- 								class=" form-control form-select form-select-sm" -->
+<!-- 								data:url="@{/bloco}" th:filed="*{endereco.bloco}"> -->
+<!-- 								<option class="form-control" value="">Selecione um -->
+<!-- 									bloco - html</option> -->
+<!-- 							</select> -->
+<!-- 							<div class="bw-field-action__icon  js-img-loading-bloco" -->
+<!-- 								style="display: none"> -->
+<!-- 								<img th:src="@{/img/mini-loading.gif}" /> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 
-					<!-- 				Apartamento -->
-					<div class="col-md-3">
-						<label for="apartamento" class="col-form-label-sm">Apartamento:</label>
-						<div class="ce-field-action">
-							<input type="hidden" id="inputHiddenApartamentoSelecionado"
-								th:value="*{endereco.apartamento} != null ? *{endereco.apartamento.codigo}" />
-							<select id="apartamento"
-								class=" form-control form-select form-select-sm"
-								data:url="@{/apartamento}" th:filed="*{endereco.apartamento}">
-								<option value="">Selecione o Apartamento</option>
-							</select>
-							<div class="bw-field-action__icon  js-img-loading-apartamento"
-								style="display: none">
-								<img th:src="@{/img/mini-loading.gif}" />
-							</div>
-						</div>
-					</div>
+<!-- 									Apartamento -->
+<!-- 					<div class="col-md-3"> -->
+<!-- 						<label for="apartamento" class="col-form-label-sm">Apartamento:</label> -->
+<!-- 						<div class="ce-field-action"> -->
+<!-- 							<input type="hidden" id="inputHiddenApartamentoSelecionado" -->
+<!-- 								th:value="*{endereco.apartamento} != null ? *{endereco.apartamento.codigo}" /> -->
+<!-- 							<select id="apartamento" -->
+<!-- 								class=" form-control form-select form-select-sm" -->
+<!-- 								data:url="@{/apartamento}" th:filed="*{endereco.apartamento}"> -->
+<!-- 								<option value="">Selecione o Apartamento</option> -->
+<!-- 							</select> -->
+<!-- 							<div class="bw-field-action__icon  js-img-loading-apartamento" -->
+<!-- 								style="display: none"> -->
+<!-- 								<img th:src="@{/img/mini-loading.gif}" /> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 
-					<!-- 					Sala -->
-					<div class=" col-md-3">
-						<label for="sala" class="col-form-label-sm">Sala:</label> <input
-							type="text" class="form-control form-control-sm" id="sala"
-							placeholder="Selecione um Sala" readonly="readonly">
-					</div>
+<!-- 										Sala -->
+<!-- 					<div class=" col-md-3"> -->
+<!-- 						<label for="sala" class="col-form-label-sm">Sala:</label> <input -->
+<!-- 							type="text" class="form-control form-control-sm" id="sala" -->
+<!-- 							placeholder="Selecione um Sala" readonly="readonly"> -->
+<!-- 					</div> -->
 
-					<p>
+<!-- 					<p> -->
 
-						<!-- status -->
-					<div class="row mb-3">
-						<div class="form-check form-switch">
-							<label class="form-check-label" for="status"> Status</label> <input
-								class="form-check-input" type="checkbox" role="switch"
-								id="status" checked>
-						</div>
-					</div>
-
+<!-- 						status -->
+<!-- 					<div class="row mb-3"> -->
+<!-- 						<div class="form-check form-switch"> -->
+<!-- 							<label class="form-check-label" for="status"> Status</label> <input -->
+<!-- 								class="form-check-input" type="checkbox" role="switch" -->
+<!-- 								id="status" checked> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- </div> -->
 					<p>
 						<!-- 				Botões -->
 					<div class="form-row">
@@ -229,7 +229,7 @@
 
 				</div>
 			</div>
-		</div>
+		
 	</form>
 
 	<div th:replace="fragmentos/fragmentos :: footer"></div>
@@ -247,7 +247,7 @@
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/secao.cadastro-rapido.js"></script>
 	<script src="/js/produto.combo-grupo-subGrupo.js"></script>
-	<script src="/js/produto.combo-rua-bloco.js"></script>
+<!-- 	<script src="/js/produto.combo-rua-bloco.js"></script> -->
 <!-- 	<script src="/js/produto.combo-bloco-apartamento.js"></script> -->
 	<script src="/js/controllestoque.js"></script>
 </body>

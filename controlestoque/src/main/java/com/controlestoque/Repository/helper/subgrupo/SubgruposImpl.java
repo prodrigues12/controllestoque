@@ -10,6 +10,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -35,7 +36,7 @@ public class SubgruposImpl implements SubgruposQueries {
 		adicionarFiltro(filtro, criteria);
 		criteria.createAlias("grupo", "g");
 		
-		return null;
+		return new PageImpl<>(criteria.list(), pageable, total(filtro));
 	}
 	
 	private Long total(SubgrupoFilter filtro) {
@@ -48,7 +49,7 @@ public class SubgruposImpl implements SubgruposQueries {
 	private void adicionarFiltro(SubgrupoFilter filtro, Criteria criteria) {
 		if (filtro != null) {
 			if (filtro.getGrupo()!= null) {
-				criteria.add(Restrictions.eq("estado", filtro.getGrupo()));
+				criteria.add(Restrictions.eq("grupo", filtro.getGrupo()));
 			}
 			
 			if (!StringUtils.isEmpty(filtro.getNome())) {

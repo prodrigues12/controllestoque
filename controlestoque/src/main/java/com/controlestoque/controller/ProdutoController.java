@@ -80,6 +80,7 @@ public class ProdutoController {
 		if (result.hasErrors()) {
 			return novo(produto);
 		} else {
+		
 			prodService.salvar(produto);
 			atributes.addFlashAttribute("mensagem", "Salvo com sucesso");
 			return new ModelAndView("redirect:/produto/novo");

@@ -12,12 +12,14 @@ public class Agrupar implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Transient
+	private Grupo grupo;
+	
 	@ManyToOne
 	@JoinColumn(name = "codigo_subgrupo")
 	private Subgrupo subgrupo;
 
-	@Transient
-	private Grupo grupo;
+	
 		
 
 	public Subgrupo getSubgrupo() {

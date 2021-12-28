@@ -59,9 +59,9 @@ public class Produto implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private UnidadeMedia uniMedida;
 
-	@JsonIgnore
-	@Embedded
-	private Endereco endereco;
+//	@JsonIgnore
+//	@Embedded
+//	private Endereco endereco;
 
 	
 
@@ -129,13 +129,13 @@ public class Produto implements Serializable {
 		this.uniMedida = uniMedida;
 	}
 	
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
+//	public Endereco getEndereco() {
+//		return endereco;
+//	}
+//
+//	public void setEndereco(Endereco endereco) {
+//		this.endereco = endereco;
+//	}
 
 	@Override
 	public int hashCode() {

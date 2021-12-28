@@ -68,7 +68,7 @@ public class SubgrupoController implements Serializable {
 
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public  @ResponseBody List<Subgrupo>pesquisarPorCodigoGrupo(
-			@RequestParam(name = "grupo", defaultValue = "0") Long condigoGrupo){
+			@RequestParam(name = "grupo", defaultValue = "-1") Long condigoGrupo){
 		try {
 			Thread.sleep(800);
 		} catch (InterruptedException e) {
