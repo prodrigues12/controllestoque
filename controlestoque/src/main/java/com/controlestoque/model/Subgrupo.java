@@ -29,7 +29,7 @@ public class Subgrupo implements Serializable{
 	private String nome;
 	
 	@NotNull(message = "Grupo é obrigatório")
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "codigo_grupo")
 	@JsonIgnore
 	private Grupo grupo;

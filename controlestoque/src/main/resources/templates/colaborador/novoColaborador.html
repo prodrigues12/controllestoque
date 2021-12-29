@@ -43,58 +43,83 @@
 				<div class="row mb-3">
 
 					<!-- 				Nome -->
-					<div class="col-md-7">
+					<div class="col-md-12">
 						<label class="col-form-label-sm">Nome:</label> <input
-							class="form-control form-control-sm"
-							placeholder="Ex: Caneta vermelha" th:field="*{nome}">
+							class="form-control form-control-sm" th:field="*{nome}">
 					</div>
+				</div>
+
+				<div class="row mb-3">
 
 					<!-- 				tipo de colaborador -->
-					<div class=" col-md-2">
-						<label for="tipoColaborador" class="col-form-label-sm">Tipo
-							de colaborador:</label> <select id="uniMedida"
-							class=" form-control form-select form-select-sm"
-							th:field="*{tipoColaborador}">
-							<option value="">Selecione</option>
-							<option class="form-control"
-								th:each="tipoColaborador : ${tipoColaborador}"
-								th:value="${tipoColaborador}"
-								th:text="${tipoColaborador.descricao}">a</option>
-						</select>
+					<div class=" col-md-6">
+						<label class=" col-form-label-sm">Empresa: </label> <br>
+						
+						<div class="form-check form-check-inline">
+							<input class="form-check-input " type="radio" name="magaluRadios"
+								id="magalu" value="1" checked> <label
+								class="form-check-label" for="magalu"> Magalu </label>
+						</div>
+						&nbsp; &nbsp;&nbsp; &nbsp;
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="outraRadios"
+								id="outra" value="2"> <label class="form-check-label"
+								for="outra"> Outra </label>
+						</div>
+						&nbsp; &nbsp;&nbsp; &nbsp;
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="filialRadios"
+								id="filial" value="3"> <label class="form-check-label"
+								for="filial"> Filial </label>
+						</div>
+
 					</div>
+					
 					<!-- 					Matricula/CPF -->
 
-					<div class=" col-md-2">
-						<label class=" col-form-label-sm">Matricula/CPF:</label> <input
+					<div class=" col-md-6">
+						<label class=" col-form-label-sm">Matricula / CPF / CNPJ:</label> <input
 							class="form-control form-control-sm" type="text" />
 					</div>
-					</div>
-					<div class="row mb-3">
+				</div>
 
-					<!-- 				Emil -->
-					<div class="col-md-4">
+
+				<div class="row mb-3">
+
+					<!-- 				Email -->
+					<div class="col-md-6">
 						<label class="col-form-label-sm">Email:</label> <input
 							class="form-control form-control-sm" th:field="*{email}">
 					</div>
-					<div class="col-md-4">
-						<label class="col-form-label-sm">ConfirmarEmail:</label> <input
-							class="form-control form-control-sm" th:field="*{email}">
+					<div class="col-md-6">
+						<label class="col-form-label-sm">Confirmar Email:</label> <input
+							class="form-control form-control-sm">
 					</div>
-					
+
+				</div>
+
+				<p>
+					<!-- 				Botões -->
+				<div class="form-row">
+					<a type="button" th:href="@{/}"
+						class="btn btn-danger offset-md-10">Cancelar</a> &nbsp; &nbsp;
+					<button type="submit" class="btn btn-success offset">
+						Salvar</button>
 				</div>
 			</div>
 		</div>
-		</form>
+	</form>
 
 
-		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-		<script src="/js/vendors/jquery.mask.min.js"></script>
-		<script src="/js/vendors/jquery.maskMoney.min.js"></script>
-		<script src="/js/sindebar.js"></script>
-		<script src="/js/controllestoque.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="/js/vendors/jquery.mask.min.js"></script>
+	<script src="/js/vendors/jquery.maskMoney.min.js"></script>
+	<script src="/js/sindebar.js"></script>
+	<script src="/js/controllestoque.js"></script>
 </body>
 </html>

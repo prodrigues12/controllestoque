@@ -14,34 +14,25 @@ public class Agrupar implements Serializable {
 
 	@Transient
 	private Grupo grupo;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "codigo_subgrupo")
 	private Subgrupo subgrupo;
-
-	
-		
 
 	public Subgrupo getSubgrupo() {
 		return subgrupo;
 	}
 
-
 	public void setSubgrupo(Subgrupo subgrupo) {
 		this.subgrupo = subgrupo;
 	}
-
 
 	public Grupo getGrupo() {
 		return grupo;
 	}
 
-
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
 	}
-
-
-	
 
 }

@@ -68,14 +68,14 @@ public class ProdutoController {
 		mv.addObject("secao", sessaoRepository.findAll());
 		mv.addObject("grupo", gruRepsitory.findAll());
 		mv.addObject("uniMedida", UnidadeMedia.values());
-//		mv.addObject("rua", ruaRepository.findAll());
-//		mv.addObject("bloco", blocoRepository.findAll());
+		mv.addObject("rua", ruaRepository.findAll());
+		mv.addObject("bloco", blocoRepository.findAll());
 //		mv.addObject("apartamento", apRepository.findAll());
 		return mv;
 	}
 
 	@RequestMapping(value = {"/novo","{\\d+}"}, method = RequestMethod.POST)
-	public ModelAndView cadastrarProduto(@Valid Produto produto, BindingResult result, RedirectAttributes atributes) {
+	public ModelAndView salvarProduto(@Valid Produto produto, BindingResult result, RedirectAttributes atributes) {
 
 		if (result.hasErrors()) {
 			return novo(produto);

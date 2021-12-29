@@ -2,7 +2,7 @@ package com.controlestoque.Enums;
 
 public enum TipoColaborador {
 	
-	TERCERIZADO("Tercerizado"), MAGALU("Magalu");
+	TERCERIZADO("Tercerizado"), MAGALU("Magalu") , FILIAL("Filial");
 
 	private String descricao;
 

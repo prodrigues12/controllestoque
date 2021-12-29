@@ -1,4 +1,4 @@
- var Controllestoque = Controllestoque || {};
+var Controllestoque = Controllestoque || {};
 
 Controllestoque.ComboGrupo = (function() {
 
@@ -13,36 +13,35 @@ Controllestoque.ComboGrupo = (function() {
 	}
 
 	function onGrupoAlterado() {
-		this.emitter.trigger('alterado', this.combo.val())
+		this.emitter.trigger('alterado', this.combo.val());
 	}
 
 	return ComboGrupo;
 
 }());
 
-Controllestoque.ComboSubGrupo = (function() {
+Controllestoque.ComboSubgrupo = (function() {
 
-	function ComboSubGrupo(comboGrupo) {
+	function ComboSubgrupo(comboGrupo) {
 		this.comboGrupo = comboGrupo;
 		this.combo = $('#subgrupo');
-		this.imgLoading = $('.js-img-loading-sub-grupo');
-		this.inputHiddenSubGrupoSelecionado = $('#inputHiddenSubGrupoSelecionado')
+		this.imgLoading = $('.js-img-loading');
+		this.inputHiddenSubgrupoSelecionado = $('#inputHiddenSubgrupoSelecionado');
 	}
-	
-	ComboSubGrupo.prototype.iniciar = function() {
+
+	ComboSubgrupo.prototype.iniciar = function() {
 		reset.call(this);
 		this.comboGrupo.on('alterado', onGrupoAlterado.bind(this));
 		var codigoGrupo = this.comboGrupo.combo.val();
-		inicializarSubGrupos.call(this, codigoGrupo);
+		inicializarSubgrupos.call(this, codigoGrupo);
 	}
 
 	function onGrupoAlterado(evento, codigoGrupo) {
-		
-		this.inputHiddenSubGrupoSelecionado.val('');
-		inicializarSubGrupos.call(this, codigoGrupo);
+		this.inputHiddenSubgrupoSelecionado.val('');
+		inicializarSubgrupos.call(this, codigoGrupo);
 	}
 
-	function inicializarSubGrupos(codigoGrupo) {
+	function inicializarSubgrupos(codigoGrupo) {
 		if (codigoGrupo) {
 			var resposta = $.ajax({
 				url: this.combo.data('url'),
@@ -52,29 +51,29 @@ Controllestoque.ComboSubGrupo = (function() {
 				beforeSend: iniciarRequisicao.bind(this),
 				complete: finalizarRequisicao.bind(this)
 			});
-			resposta.done(onBuscarSubGruposFinalizado.bind(this));
+			resposta.done(onBuscarSubgruposFinalizado.bind(this));
 		} else {
 			reset.call(this);
 		}
 	}
 
-	function onBuscarSubGruposFinalizado(subgrupos) {
+	function onBuscarSubgruposFinalizado(cidades) {
 		var options = [];
-		subgrupos.forEach(function(subgrupo) {
-			options.push('<option class="form-control" value="' + subgrupo.codigo + '">' + subgrupo.nome + '</option>');
+		cidades.forEach(function(subgrupo) {
+			options.push('<option value="' + subgrupo.codigo + '">' + subgrupo.nome + '</option>');
 		});
 
 		this.combo.html(options.join(''));
 		this.combo.removeAttr('disabled');
 
-		var codigoSubGrupoSelecionado = this.inputHiddenSubGrupoSelecionado.val();
-		if (codigoSubGrupoSelecionado) {
-			this.combo.val(codigoSubGrupoSelecionado);
+		var codigoSubgrupoSelecionado = this.inputHiddenSubgrupoSelecionado.val();
+		if (codigoSubgrupoSelecionado) {
+			this.combo.val(codigoSubgrupoSelecionado);
 		}
 	}
 
 	function reset() {
-		this.combo.html('<option value="">Selecione o sub-grupo </option>');
+		this.combo.html('<option value="">Selecione a cidade</option>');
 		this.combo.val('');
 		this.combo.attr('disabled', 'disabled');
 	}
@@ -88,17 +87,16 @@ Controllestoque.ComboSubGrupo = (function() {
 		this.imgLoading.hide();
 	}
 
-	return ComboSubGrupo;
+	return ComboSubgrupo;
 
 }());
-
-
 
 $(function() {
 
 	var comboGrupo = new Controllestoque.ComboGrupo();
 	comboGrupo.iniciar();
 
-	var comboSubGrupo = new Controllestoque.ComboSubGrupo(comboGrupo);
-	comboSubGrupo.iniciar();
+	var comboSubgrupo = new Controllestoque.ComboSubgrupo(comboGrupo);
+	comboSubgrupo.iniciar();
+
 });
