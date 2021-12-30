@@ -29,7 +29,7 @@ public class ProdutoService {
 			produto.setQtdEstoque(BigDecimal.ZERO);
 		}
 		
-		
+//		System.out.println(">>>>>>>: "+ produto.getAgrupar().getSubgrupo().getCodigo());
 		prodRepository.save(produto);
 		
 		return produto;

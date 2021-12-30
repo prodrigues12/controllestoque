@@ -89,11 +89,11 @@
 					<div class="col-md-4">
 						<label for="grupo" class="col-form-label-sm">Grupo:</label>
 						<div class="ce-field-action ">
-							<select id="grupo"
+							<select id="grupos"
 								class="form-select form-control form-select-sm"
 								th:field="*{agrupar.grupo}">
 								<option value="">Selecionar um Grupo</option>
-								<option class="form-control-label" th:each="grupo : ${grupo}"
+								<option class="form-control-label" th:each="grupo : ${grupos}"
 									th:value="${grupo.codigo}" th:text="${grupo.nome}"></option>
 							</select>
 						</div>
@@ -101,15 +101,15 @@
 
 					<!-- 					Sub-grupo -->
 					<div class="col-md-4">
+	
 						<label for="subgrupo" class="col-form-label-sm">Sub-Grupo:</label>
 						<div class="ce-field-action">
-							<input type="hidden" id="inputHiddenSubgrupoSelecionado"
-								th:value="*{agrupar.subgrupo} != null ? *{agrupar.subgrupo.codigo}"/>
-							<select id="subgrupo"
-								class="form-control form-select form-select-sm"
-								data:url="@{/subgrupo}" th:filed="*{agrupar.subgrupo}">
-								<option value="">Selecione um Sub-grupo - html</option>
-							</select>
+									<input type="hidden" id="inputHiddenSubgrupoSelecionado"
+										th:value="*{agrupar.subgrupo} != null ? *{agrupar.subgrupo.codigo}" />
+									<select id="subgrupo" class="form-control" data:url="@{/subgrupo}"
+										th:field="*{agrupar.subgrupo}">
+										<option value="">Selecione Subgrupo</option>
+									</select>
 							<div class="bw-field-action__icon  js-img-loading-sub-grupo"
 								style="display: none">
 								<img th:src="@{/img/mini-loading.gif}" />
@@ -163,14 +163,13 @@
 					<div class="col-md-3">
 						<label for="bloco" class="col-form-label-sm">Bloco:</label>
 						<div class="ce-field-action">
-							<input type="hidden" id="inputHiddenBlocoSelecionado"
-								th:value="*{endereco.bloco} != null ? *{endereco.bloco.codigo}" />
-							<select id="bloco"
-								class=" form-control form-select form-select-sm"
-								data:url="@{/bloco}" th:filed="*{endereco.bloco}">
-								<option class="form-control" value="">Selecione um
-									bloco - html</option>
-							</select>
+									<input type="hidden" id="inputHiddenBlocoSelecionado"
+										th:value="*{endereco.bloco} != null ? *{endereco.bloco.codigo}" />
+									<select id="bloco"
+									 class="form-control form-select form-select-sm" data:url="@{/bloco}"
+										th:field="*{endereco.bloco}">
+										<option value="">Selecione Bloco</option>
+									</select>
 							<div class="bw-field-action__icon  js-img-loading-bloco"
 								style="display: none">
 								<img th:src="@{/img/mini-loading.gif}" />

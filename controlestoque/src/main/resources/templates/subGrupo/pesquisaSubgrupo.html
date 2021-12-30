@@ -25,7 +25,7 @@
 		<div class="card-header">
 			<div class="row">
 				<div class=" col-md-10">
-					<h4>Pesquisa Grupo</h4>
+					<h4>Pesquisa Subgrupo</h4>
 				</div>
 				<div class="col-md-2">
 					<a class="btn btn-primary btn-sm" th:href="@{/subgrupo/novo}">Novo subrupo</a>
@@ -41,12 +41,12 @@
 					
 					
 					<div class="col-md-3">
-						<label for="grupo" class="col-form-label-sm">Seção:</label>
+						<label for="grupo" class="col-form-label-sm">Grupo:</label>
 						<div class="input-group">
 							<select id="grupo"
 								class="form-control form-select form-select-sm"
 								th:field="*{grupo}">
-								<option value="">Selecione uma Seção</option>
+								<option value="">Selecione um Grupo</option>
 								<option class="form-control-label form-control-sm"
 									th:each="grupo : ${grupo}" th:value="${grupo.codigo}"
 									th:text="${grupo.nome}"></option>
@@ -57,7 +57,7 @@
 					
 						<!-- 				Nome -->
 					<div class="col-md-9">
-						<label class="col-form-label-sm">Nome:</label> <input
+						<label class="col-form-label-sm">Nome do subgrupo:</label> <input
 							class="form-control form-control-sm" th:field="*{nome}"/>
 					</div>
 

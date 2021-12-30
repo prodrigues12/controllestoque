@@ -3,7 +3,7 @@ var Controllestoque = Controllestoque || {};
 Controllestoque.ComboGrupo = (function() {
 
 	function ComboGrupo() {
-		this.combo = $('#grupo');
+		this.combo = $('#grupos');
 		this.emitter = $({});
 		this.on = this.emitter.on.bind(this.emitter);
 	}
@@ -57,9 +57,9 @@ Controllestoque.ComboSubgrupo = (function() {
 		}
 	}
 
-	function onBuscarSubgruposFinalizado(cidades) {
+	function onBuscarSubgruposFinalizado(subgrupos) {
 		var options = [];
-		cidades.forEach(function(subgrupo) {
+		subgrupos.forEach(function(subgrupo) {
 			options.push('<option value="' + subgrupo.codigo + '">' + subgrupo.nome + '</option>');
 		});
 
