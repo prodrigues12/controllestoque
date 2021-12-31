@@ -70,11 +70,11 @@ public class ProdutoController {
 		mv.addObject("uniMedida", UnidadeMedia.values());
 		mv.addObject("rua", ruaRepository.findAll());
 		mv.addObject("bloco", blocoRepository.findAll());
-//		mv.addObject("apartamento", apRepository.findAll());
+		mv.addObject("apartamento", apRepository.findAll());
 		return mv;
 	}
 
-	@RequestMapping(value = {"/novo","{\\d+}"}, method = RequestMethod.POST)
+	@RequestMapping(value = "/novo", method = RequestMethod.POST)
 	public ModelAndView salvarProduto(@Valid Produto produto, BindingResult result, RedirectAttributes atributes) {
 
 		if (result.hasErrors()) {
@@ -117,11 +117,11 @@ public class ProdutoController {
 		return ResponseEntity.ok().build();
 	}
 
-	@GetMapping("/{codigo}")
-	public ModelAndView editar(@PathVariable("codigo") Produto produto) {
-		ModelAndView mv = novo(produto);
-		mv.addObject(produto);
-		return mv;
-
-	}
+//	@GetMapping("/{codigo}")
+//	public ModelAndView editar(@PathVariable("codigo") Produto produto) {
+//		ModelAndView mv = novo(produto);
+//		mv.addObject(produto);
+//		return mv;
+//
+//	}
 }

@@ -100,9 +100,11 @@
 				<th class="col-4"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Nome')"></th:block>
 				</th>
-				<th class="col-3">Seção</th>
+				<th class="col-2">Seção</th>
 				<th class="col-1">Estoque</th>
 				<th class="col-1">Uni. Medida</th>
+				<th class="col-1">Rua</th>
+
 				<th class="col-2">Ação</th>
 
 			</thead>
@@ -114,10 +116,13 @@
 					<td th:text="${produto.secao.nome}">Limpeza</td>
 					<td th:text="${produto.qtdEstoque}">4</td>
 					<td th:text="${produto.uniMedida}">L</td>
+					<td th:text="${produto.endereco.rua}">L</td>
 					<td><a title="Editar"
 						th:href="@{/produto/{codigo}(codigo=${produto.codigo})}"><i
-							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp;<a> <i
-							class="bx bx-trash ce-icon"></i>
+							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp; <a
+						class=" js-exclusao-btn" title="Excluir"
+						href="#" data:url="@{/produto/{codigo}(codigo=${produto.codigo})}"
+						data:objeto="${produto.nome}"> <i class="bx bx-trash ce-icon"></i>
 					</a>&nbsp;&nbsp;<a><i class="bx bx-error-circle ce-icon"></i></a></td>
 				</tr>
 				<tr th:if="${pagina.vazia}">
@@ -159,8 +164,10 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 	<script src="/js/vendors/jquery.mask.min.js"></script>
 	<script src="/js/vendors/jquery.maskMoney.min.js"></script>
+	<script src="https://cdnout.com/sweetalert"></script>
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/controllestoque.js"></script>
+	<script src="/js/controllestoque.dialogo-excluir.js"></script>
 
 </body>
 </html>

@@ -21,7 +21,9 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
-	<form method="post" th:action="@{/produto/novo}" th:object="${produto}">
+	<form method="post"
+		th:action="${produto.novo} ? @{/produto/novo} : @{/produto/{codigo}(codigo=${produto.codigo})}"
+		th:object="${produto}">
 
 		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
@@ -65,7 +67,7 @@
 							th:field="*{descricao}" placeholder="Descrição do produto "></textarea>
 					</div>
 				</div>
-				
+
 				<div class=" row mb-3">
 					<!-- 				Seção -->
 					<div class="col-md-4"
@@ -101,15 +103,15 @@
 
 					<!-- 					Sub-grupo -->
 					<div class="col-md-4">
-	
+
 						<label for="subgrupo" class="col-form-label-sm">Sub-Grupo:</label>
 						<div class="ce-field-action">
-									<input type="hidden" id="inputHiddenSubgrupoSelecionado"
-										th:value="*{agrupar.subgrupo} != null ? *{agrupar.subgrupo.codigo}" />
-									<select id="subgrupo" class="form-control" data:url="@{/subgrupo}"
-										th:field="*{agrupar.subgrupo}">
-										<option value="">Selecione Subgrupo</option>
-									</select>
+							<input type="hidden" id="inputHiddenSubgrupoSelecionado"
+								th:value="*{agrupar.subgrupo} != null ? *{agrupar.subgrupo.codigo}" />
+							<select id="subgrupo" class="form-control"
+								data:url="@{/subgrupo}" th:field="*{agrupar.subgrupo}">
+								<option value="">Selecione Subgrupo</option>
+							</select>
 							<div class="bw-field-action__icon  js-img-loading-sub-grupo"
 								style="display: none">
 								<img th:src="@{/img/mini-loading.gif}" />
@@ -145,7 +147,7 @@
 
 				<div class="row mb-3">
 
-<!-- 									Rua -->
+					<!-- 									Rua -->
 					<div class="col-md-3">
 						<label for="rua" class="col-form-label-sm">Rua:</label>
 						<div class="ce-field-action ">
@@ -159,17 +161,17 @@
 						</div>
 					</div>
 
-<!-- 										Bloco -->
+					<!-- 										Bloco -->
 					<div class="col-md-3">
 						<label for="bloco" class="col-form-label-sm">Bloco:</label>
 						<div class="ce-field-action">
-									<input type="hidden" id="inputHiddenBlocoSelecionado"
-										th:value="*{endereco.bloco} != null ? *{endereco.bloco.codigo}" />
-									<select id="bloco"
-									 class="form-control form-select form-select-sm" data:url="@{/bloco}"
-										th:field="*{endereco.bloco}">
-										<option value="">Selecione Bloco</option>
-									</select>
+							<input type="hidden" id="inputHiddenBlocoSelecionado"
+								th:value="*{endereco.bloco} != null ? *{endereco.bloco.codigo}" />
+							<select id="bloco"
+								class="form-control form-select form-select-sm"
+								data:url="@{/bloco}" th:field="*{endereco.bloco}">
+								<option value="">Selecione Bloco</option>
+							</select>
 							<div class="bw-field-action__icon  js-img-loading-bloco"
 								style="display: none">
 								<img th:src="@{/img/mini-loading.gif}" />
@@ -177,7 +179,7 @@
 						</div>
 					</div>
 
-<!-- 									Apartamento -->
+					<!-- 									Apartamento -->
 					<div class="col-md-3">
 						<label for="apartamento" class="col-form-label-sm">Apartamento:</label>
 						<div class="ce-field-action">
@@ -195,7 +197,7 @@
 						</div>
 					</div>
 
-<!-- 										Sala -->
+					<!-- 										Sala -->
 					<div class=" col-md-3">
 						<label for="sala" class="col-form-label-sm">Sala:</label> <input
 							type="text" class="form-control form-control-sm" id="sala"
@@ -204,7 +206,7 @@
 
 					<p>
 
-<!-- 						status -->
+						<!-- 						status -->
 					<div class="row mb-3">
 						<div class="form-check form-switch">
 							<label class="form-check-label" for="status"> Status</label> <input
@@ -212,21 +214,20 @@
 								id="status" checked>
 						</div>
 					</div>
-</div>
-					<p>
-						<!-- 				Botões -->
-					<div class="form-row">
-						<a type="button" th:href="@{/dashboard}"class="btn btn-danger offset-md-10">Cancelar</a>
-						&nbsp; &nbsp;
-						<button type="submit" class="btn btn-success offset">
-							Salvar
-						</button>
-					</div>
-
-
 				</div>
+				<p>
+					<!-- 				Botões -->
+				<div class="form-row">
+					<a type="button" th:href="@{/dashboard}"
+						class="btn btn-danger offset-md-10">Cancelar</a> &nbsp; &nbsp;
+					<button type="submit" class="btn btn-success offset">
+						Salvar</button>
+				</div>
+
+
 			</div>
-		
+		</div>
+
 	</form>
 
 	<div th:replace="fragmentos/fragmentos :: footer"></div>
@@ -245,7 +246,7 @@
 	<script src="/js/secao.cadastro-rapido.js"></script>
 	<script src="/js/produto.combo-grupo-subGrupo.js"></script>
 	<script src="/js/produto.combo-rua-bloco.js"></script>
-<!-- 	<script src="/js/produto.combo-bloco-apartamento.js"></script> -->
+	<script src="/js/produto.combo-bloco-apartamento.js"></script>
 	<script src="/js/controllestoque.js"></script>
 </body>
 </html>
