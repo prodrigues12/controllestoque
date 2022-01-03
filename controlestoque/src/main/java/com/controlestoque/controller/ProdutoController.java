@@ -74,7 +74,7 @@ public class ProdutoController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/novo", method = RequestMethod.POST)
+	@RequestMapping(value = { "/novo","{\\d+}"}, method = RequestMethod.POST)
 	public ModelAndView salvarProduto(@Valid Produto produto, BindingResult result, RedirectAttributes atributes) {
 
 		if (result.hasErrors()) {
@@ -117,11 +117,11 @@ public class ProdutoController {
 		return ResponseEntity.ok().build();
 	}
 
-//	@GetMapping("/{codigo}")
-//	public ModelAndView editar(@PathVariable("codigo") Produto produto) {
-//		ModelAndView mv = novo(produto);
-//		mv.addObject(produto);
-//		return mv;
-//
-//	}
+	@GetMapping("/{codigo}")
+	public ModelAndView editar(@PathVariable("codigo") Produto produto) {
+		ModelAndView mv = novo(produto);
+		mv.addObject(produto);
+		return mv;
+
+	}
 }
