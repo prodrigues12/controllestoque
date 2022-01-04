@@ -49,16 +49,11 @@
 					</div>
 
 					<!-- 				Nome -->
-					<div class="col-md-11">
+					<div class="col-md-7">
 						<label class="col-form-label-sm">Nome:</label> <input
 							class="form-control form-control-sm" th:field="*{nome}">
 					</div>
 					<!-- 				Seção -->
-
-				</div>
-
-				<div class=" row mb-3">
-
 					<div class="col-md-4">
 						<label for="secao" class="col-form-label-sm">Seção:</label>
 						<div class="input-group">
@@ -73,6 +68,26 @@
 
 						</div>
 					</div>
+
+				</div>
+
+				<div class=" row mb-3">
+
+					<div class="col-md-4">
+						<label class="col-form-label-sm">Rua:</label> <input
+							class="form-control form-control-sm">
+					</div>
+
+					<div class="col-md-4">
+						<label class="col-form-label-sm">Bloco:</label> <input
+							class="form-control form-control-sm">
+					</div>
+
+					<div class="col-md-4">
+						<label class="col-form-label-sm">Apartamento:</label> <input
+							class="form-control form-control-sm">
+					</div>
+
 
 
 
@@ -97,15 +112,14 @@
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
 
 				</th>
-				<th class="col-4"><th:block
+				<th class="col-3"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Nome')"></th:block>
 				</th>
 				<th class="col-2">Seção</th>
+				<th class="col-3">Endereço</th>
 				<th class="col-1">Estoque</th>
-				<th class="col-1">Uni. Medida</th>
-				<th class="col-1">Rua</th>
-
 				<th class="col-2">Ação</th>
+
 
 			</thead>
 
@@ -114,14 +128,13 @@
 					<td th:text="${produto.codigo}">1</td>
 					<td th:text="${produto.nome}">Produto Teste</td>
 					<td th:text="${produto.secao.nome}">Limpeza</td>
+					<td th:text="${produto.endereco.nomeBlcoPelaRua}">L</td>
 					<td th:text="${produto.qtdEstoque}">4</td>
-					<td th:text="${produto.uniMedida}">L</td>
-					<td th:text="${produto.endereco}">L</td>
 					<td><a title="Editar"
 						th:href="@{/produto/{codigo}(codigo=${produto.codigo})}"><i
 							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp; <a
-						class=" js-exclusao-btn" title="Excluir"
-						href="#" data:url="@{/produto/{codigo}(codigo=${produto.codigo})}"
+						class=" js-exclusao-btn" title="Excluir" href="#"
+						data:url="@{/produto/{codigo}(codigo=${produto.codigo})}"
 						data:objeto="${produto.nome}"> <i class="bx bx-trash ce-icon"></i>
 					</a>&nbsp;&nbsp;<a><i class="bx bx-error-circle ce-icon"></i></a></td>
 				</tr>

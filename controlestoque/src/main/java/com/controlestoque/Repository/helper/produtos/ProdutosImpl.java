@@ -92,6 +92,15 @@ public class ProdutosImpl implements ProdutosQueries {
 		return filtro.getSecao() != null && filtro.getSecao().getCodigo() != null;
 	}
 
+	@Override
+	public Produto buscaCompleta(Long codigo) {
+		Criteria criteria = manager.unwrap(Session.class).createCriteria(Produto.class);
+		criteria.createAlias("blocos","b", JoinType.LEFT_OUTER_JOIN);
+		criteria.add(Restrictions.eq("codigo", codigo));
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		return (Produto) criteria.uniqueResult();
+	}
+
 	
 
 }

@@ -34,5 +34,11 @@ public class Agrupar implements Serializable {
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
 	}
+	
+	public String getGrupoSubgrupo() {
+	
+			return this.subgrupo.getNome()+"-"+this.subgrupo.getGrupo().getNome();
+		
+	}
 
 }

@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 import com.controlestoque.Enums.UnidadeMedia;
 import com.controlestoque.Repository.Apartamentos;
 import com.controlestoque.Repository.Blocos;
@@ -74,16 +73,16 @@ public class ProdutoController {
 		return mv;
 	}
 
-	@RequestMapping(value = { "/novo","{\\d+}"}, method = RequestMethod.POST)
+	@RequestMapping(value = { "/novo", "{\\d+}" }, method = RequestMethod.POST)
 	public ModelAndView salvarProduto(@Valid Produto produto, BindingResult result, RedirectAttributes atributes) {
 
 		if (result.hasErrors()) {
 			return novo(produto);
 		} else {
-		
+
 			prodService.salvar(produto);
 			atributes.addFlashAttribute("mensagem", "Salvo com sucesso");
-			return new ModelAndView("redirect:/produto/novo");
+			return new ModelAndView("redirect:/produto");
 		}
 	}
 
@@ -92,8 +91,8 @@ public class ProdutoController {
 			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("produto/pesquisarProduto");
 		mv.addObject("secao", sessaoRepository.findAll());
-		mv.addObject("grupo", gruRepsitory.findAll());
-		mv.addObject("uniMedida", UnidadeMedia.values());
+		mv.addObject("rua", ruaRepository.findAll());
+		mv.addObject("bloco", blocoRepository.findAll());
 
 		PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.filtrar(produtoFilter, pageable),
 				httpServletRequest);
@@ -116,12 +115,23 @@ public class ProdutoController {
 
 		return ResponseEntity.ok().build();
 	}
-
+// Principal edição
 	@GetMapping("/{codigo}")
 	public ModelAndView editar(@PathVariable("codigo") Produto produto) {
 		ModelAndView mv = novo(produto);
 		mv.addObject(produto);
+		mv.addObject(mv);
 		return mv;
 
 	}
+	
+//	@GetMapping("/{codigo}")
+//	public ModelAndView editar(@PathVariable("codigo") Long codigo) {
+//		
+//		Produto produto = proRepository.buscaCompleta(codigo);
+//		ModelAndView mv = novo(produto);
+//		mv.addObject(produto);
+//		return mv;
+//	}
+	
 }

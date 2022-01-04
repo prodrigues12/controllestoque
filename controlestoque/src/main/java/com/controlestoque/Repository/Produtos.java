@@ -21,3 +21,4 @@ public interface Produtos extends JpaRepository<Produto, Long>, ProdutosQueries{
 	@Query("select p from Produto p where p.qtdEstoque <= p.qtdEstMin")
 	public List<Produto> baixoEtq();
 }
+	
