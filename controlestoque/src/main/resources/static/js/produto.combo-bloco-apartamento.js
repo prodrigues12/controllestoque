@@ -10,7 +10,7 @@ Controllestoque.ComboBloco = (function() {
 
 	}
 
-	ComboBloco1.prototype.iniciar = function() {
+	ComboBloco.prototype.iniciar = function() {
 		this.combo.on('change', onBlocoTrocado.bind(this));
 
 	}

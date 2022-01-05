@@ -21,8 +21,6 @@ public class Rua  implements Serializable{
 	
 	private String nome;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -37,6 +35,10 @@ public class Rua  implements Serializable{
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+	public boolean isRuaNova() {
+		return this.codigo == null;
 	}
 
 	@Override

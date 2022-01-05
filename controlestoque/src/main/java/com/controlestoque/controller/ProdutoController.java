@@ -15,7 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -74,14 +73,14 @@ public class ProdutoController {
 	}
 
 	@RequestMapping(value = { "/novo", "{\\d+}" }, method = RequestMethod.POST)
-	public ModelAndView salvarProduto(@Valid Produto produto, BindingResult result, RedirectAttributes atributes) {
+	public ModelAndView salvarProduto(@Valid Produto produto, BindingResult result, RedirectAttributes attributes) {
 
 		if (result.hasErrors()) {
 			return novo(produto);
 		} else {
 
 			prodService.salvar(produto);
-			atributes.addFlashAttribute("mensagem", "Salvo com sucesso");
+			attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
 			return new ModelAndView("redirect:/produto");
 		}
 	}

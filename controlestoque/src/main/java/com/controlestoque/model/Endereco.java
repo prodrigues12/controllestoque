@@ -63,15 +63,15 @@ public class Endereco implements Serializable {
 		this.sala = sala;
 	}
 
-	public String getNomeBlcoPelaRua() {
-		
-		if (this.sala != null) {
-			return this.bloco.getRua().getNome() + " . " + this.bloco.getNome() + " . " + this.apartamento.getNome()+" . "+this.sala.getNome();
-		}
-		
-		if (this.apartamento != null) {
-			return this.bloco.getRua().getNome() + " . " + this.bloco.getNome() + " . " + this.apartamento.getNome();
-		}
-		return this.bloco.getRua().getNome() + " . " + this.bloco.getNome();
-	}
+//	public String getNomeBlcoPelaRua() {
+//		
+//		if (this.sala != null) {
+//			return this.bloco.getRua().getNome() + " . " + this.bloco.getNome() + " . " + this.apartamento.getNome()+" . "+this.sala.getNome();
+//		}
+//		
+//		if (this.apartamento != null) {
+//			return this.bloco.getRua().getNome() + " . " + this.bloco.getNome() + " . " + this.apartamento.getNome();
+//		}
+//		return this.bloco.getRua().getNome() + " . " + this.bloco.getNome();
+//	}
 }

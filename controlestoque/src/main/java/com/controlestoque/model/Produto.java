@@ -137,8 +137,8 @@ public class Produto implements Serializable {
 		this.endereco = endereco;
 	}
 	
-	public boolean isNovo() {
-		return codigo == null;
+	public boolean isProdutoNovo() {
+		return this.codigo == null;
 	}
 
 	@Override

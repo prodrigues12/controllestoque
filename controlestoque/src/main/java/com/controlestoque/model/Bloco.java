@@ -60,6 +60,10 @@ public class Bloco implements Serializable {
 	public void setRua(Rua rua) {
 		this.rua = rua;
 	}
+	
+	public boolean isBlocoNovo() {
+		return this.codigo == null;
+	}
 
 	@Override
 	public int hashCode() {
