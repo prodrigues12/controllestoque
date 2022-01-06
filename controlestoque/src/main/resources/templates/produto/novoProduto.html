@@ -47,7 +47,7 @@
 				<div class="row mb-3">
 
 					<!-- 				Codigo -->
-					<div class=" col-md-1">
+					<div class=" col-md-1" >
 						<label class=" col-form-label-sm">Codigo:</label> <input
 							class="form-control form-control-sm" type="text" readonly
 							placeholder="00000" />
@@ -96,7 +96,7 @@
 						<div class="ce-field-action ">
 							<select id="grupos" 
 								class="form-select form-control form-select-sm"
-								th:field="*{agrupar.grupo}">
+								th:field="*{agrupar.grupo.codigo}">
 								<option value="">Selecionar um Grupo</option>
 								<option class="form-control-label" th:each="grupo : ${grupos}"
 									th:value="${grupo.codigo}" th:text="${grupo.nome}"></option>
@@ -112,7 +112,7 @@
 							<input type="hidden" id="inputHiddenSubgrupoSelecionado"
 								th:value="*{agrupar.subgrupo} != null ? *{agrupar.subgrupo.codigo}" />
 							<select id="subgrupo" class="form-control"
-								data:url="@{/subgrupo}" th:field="*{agrupar.subgrupo}">
+								data:url="@{/subgrupo}" th:field="*{agrupar.subgrupo.codigo}">
 								<option value="">Selecione Subgrupo</option>
 							</select>
 							<div class="bw-field-action__icon  js-img-loading-sub-grupo"
@@ -184,16 +184,16 @@
 
 					<!-- 									Apartamento -->
 					<div class="col-md-3">
-						<label for="apartamento" class="col-form-label-sm">Apartamento:</label>
+							<label for="apartameto" class="col-form-label-sm">Apartmaneto:</label>
 						<div class="ce-field-action">
 							<input type="hidden" id="inputHiddenApartamentoSelecionado"
 								th:value="*{endereco.apartamento} != null ? *{endereco.apartamento.codigo}" />
 							<select id="apartamento"
-								class=" form-control form-select form-select-sm"
-								data:url="@{/apartamento}" th:filed="*{endereco.apartamento}">
-								<option value="">Selecione o Apartamento</option>
+								class="form-control form-select form-select-sm"
+								data:url="@{/apartamento}" th:field="*{endereco.apartamento}">
+								<option value="">Selecione Apartamento</option>
 							</select>
-							<div class="bw-field-action__icon  js-img-loading-apartamento"
+							<div class="bw-field-action__icon  js-img-loading-bloco"
 								style="display: none">
 								<img th:src="@{/img/mini-loading.gif}" />
 							</div>
@@ -249,7 +249,7 @@
 	<script src="/js/secao.cadastro-rapido.js"></script>
 	<script src="/js/produto.combo-grupo-subGrupo.js"></script>
 	<script src="/js/produto.combo-rua-bloco.js"></script>
-	<script src="/js/produto.combo-bloco-apartamento.js"></script>
+<!-- 	<script src="/js/produto.combo-bloco-apartamento.js"></script> -->
 	<script src="/js/controllestoque.js"></script>
 </body>
 </html>

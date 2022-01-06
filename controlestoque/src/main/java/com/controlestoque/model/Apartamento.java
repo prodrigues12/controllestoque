@@ -59,6 +59,10 @@ public class Apartamento implements Serializable{
 	public void setBloco(Bloco bloco) {
 		this.bloco = bloco;
 	}
+	
+	public boolean isApartamentoNovo() {
+		return this.codigo == null;
+	}
 
 	@Override
 	public int hashCode() {

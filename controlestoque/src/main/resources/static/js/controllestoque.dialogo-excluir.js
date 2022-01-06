@@ -44,12 +44,12 @@ Controllestoque.DialogoExcluir = (function() {
 				} else {
 					swal("Cancelado com Sucesso", "", "success");
 				}
+				
 			});
 	}
 
 
 	function onExclusaoConfirmado(url) {
-		console.log('entrei na função de deletar');
 		$.ajax({
 			url: url,
 			method: 'DELETE',

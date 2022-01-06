@@ -3,14 +3,14 @@ var Controllestoque = Controllestoque || {};
 
 Controllestoque.ComboBloco = (function() {
 	
-	function ComboBloco() {
+	function ComboBlocoAp() {
 		this.combo = $('#bloco');
 		this.emitter = $({});
 		this.on = this.emitter.on.bind(this.emitter);
 
 	}
 
-	ComboBloco.prototype.iniciar = function() {
+	ComboBlocoAp.prototype.iniciar = function() {
 		this.combo.on('change', onBlocoTrocado.bind(this));
 
 	}
@@ -19,7 +19,7 @@ Controllestoque.ComboBloco = (function() {
 		this.emitter.trigger('trocado', this.combo.val());
 	}
 
-	return ComboBloco1;
+	return ComboBloco;
 
 
 }());
@@ -95,8 +95,8 @@ Controllestoque.ComboApartamento = (function() {
 
 }());
 
-	var comboBloco = new Controllestoque.ComboBloco();
-	comboBloco1.iniciar();
+	var comboBloco = new Controllestoque.ComboBlocoAp();
+	comboBloco.iniciar();
 	
 	var comboApartamento = new Controllestoque.ComboApartamento(comboBloco);
 	comboApartamento.iniciar();

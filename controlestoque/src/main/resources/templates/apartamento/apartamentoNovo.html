@@ -9,7 +9,7 @@
 <title>Novo Apartamento</title>
 <meta name="author" content="Paulino Rodrigues">
 <link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" />
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 <link rel="stylesheet" href="/css/sindebar.css" />
@@ -21,8 +21,10 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
-	<form method="post" th:action="@{/apartamento/novo}"
+	<form method="post"
+		th:action="${apartamento.apartamentoNovo} ? @{/apartamento/novo} : @{/apartamento/{codigo}(codigo=${apartamento.codigo})}"
 		th:object="${apartamento}">
+		
 
 		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
@@ -30,11 +32,12 @@
 		<div class="card">
 			<div class="card-header">
 				<div class="row">
-					<div class="col-9">
-						<h4>Cadastro do Apartamento</h4>
+					<div class=" col-md-10">
+						<h4 th:if="${apartamento.apartamentoNovo}">Novo Apartamento</h4>
+						<h4 th:unless="${apartamento.apartamentoNovo}" th:text="|Editando Apartamento: ${apartamento.nome}|"></h4>
 					</div>
-					<div class="col-2">
-						<a class="btn btn-primary">Pesquisar</a>
+					<div class="col-md-2">
+						<a th:href="@{/apartamento}" class="btn btn-primary btn-sm">Pesquisar</a>
 					</div>
 				</div>
 			</div>
@@ -78,7 +81,7 @@
 
 					<p>
 					<div class="form-row">
-						<button type="submit" class="btn btn-danger offset-md-10">Cancelar</button>
+						<a type="button" class="btn btn-danger offset-md-10" th:href="@{/apartamento}">Cancelar</a>
 						&nbsp; &nbsp;
 						<button type="submit" class="btn btn-success offset">
 							Salvar</button>
