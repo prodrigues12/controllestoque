@@ -81,7 +81,7 @@ public class ProdutoController {
 
 			prodService.salvar(produto);
 			attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
-			return new ModelAndView("redirect:/produto");
+			return new ModelAndView("redirect:/produto/novo");
 		}
 	}
 

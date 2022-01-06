@@ -14,7 +14,7 @@ public class Endereco implements Serializable {
 
 	@Transient
 	private Rua rua;
-	
+
 	@Transient
 	@ManyToOne
 	@JoinColumn(name = "codigo_bloco")
@@ -24,12 +24,10 @@ public class Endereco implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "codigo_apartamento")
 	private Apartamento apartamento;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "codigo_sala")
 	private Sala sala;
-
-	
 
 	public Bloco getBloco() {
 		return bloco;
@@ -54,7 +52,7 @@ public class Endereco implements Serializable {
 	public void setApartamento(Apartamento apartamento) {
 		this.apartamento = apartamento;
 	}
-	
+
 	public Sala getSala() {
 		return sala;
 	}
@@ -63,15 +61,24 @@ public class Endereco implements Serializable {
 		this.sala = sala;
 	}
 
-//	public String getNomeBlcoPelaRua() {
-//		
-//		if (this.sala != null) {
-//			return this.bloco.getRua().getNome() + " . " + this.bloco.getNome() + " . " + this.apartamento.getNome()+" . "+this.sala.getNome();
+	public String getEnderecoProduto() {
+
+		if (this.sala != null) {
+			return this.rua.getNome() + " . " + this.bloco.getNome() + " . " + this.apartamento.getNome()
+					+ " . " + this.sala.getNome();
+		}
+
+		if (this.apartamento != null) {
+			return this.rua.getNome() + " . " + this.bloco.getNome() + " . " + this.apartamento.getNome();
+		}
+
+		if (this.bloco != null) {
+			return this.rua.getNome() + " . " + this.bloco.getNome();
+		}
+//		if (this.rua != null) {
+			return this.rua.getNome();
 //		}
-//		
-//		if (this.apartamento != null) {
-//			return this.bloco.getRua().getNome() + " . " + this.bloco.getNome() + " . " + this.apartamento.getNome();
-//		}
-//		return this.bloco.getRua().getNome() + " . " + this.bloco.getNome();
-//	}
+//		return null;
+
+	}
 }
