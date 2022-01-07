@@ -25,6 +25,7 @@
 		th:action="${bloco.blocoNovo} ? @{/bloco/novo} : @{/bloco/{codigo}(codigo=${bloco.codigo})}"
 		th:object="${bloco}">
 		
+<input type="hidden" th:field="*{codigo}">
 
 		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>

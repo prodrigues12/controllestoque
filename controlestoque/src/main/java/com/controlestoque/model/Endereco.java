@@ -20,14 +20,11 @@ public class Endereco implements Serializable {
 	@JoinColumn(name = "codigo_bloco")
 	private Bloco bloco;
 
-	@Transient
+	
 	@ManyToOne
 	@JoinColumn(name = "codigo_apartamento")
 	private Apartamento apartamento;
 
-	@ManyToOne
-	@JoinColumn(name = "codigo_sala")
-	private Sala sala;
 
 	public Bloco getBloco() {
 		return bloco;
@@ -53,20 +50,10 @@ public class Endereco implements Serializable {
 		this.apartamento = apartamento;
 	}
 
-	public Sala getSala() {
-		return sala;
-	}
-
-	public void setSala(Sala sala) {
-		this.sala = sala;
-	}
 
 	public String getEnderecoProduto() {
 
-		if (this.sala != null) {
-			return this.rua.getNome() + " . " + this.bloco.getNome() + " . " + this.apartamento.getNome()
-					+ " . " + this.sala.getNome();
-		}
+		
 
 		if (this.apartamento != null) {
 			return this.rua.getNome() + " . " + this.bloco.getNome() + " . " + this.apartamento.getNome();

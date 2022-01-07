@@ -35,12 +35,13 @@ public class ApartamentosImpl implements ApartamentosQuery{
 		
 		paginacaoUtil.preparar(criteria, pageable);
 		adicionarFiltro(filtro, criteria);
-
+		criteria.createAlias("bloco", "b");
+//		criteria.createAlias("rua", "r");
 		return new PageImpl<>(criteria.list(), pageable, total(filtro));
 	}
 	
 	private Long total(ApartamentoFilter filtro) {
-		Criteria criteria = manager.unwrap(Session.class).createCriteria(Grupo.class);
+		Criteria criteria = manager.unwrap(Session.class).createCriteria(Apartamento.class);
 		adicionarFiltro(filtro, criteria);
 		criteria.setProjection(Projections.rowCount());
 		return (Long) criteria.uniqueResult();
@@ -60,6 +61,10 @@ public class ApartamentosImpl implements ApartamentosQuery{
 			if(isBlocoPresente(filtro)){
 				criteria.add(Restrictions.eq("bloco", filtro.getBloco()));
 			}
+			
+//			if(isRuaPresente(filtro)){
+//				criteria.add(Restrictions.eq("rua", filtro.getBloco().getRua()));
+//			}
 
 		}
 	}
@@ -69,6 +74,10 @@ public class ApartamentosImpl implements ApartamentosQuery{
 		return filtro.getBloco() != null && filtro.getBloco().getCodigo() != null;
 	}
 	
+private boolean isRuaPresente(ApartamentoFilter filtro) {
+		
+		return filtro.getBloco().getRua() != null && filtro.getBloco().getRua().getCodigo() != null;
+	}
 	
 	
 	

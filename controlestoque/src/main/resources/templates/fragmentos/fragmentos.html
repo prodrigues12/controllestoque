@@ -26,7 +26,7 @@
 
 		<div>Sistema de Gerenciamento de Estoque CD-994</div>
 		<div class="header_img">
-			<img src="/img/user.png" alt="">
+			<a class="nav_link"> <i class="bx bxs-user-circle nav_icon"></i></a>
 		</div>
 	</header>
 
@@ -42,13 +42,14 @@
 						<a th:href="@{/}" class="nav_link active" title="Dashboard"> <i
 							class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span>
 
-						</a> <a th:href="@{/pedido}" class="nav_link" title="Pedidos"> <i class='bx bx-shopping-bag nav_icon'></i>
+						</a> <a th:href="@{/pedido}" class="nav_link" title="Pedidos">
+						 <i class='bx bx-store nav_icon'></i>
 							<span class="nav_name">Pedidos</span>
 
 						</a> <a class="nav_link" data-bs-toggle="collapse"
 							href="#collapseProduto" role="button" aria-expanded="false"
 							aria-controls="collapseExample" title="Produtos"> <i
-							class='bx bx-cart nav_icon'></i> <span class="nav_name">Produtos</span>
+							class='bx bx-shopping-bag nav_icon'></i> <span class="nav_name">Produtos</span>
 						</a> 
 
 						<div class="collapse" id="collapseProduto">
@@ -74,17 +75,17 @@
 						</div> <a class="nav_link" data-bs-toggle="collapse"
 							href="#collapseEndereco" role="button" aria-expanded="false"
 							aria-controls="collapseExample" title="Endereço"> <i
-							class='bx bx-map-alt nav_icon'></i> <span class="nav_name">Endereço</span>
+							class='bx bx-map-pin nav_icon'></i> <span class="nav_name">Endereço</span>
 						</a>
 
 						<div class="collapse" id="collapseEndereco">
 
 							<a th:href="@{/rua}" class="nav_link" title="Rua"> <i
-								class=" bx bx-map nav_icon_mini"></i> <span
+								class=" bx bx-building-house nav_icon_mini"></i> <span
 								class="nav_name"> Rua</span>
 
 							</a> <a th:href="@{/bloco}" class="nav_link"title="Bloco"> <i
-								class='bx bx-buildings nav_icon_mini'></i> <span
+								class='bx bx-building nav_icon_mini'></i> <span
 								class="nav_name"> Bloco</span>
 
 

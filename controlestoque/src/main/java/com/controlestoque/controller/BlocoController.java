@@ -70,7 +70,7 @@ public class BlocoController implements Serializable {
 			return novo(bloco);
 		}
 		attributes.addFlashAttribute("mensagem", "Bloco Salvo!");
-		return new ModelAndView("redirect:/bloco");
+		return new ModelAndView("redirect:/bloco/novo");
 	}
 
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)

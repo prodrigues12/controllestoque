@@ -24,7 +24,7 @@ import com.controlestoque.controller.page.PageWrapper;
 import com.controlestoque.model.Rua;
 import com.controlestoque.service.RuaService;
 import com.controlestoque.service.exception.ImpossivelExcluirEntidadeException;
-import com.controlestoque.service.exception.NomeBlocoExistenteException;
+import com.controlestoque.service.exception.NomeRuaExistenteException;
 
 @Controller
 @RequestMapping("/rua")
@@ -54,13 +54,13 @@ public class RuaController {
 			ruaService.salvarRua(rua);
 			
 
-		} catch (NomeBlocoExistenteException e) {
+		} catch (NomeRuaExistenteException e) {
 			result.rejectValue("nome", e.getMessage(), e.getMessage());
 			return novo(rua);
 		}
 
 		attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
-		return new ModelAndView("redirect:/rua");
+		return new ModelAndView("redirect:/rua/novo");
 	}
 
 	@GetMapping

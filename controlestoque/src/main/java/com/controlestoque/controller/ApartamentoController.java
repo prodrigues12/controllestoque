@@ -80,14 +80,14 @@ public class ApartamentoController implements Serializable {
 
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<Apartamento> pesquisarPorCodigoBloco(
-			@RequestParam(name = "bloco", defaultValue = "0") Long condigoBloco) {
+			@RequestParam(name = "bloco", defaultValue = "0") Long codigoApartamento) {
 		try {
 			Thread.sleep(800);
 		} catch (InterruptedException e) {
 
 		}
 
-		return apartamentosRepository.findByBlocoCodigo(condigoBloco);
+		return apartamentosRepository.findByBlocoCodigo(codigoApartamento);
 
 	}
 
@@ -96,6 +96,7 @@ public class ApartamentoController implements Serializable {
 			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("apartamento/pesquisaApartamento");
 		mv.addObject("bloco", blocoRepository.findAll());
+		mv.addObject("rua", ruaRepository.findAll());
 
 		PageWrapper<Apartamento> paginaWrapper = new PageWrapper<>(
 				apartamentosRepository.filtrar(apartamentoFilter, pageable), httpServletRequest);

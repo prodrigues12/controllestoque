@@ -25,7 +25,7 @@ public class Apartamento implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	@NotBlank(message = "Nome é obrigatório")
+	@NotBlank(message = "Capo Apartamento é obrigatório")
 	private String nome;
 	
 	@NotNull(message = "Selecione uma Rua")
