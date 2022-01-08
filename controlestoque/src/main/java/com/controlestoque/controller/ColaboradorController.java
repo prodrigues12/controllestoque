@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.controlestoque.Enums.TipoColaborador;
+import com.controlestoque.Enums.TipoSolicitante;
 import com.controlestoque.Repository.Colaboradores;
 import com.controlestoque.model.Colaborador;
 
@@ -19,7 +19,7 @@ public class ColaboradorController {
 	@RequestMapping("/novo")
 	private ModelAndView novo(Colaborador colaborador) {
 		ModelAndView mv = new ModelAndView("colaborador/novoColaborador");
-		mv.addObject("tipoColaborador",TipoColaborador.values()) ;
+		mv.addObject("tipoSolicitante",TipoSolicitante.values()) ;
 		return mv;
 	}
 

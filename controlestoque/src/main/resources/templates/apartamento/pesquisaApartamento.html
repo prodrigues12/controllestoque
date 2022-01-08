@@ -56,22 +56,22 @@
 
 					<!-- 					Rua -->
 					<div class="col-md-3">
-						<label class="col-form-label-sm">Bloco:</label> <select id="blocos"
-							class="form-select form-control" th:field="*{bloco}">
+						<label class="col-form-label-sm">Bloco:</label> <select
+							id="blocos" class="form-select form-control" th:field="*{bloco}">
 							<option value=" ">Selecionar Bloco</option>
 							<option class="form-control-label" th:each="bloco : ${bloco}"
 								th:value="${bloco.codigo}" th:text="${bloco.nome}"></option>
 						</select>
 					</div>
-					
-<!-- 					<div class="col-md-3"> -->
-<!-- 						<label class="col-form-label-sm">Rua:</label> <select id="rua" -->
-<!-- 							class="form-select form-control" th:field="*{bloco}"> -->
-<!-- 							<option value=" ">Selecionar Bloco</option> -->
-<!-- 							<option class="form-control-label" th:each="bloco : ${bloco}" -->
-<!-- 								th:value="${bloco.codigo}" th:text="${bloco.nome}"></option> -->
-<!-- 						</select> -->
-<!-- 					</div> -->
+
+					<!-- 					<div class="col-md-3"> -->
+					<!-- 						<label class="col-form-label-sm">Rua:</label> <select id="rua" -->
+					<!-- 							class="form-select form-control" th:field="*{bloco}"> -->
+					<!-- 							<option value=" ">Selecionar Bloco</option> -->
+					<!-- 							<option class="form-control-label" th:each="bloco : ${bloco}" -->
+					<!-- 								th:value="${bloco.codigo}" th:text="${bloco.nome}"></option> -->
+					<!-- 						</select> -->
+					<!-- 					</div> -->
 
 
 
@@ -91,19 +91,17 @@
 			style="text-align: center">
 			<thead class="thead-dark" style="text-align: center">
 
-				<th class="col-1"><th:block
-						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
+				<!-- 				<th class="col-1"><th:block -->
+				<!-- 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block> -->
 
-				</th>
+				<!-- 				</th> -->
 
-				<th class="col-3"><th:block
+
+				<th class="col-2">Rua</th>
+				<th class="col-2">Bloco</th>
+				<th class="col-6"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Apartamento')"></th:block>
 				</th>
-				
-				<th class="col-3">Bloco</th>
-				
-				<th class="col-3">Rua</th>
-
 				<th class="col-2">Ação</th>
 
 
@@ -111,16 +109,17 @@
 
 			<tbody>
 				<tr th:each="apartamento :${pagina.conteudo}">
-					<td th:text="${apartamento.codigo}">1</td>
-					<td th:text="${apartamento.nome}">Produto Teste</td>
-					<td th:text="${apartamento.bloco.nome}">Produto Teste</td>
+					<!-- 					<td th:text="${apartamento.codigo}">1</td> -->
 					<td th:text="${apartamento.bloco.rua.nome}">
+					<td th:text="${apartamento.bloco.nome}">Produto Teste</td>
+					<td th:text="${apartamento.nome}">Produto Teste</td>
 					<td><a title="Editar"
 						th:href="@{/apartamento/{codigo}(codigo=${apartamento.codigo})}"><i
 							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp; <a
 						class=" js-exclusao-btn" title="Excluir" href="#"
 						data:url="@{/apartamento/{codigo}(codigo=${apartamento.codigo})}"
-						data:objeto="${apartamento.nome}"> <i class="bx bx-trash ce-icon"></i>
+						data:objeto="${apartamento.nome}"> <i
+							class="bx bx-trash ce-icon"></i>
 					</a></td>
 				</tr>
 				<tr th:if="${pagina.vazia}">

@@ -61,7 +61,7 @@ public class Apartamento implements Serializable{
 	}
 	
 	public boolean isApartamentoNovo() {
-		return this.codigo == null;
+		return codigo == null;
 	}
 
 	@Override

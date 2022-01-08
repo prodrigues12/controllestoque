@@ -21,7 +21,7 @@
 
 	<header class="header" id="header" th:fragment=header>
 		<div class="header_toggle">
-			<i class='bx bx-chevron-right'  id="header-toggle"></i>
+			<i class='bx bx-chevron-right' id="header-toggle"></i>
 		</div>
 
 		<div>Sistema de Gerenciamento de Estoque CD-994</div>
@@ -33,7 +33,7 @@
 	<div class="l-navbar" id="nav-bar" th:fragment=sindebar>
 		<nav class="nav">
 			<div>
-				<a class="nav_logo"> <i class=" bx bx-sidebar nav_logo-icon" ></i>
+				<a class="nav_logo"> <i class=" bx bx-sidebar nav_logo-icon"></i>
 					<span class="nav_logo-name">CD-994</span>
 				</a>
 
@@ -42,15 +42,14 @@
 						<a th:href="@{/}" class="nav_link active" title="Dashboard"> <i
 							class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span>
 
-						</a> <a th:href="@{/pedido}" class="nav_link" title="Pedidos">
-						 <i class='bx bx-store nav_icon'></i>
-							<span class="nav_name">Pedidos</span>
+						</a> <a th:href="@{/pedido}" class="nav_link" title="Pedidos"> <i
+							class='bx bx-store nav_icon'></i> <span class="nav_name">Pedidos</span>
 
 						</a> <a class="nav_link" data-bs-toggle="collapse"
 							href="#collapseProduto" role="button" aria-expanded="false"
 							aria-controls="collapseExample" title="Produtos"> <i
 							class='bx bx-shopping-bag nav_icon'></i> <span class="nav_name">Produtos</span>
-						</a> 
+						</a>
 
 						<div class="collapse" id="collapseProduto">
 
@@ -59,20 +58,22 @@
 								class="nav_name"> Produto</span>
 
 							</a> <a th:href="@{/secao}" class="nav_link" title="Seção"> <i
-								class='bx bx-cabinet nav_icon_mini'></i> <span
-								class="nav_name"> Seção</span>
+								class='bx bx-cabinet nav_icon_mini'></i> <span class="nav_name">
+									Seção</span>
 
 
 							</a> <a th:href="@{/grupo}" class="nav_link" title="Grupo"> <i
 								class='bx bxs-component nav_icon_mini'></i> <span
 								class="nav_name"> Grupo</span>
 
-							</a> <a th:href="@{/subgrupo}" class="nav_link" title="Sub-grupo"> <i
-								class='bx bx-cube-alt nav_icon_mini'></i> <span class="nav_name"> Sub-Grupo</span>
+							</a> <a th:href="@{/subgrupo}" class="nav_link" title="Sub-grupo">
+								<i class='bx bx-cube-alt nav_icon_mini'></i> <span
+								class="nav_name"> Sub-Grupo</span>
 
 							</a>
 
-						</div> <a class="nav_link" data-bs-toggle="collapse"
+						</div>
+						<a class="nav_link" data-bs-toggle="collapse"
 							href="#collapseEndereco" role="button" aria-expanded="false"
 							aria-controls="collapseExample" title="Endereço"> <i
 							class='bx bx-map-pin nav_icon'></i> <span class="nav_name">Endereço</span>
@@ -84,17 +85,18 @@
 								class=" bx bx-building-house nav_icon_mini"></i> <span
 								class="nav_name"> Rua</span>
 
-							</a> <a th:href="@{/bloco}" class="nav_link"title="Bloco"> <i
-								class='bx bx-building nav_icon_mini'></i> <span
-								class="nav_name"> Bloco</span>
+							</a> <a th:href="@{/bloco}" class="nav_link" title="Bloco"> <i
+								class='bx bx-building nav_icon_mini'></i> <span class="nav_name">
+									Bloco</span>
 
 
-							</a> <a th:href="@{/apartamento}" class="nav_link" title="Apartamento"> <i
-								class='bx bx-home nav_icon_mini'></i> <span
-								class="nav_name"> Apatamento</span>
+							</a> <a th:href="@{/apartamento}" class="nav_link"
+								title="Apartamento"> <i class='bx bx-home nav_icon_mini'></i>
+								<span class="nav_name"> Apatamento</span>
 
-							</a> <a th:href="@{/sala}" class="nav_link"title="Sala"> <i
-								class='bx bx-door-open nav_icon_mini'></i> <span class="nav_name"> Sala</span>
+							</a> <a th:href="@{/sala}" class="nav_link" title="Sala"> <i
+								class='bx bx-door-open nav_icon_mini'></i> <span
+								class="nav_name"> Sala</span>
 
 							</a>
 
@@ -104,11 +106,26 @@
 						<a th:href="@{/estoque}" class="nav_link"> <i
 							class='bx bx-coin-stack nav_icon'></i> <span class="nav_name">Estoque</span>
 
+						</a> <a class="nav_link" data-bs-toggle="collapse"
+							href="#collapseUser" role="button" aria-expanded="false"
+							aria-controls="collapseExample" title="Endereço"> <i
+							class='bx bx-user nav_icon'></i> <span class="nav_name">Endereço</span>
+						</a>
 
-						</a> <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i>
-							<span class="nav_name">Usuarios</span>
+						<div class="collapse" id="collapseUser">
 
-						</a> <a th:href="@{/relatorio}" class="nav_link"> <i
+							<a th:href="@{/usuario}" class="nav_link" title="Usuario"> <i
+								class='bx bx-user-circle nav_icon'></i> <span class="nav_name">
+									Usuario</span>
+
+							</a> <a th:href="@{/colaborador/novo}" class="nav_link" title="Colaborador">
+								<i class='bx bxs-user-badge nav_icon'></i> <span class="nav_name">
+									Colaborador</span>
+							</a>
+						</div>
+
+
+						<a th:href="@{/relatorio}" class="nav_link"> <i
 							class='bx bx-clipboard nav_icon iconAtivo'></i> <span
 							class="nav_name">Relatorio</span>
 						</a>
@@ -140,7 +157,7 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 	<script src="/js/sindebar.js"></script>
-	
+
 
 </body>
 </html>

@@ -62,7 +62,8 @@ public class ApartamentoController implements Serializable {
 		return mv;
 	}
 
-	@RequestMapping(value = { "/novo", "{//d+}" }, method = RequestMethod.POST)
+
+	@RequestMapping(value = { "/novo", "{\\d+}" }, method = RequestMethod.POST)
 	public ModelAndView salvar(@Valid Apartamento apartamento, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return novo(apartamento);
