@@ -21,8 +21,11 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
-	<form method="post" th:action="@{/colaborador/novo}"
+	<form method="post"
+		th:action="${colaborador.colaboradorNovo} ? @{/colaborador/novo} : @{/colaborador/{codigo}(codigo=${colaborador.codigo})}"
 		th:object="${colaborador}">
+
+		<input type="hidden" th:field="*{codigo}">
 
 		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
@@ -31,7 +34,10 @@
 			<div class="card-header">
 				<div class="row">
 					<div class=" col-md-10">
-						<h4>Novo Colaborador</h4>
+						<h4 th:if="${colaborador.colaboradorNovo}">Novo
+							Colaborador/Filial</h4>
+						<h4 th:unless="${colaborador.colaboradorNovo}"
+							th:text="|Editando colaborador: ${colaborador.nome}|"></h4>
 					</div>
 					<div class="col-md-2">
 						<a th:href="@{/colaborador}" class="btn btn-primary btn-sm">Pesquisar</a>
@@ -53,56 +59,57 @@
 
 					<!-- 				tipo de colaborador -->
 					<div class=" col-md-6">
-						<label class=" col-form-label-sm">Empresa: </label> <br>
-						
-						<div class="form-check form-check-inline">
-							<input class="form-check-input " type="radio" name="magaluRadios"
-								id="magalu" value="1" checked> <label
-								class="form-check-label" for="magalu"> Magalu </label>
-						</div>
-						&nbsp; &nbsp;&nbsp; &nbsp;
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="outraRadios"
-								id="outra" value="2"> <label class="form-check-label"
-								for="outra"> Outra </label>
-						</div>
-						&nbsp; &nbsp;&nbsp; &nbsp;
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="filialRadios"
-								id="filial" value="3"> <label class="form-check-label"
-								for="filial"> Filial </label>
-						</div>
+						<label for="tipoColaborador " class=" col-form-label-sm">Eu sou:
+						</label>
 
+						<div class="col-form-label-sm">
+							<th:block th:each="tipoSolicitante : ${tipoSolicitante}">
+								<div class=" form-check form-check-inline ">
+									<input class="form-check-input js-radio-tipo-colaborador"
+										th:field="*{tipoSolicitante}" type="radio"
+										name="radioColaborador " id="radioColaborador"
+										th:id="|codigo_${tipoSolicitante}|"
+										th:value="${tipoSolicitante}"
+										data:documento="${tipoSolicitante.documento}"
+										data:mascara="${tipoSolicitante.mascara}"> <label
+										class="form-check-label" for="radioColaborador"
+										th:for="|codigo_${tipoSolicitante}|"
+										th:text="${tipoSolicitante.descricao}"> Magalu </label>
+								</div>
+							</th:block>
+						</div>
 					</div>
-					
+
 					<!-- 					Matricula/CPF -->
 
 					<div class=" col-md-6">
-						<label class=" col-form-label-sm">Matricula / CPF / CNPJ:</label> <input
-							class="form-control form-control-sm" type="text" />
+						<label for="cpfCnpjId" class=" col-form-label-sm">ID / CPF
+							/ CNPJ:</label> <input id="cpfCnpjId"
+							class="form-control form-control-sm" type="text"
+							th:field=*{cpfCnpjId} disabled />
 					</div>
 				</div>
 
 
-				<div class="row mb-3">
+<!-- 				<div class="row mb-3"> -->
 
-					<!-- 				Email -->
-					<div class="col-md-6">
-						<label class="col-form-label-sm">Email:</label> <input
-							class="form-control form-control-sm" th:field="*{email}">
-					</div>
-					<div class="col-md-6">
-						<label class="col-form-label-sm">Confirmar Email:</label> <input
-							class="form-control form-control-sm">
-					</div>
+<!-- 									Email -->
+<!-- 					<div class="col-md-6"> -->
+<!-- 						<label class="col-form-label-sm">Email:</label> <input -->
+<!-- 							class="form-control form-control-sm" th:field="*{email}"> -->
+<!-- 					</div> -->
+<!-- 					<div class="col-md-6"> -->
+<!-- 						<label class="col-form-label-sm">Confirmar Email:</label> <input -->
+<!-- 							class="form-control form-control-sm"> -->
+<!-- 					</div> -->
 
-				</div>
+<!-- 				</div> -->
 
 				<p>
 					<!-- 				Botões -->
 				<div class="form-row">
-					<a type="button" th:href="@{/}"
-						class="btn btn-danger offset-md-10">Cancelar</a> &nbsp; &nbsp;
+					<a type="button" th:href="@{/}" class="btn btn-danger offset-md-10">Cancelar</a>
+					&nbsp; &nbsp;
 					<button type="submit" class="btn btn-success offset">
 						Salvar</button>
 				</div>
@@ -120,6 +127,7 @@
 	<script src="/js/vendors/jquery.mask.min.js"></script>
 	<script src="/js/vendors/jquery.maskMoney.min.js"></script>
 	<script src="/js/sindebar.js"></script>
+	<script src="/js/colaborador.mascara-cpf-cnpj-id.js"></script>
 	<script src="/js/controllestoque.js"></script>
 </body>
 </html>

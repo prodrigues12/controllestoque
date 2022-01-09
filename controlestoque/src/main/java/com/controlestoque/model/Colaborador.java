@@ -39,10 +39,10 @@ public class Colaborador implements Serializable{
 	private String nome;
 	
 
-	@NotNull(message = "TIPO PESSOA é obrigatório")
+	@NotNull(message = "Empresa é obrigatório")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tipo_pessoa")
-	private TipoSolicitante tipoColaborador;
+	private TipoSolicitante tipoSolicitante;;
 	
 	@NotBlank(message = "CPF/CNPJ é obrigatório")
 	@CPF(groups = CpfGroup.class)
@@ -62,7 +62,7 @@ public class Colaborador implements Serializable{
 	
 	@PostLoad
 	private void postLoad() {
-		this.cpfCnpjId = this.tipoColaborador.formatar(this.cpfCnpjId);
+		this.cpfCnpjId = this.tipoSolicitante.formatar(this.cpfCnpjId);
 	}
 
 	public Long getCodigo() {
@@ -81,12 +81,13 @@ public class Colaborador implements Serializable{
 		this.nome = nome;
 	}
 
-	public TipoSolicitante getTipoColaborador() {
-		return tipoColaborador;
+
+	public TipoSolicitante getTipoSolicitante() {
+		return tipoSolicitante;
 	}
 
-	public void setTipoColaborador(TipoSolicitante tipoColaborador) {
-		this.tipoColaborador = tipoColaborador;
+	public void setTipoSolicitante(TipoSolicitante tipoSolicitante) {
+		this.tipoSolicitante = tipoSolicitante;
 	}
 
 	public String getCpfCnpjId() {
@@ -103,6 +104,10 @@ public class Colaborador implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public boolean isColaboradorNovo() {
+		return codigo == null;
 	}
 
 	@Override
@@ -128,6 +133,11 @@ public class Colaborador implements Serializable{
 		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
+	}
+
+	public String getCpfCnpjIdSemFormatacao() {
+		
+		return TipoSolicitante.removerFormatacao(cpfCnpjId);
 	}
 	
 
