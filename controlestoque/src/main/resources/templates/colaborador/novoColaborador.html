@@ -59,22 +59,22 @@
 
 					<!-- 				tipo de colaborador -->
 					<div class=" col-md-6">
-						<label for="tipoColaborador " class=" col-form-label-sm">Eu sou:
+						<label for="tipoIdentificacao" class=" col-form-label-sm">Tipo de identificação:
 						</label>
 
 						<div class="col-form-label-sm">
-							<th:block th:each="tipoSolicitante : ${tipoSolicitante}">
+							<th:block th:each="tipoIdentificacao : ${tipoIdentificacao}">
 								<div class=" form-check form-check-inline ">
 									<input class="form-check-input js-radio-tipo-colaborador"
-										th:field="*{tipoSolicitante}" type="radio"
-										name="radioColaborador " id="radioColaborador"
-										th:id="|codigo_${tipoSolicitante}|"
-										th:value="${tipoSolicitante}"
-										data:documento="${tipoSolicitante.documento}"
-										data:mascara="${tipoSolicitante.mascara}"> <label
-										class="form-check-label" for="radioColaborador"
-										th:for="|codigo_${tipoSolicitante}|"
-										th:text="${tipoSolicitante.descricao}"> Magalu </label>
+										th:field="*{tipoIdentificacao}" type="radio"
+										name="radioIdentificacao " id="radioIdentificacao"
+										th:id="|codigo_${tipoIdentificacao}|"
+										th:value="${tipoIdentificacao}"
+										data:documento="${tipoIdentificacao.documento}"
+										data:mascara="${tipoIdentificacao.mascara}"> <label
+										class="form-check-label" for="radioIdentificacao"
+										th:for="|codigo_${tipoIdentificacao}|"
+										th:text="${tipoIdentificacao.descricao}"> Magalu </label>
 								</div>
 							</th:block>
 						</div>
@@ -108,7 +108,7 @@
 				<p>
 					<!-- 				Botões -->
 				<div class="form-row">
-					<a type="button" th:href="@{/}" class="btn btn-danger offset-md-10">Cancelar</a>
+					<a type="button" th:href="@{/colaborador}" class="btn btn-danger offset-md-10">Cancelar</a>
 					&nbsp; &nbsp;
 					<button type="submit" class="btn btn-success offset">
 						Salvar</button>

@@ -1,17 +1,20 @@
 package com.controlestoque.Repository.filter;
 
-import com.controlestoque.Enums.TipoSolicitante;
+import com.controlestoque.Enums.TipoIdentificacao;
 
 public class ColaboradorFilter {
 	
-	private long codigo;
+	private Long codigo;
 	private String nome;
 	private String cpfCnpjId;
+	private TipoIdentificacao tipoIdentificacao;
 	
-	public long getCodigo() {
+	
+	
+	public Long getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(long codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 	public String getNome() {
@@ -27,8 +30,15 @@ public class ColaboradorFilter {
 		this.cpfCnpjId = cpfCnpjId;
 	}
 	
+	public TipoIdentificacao getTipoIdentificacao() {
+		return tipoIdentificacao;
+	}
+	public void setTipoIdentificacao(TipoIdentificacao tipoIdentificacao) {
+		this.tipoIdentificacao = tipoIdentificacao;
+	}
+	
 	public Object getCpfCnpjIdSemFormtacao() {
-		return TipoSolicitante.removerFormatacao(this.cpfCnpjId);
+		return TipoIdentificacao.removerFormatacao(this.cpfCnpjId);
 	}
 	
 	

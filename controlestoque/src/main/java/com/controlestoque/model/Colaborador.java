@@ -14,19 +14,22 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.hibernate.validator.constraints.br.CPF;
+import org.hibernate.validator.group.GroupSequenceProvider;
 
-
-import com.controlestoque.Enums.TipoSolicitante;
+import com.controlestoque.Enums.TipoIdentificacao;
+import com.controlestoque.model.validation.ColaboradorGroupSequenceProvider;
 import com.controlestoque.model.validation.IdMagalu;
 import com.controlestoque.model.validation.gruop.CnpjGroup;
 import com.controlestoque.model.validation.gruop.CpfGroup;
 import com.controlestoque.model.validation.gruop.IdGroup;
 
 @Entity
+@GroupSequenceProvider(ColaboradorGroupSequenceProvider.class)
 public class Colaborador implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -35,35 +38,38 @@ public class Colaborador implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	@NotBlank(message = "Campo nome é obrigatório")
+	@NotBlank(message = "Campo Nome é obrigatório")
+	@Size(min = 5 , max = 50, message = "Campo Nome deve conter de 5 à 50 caracteries")
 	private String nome;
 	
 
-	@NotNull(message = "Empresa é obrigatório")
+	@NotNull(message = "Tipo de identicicação é obrigatório")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tipo_pessoa")
-	private TipoSolicitante tipoSolicitante;;
+	private TipoIdentificacao tipoIdentificacao;;
 	
-	@NotBlank(message = "CPF/CNPJ é obrigatório")
+	@NotBlank(message = "CPF / CNPJ/ID é obrigatório")
 	@CPF(groups = CpfGroup.class)
 	@CNPJ(groups = CnpjGroup.class)
 	@IdMagalu(groups = IdGroup.class)
 	private String cpfCnpjId;
 	
-
 	@Email(message = "E-mail inválido")
 	private String email;
 	
 	@PrePersist
 	@PreUpdate
 	private void prePersistPreUpdate() {
-		this.cpfCnpjId = TipoSolicitante.removerFormatacao(this.cpfCnpjId);
+		this.cpfCnpjId = TipoIdentificacao.removerFormatacao(this.cpfCnpjId);
 	}
 	
+
 	@PostLoad
 	private void postLoad() {
-		this.cpfCnpjId = this.tipoSolicitante.formatar(this.cpfCnpjId);
+		this.cpfCnpjId = this.tipoIdentificacao.formatar(this.cpfCnpjId);
 	}
+
+
 
 	public Long getCodigo() {
 		return codigo;
@@ -81,14 +87,14 @@ public class Colaborador implements Serializable{
 		this.nome = nome;
 	}
 
-
-	public TipoSolicitante getTipoSolicitante() {
-		return tipoSolicitante;
+	public TipoIdentificacao getTipoIdentificacao() {
+		return tipoIdentificacao;
 	}
 
-	public void setTipoSolicitante(TipoSolicitante tipoSolicitante) {
-		this.tipoSolicitante = tipoSolicitante;
+	public void setTipoIdentificacao(TipoIdentificacao tipoIdentificacao) {
+		this.tipoIdentificacao = tipoIdentificacao;
 	}
+	
 
 	public String getCpfCnpjId() {
 		return cpfCnpjId;
@@ -136,8 +142,7 @@ public class Colaborador implements Serializable{
 	}
 
 	public String getCpfCnpjIdSemFormatacao() {
-		
-		return TipoSolicitante.removerFormatacao(cpfCnpjId);
+		return TipoIdentificacao.removerFormatacao(cpfCnpjId);
 	}
 	
 

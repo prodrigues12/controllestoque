@@ -8,5 +8,5 @@ import com.controlestoque.model.Colaborador;
 
 public interface ColaboradoresQueries {
 
-	public Page<Colaborador> filtrar (ColaboradorFilter colaboradorfilter, Pageable pageable);
+	public Page<Colaborador> filtrar (ColaboradorFilter filtro, Pageable pageable);
 }
