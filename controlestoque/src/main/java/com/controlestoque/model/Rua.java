@@ -1,11 +1,13 @@
 package com.controlestoque.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +22,7 @@ public class Rua  implements Serializable{
 	private Long codigo;
 	
 	private String nome;
-
+	
 	public Long getCodigo() {
 		return codigo;
 	}

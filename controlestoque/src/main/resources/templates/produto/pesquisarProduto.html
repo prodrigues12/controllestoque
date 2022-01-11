@@ -128,8 +128,7 @@
 					<td th:text="${produto.codigo}">1</td>
 					<td th:text="${produto.nome}">Produto Teste</td>
 					<td th:text="${produto.secao.nome}">Limpeza</td>
-					<td>
-					<td th:text="${produto.endereco}">L</td>
+					<td th:text="${produto.endereco.enderecoProduto}">L</td>
 					<td th:text="${produto.qtdEstoque}">4</td>
 					<td><a title="Editar"
 						th:href="@{/produto/{codigo}(codigo=${produto.codigo})}"><i

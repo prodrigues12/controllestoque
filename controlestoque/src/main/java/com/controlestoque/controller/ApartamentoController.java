@@ -81,14 +81,14 @@ public class ApartamentoController implements Serializable {
 
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<Apartamento> pesquisarPorCodigoBloco(
-			@RequestParam(name = "bloco", defaultValue = "0") Long codigoApartamento) {
+			@RequestParam(name = "bloco", defaultValue = "0") Long codigoBloco) {
 		try {
 			Thread.sleep(800);
 		} catch (InterruptedException e) {
 
 		}
 
-		return apartamentosRepository.findByBlocoCodigo(codigoApartamento);
+		return apartamentosRepository.findByBlocoCodigo(codigoBloco);
 
 	}
 

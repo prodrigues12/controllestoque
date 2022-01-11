@@ -58,7 +58,7 @@ public class Produto implements Serializable {
 	@NotNull(message = "O unidade de medida é obrigatório")
 	@Enumerated(EnumType.STRING)
 	private UnidadeMedia uniMedida;
-
+	
 	@JsonIgnore
 	@Embedded
 	private Endereco endereco;

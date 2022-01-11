@@ -1,6 +1,8 @@
 var Controllestoque = Controllestoque || {};
 
 
+//##################### RUA #####################
+
 Controllestoque.ComboRua = (function() {
 
 	function ComboRua() {
@@ -23,6 +25,8 @@ Controllestoque.ComboRua = (function() {
 
 
 }());
+
+//##################### BLOCO #####################
 
 Controllestoque.ComboBloco = (function() {
 	
@@ -98,23 +102,51 @@ Controllestoque.ComboBloco = (function() {
 
 }());
 
-Controllestoque.ComboApartamento = (function() {
+//##################### APARTAMENTO #####################
 
-	function ComboApartamento(comboBloco) {
-		this.comboBloco = comboBloco;
+Controllestoque.ComboBlocoAp = (function() {
+
+	function ComboBlocoAp() {
+		this.combo = $('#bloco');
+		this.emitter = $({});
+		this.on = this.emitter.on.bind(this.emitter);
+
+	}
+
+	ComboBlocoAp.prototype.iniciar = function() {
+		this.combo.on('change', onBlocoApAlterado.bind(this));
+
+	}
+
+	function onBlocoApAlterado() {
+		this.emitter.trigger('alterado', this.combo.val());
+	}
+
+	return ComboBlocoAp;
+	
+}());
+
+Controllestoque.ComboApartamento = (function() {
+	
+	this.emitter = $({});
+		this.on = this.emitter.on.bind(this.emitter);
+
+
+	function ComboApartamento(comboBlocoAp) {
+		this.comboBlocoAp = comboBlocoAp;
 		this.combo = $('#apartamento');
 		this.imgLoading = $('.js-img-loading-apartamento');
-		this.inputHiddenBlocoSelecionado = $('#inputHiddenApartamentoSelecionado')
+		this.inputHiddenApartamentoSelecionado = $('#inputHiddenApartamentoSelecionado')
 	}
 	ComboApartamento.prototype.iniciar = function() {
 		reset.call(this);
-		this.comboBloco.on('alterado', onBlocoTrocado.bind(this));
-		var codigoBloco = this.comboBloco.combo.val();
+		this.comboBlocoAp.on('alterado', onBlocoApTrocado.bind(this));
+		var codigoBloco = this.comboBlocoAp.combo.val();
 		inicializarApartamentos.call(this, codigoBloco);
 	}
 
-	function onBlocoTrocado(evento, codigoBloco) {
-		
+	function onBlocoApTrocado(evento, codigoBloco) {
+		console.log(codigoBloco);
 		this.inputHiddenApartamentoSelecionado.val('');
 		inicializarApartamentos.call(this, codigoBloco);
 	}
@@ -179,6 +211,10 @@ $(function() {
 	var comboBloco = new Controllestoque.ComboBloco(comboRua);
 	comboBloco.iniciar();
 	
-//	var comboApartamento = new Controllestoque.ComboApartamento(comboBloco);
-//	comboApartamento.iniciar();
+	var comboBlocoAp = new Controllestoque.ComboBlocoAp();
+	comboBlocoAp.iniciar();
+
+	
+	var comboApartamento = new Controllestoque.ComboApartamento(comboBlocoAp);
+	comboApartamento.iniciar();
 });

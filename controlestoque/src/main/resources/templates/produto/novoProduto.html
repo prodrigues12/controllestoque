@@ -24,7 +24,7 @@
 	<form method="post"
 		th:action="${produto.produtoNovo} ? @{/produto/novo} : @{/produto/{codigo}(codigo=${produto.codigo})}"
 		th:object="${produto}">
-		
+
 		<input type="hidden" th:field="*{codigo}">
 
 		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
@@ -35,7 +35,8 @@
 				<div class="row">
 					<div class=" col-md-10">
 						<h4 th:if="${produto.produtoNovo}">Novo Produto</h4>
-						<h4 th:unless="${produto.produtoNovo}" th:text="|Editando produto: ${produto.nome}|"></h4>
+						<h4 th:unless="${produto.produtoNovo}"
+							th:text="|Editando produto: ${produto.nome}|"></h4>
 					</div>
 					<div class="col-md-2">
 						<a th:href="@{/produto}" class="btn btn-primary btn-sm">Pesquisar</a>
@@ -47,7 +48,7 @@
 				<div class="row mb-3">
 
 					<!-- 				Codigo -->
-					<div class=" col-md-1" >
+					<div class=" col-md-1">
 						<label class=" col-form-label-sm">Codigo:</label> <input
 							class="form-control form-control-sm" type="text" readonly
 							placeholder="00000" />
@@ -94,7 +95,7 @@
 					<div class="col-md-4">
 						<label for="grupo" class="col-form-label-sm">Grupo:</label>
 						<div class="ce-field-action ">
-							<select id="grupos" 
+							<select id="grupos"
 								class="form-select form-control form-select-sm"
 								th:field="*{agrupar.subgrupo.grupo.codigo}">
 								<option value="">Selecionar um Grupo</option>
@@ -115,7 +116,7 @@
 								data:url="@{/subgrupo}" th:field="*{agrupar.subgrupo.codigo}">
 								<option value="">Selecione Subgrupo</option>
 							</select>
-							<div class="bw-field-action__icon  js-img-loading-sub-grupo"
+							<div class="bw-field-action__icon  js-img-loading-bloco"
 								style="display: none">
 								<img th:src="@{/img/mini-loading.gif}" />
 							</div>
@@ -155,13 +156,14 @@
 						<label for="rua" class="col-form-label-sm">Rua:</label>
 						<div class="ce-field-action ">
 							<select id="rua" class="form-control form-select  form-select-sm"
-								th:field="*{endereco.sala.apartamento.bloco.rua.codigo}">
+								th:field="*{endereco.apartamento.bloco.rua.codigo}">
 								<option value="">Selecionar Rua</option>
 								<option class="form-control form-control-label"
 									th:each="rua : ${rua}" th:value="${rua.codigo}"
 									th:text="${rua.nome}"></option>
 							</select>
 						</div>
+
 					</div>
 
 					<!-- 										Bloco -->
@@ -184,7 +186,7 @@
 
 					<!-- 									Apartamento -->
 					<div class="col-md-3">
-							<label for="apartameto" class="col-form-label-sm">Apartmaneto:</label>
+						<label for="apartameto" class="col-form-label-sm">Apartmaneto:</label>
 						<div class="ce-field-action">
 							<input type="hidden" id="inputHiddenApartamentoSelecionado"
 								th:value="*{endereco.apartamento} != null ? *{endereco.apartamento.codigo}" />
@@ -198,36 +200,27 @@
 								<img th:src="@{/img/mini-loading.gif}" />
 							</div>
 						</div>
-					</div>
-
-					<!-- 										Sala -->
-					<div class=" col-md-3">
-						<label for="sala" class="col-form-label-sm">Sala:</label> <input
-							type="text" class="form-control form-control-sm" id="sala"
-							placeholder="Selecione um Sala" readonly="readonly">
-					</div>
-
-					<p>
-
-						<!-- 						status -->
-					<div class="row mb-3">
-						<div class="form-check form-switch">
-							<label class="form-check-label" for="status"> Status</label> <input
-								class="form-check-input" type="checkbox" role="switch"
-								id="status" checked>
-						</div>
-					</div>
+					</div>	
 				</div>
 				<p>
-					<!-- 				Botões -->
+
+					<!-- 						status -->
+				<div class="row mb-3">
+					<div class="form-check form-switch">
+						<label class="form-check-label" for="status"> Status</label> <input
+							class="form-check-input" type="checkbox" role="switch"
+							id="status" checked>
+					</div>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<!-- 				Botões -->
 				<div class="form-row">
 					<a type="button" th:href="@{/produto}"
 						class="btn btn-danger offset-md-10">Cancelar</a> &nbsp; &nbsp;
 					<button type="submit" class="btn btn-success offset">
 						Salvar</button>
 				</div>
-
-
 			</div>
 		</div>
 
@@ -249,7 +242,7 @@
 	<script src="/js/secao.cadastro-rapido.js"></script>
 	<script src="/js/produto.combo-grupo-subGrupo.js"></script>
 	<script src="/js/produto.combo-rua-bloco.js"></script>
-	<script src="/js/produto.combo-bloco-apartamento.js"></script>
+	<!-- 		<script src="/js/produto.combo-bloco-apartamento.js"></script> -->
 	<script src="/js/controllestoque.js"></script>
 </body>
 </html>
