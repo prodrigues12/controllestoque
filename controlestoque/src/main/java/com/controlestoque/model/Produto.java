@@ -60,13 +60,11 @@ public class Produto implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private UnidadeMedia uniMedida;
 	
-//	@JsonIgnore
-//	@Embedded
-//	private Endereco endereco;
+	@JsonIgnore
+	@Embedded
+	private Endereco endereco;
 	
-	@OneToMany(mappedBy = "produto")
-	private List<Endereco> enderecos;
-
+	
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -131,13 +129,13 @@ public class Produto implements Serializable {
 		this.uniMedida = uniMedida;
 	}
 	
-//	public Endereco getEndereco() {
-//		return endereco;
-//	}
-//
-//	public void setEndereco(Endereco endereco) {
-//		this.endereco = endereco;
-//	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
 	
 	public boolean isProdutoNovo() {
 		return this.codigo == null;
