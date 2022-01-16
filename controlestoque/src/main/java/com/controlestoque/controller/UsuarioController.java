@@ -1,4 +1,4 @@
-package com.controlestoque;
+package com.controlestoque.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;

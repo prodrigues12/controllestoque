@@ -7,7 +7,7 @@ public class GeracaoSenha {
 	
 	public static void main(String[] args) {
 		BCryptPasswordEncoder endecor = new BCryptPasswordEncoder();
-		System.out.println(endecor.encode("admin"));
+		System.out.println(endecor.encode("paulino"));
 		
 	}
 

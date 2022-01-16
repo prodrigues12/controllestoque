@@ -20,19 +20,20 @@ import com.controlestoque.model.Usuario;
 
 
 @Service
-public class AppUserDetailsService  implements UserDetailsService {
+public class AppUserDetailsService implements UserDetailsService {
 
 	@Autowired
-	private Usuarios usuRepository; 
+	private Usuarios usuRepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		
-		Optional<Usuario> usuarioOptional = usuRepository.porEmailEAtivo(email);		
-		Usuario usuario = usuarioOptional.orElseThrow(()-> new UsernameNotFoundException("Usuário e/ou senha incorretos"));	
-		return new UsuarioSistema(usuario, getPermissoes(usuario));
-
+		Optional<Usuario> usuarioOptional = usuRepository.porEmailEAtivo(email);
+		Usuario usuario = usuarioOptional.orElseThrow(() -> new UsernameNotFoundException("Vai com calma aí, email e/ou senha incorretos"));
+		return new User(usuario.getEmail(), usuario.getSenha(), new HashSet<>());
 	}
+
+
+
 
 	private Collection<? extends GrantedAuthority> getPermissoes(Usuario usuario) {
 		
