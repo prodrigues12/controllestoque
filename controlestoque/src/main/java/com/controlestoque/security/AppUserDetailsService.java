@@ -18,29 +18,26 @@ import org.springframework.stereotype.Service;
 import com.controlestoque.Repository.Usuarios;
 import com.controlestoque.model.Usuario;
 
-
 @Service
 public class AppUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private Usuarios usuRepository;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		Optional<Usuario> usuarioOptional = usuRepository.porEmailEAtivo(email);
-		Usuario usuario = usuarioOptional.orElseThrow(() -> new UsernameNotFoundException("Vai com calma aí, email e/ou senha incorretos"));
-		return new User(usuario.getEmail(), usuario.getSenha(), new HashSet<>());
+		Usuario usuario = usuarioOptional.orElseThrow(() -> new UsernameNotFoundException("ERRoooUU!!!!!"));
+		return new User(usuario.getEmail(), usuario.getSenha(), getPermissoes(usuario));
 	}
-
-
-
-
-	private Collection<? extends GrantedAuthority> getPermissoes(Usuario usuario) {
+	
+private Collection<? extends GrantedAuthority> getPermissoes(Usuario usuario) {
 		
 		Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 		
 		List<String> permissoes = usuRepository.permissoes(usuario);
 		permissoes.forEach(p -> authorities.add(new SimpleGrantedAuthority("ROLE_" + p.toUpperCase())));
+		
 		return authorities;
 	}
 

@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.controlestoque.model.Usuario;
 
 public interface UsuariosQueries {
+	
 
 	public Optional<Usuario> porEmailEAtivo(String email);
 
