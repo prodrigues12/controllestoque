@@ -12,9 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,11 +23,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.controlestoque.Enums.StatusUsuario;
 import com.controlestoque.Repository.GrupoUsers;
 import com.controlestoque.Repository.Usuarios;
+import com.controlestoque.Repository.filter.UsuarioFilter;
+import com.controlestoque.controller.page.PageWrapper;
 import com.controlestoque.model.Usuario;
 import com.controlestoque.service.UsuarioService;
 import com.controlestoque.service.exception.EmailUsuarioJaCadastradoException;
 import com.controlestoque.service.exception.SenhaObrigatoriaUsuarioException;
-
 
 @Controller
 @RequestMapping("/usuario")
@@ -42,8 +43,8 @@ public class UsuarioController {
 	@Autowired
 	private Usuarios usuRepository;
 
-//	@Autowired
-//	PasswordEncoder passwordEnconder;
+	@Autowired
+	PasswordEncoder passwordEnconder;
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo(Usuario usuario) {
@@ -52,7 +53,7 @@ public class UsuarioController {
 		return mv;
 	}
 
-	@PostMapping({"/novo","{\\+d}"})
+	@RequestMapping(value={"/novo","{\\+d}"}, method = RequestMethod.POST)
 	public ModelAndView salvar(@Valid Usuario usuario, BindingResult result, RedirectAttributes atrrributes) {
 		if (result.hasErrors()) {
 			return novo(usuario);
@@ -69,11 +70,11 @@ public class UsuarioController {
 			return novo(usuario);
 		}
 
-//		 if(usuario.isNovo()) {
-//			 usuario.setSenha(this.passwordEnconder.encode( usuario.getSenha()));
-//			 usuario.setConfirmacaoSenha(usuario.getSenha());
-//			 
-//		 }
+		 if(usuario.isUsuarioNovo()) {
+			 usuario.setSenha(this.passwordEnconder.encode( usuario.getSenha()));
+			 usuario.setConfirmacaoSenha(usuario.getSenha());
+			 
+		 }
 
 		atrrributes.addFlashAttribute("mensagem", "Usuario Salvo com sucesso!");
 		return new ModelAndView("redirect:/usuario/novo");
@@ -86,25 +87,25 @@ public class UsuarioController {
 		usuService.alterarStatus(codigos, statusUsuario);
 	}
 
-//	@GetMapping
-//	public ModelAndView pesquisarUsuario(UsuarioFilter usuarioFilter, @PageableDefault(size = 3) Pageable pageable,
-//			HttpServletRequest httpServletRequest) {
-//		ModelAndView mv = new ModelAndView("usuario/pesquisaUsuario");
-//		mv.addObject("grupo", gruRepository.findAll());
-//
-//		PageWrapper<Usuario> paginaWrapper = new PageWrapper<>(usuRepository.filtrar(usuarioFilter, pageable),
-//				httpServletRequest);
-//		
-//		mv.addObject("pagina", paginaWrapper);
-//		return mv;
-//	}
-//	
-//	@GetMapping("/{codigo}")
-//	public ModelAndView editar(@PathVariable ("codigo") Long codigo) {
-//		Usuario usuario = usuRepository.buscarComGrupos(codigo);
-//		ModelAndView mv = novo(usuario);
-//		mv.addObject(usuario);
-//		return mv;
-//	}
+	@GetMapping
+	public ModelAndView pesquisarUsuario(UsuarioFilter usuarioFilter, @PageableDefault(size = 3) Pageable pageable,
+			HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView("usuario/pesquisaUsuario");
+		mv.addObject("grupoUser", gruUserRepository.findAll());
+
+		PageWrapper<Usuario> paginaWrapper = new PageWrapper<>(usuRepository.filtrar(usuarioFilter, pageable),
+				httpServletRequest);
+		
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+	}
+	
+	@GetMapping("/{codigo}")
+	public ModelAndView editar(@PathVariable ("codigo") Long codigo) {
+		Usuario usuario = usuRepository.buscarComGrupos(codigo);
+		ModelAndView mv = novo(usuario);
+		mv.addObject(usuario);
+		return mv;
+	}
 
 }

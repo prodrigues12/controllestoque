@@ -63,7 +63,7 @@ public class ColaboradoresImpl implements ColaboradoresQueries {
 			}
 			
 			if (!StringUtils.isEmpty(filtro.getCpfCnpjId())) {
-				criteria.add(Restrictions.ilike("cpfCnpjId", filtro.getCpfCnpjId()));
+				criteria.add(Restrictions.ilike("cpfCnpjId", filtro.getCpfCnpjId(), MatchMode.ANYWHERE));
 			}
 //			
 		}

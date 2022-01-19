@@ -73,7 +73,7 @@ Controllestoque.ComboSubgrupo = (function() {
 	}
 
 	function reset() {
-		this.combo.html('<option value="">Selecione a cidade</option>');
+		this.combo.html('<option value="">Selecione o Subgrupo</option>');
 		this.combo.val('');
 //		this.combo.attr('disabled', 'disabled');
 	}

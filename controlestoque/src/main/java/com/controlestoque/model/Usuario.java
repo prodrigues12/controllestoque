@@ -117,7 +117,7 @@ public class Usuario implements Serializable {
 		this.grupoUser = grupoUser;
 	}
 
-	public boolean isNovo() {
+	public boolean isUsuarioNovo() {
 		return codigo == null;
 	}
 

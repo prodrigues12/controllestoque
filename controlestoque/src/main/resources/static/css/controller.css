@@ -43,7 +43,7 @@
 /* ############# CARD ############# */
 .card {
 	width: auto;
-	left: auto;
+	left: inherit;
 	border-width: 2px;
 	border-color: #191970;
 	border-top-right-radius: .2rem !important;
@@ -129,8 +129,6 @@ a {
 	font-weight: bold;
 	font-size: 14px;		
 }
-
-
 
 .form-check-label{
 	font-weight: bold;

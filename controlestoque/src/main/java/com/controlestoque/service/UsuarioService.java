@@ -32,11 +32,11 @@ public class UsuarioService {
 			throw new EmailUsuarioJaCadastradoException("E-mail já cadastrado");
 		}
 		
-		if (usuario.isNovo() && StringUtils.isEmpty(usuario.getSenha())) {
+		if (usuario.isUsuarioNovo() && StringUtils.isEmpty(usuario.getSenha())) {
 			throw new SenhaObrigatoriaUsuarioException("Senha é obrigatória para novo usuário");
 		}
 		
-		if (usuario.isNovo()|| !StringUtils.isEmpty(usuario.getSenha())) {
+		if (usuario.isUsuarioNovo()|| !StringUtils.isEmpty(usuario.getSenha())) {
 			usuario.setSenha(this.passwordEncoder.encode(usuario.getSenha()));
 		
 		}
@@ -47,7 +47,7 @@ public class UsuarioService {
 		}
 		usuario.setConfirmacaoSenha(usuario.getSenha());
 		
-		if(!usuario.isNovo() && usuario.getAtivo()== null) {
+		if(!usuario.isUsuarioNovo() && usuario.getAtivo()== null) {
 			usuario.setAtivo(usuarioExistente.get().getAtivo());
 		}
 		
