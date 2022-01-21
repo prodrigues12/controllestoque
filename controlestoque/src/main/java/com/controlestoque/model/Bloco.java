@@ -1,6 +1,7 @@
 package com.controlestoque.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -36,7 +38,19 @@ public class Bloco implements Serializable {
 	@JoinColumn(name="codigo_rua")
 	@JsonIgnore
 	private Rua rua;
+	
+	@OneToMany(mappedBy = "bloco")
+	private List<Endereco> endereco;
 
+
+	public List<Endereco> getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(List<Endereco> endereco) {
+		this.endereco = endereco;
+	}
+	
 	public Long getCodigo() {
 		return codigo;
 	}

@@ -1,41 +1,65 @@
 package com.controlestoque.model;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
 
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
-@Embeddable
+import javax.validation.constraints.NotNull;
+
+//@Embeddable
+@Entity
 public class Endereco implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Transient
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long codigo;
+
+	@NotNull(message = "Campo Produto é obrigatorio")
+	@ManyToOne
+	@JoinColumn(name = "codigo_produto")
+	private Produto produto;
+
+	@NotNull(message = "Campo Rua é obrigatorio")
+	@ManyToOne
+	@JoinColumn(name = "codigo_rua")
 	private Rua rua;
 
-	@Transient
+	@NotNull(message = "Campo Rua é obrigatorio")
 	@ManyToOne
 	@JoinColumn(name = "codigo_bloco")
 	private Bloco bloco;
 
-	@Transient
 	@ManyToOne
 	@JoinColumn(name = "codigo_apartamento")
 	private Apartamento apartamento;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "codigo_sala")
 	private Sala sala;
-	
 
-	public Bloco getBloco() {
-		return bloco;
+	public Long getCodigo() {
+		return codigo;
 	}
 
-	public void setBloco(Bloco bloco) {
-		this.bloco = bloco;
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
 	}
 
 	public Rua getRua() {
@@ -46,6 +70,14 @@ public class Endereco implements Serializable {
 		this.rua = rua;
 	}
 
+	public Bloco getBloco() {
+		return bloco;
+	}
+
+	public void setBloco(Bloco bloco) {
+		this.bloco = bloco;
+	}
+
 	public Apartamento getApartamento() {
 		return apartamento;
 	}
@@ -54,20 +86,83 @@ public class Endereco implements Serializable {
 		this.apartamento = apartamento;
 	}
 
-	public String getEnderecoProduto() {
-
-		if (this.apartamento != null) {
-			return this.apartamento.getBloco().getRua().getNome() + " - " + this.apartamento.getBloco().getNome()
-					+ " - " + this.apartamento.getNome();
-		}
-
-		if (this.bloco != null) {
-			return this.rua.getNome() + " . " + this.bloco.getNome();
-		}
-//		if (this.rua != null) {
-		return this.rua.getNome();
-//		}
-//		return null;
-
+	public Sala getSala() {
+		return sala;
 	}
+
+	public void setSala(Sala sala) {
+		this.sala = sala;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(codigo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Endereco other = (Endereco) obj;
+		return Objects.equals(codigo, other.codigo);
+	}
+
+//	@Transient
+//	private Rua rua;
+//
+//	@Transient
+//	@ManyToOne
+//	@JoinColumn(name = "codigo_bloco")
+//	private Bloco bloco;
+//
+//	@Transient
+//	@ManyToOne
+//	@JoinColumn(name = "codigo_apartamento")
+//	private Apartamento apartamento;
+//	
+//	@ManyToOne
+//	@JoinColumn(name = "codigo_sala")
+//	private Sala sala;
+//	
+//
+//	public Bloco getBloco() {
+//		return bloco;
+//	}
+//
+//	public void setBloco(Bloco bloco) {
+//		this.bloco = bloco;
+//	}
+//
+//	public Rua getRua() {
+//		return rua;
+//	}
+//
+//	public void setRua(Rua rua) {
+//		this.rua = rua;
+//	}
+//
+//	public Apartamento getApartamento() {
+//		return apartamento;
+//	}
+//
+//	public void setApartamento(Apartamento apartamento) {
+//		this.apartamento = apartamento;
+//	}
+//
+//	public String getEndereco() {
+//		if (this.sala != null) {
+//			return this.bloco.getNome() + " - " + this.apartamento.getNome() + " - " + this.sala.getNome();
+//		}
+//
+//		if (this.apartamento != null) {
+//			return this.bloco.getNome() + " - " + this.apartamento.getNome();
+//		}
+//
+//		return this.bloco.getNome();
+//
+//	}
 }

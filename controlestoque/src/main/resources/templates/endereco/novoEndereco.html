@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<title>Novo Produto</title>
+<title>Endereco</title>
 <meta name="author" content="Paulino Rodrigues">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.css" />
@@ -27,10 +27,10 @@
 		th:object="${endereco}">
 
 
-		<input type="hidden" th:field="*{codigo}">
+		<!-- 			<input type="hidden" th:field="*{codigo}"> -->
 
-		<!-- 		<th:block th:replace="fragmentos/mensagemSucesso"></th:block> -->
-		<!-- 		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block> -->
+		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
+		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
 
 		<div class="card">
 			<div class="card-header">
@@ -40,104 +40,103 @@
 
 					</div>
 					<div class="col-md-2">
-						<a th:href="@{/produto}" class="btn btn-primary btn-sm">Pesquisar</a>
+						<a th:href="@{/endereco}" class="btn btn-primary btn-sm">Pesquisar</a>
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="card-body">
 
 				<div class="row mb-3">
 
-					<label for="rua" class="col-form-label-sm">Produto:</label>
-					<div class="ce-field-action ">
-						<select id="sala" class="form-control form-select  form-select-sm"
-							th:field="*{produto}">
-							<option value="">Selecionar Rua</option>
-							<option class="form-control form-control-label"
-								th:each="produto : ${produto}" th:value="${produto.codigo}"
-								th:text="${produto.nome}"></option>
-						</select>
+					<div class="col-md-12">
+						<label for="rua" class="col-form-label-sm">Produto:</label>
+						<div class="ce-field-action ">
+							<select id="sala"
+								class="form-control form-select  form-select-sm"
+								th:field="*{produto}">
+								<option value="">Selecionar Produto</option>
+								<option class="form-control form-control-label"
+									th:each="produto : ${produto}" th:value="${produto.codigo}"
+									th:text="${produto.nome}"></option>
+							</select>
+						</div>
 					</div>
 				</div>
-			
+				<!-- 													Rua -->
 
+				<div class="row mb-3">
+					<div class="col-md-3">
+						<label for="rua" class="col-form-label-sm">Rua:</label>
+						<div class="ce-field-action ">
+							<select id="rua" class="form-control form-select  form-select-sm"
+								th:field="*{rua}">
+								<option value="">Selecionar Rua</option>
+								<option class="form-control form-control-label"
+									th:each="rua : ${rua}" th:value="${rua.codigo}"
+									th:text="${rua.nome}"></option>
+							</select>
+						</div>
+					</div>
+
+					<!-- 		Bloco -->
+					<div class="col-md-3">
+						<label for="bloco" class="col-form-label-sm">Bloco:</label>
+						<div class="ce-field-action">
+							<input type="hidden" id="inputHiddenBlocoSelecionado"
+								th:value="*{bloco} != null ? *{bloco.codigo}" /> <select id="bloco"
+								class="form-control form-select form-select-sm"
+								data:url="@{/bloco}" th:field="*{bloco}">
+								<option value="">Selecione Bloco</option>
+							</select>
+							<div class="bw-field-action__icon  js-img-loading-bloco"
+								style="display: none">
+								<img th:src="@{/img/mini-loading.gif}" />
+							</div>
+						</div>
+					</div>
+
+
+					<!-- 													Apartamento -->
+					<div class="col-md-3">
+						<label for="apartameto" class="col-form-label-sm">Apartmaneto:</label>
+						<div class="ce-field-action">
+							<input type="hidden" id="inputHiddenApartamentoSelecionado"
+								th:value="*{apartamento} != null ? *{apartamento.codigo}" /> <select
+								id="apartamento" class="form-control form-select form-select-sm"
+								data:url="@{/apartamento}" th:field="*{apartamento}">
+								<option value="">Selecione Apartamento</option>
+							</select>
+							<div class="bw-field-action__icon  js-img-loading-bloco"
+								style="display: none">
+								<img th:src="@{/img/mini-loading.gif}" />
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<label for="rua" class="col-form-label-sm">Sala:</label>
+						<div class="ce-field-action ">
+							<select id="sala"
+								class="form-control form-select  form-select-sm">
+							</select>
+						</div>
+					</div>
+
+
+				</div>
+				<p>
+			</div>
 			<div class="row mb-3">
-				<!-- 									Rua -->
-				<div class="col-md-3">
-					<label for="rua" class="col-form-label-sm">Rua:</label>
-					<div class="ce-field-action ">
-						<select id="rua" class="form-control form-select  form-select-sm"
-							th:field="*{rua}">
-							<option value="">Selecionar Rua</option>
-							<option class="form-control form-control-label"
-								th:each="rua : ${rua}" th:value="${rua.codigo}"
-								th:text="${rua.nome}"></option>
-						</select>
-					</div>
+				<!-- 					Botões -->
 
+				<div class="form-row">
+					<a type="button" th:href="@{/produto}"
+						class="btn btn-danger offset-md-10">Cancelar</a> &nbsp; &nbsp;
+					<button type="submit" class="btn btn-success offset">
+						Salvar</button>
 				</div>
-
-				<!-- 										Bloco -->
-				<div class="col-md-3">
-					<label for="bloco" class="col-form-label-sm">Bloco:</label>
-					<div class="ce-field-action">
-						<input type="hidden" id="inputHiddenBlocoSelecionado"
-							th:value="*{bloco} != null ? *{bloco.codigo}" /> <select
-							id="bloco" class="form-control form-select form-select-sm"
-							data:url="@{/bloco}" th:field="*{bloco}">
-							<option value="">Selecione Bloco</option>
-						</select>
-						<div class="bw-field-action__icon  js-img-loading-bloco"
-							style="display: none">
-							<img th:src="@{/img/mini-loading.gif}" />
-						</div>
-					</div>
-				</div>
-
-				<!-- 									Apartamento -->
-				<div class="col-md-3">
-					<label for="apartameto" class="col-form-label-sm">Apartmaneto:</label>
-					<div class="ce-field-action">
-						<input type="hidden" id="inputHiddenApartamentoSelecionado"
-							th:value="*{apartamento} != null ? *{apartamento.codigo}" /> <select
-							id="apartamento" class="form-control form-select form-select-sm"
-							data:url="@{/apartamento}" th:field="*{apartamento}">
-							<option value="">Selecione Apartamento</option>
-						</select>
-						<div class="bw-field-action__icon  js-img-loading-bloco"
-							style="display: none">
-							<img th:src="@{/img/mini-loading.gif}" />
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3">
-					<label for="rua" class="col-form-label-sm">Sala:</label>
-					<div class="ce-field-action ">
-						<select id="sala" class="form-control form-select  form-select-sm">
-							<!-- 								th:field="*{rua}"> -->
-							<option value="">Selecionar Rua</option>
-							<option class="form-control form-control-label"></option>
-							<!-- 									th:each="rua : ${rua}" th:value="${rua.codigo}" -->
-							<!-- 									th:text="${rua.nome}"></option> -->
-						</select>
-					</div>
-				</div>
-
-
 			</div>
-			<p>
-		</div>
-		<div class="row mb-3">
-			<!-- 				Botões -->
-			<div class="form-row">
-				<a type="button" th:href="@{/produto}"
-					class="btn btn-danger offset-md-10">Cancelar</a> &nbsp; &nbsp;
-				<button type="submit" class="btn btn-success offset">
-					Salvar</button>
-			</div>
-		</div>
 		</div>
 
 
@@ -157,9 +156,8 @@
 	<script src="/js/vendors/jquery.mask.min.js"></script>
 	<script src="/js/vendors/jquery.maskMoney.min.js"></script>
 	<script src="/js/sindebar.js"></script>
-
 	<script src="/js/produto.combo-rua-bloco.js"></script>
-	<!-- 		<script src="/js/produto.combo-bloco-apartamento.js"></script> -->
+	<!-- 					<script src="/js/produto.combo-bloco-apartamento.js"></script> -->
 	<script src="/js/controllestoque.js"></script>
 </body>
 </html>

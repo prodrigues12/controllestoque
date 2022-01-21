@@ -22,11 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.controlestoque.Enums.UnidadeMedia;
-import com.controlestoque.Repository.Apartamentos;
-import com.controlestoque.Repository.Blocos;
 import com.controlestoque.Repository.Grupos;
 import com.controlestoque.Repository.Produtos;
-import com.controlestoque.Repository.Ruas;
 import com.controlestoque.Repository.Secoes;
 import com.controlestoque.Repository.filter.ProdutoFilter;
 import com.controlestoque.controller.page.PageWrapper;
@@ -48,14 +45,6 @@ public class ProdutoController {
 	@Autowired
 	private Grupos gruRepsitory;
 
-	@Autowired
-	private Ruas ruaRepository;
-
-	@Autowired
-	private Blocos blocoRepository;
-
-	@Autowired
-	private Apartamentos apRepository;
 
 	@Autowired
 	private ProdutoService prodService;
@@ -66,9 +55,7 @@ public class ProdutoController {
 		mv.addObject("secao", sessaoRepository.findAll());
 		mv.addObject("grupos", gruRepsitory.findAll());
 		mv.addObject("uniMedida", UnidadeMedia.values());
-		mv.addObject("rua", ruaRepository.findAll());
-		mv.addObject("bloco", blocoRepository.findAll());
-		mv.addObject("apartamento", apRepository.findAll());
+
 		return mv;
 	}
 
@@ -90,8 +77,7 @@ public class ProdutoController {
 			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("produto/pesquisarProduto");
 		mv.addObject("secao", sessaoRepository.findAll());
-		mv.addObject("rua", ruaRepository.findAll());
-		mv.addObject("bloco", blocoRepository.findAll());
+		
 
 		PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.filtrar(produtoFilter, pageable),
 				httpServletRequest);

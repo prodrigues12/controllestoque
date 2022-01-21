@@ -23,6 +23,17 @@ public class Rua  implements Serializable{
 	
 	private String nome;
 	
+	@OneToMany(mappedBy = "rua")
+	private List<Endereco> endereco;
+	
+	public List<Endereco> getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(List<Endereco> endereco) {
+		this.endereco = endereco;
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}
