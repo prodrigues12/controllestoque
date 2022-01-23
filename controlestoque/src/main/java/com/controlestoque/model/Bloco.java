@@ -40,6 +40,7 @@ public class Bloco implements Serializable {
 	private Rua rua;
 	
 	@OneToMany(mappedBy = "bloco")
+	@JsonIgnore
 	private List<Endereco> endereco;
 
 

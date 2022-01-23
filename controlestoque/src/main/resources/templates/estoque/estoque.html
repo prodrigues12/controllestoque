@@ -57,40 +57,65 @@
 			</div>
 			</div>
 			<!-- 			</form> -->
+<div class="table-responsive">
+		<table class="table table-bordered table-houver  table-sm"
+			style="text-align: center">
+			<thead class="thead-dark" style="text-align: center">
 
-			<table
-				class="table table-bordered table-houver table-striped table-sm"
-				style="text-align: center;">
-				<thead class="thead-dark" style="text-align: center">
-					<th>ID</th>
-					<th>Nome</th>
-					<th>Estoque</th>
-					<th>Ajustar</th>
+				<th class="col-1"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
 
-				</thead>
-
-				<tbody>
-					<tr th:each="produto : ${produtoList}">
-						<td class="col-2" th:text=${produto.idProduto}></td>
-						<td class="col-6" th:text=${produto.nome}></td>
-						<td class="col-2" th:text=${produto.qtdEstoque}>
-						<td class="col-2"><a class="btn btn-dark btn-sm"
-							th:href="@{/produto/estoque/ajusteEstoque}"> <i
-								class="fas fa-edit"></i> Ajustar
-						</a></td>
-
-					</tr>
-
-				</tbody>
-			</table>
-		</div>
-		
-	
+				</th>
+				<th class="col-4"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Nome')"></th:block>
+				</th>
+				<th class="col-2">Seção</th>
+				<th class="col-2">Grupo</th>
+				<th class="col-1">Estoque</th>
+				<th class="col-2">Ação</th>
 
 
+			</thead>
 
-	<div th:replace="fragmentos/fragmentos :: footer"></div>
-	<div th:replace="secao/cadastroRapidoSecao :: modalSecao"></div>
+			<tbody>
+				<tr th:each="produto :${pagina.conteudo}">
+					<td th:text="${produto.codigo}">1</td>
+					<td th:text="${produto.nome}">Produto Teste</td>
+					<td th:text="${produto.secao.nome}">Limpeza</td>
+					<td th:text="${produto.agrupar.subgrupo.grupo.nome}">Limpeza</td>
+					<td th:text="${produto.qtdEstoque}">4</td>
+					<td><a title="Editar"
+						th:href="@{/produto/{codigo}(codigo=${produto.codigo})}"><i
+							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp; <a
+						class=" js-exclusao-btn" title="Excluir" href="#"
+						data:url="@{/produto/{codigo}(codigo=${produto.codigo})}"
+						data:objeto="${produto.nome}"> <i class="bx bx-trash ce-icon"></i>
+					</a>&nbsp;&nbsp;<a><i class="bx bx-error-circle ce-icon"></i></a></td>
+				</tr>
+				<tr th:if="${pagina.vazia}">
+					<td colspan="7">Nenhum registro encontrado</td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+
+	<div class="col-sm-12 text-center" th:if="${not pagina.vazia}">
+		<nav>
+			<ul class="pagination  pagination-sm"
+				th:with="paginaAtual=${pagina.atual}">
+
+				<th:block th:each="p : ${#numbers.sequence(1, pagina.total)}"
+					th:with="numeroPagina=${p - 1}">
+					<li th:class="${paginaAtual == numeroPagina} ? active"><a
+						class="page-link" th:href="${pagina.urlParaPagina(numeroPagina)}">[[${p}]]</a></li>
+
+				</th:block>
+
+
+			</ul>
+		</nav>
+	</div>
 
 
 

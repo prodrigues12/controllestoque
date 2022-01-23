@@ -81,7 +81,7 @@ public class ApartamentoController implements Serializable {
 
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<Apartamento> pesquisarPorCodigoBloco(
-			@RequestParam(name = "bloco", defaultValue = "0") Long codigoBloco) {
+			@RequestParam(name = "bloco", defaultValue = "-1") Long codigoBloco) {
 		try {
 			Thread.sleep(800);
 		} catch (InterruptedException e) {

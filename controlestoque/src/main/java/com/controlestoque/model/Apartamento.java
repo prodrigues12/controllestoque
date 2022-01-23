@@ -27,16 +27,17 @@ public class Apartamento implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	@NotBlank(message = "Capo Apartamento é obrigatório")
+	@NotBlank(message = "Campo Apartamento é obrigatório")
 	private String nome;
 	
-	@NotNull(message = "Selecione uma Rua")
+	@NotNull(message = "Selecione uma Bloco")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "codigo_bloco")
 	@JsonIgnore
 	private Bloco bloco;
 	
 	@OneToMany(mappedBy = "apartamento")
+	@JsonIgnore
 	private List<Endereco> endereco;
 
 

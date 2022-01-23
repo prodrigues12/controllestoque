@@ -32,9 +32,30 @@
 		</div>
 		<div class="card-body">
 
-				<div class="row">
-					<div class="col-md-10">
-						<label class="col-form-label-sm">Informe seu ID ou CPF:</label> <input
+				<div class="row container">
+					<div class="col-md-4">
+						<label for="colaborador" class="control-label">Colaborador</label>
+								<div class="input-group">
+									<input id="colaborador" type="text" readonly="readonly"
+										class="form-control" 
+										placeholder="Clique na lupa para pesquisar o colaborador" /> <input
+										id="codigoColaborador" type="hidden"  />
+									<div class="input-group-prepend">
+										<button type="button" class="btn btn-primary"
+											data-bs-toggle="modal" data-bs-target="#colaboradorModal">
+<!-- 											th:disabled="${venda.salvarProibido}"> -->
+											<i class="fas fa-search"></i>
+										</button>
+									</div>
+								</div>
+					
+					<div class="col-md-4">
+						<label class="col-form-label-sm">Turno:</label> <input
+							class="form-control form-control-sm">
+					</div>
+					
+					<div class="col-md-4">
+						<label class="col-form-label-sm">Produto:</label> <input
 							class="form-control form-control-sm">
 					</div>
 
@@ -52,8 +73,8 @@
 			<a type="button" class="btn btn-dark btn-sm"
 				th:href="@{/colaborador/novo}">Primeira vez aqui</a>
 
-<div th:replace="fragmentos/fragmentos :: footer"></div>
-	<div th:replace="secao/cadastroRapidoSecao :: modalSecao"></div>
+</div>
+	<div th:replace="colaborador/pesquisaRapidaColaborador :: modalColaborador"></div>
 
 
 

@@ -45,7 +45,6 @@ public class ProdutoController {
 	@Autowired
 	private Grupos gruRepsitory;
 
-
 	@Autowired
 	private ProdutoService prodService;
 
@@ -77,7 +76,6 @@ public class ProdutoController {
 			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("produto/pesquisarProduto");
 		mv.addObject("secao", sessaoRepository.findAll());
-		
 
 		PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.filtrar(produtoFilter, pageable),
 				httpServletRequest);
@@ -100,6 +98,7 @@ public class ProdutoController {
 
 		return ResponseEntity.ok().build();
 	}
+
 // Principal edição
 	@GetMapping("/{codigo}")
 	public ModelAndView editar(@PathVariable("codigo") Produto produto) {
@@ -109,7 +108,7 @@ public class ProdutoController {
 		return mv;
 
 	}
-	
+
 //	@GetMapping("/{codigo}")
 //	public ModelAndView editar(@PathVariable("codigo") Long codigo) {
 //		
@@ -118,5 +117,26 @@ public class ProdutoController {
 //		mv.addObject(produto);
 //		return mv;
 //	}
-	
+
+	@RequestMapping("/estoque")
+	public ModelAndView estoque(ProdutoFilter produtoFilter, BindingResult result,
+			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest)  {
+		ModelAndView mv = new ModelAndView("estoque/estoque");
+		mv.addObject("uniMedida", UnidadeMedia.values());
+		
+		PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.filtrar(produtoFilter, pageable),
+				httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+
+		
+	}
+
+	@RequestMapping("/ajuste")
+	public ModelAndView estoqueAjuste(Produto produto) {
+		ModelAndView mv = new ModelAndView("estoque/ajusteEstoque");
+
+		return mv;
+	}
+
 }

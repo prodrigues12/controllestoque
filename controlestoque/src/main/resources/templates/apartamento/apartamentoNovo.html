@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/css/controller.css" />
 </head>
 
-<body id="body-pd" style="background-color:#2f3028">
+<body id="body-pd" >
 
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
@@ -24,18 +24,19 @@
 	<form method="post"
 		th:action="${apartamento.apartamentoNovo} ? @{/apartamento/novo} : @{/apartamento/{codigo}(codigo=${apartamento.codigo})}"
 		th:object="${apartamento}">
-		
+
 		<input type="hidden" th:field="*{codigo}">
 
 		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
 
-		<div class="card" style="background-color:#2f3028">
+		<div class="card">
 			<div class="card-header">
 				<div class="row">
 					<div class=" col-md-10">
 						<h4 th:if="${apartamento.apartamentoNovo}">Novo Apartamento</h4>
-						<h4 th:unless="${apartamento.apartamentoNovo}" th:text="|Editando Apartamento: ${apartamento.nome}|"></h4>
+						<h4 th:unless="${apartamento.apartamentoNovo}"
+							th:text="|Editando Apartamento: ${apartamento.nome}|"></h4>
 					</div>
 					<div class="col-md-2">
 						<a th:href="@{/apartamento}" class="btn btn-primary btn-sm">Pesquisar</a>
@@ -45,27 +46,28 @@
 			<div class="card-body">
 
 				<div class="row">
+				
+					<!--Rua -->
+				
 					<div class="col-md-3">
-						<!--Rua -->
-
-						<label for="rua" class="col-form-label">Rua:</label> <select
-							id="rua" class="form-select form-control ">
+						<label for="rua" class="col-form-label-sm">Rua:</label> <select
+							id="rua" class="form-control form-select form-select-sm">
 							<option value="">Selecionar Rua</option>
 							<option class="form-control-label" th:each="rua : ${rua}"
 								th:value="${rua.codigo}" th:text="${rua.nome}"></option>
 						</select>
 					</div>
 
-					<!-- Bloco -->
 
 					<div class="col-md-3">
-						<label for="bloco" class="col-form-label">Bloco:</label>
+						<label for="bloco" class="col-form-label-sm">Bloco:</label>
 						<div class="ce-field-action">
 							<input type="hidden" id="inputHiddenBlocoSelecionado"
-								th:value="*{bloco}"><select
-								id="bloco" class="form-select form-control" data:url="@{/bloco}"
-								th:field="*{bloco}">
-								<option value="">Selecionar um Bloco</option>
+								value="1" />
+							<select id="bloco"
+								class="form-control form-select form-select-sm"
+								data:url="@{/bloco}" th:field="*{bloco}">
+								<option value="">Selecione Bloco</option>
 							</select>
 							<div class="bw-field-action__icon  js-img-loading-bloco"
 								style="display: none">
@@ -75,19 +77,19 @@
 					</div>
 
 					<div class="col-md-6">
-						<label for="apartamento" class="col-form-label">Apartamento:</label> <input
-							id= "apartamento" class="form-control" th:field="*{nome}"
+						<label for="apartamento" class="col-form-label-sm">Apartamento:</label>
+						<input id="apartamento" class="form-control form-select-sm" th:field="*{nome}"
 							placeholder="Nome da apartamento">
 					</div>
 
 					<p>
-<!-- 					Botões -->
+						<!-- 					Botões -->
 					<div class="form-row">
-					<a type="button" th:href="@{/apartamento}"
-						class="btn btn-danger offset-md-10">Cancelar</a> &nbsp; &nbsp;
-					<button type="submit" class="btn btn-success offset">
-						Salvar</button>
-				</div>
+						<a type="button" th:href="@{/apartamento}"
+							class="btn btn-danger offset-md-10">Cancelar</a> &nbsp; &nbsp;
+						<button type="submit" class="btn btn-success offset">
+							Salvar</button>
+					</div>
 
 				</div>
 			</div>
