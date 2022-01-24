@@ -27,54 +27,61 @@
 				<div class=" col-md-10">
 					<h4>Pedido</h4>
 				</div>
-				
+
 			</div>
 		</div>
-		<div class="card-body">
+		<div class="card-body container">
+
+			<form method="POST" action="@{/pedido/novo}">
 
 				<div class="row container">
-					<div class="col-md-4">
-						<label for="colaborador" class="control-label">Colaborador</label>
-								<div class="input-group">
-									<input id="colaborador" type="text" readonly="readonly"
-										class="form-control" 
-										placeholder="Clique na lupa para pesquisar o colaborador" /> <input
-										id="codigoColaborador" type="hidden"  />
-									<div class="input-group-prepend">
-										<button type="button" class="btn btn-primary"
-											data-bs-toggle="modal" data-bs-target="#colaboradorModal">
-<!-- 											th:disabled="${venda.salvarProibido}"> -->
-											<i class="fas fa-search"></i>
-										</button>
-									</div>
-								</div>
-					
-					<div class="col-md-4">
+					<div class="col-md-5">
+						<label for="nomeColaborador" class="col-form-label-sm">Colaborador</label>
+						<div class="input-group">
+							<input id="nomeColaborador" type="text" readonly="readonly"
+								class="form-control form-control-sm"
+								placeholder="Clique na lupa para pesquisar o colaborador" /> <input
+								id="codigoColaborador" type="hidden" />
+							<div class="input-group-prepend">
+								<button type="button" class="btn btn-primary"
+									data-bs-toggle="modal" data-bs-target="#colaboradorModal">
+									<!-- 											th:disabled="${venda.salvarProibido}"> -->
+									<i class="fas fa-search"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
 						<label class="col-form-label-sm">Turno:</label> <input
 							class="form-control form-control-sm">
 					</div>
-					
-					<div class="col-md-4">
-						<label class="col-form-label-sm">Produto:</label> <input
-							class="form-control form-control-sm">
-					</div>
-
-					<p>
-					<div class="form-row">
-						<button type="submit" class="btn btn-danger offset-md-10">Cancelar</button>
-						&nbsp;
-						<button type="submit" class="btn btn-primary offset">
-							Confirmar</button>
+					<div class="row container">
+						<div class="col-md-12">
+							<label class="col-form-label-sm">Produto:</label> <input
+								class="form-control form-control-sm">
+						</div>
 					</div>
 				</div>
-			</div>
+				<p>
+				<div class="form-row">
+					<button type="submit" class="btn btn-danger offset-md-8">Cancelar</button>
+					&nbsp;
+					<button type="submit" class="btn btn-primary offset">
+						Confirmar</button>
+				</div>
+			</form>
 		</div>
-		<br>
-			<a type="button" class="btn btn-dark btn-sm"
-				th:href="@{/colaborador/novo}">Primeira vez aqui</a>
 
-</div>
-	<div th:replace="colaborador/pesquisaRapidaColaborador :: modalColaborador"></div>
+
+
+	</div>
+	<br>
+	<a type="button" class="btn btn-dark btn-sm"
+		th:href="@{/colaborador/novo}">Primeira vez aqui</a>
+
+
+	<div
+		th:replace="colaborador/pesquisaRapidaColaborador :: modalColaborador"></div>
 
 
 
@@ -83,6 +90,8 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="/js/vendors/handlebars.min.js"></script>
+		<script src="/js/colaborador.pesquisa-rapida.js"></script>
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/controllestoque.js"></script>
 

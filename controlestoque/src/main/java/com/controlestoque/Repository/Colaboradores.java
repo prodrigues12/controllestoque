@@ -1,5 +1,6 @@
 package com.controlestoque.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,5 +13,9 @@ import com.controlestoque.model.Colaborador;
 public interface Colaboradores extends JpaRepository<Colaborador, Long>, ColaboradoresQueries{
 
 	public Optional<Colaborador> findByCpfCnpjId(String cpfCnpjId);
+
+	public List<Colaborador> findByNomeStartingWithIgnoreCase(String nome);
+
+//	public List<Colaborador> findByNomeStartingWith(String nome);
 
 }

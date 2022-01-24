@@ -1,0 +1,27 @@
+<script id="tabela-pesquisa-rapida-colaborador" type="text/x-handlebars-template">
+<div class="table-responsive" style="margin-top: 15px">
+	<table class="table table-bordered table-houver table-striped table-sm"
+		<thead>
+			<tr>
+				<th class="col-2">Nome</th>
+				<th class="col-2">Identificacao</th>
+			</tr>
+		</thead>
+				
+		<tbody>
+			{{#if .}}
+				{{#each .}}
+					<tr data-codigo="{{codigo}}" data-nome="{{nome}}" class="js-colaborador-pesquisa-rapida">
+						<td>{{nome}}</td>
+						<td>{{cpfCnpjId}}</td>
+ 					</tr>
+				{{/each}}
+			{{else}}
+				<tr>
+					<td colspan="2">Nenhum Resultado encontrado</td>
+				</tr>
+			{{/if}}
+		</tbody>
+	</table>
+</div>
+</script>

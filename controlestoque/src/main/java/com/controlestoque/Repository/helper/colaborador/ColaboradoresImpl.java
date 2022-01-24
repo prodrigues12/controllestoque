@@ -58,10 +58,6 @@ public class ColaboradoresImpl implements ColaboradoresQueries {
 				criteria.add(Restrictions.ilike("nome", filtro.getNome(), MatchMode.ANYWHERE));
 			}
 			
-			if (!StringUtils.isEmpty(filtro.getNome())) {
-				criteria.add(Restrictions.eq("tipoIdentificacao", filtro.getTipoIdentificacao()));
-			}
-			
 			if (!StringUtils.isEmpty(filtro.getCpfCnpjId())) {
 				criteria.add(Restrictions.ilike("cpfCnpjId", filtro.getCpfCnpjId(), MatchMode.ANYWHERE));
 			}

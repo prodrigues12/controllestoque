@@ -16,26 +16,60 @@
 <link rel="stylesheet" href="/css/controller.css" />
 </head>
 
-<div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
+<div class="modal fade" id=colaboradorModal tabindex="-1"
+	aria-labelledby="exampleModalLabel" aria-hidden="true"
+	th:fragment="modalColaborador">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="colaboradorModalLabel">Pesquisa
+					Colaborador</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal"
+					aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+
+				<div
+					class="alert alert alert-danger alert-dismissible fade show js-mensagem-erro"
+					role="alert">
+					<button type="button" class="btn-close" data-bs-dismiss="alert"
+						aria-label="Close"></button>
+				</div>
+
+				<form class="form" method="get" th:action="@{/colaborador}">
+
+					<div class="row container">
+						<div class="col-md-12">
+							<label class="col-form-label-sm" for="nomeColaboradorModal">Nome:</label>
+							<input id="nomeColaboradorModal"
+								class="form-control form-select-sm" type="text"
+								autofocus="autofocus">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<a href="#" class="btn  btn-secondary" data-dismiss="modal">Cancelar</a>
+						<button type="submit"
+							class="btn btn-primary js-pesquisa-rapida-colaborador-btn">Pesquisar</button>
+						&nbsp;
+
+					</div>
+
+				</form>
+
+				<div id="containerTabelaPesquisaRapidaColaborador"></div>
+			</div>
+		</div>
+
+	</div>
+	<th:block th:replace="hbs/TabelaPesquisaRapidaColaborador"></th:block>
 </div>
 
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="/js/controllestoque.dialogo-excluir.js"></script>
+
 
 </body>
 </html>
