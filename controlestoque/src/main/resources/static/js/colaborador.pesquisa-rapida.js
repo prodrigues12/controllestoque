@@ -14,7 +14,7 @@ Controllestoque.PesquisaRapidaColaborador = (function() {
 	
 	PesquisaRapidaColaborador.prototype.iniciar = function() {
 		this.pesquisaRapidaBtn.on('click', onPesquisaRapidaClicado.bind(this));
-		pesquisaRapidaColaboradorModal.on('shown.bs.modal', onModalShow.bind(this));
+		this.pesquisaRapidaColaboradorModal.on('shown.bs.modal', onModalShow.bind(this));
 	}
 	
 	function onModalShow(){
@@ -66,12 +66,13 @@ Controllestoque.TabelaColaboradorPesquisaRapida = (function() {
 	
 	function onColaboradorSelecionado(evento) {
 	
+
 		
 		var colaboradorSelecionado = $(evento.currentTarget);
 		$('#nomeColaborador').val(colaboradorSelecionado.data('nome'));
 		$('#codigoColaborador').val(colaboradorSelecionado.data('codigo'));
 		
-			this.modalColaborador.modal('hidde');
+				modalColaborador.modal('hide');
 	}
 	
 	return TabelaColaboradorPesquisaRapida;

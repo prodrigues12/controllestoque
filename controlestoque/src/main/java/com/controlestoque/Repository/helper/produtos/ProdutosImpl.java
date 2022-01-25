@@ -52,7 +52,7 @@ public class ProdutosImpl implements ProdutosQueries {
 	}
 
 	private void adicionarFiltro(ProdutoFilter filtro, Criteria criteria) {
-	
+
 		if (filtro != null) {
 			if (!StringUtils.isEmpty(filtro.getCodigo())) {
 				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
@@ -61,8 +61,8 @@ public class ProdutosImpl implements ProdutosQueries {
 			if (!StringUtils.isEmpty(filtro.getNome())) {
 				criteria.add(Restrictions.ilike("nome", filtro.getNome(), MatchMode.ANYWHERE));
 			}
-			
-			if(filtro.getUniMedida()!=null) {
+
+			if (filtro.getUniMedida() != null) {
 				criteria.add(Restrictions.eq("uniMedida", filtro.getUniMedida()));
 			}
 
@@ -74,17 +74,16 @@ public class ProdutosImpl implements ProdutosQueries {
 				criteria.add(Restrictions.eq("qtdEstoque", filtro.getQtdEstoque()));
 			}
 
-			
 		}
 	}
-	
+
 	@Override
-	public List<ProdutoDTO> porNome(String porNome) {
-		String jpql = "select new com.controlestoque.dto.ProdutoDTO (codigo, nome, secao, estoque, uniMedida)"
-				+ "from Produto where lower(nome) like lower(:porNome)";
+	public List<ProdutoDTO> codigoOuNome(String codigoOuNome) {
+		String jpql = "select new com.controlestoque.dto.ProdutoDTO (codigo, nome)"
+				+ "from Produto where lower(nome) like lower(:codigoOuNome) or lower(codigo) like lower(:codigoOuNome)";
 		List<ProdutoDTO> produtosFiltrados = manager.createQuery(jpql, ProdutoDTO.class)
-				.setParameter("nome", "%"+porNome+"%").getResultList();
-				
+				.setParameter("codigoOuNome", "%" + codigoOuNome + "%").getResultList();
+
 		return produtosFiltrados;
 	}
 
@@ -95,12 +94,10 @@ public class ProdutosImpl implements ProdutosQueries {
 	@Override
 	public Produto buscaCompleta(Long codigo) {
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Produto.class);
-		criteria.createAlias("blocos","b", JoinType.LEFT_OUTER_JOIN);
+		criteria.createAlias("blocos", "b", JoinType.LEFT_OUTER_JOIN);
 		criteria.add(Restrictions.eq("codigo", codigo));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		return (Produto) criteria.uniqueResult();
 	}
-
-	
 
 }

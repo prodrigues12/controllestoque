@@ -13,7 +13,7 @@ public interface ProdutosQueries {
 
 	public Page<Produto>filtrar(ProdutoFilter filtro, Pageable pageable);
 	
-	public List<ProdutoDTO> porNome(String porNome);
+	public List<ProdutoDTO> codigoOuNome(String codigoOuNome);
 	
 	public Produto buscaCompleta(Long codigo);
 	

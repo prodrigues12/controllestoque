@@ -83,10 +83,10 @@ public class ProdutoController {
 		return mv;
 	}
 
-	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<ProdutoDTO> pesquisa(String nome) {
-		return proRepository.porNome(nome);
-	}
+//	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+//	public @ResponseBody List<ProdutoDTO> pesquisa(String codigoOunome) {
+//		return proRepository.codigoOuNome(codigoOunome);
+//	}
 
 	@DeleteMapping("/{codigo}")
 	public @ResponseBody ResponseEntity<?> excluir(@PathVariable("codigo") Produto produto) {
@@ -138,5 +138,12 @@ public class ProdutoController {
 
 		return mv;
 	}
+	
+	@GetMapping("/filtro")
+	public @ResponseBody List<ProdutoDTO> pesquisar(String codigoOuNome){
+		
+		return proRepository.codigoOuNome(codigoOuNome);
+	}
+	
 
 }
