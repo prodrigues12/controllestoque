@@ -7,10 +7,6 @@ public class ProdutoDTO {
 	private Long codigo;
 	private String nome;
 
-	
-	
-	
-
 	public ProdutoDTO(Long codigo, String nome) {
 		super();
 		this.codigo = codigo;
