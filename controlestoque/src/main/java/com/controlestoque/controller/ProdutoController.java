@@ -99,7 +99,6 @@ public class ProdutoController {
 		return ResponseEntity.ok().build();
 	}
 
-// Principal edição
 	@GetMapping("/{codigo}")
 	public ModelAndView editar(@PathVariable("codigo") Produto produto) {
 		ModelAndView mv = novo(produto);
@@ -109,14 +108,6 @@ public class ProdutoController {
 
 	}
 
-//	@GetMapping("/{codigo}")
-//	public ModelAndView editar(@PathVariable("codigo") Long codigo) {
-//		
-//		Produto produto = proRepository.buscaCompleta(codigo);
-//		ModelAndView mv = novo(produto);
-//		mv.addObject(produto);
-//		return mv;
-//	}
 
 	@RequestMapping("/estoque")
 	public ModelAndView estoque(ProdutoFilter produtoFilter, BindingResult result,

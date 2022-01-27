@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Entity
@@ -19,12 +21,14 @@ public class ItemPedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	private BigDecimal quantidade;
+	private Integer quantidade;
 
 
 	@ManyToOne
 	@JoinColumn(name = "codigo_produto")
 	private Produto produto;
+
+
 
 	@ManyToOne
 	@JoinColumn(name = "codigo_pedido")
@@ -38,11 +42,11 @@ public class ItemPedido {
 		this.codigo = codigo;
 	}
 
-	public BigDecimal getQuantidade() {
+	public Integer getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(BigDecimal quantidade) {
+	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
 

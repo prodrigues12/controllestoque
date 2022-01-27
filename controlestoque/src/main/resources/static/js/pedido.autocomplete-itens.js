@@ -15,19 +15,19 @@ Controllestoque.Autocomplete = (function() {
 	Autocomplete.prototype.iniciar = function() {
 		var options = {
 			url: function(codigoOuNome) {
-				return '/produto?codigoOuNome=' + codigoOuNome;
+				return this.codigoOuNomeInput.data('url')+'?codigoOuNome=' + codigoOuNome;
 			}.bind(this),
 			getValue: 'nome',
+//			minCharNumber:3,
 			requestDelay: 300,
 			ajaxSettings: {
 				contentType: 'application/json'
 			},
-////				deixar essa parte comentada
-//			template: {
-//				type: 'custom',
-//				method: template.bind(this)
-//			},
-////			########
+
+			template: {
+				type: 'custom',
+				method: template.bind(this)
+			},
 			list: {
 				onChooseEvent: onItemSelecionado.bind(this)
 			}
@@ -40,16 +40,14 @@ Controllestoque.Autocomplete = (function() {
 	function onItemSelecionado() {
 		
 		this.emitter.trigger('item-selecionado', this.codigoOuNomeInput.getSelectedItemData());
-		console.log('item-selecionado', this.codigoOuNomeInput.getSelectedItemData());
-		this.codigoOuNomeInput.val('');
+		this.codigoOuNomeInput.val('');	
 		this.codigoOuNomeInput.focus();
 
 	}
 
-	//deixar essa parte comentada
-//	function template (nome, produto){
-//					return this.template(produto);
-//	}
+	function template (nome, produto){
+					return this.template(produto);
+	}
 
 	return Autocomplete;
 

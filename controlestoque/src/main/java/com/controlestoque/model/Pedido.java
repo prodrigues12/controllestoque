@@ -1,10 +1,7 @@
 package com.controlestoque.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,14 +17,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.NumberFormat;
-
 
 import com.controlestoque.Enums.StatusPedido;
+import com.controlestoque.Enums.Turno;
 
 @Entity
 @DynamicUpdate
@@ -56,6 +51,10 @@ public class Pedido  implements Serializable{
 
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status = StatusPedido.NOVO;
+	
+	@Enumerated(EnumType.STRING)
+	private Turno turno;
+
 
 	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ItemPedido> itens = new ArrayList<>();
