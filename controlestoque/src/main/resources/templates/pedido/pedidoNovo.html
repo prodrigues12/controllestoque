@@ -35,7 +35,9 @@
 		<div class="card-body">
 
 			<form method="POST" action="@{/pedido/novo}">
-
+			
+				<input type="hidden" id="uuid" th:value="${uuid}" />
+				
 				<div class="row">
 					<div class="col-md-6">
 						<label for="nomeColaborador" class="col-form-label-sm">Colaborador</label>
@@ -54,9 +56,9 @@
 						</div>
 					</div>
 					<div class=" col-md-6">
-						<label for="turno" class="col-form-label-sm">Turno:</label> <select id="turno"
-							class=" form-control form-select form-select-sm">
-							
+						<label for="turno" class="col-form-label-sm">Turno:</label> <select
+							id="turno" class=" form-control form-select form-select-sm">
+
 							<option value="">Selecione seu turno</option>
 							<option class="form-control" th:each="turno : ${turno}"
 								th:value="${turno}" th:text="${turno.descricao}">a</option>
@@ -76,7 +78,7 @@
 					</div>
 				</div>
 
-
+				<br>
 
 				<div class="bw-tabela-cervejas  js-tabela-produto-container">
 					<!-- 								data:valor="${valorTotalItens}"> -->

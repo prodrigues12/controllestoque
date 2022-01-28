@@ -1,6 +1,5 @@
 package com.controlestoque.model;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
 import javax.persistence.Entity;
@@ -10,25 +9,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
-
 @Entity
 public class ItemPedido {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
 	private Integer quantidade;
 
-
 	@ManyToOne
 	@JoinColumn(name = "codigo_produto")
 	private Produto produto;
-
-
 
 	@ManyToOne
 	@JoinColumn(name = "codigo_pedido")
@@ -83,5 +75,4 @@ public class ItemPedido {
 		return Objects.equals(codigo, other.codigo);
 	}
 
-	
 }

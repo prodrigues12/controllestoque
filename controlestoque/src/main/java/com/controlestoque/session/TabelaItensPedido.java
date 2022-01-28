@@ -3,7 +3,9 @@ package com.controlestoque.session;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
@@ -12,17 +14,16 @@ import org.springframework.web.context.annotation.SessionScope;
 import com.controlestoque.model.ItemPedido;
 import com.controlestoque.model.Produto;
 
-@SessionScope
-@Component
-public class TabelaItensPedido {
+class TabelaItensPedido {
 
+	private String uuid;
 	public List<ItemPedido> itens = new ArrayList<>();
-
 	
+	public TabelaItensPedido(String uuid) {
+		this.uuid = uuid;
+	}
 
 	public void adicionarItem(Produto produto, Integer quantidade) {
-
-
 		Optional<ItemPedido> itemPedidoOptional = buscarItemPorProduto(produto);
 
 		ItemPedido itemPedido = null;
@@ -43,6 +44,15 @@ public class TabelaItensPedido {
 		ItemPedido itemPedido = buscarItemPorProduto(produto).get();
 		itemPedido.setQuantidade(quantidade);
 	}
+	
+	
+	public void excluirItem( Produto produto) {
+		int indice = IntStream.range(0, itens.size())
+				.filter(i-> itens.get(i).getProduto().equals(produto))
+				.findAny().getAsInt();
+		itens.remove(indice);
+		
+	}
 
 	private Optional<ItemPedido> buscarItemPorProduto(Produto produto) {
 		return itens.stream().filter(i -> i.getProduto().equals(produto))
@@ -54,9 +64,30 @@ public class TabelaItensPedido {
 		return itens.size();
 	}
 
-	public Object getItens() {
-
+	public List<ItemPedido> getItens() {
 		return itens;
 	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(uuid);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TabelaItensPedido other = (TabelaItensPedido) obj;
+		return Objects.equals(uuid, other.uuid);
+	}
+
 
 }

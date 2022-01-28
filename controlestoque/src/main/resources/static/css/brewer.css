@@ -211,6 +211,9 @@
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
+	color: #191970;
+	border-radius: 2px !important;
+	background-color: #87CEFA;
 }
 
 .bw-tabela-item:after {
