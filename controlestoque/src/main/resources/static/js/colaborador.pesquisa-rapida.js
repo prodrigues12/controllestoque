@@ -37,11 +37,11 @@ Controllestoque.PesquisaRapidaColaborador = (function() {
 	}
 	
 	function onPesquisaConcluida(resultado) {
-		this.mensagemErro.addClass('hidden.bs.modal');
+		this.mensagemErro.addClass('hidden');
 		
 		var html = this.template(resultado);
 		this.containerTabelaPesquisa.html(html);
-		 var tabelaColaboradorPesquisaRapida = new Controllestoque.TabelaColaboradorPesquisaRapida(this.pesquisaRapidaColaboradorModal);
+		 var tabelaColaboradorPesquisaRapida = new Controllestoque.TabelaColaboradorPesquisaRapida();
 		 tabelaColaboradorPesquisaRapida.iniciar();
 	} 
 	
@@ -55,8 +55,8 @@ Controllestoque.PesquisaRapidaColaborador = (function() {
 
 Controllestoque.TabelaColaboradorPesquisaRapida = (function() {
 	
-	function TabelaColaboradorPesquisaRapida(modal) {
-		this.modalColaborador = modal;
+	function TabelaColaboradorPesquisaRapida(modalColaborador) {
+		this.modalColaborador = modalColaborador;
 		this.cliente = $('.js-colaborador-pesquisa-rapida');
 	}
 	
@@ -66,12 +66,13 @@ Controllestoque.TabelaColaboradorPesquisaRapida = (function() {
 	
 	function onColaboradorSelecionado(evento) {
 	
-		this.modalColaborador.modal('hide');
+
+		
 		var colaboradorSelecionado = $(evento.currentTarget);
 		$('#nomeColaborador').val(colaboradorSelecionado.data('nome'));
 		$('#codigoColaborador').val(colaboradorSelecionado.data('codigo'));
 		
-			
+				modalColaborador.modal('hide');
 	}
 	
 	return TabelaColaboradorPesquisaRapida;

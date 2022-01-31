@@ -4,7 +4,7 @@
 	xmlns:data="http://www.thymeleaf.org/extras/data">
 
 <div class="bw-tabela-item js-tabela-item" th:each="item : ${itens}">
-<div>
+
 	<div class="bw-tabela-item__coluna  bw-tabela-item__coluna--detalhes">
 		<span class="bw-tabela-cerveja-nome" th:text="${item.produto.nome}"></span>
 		secao: <span class="label label-default"
@@ -12,16 +12,15 @@
 	</div>
 
 	<div>
-		<label>x</label><input type="text" maxlength="3"
+		<span>Qauntidade: x</span> <input type="text" maxlength="3"
 			class="bw-tabela-cerveja-campo-quantidade js-tabela-produto-quantidade-item"
 			th:value="${item.quantidade}"
 			data:codigo-produto="${item.produto.codigo}" /> <span
 			class="bw-tabela-cerveja-nome" th:text="${item.produto.uniMedida}"></span>
 	</div>
 
-</div>
 
-<div class="bw-tabela-item__painel-exclusao ">
+<div class="bw-tabela-item__painel-exclusao">
 	<span class="bw-tabela-item__titulo-exclusao">Excluir este item
 		do pedido?</span>
 	<button type="button"
@@ -29,11 +28,10 @@
 		data:codigo-produto="${item.produto.codigo}">Sim, excluir!</button>
 </div>
 
-</div>
 
-<div class="bw-tabela-cervejas__vazio}" >
-	<i class=" bx bx-cart"></i> <span>Tabela- Nenhum item foi
-			adicionado</span>
+<div class="bw-tabela-cervejas__vazio}" th:if="${itens == null}">
+	<i class=" bx bx-cart"> <span>Tabela- Nenhum item foi
+			adicionado</span></i>
 </div>
-
+</div>
 </html>

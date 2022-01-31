@@ -4,14 +4,13 @@ Controllestoque.TabelaItens = (function() {
 		this.autocomplete = autocomplete;
 		this.tabelaProdutoContainer = $('.js-tabela-produto-container');
 		this.uuid = $('#uuid').val();
-		this.emitter = $({});
-		this.on = this.emitter.on.bind(this.emitter);
 	}
 	TabelaItens.prototype.iniciar = function() {
 		this.autocomplete.on('item-selecionado', onItemSelecionado.bind(this));
 
 	}
 	function onItemSelecionado(evento, item) {
+		//		console.log('Item recebido do autocomplete', item);
 
 		var resposta = $.ajax({
 			url: 'item',
@@ -21,36 +20,22 @@ Controllestoque.TabelaItens = (function() {
 				uuid: this.uuid
 			}
 		});
-
+		
 		resposta.done(onItemAtualizarNoServidor.bind(this));
 
 	}
 
 	function onItemAtualizarNoServidor(html) {
 		this.tabelaProdutoContainer.html(html);
-
-		var quantidadeItemInput = $('.js-tabela-produto-quantidade-item');
-		quantidadeItemInput.on('change', onQuantidadeItemAlterado.bind(this));
-//		quantidadeItemInput.maskMoney({ precision: 0, thousands: '' });
-
-		var tabelaItem = $('.js-tabela-item');
-		tabelaItem.on('dblclick', onDoubleClick);
+		$('.js-tabela-produto-quantidade-item').on('change', onQuantidadeItemAlterado.bind(this));
+		$('.js-tabela-item').on('dblclick', onDoubleClick);
 		$('.js-exclusao-item-btn').on('click', onExclusaoItemClick.bind(this));
 		
-//		this.emitter.trigger('tabela-itens-atualizada', tabelaItem.data('valor-total'));
-
 	}
 
 	function onQuantidadeItemAlterado(evento) {
 		var input = $(evento.target);
 		var quantidade = input.val();
-		
-		if (quantidade <= 0) {
-			input.val(1);
-			quantidade = 1;
-		}
-		
-		
 		var codigoProduto = input.data('codigo-produto');
 
 		var resposta = $.ajax({
@@ -58,10 +43,9 @@ Controllestoque.TabelaItens = (function() {
 			mathod: 'PUT',
 			data: {
 				quantidade: quantidade,
-				uuid: this.uuid
+				uuid:this.uuid
 			}
 		});
-
 		resposta.done(onItemAtualizarNoServidor.bind(this));
 	}
 
@@ -70,13 +54,13 @@ Controllestoque.TabelaItens = (function() {
 	}
 
 	function onExclusaoItemClick(evento) {
-		var codigoProduto = $(evento.target).data('codigo-produto');
+		var codigoProduto = $(evento.target).data('codigo-cerveja');
 		var resposta = $.ajax({
-			url: 'item/' + this.uuid +'/' + codigoProduto,
+			url: 'item/' + this.uuid + '/' + codigoProduto,
 			method: 'DELETE'
 		});
-
-		resposta.done(onItemAtualizarNoServidor.bind(this));
+		
+		resposta.done(onItemAtualizadoNoServidor.bind(this));
 	}
 
 	return TabelaItens;

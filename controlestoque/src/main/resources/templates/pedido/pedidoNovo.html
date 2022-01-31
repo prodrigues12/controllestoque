@@ -34,21 +34,18 @@
 		</div>
 		<div class="card-body">
 
-			<form method="POST" th:action="@{/pedido/novo}" th:object="${pedido}">
-
-				<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
-				<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
-
-				<input type="hidden" id="uuid" th:filed="*{uuid}" />
-
+			<form method="POST" action="@{/pedido/novo}">
+			
+				<input type="hidden" id="uuid" th:value="${uuid}" />
+				
 				<div class="row">
 					<div class="col-md-6">
 						<label for="nomeColaborador" class="col-form-label-sm">Colaborador</label>
 						<div class="input-group">
 							<input id="nomeColaborador" type="text" readonly="readonly"
-								class="form-control form-control-sm" 
+								class="form-control form-control-sm"
 								placeholder="Clique na lupa para pesquisar o colaborador" /> <input
-								id="codigoColaborador" type="hidden" th:field="*{colaborador}"/>
+								id="codigoColaborador" type="hidden" />
 							<div class="input-group-prepend">
 								<button type="button" class="btn btn-primary btn-sm"
 									data-bs-toggle="modal" data-bs-target="#colaboradorModal">
@@ -60,8 +57,7 @@
 					</div>
 					<div class=" col-md-6">
 						<label for="turno" class="col-form-label-sm">Turno:</label> <select
-							id="turno" class=" form-control form-select form-select-sm"
-							th:field="*{turno}">
+							id="turno" class=" form-control form-select form-select-sm">
 
 							<option value="">Selecione seu turno</option>
 							<option class="form-control" th:each="turno : ${turno}"
@@ -76,8 +72,7 @@
 					<!-- Produto -->
 				<div class="row">
 					<div class="col-md-12">
-						<label for="turno" class="col-form-label-sm">Produto: </label>
-						<input
+						<label for="turno" class="col-form-label-sm">Produto: </label><input
 							type="text" class="form-control form-control-sm js-produto-input"
 							id="produto" placeholder="Nome do Produto" data:url="@{/produto}">
 					</div>
@@ -104,7 +99,7 @@
 
 				<p>
 				<div class="form-row">
-					<button type="button" class="btn btn-danger offset-md-8">Cancelar</button>
+					<button type="submit" class="btn btn-danger offset-md-8">Cancelar</button>
 					&nbsp;
 					<button type="submit" class="btn btn-primary offset">
 						Confirmar</button>
