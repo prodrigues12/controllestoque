@@ -34,7 +34,7 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	@NotBlank
+//	@NotBlank("")
 	@Size(min = 5, max = 100, message = "Nome deve conter de 5 à 100 caracteres")
 	private String nome;
 
@@ -50,8 +50,8 @@ public class Usuario implements Serializable {
 
 	private Boolean ativo;
 
-	@NotNull(message = "Selecione pelo menos um grupo")
-	@Size(min = 1, message = "Selecione pelo menos um grupo")
+//	@NotNull(message = "Campo 'Perfil de usuário' deve conter uma seleção")
+	@Size(min = 1, message = "Campo 'Perfil de usuário' deve conter uma seleção")
 	@ManyToMany
 	@JoinTable(name = "usuario_grupo_user", joinColumns = @JoinColumn(name = "codigo_usuario"), inverseJoinColumns = @JoinColumn(name = "codigo_grupo_user"))
 	private List<GrupoUser> grupoUser;

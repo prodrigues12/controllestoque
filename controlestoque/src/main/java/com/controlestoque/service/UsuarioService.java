@@ -50,6 +50,9 @@ public class UsuarioService {
 		if(!usuario.isUsuarioNovo() && usuario.getAtivo()== null) {
 			usuario.setAtivo(usuarioExistente.get().getAtivo());
 		}
+	
+		
+
 		
 		usuRepository.save(usuario);
 	}

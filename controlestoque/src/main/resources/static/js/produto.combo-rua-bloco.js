@@ -178,7 +178,7 @@ Controllestoque.ComboApartamento = (function() {
 		});
 
 		this.combo.html(options.join(''));
-		this.combo.removeAttr('disabled');
+//		this.combo.removeAttr('disabled');
 
 		var codigoApartamentosSelecionado = this.inputHiddenApartamentosSelecionado.val();
 		if (codigoApartamentosSelecionado) {
@@ -189,7 +189,7 @@ Controllestoque.ComboApartamento = (function() {
 	function reset() {
 		this.combo.html('<option class="form-control" value="">Selecione um Apartamento </option>');
 		this.combo.val('');
-		this.combo.attr('disabled', 'disabled');
+//		this.combo.attr('disabled', 'disabled');
 	}
 
 	function iniciarRequisicao() {

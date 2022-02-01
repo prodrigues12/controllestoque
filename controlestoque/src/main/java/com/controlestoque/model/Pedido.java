@@ -1,6 +1,6 @@
 package com.controlestoque.model;
 
-import java.io.Serializable;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,13 +27,8 @@ import com.controlestoque.Enums.Turno;
 
 @Entity
 @DynamicUpdate
-public class Pedido  implements Serializable{
+public class Pedido {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
@@ -43,21 +39,21 @@ public class Pedido  implements Serializable{
 
 	private String observacao;
 
-	
 	@ManyToOne
 	@JoinColumn(name = "codigo_colaborador")
 	private Colaborador colaborador;
 
-
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status = StatusPedido.NOVO;
-	
+
 	@Enumerated(EnumType.STRING)
 	private Turno turno;
 
-
 	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ItemPedido> itens = new ArrayList<>();
+
+	@Transient
+	private String uuid;
 
 	public Long getCodigo() {
 		return codigo;
@@ -107,6 +103,33 @@ public class Pedido  implements Serializable{
 		this.itens = itens;
 	}
 
+	public Turno getTurno() {
+		return turno;
+	}
+
+	public void setTurno(Turno turno) {
+		this.turno = turno;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
+	public boolean isNovo() {
+		return codigo == null;
+	}
+
+	public void adicionarItens(List<ItemPedido> itens) {
+
+		this.itens = itens;
+		this.itens.forEach(i -> i.setPedido(this));
+
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(codigo);
@@ -123,12 +146,5 @@ public class Pedido  implements Serializable{
 		Pedido other = (Pedido) obj;
 		return Objects.equals(codigo, other.codigo);
 	}
-
-//	@Transient
-//	private String uuid;
-
-	
-	
-
 
 }

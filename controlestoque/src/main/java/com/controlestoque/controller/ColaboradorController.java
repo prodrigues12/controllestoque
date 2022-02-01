@@ -111,8 +111,8 @@ public class ColaboradorController {
 	}
 
 	private void validarTamanhoNome(String nome) {
-		// TODO Auto-generated method stub
-		if (StringUtils.isEmpty(nome) || nome.length() < 3) {
+		
+		if (StringUtils.isEmpty(nome) || nome.length() < 0) {
 			throw new IllegalArgumentException();
 		}
 

@@ -46,54 +46,96 @@
 					</div>
 				</div>
 				<div class="card-body">
+				
+				<div class=""></div>
 
-					<div class="row mb-3">
-
+					<div class="row mb-4 ">
 						<!-- 				Nome -->
-						<div class=" col-md-10">
-							<label class=" col-form-label-sm">Nome:</label> <input
-								class="form-control form-control-sm" type="text"
+						<div class=" col-auto">
+							<label for="name" class=" col-form-label-sm">Nome:</label>
+						</div>
+						<div class="col-md-11">
+							<input id="nome" class="form-control form-control-sm" type="text"
 								th:field="*{nome}">
 						</div>
 					</div>
-					<div class="row mb-3">
+
+
+					<div class="row mb-4">
 						<!-- 				Email -->
-						<div class="col-md-5">
-							<label class="col-form-label-sm">Email:</label> <input
-								class="form-control form-control-sm" th:field="*{email}">
+						<div class=" col-auto">
+							<label for="email" class=" col-form-label-sm">Email:</label>
+						</div>
+						<div class="col-md-11">
+							<input id="email" class="form-control form-control-sm"
+								th:field="*{email}">
 
 						</div>
+
+						<!-- GRUPO -->
+
 					</div>
 
-					<div class="row mb-3">
+					<div class="row mb-4">
 						<!-- 				Senha -->
+						<div class=" col-auto">
+							<label for="senha" class=" col-form-label-sm">Senha:</label>
+						</div>
 						<div class="col-md-4">
-							<label class=" col-form-label-sm">Senha:</label> <input
-								class="form-control form-control-sm" th:field="*{senha}"></input>
+							<input id="senha" class="form-control form-control-sm"
+								type="password" th:field="*{senha}"></input>
 						</div>
 
-						<div class="col-md-4">
-							<label class=" col-form-label-sm">Confirmar Senha:</label> <input
-								class="form-control form-control-sm"></input>
+						<!-- 			confirmar senha -->
+						<div class="col-auto">
+							<label for="confirmarSenha" class=" col-form-label-sm">Confirmar Senha:</label>
 						</div>
 						<div class="col-md-4">
-							<div class=" form-check form-switch">
-								<input class="form-check-input" type="checkbox" id="status"
-									checked> <label class="form-check-label" for="status">
-									Status</label>
+								<input id="confirmarSenha" class="form-control form-control-sm"
+									type="password" th:field="*{confirmacaoSenha}"></input>
+							</div>
+
+						</div>
+
+						<div class="row mb-3">
+
+							<div class="col-md-6">
+								<label class="col-form-label-sm">Perfil do usuário:</label>
+								<div class="form-row">
+									<th:block th:each="grupo : ${grupoUser}">
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="checkbox"
+												aria-label="Checkbox" th:value="${grupo.codigo}"
+												th:field="*{grupoUser}"> <label
+												class="form-check-label" th:for="${#ids.prev('grupoUser')}"
+												th:text="${grupo.nome}"> Administrador </label>
+										</div>
+												&nbsp; &nbsp;
+										</th:block>
+
+								</div>
+							</div>
+							
+							<div class="col-auto">
+							<label class=" col-form-label-sm">Status:</label>
+							</div>
+							<div class="col-md-4">
+								<div class=" form-check form-switch">
+									<label class="form-check-label" for="status"> Conta
+										Ativa</label> <input class="form-check-input" type="checkbox"
+										id="status" checked>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="form-row">
-						<a type="button" th:href="@{/usuario}"
-							class="btn btn-danger offset-md-10">Cancelar</a> &nbsp; &nbsp;
-						<button type="submit" class="btn btn-success offset">
-							Salvar</button>
+						<div class="form-row">
+							<a type="button" th:href="@{/usuario}"
+								class="btn btn-danger offset-md-10">Cancelar</a> &nbsp; &nbsp;
+							<button type="submit" class="btn btn-success offset">
+								Salvar</button>
+						</div>
 					</div>
 				</div>
-			</div>
-
 		</form>
 
 

@@ -81,11 +81,6 @@ public class UsuarioController {
 
 	}
 	
-	@PutMapping("/status")
-	@ResponseStatus(HttpStatus.OK)
-	public void atualizarStatus(@RequestParam("codigos[]") Long[] codigos, @RequestParam("status") StatusUsuario statusUsuario) {
-		usuService.alterarStatus(codigos, statusUsuario);
-	}
 
 	@GetMapping
 	public ModelAndView pesquisarUsuario(UsuarioFilter usuarioFilter, @PageableDefault(size = 3) Pageable pageable,
@@ -104,8 +99,15 @@ public class UsuarioController {
 	public ModelAndView editar(@PathVariable ("codigo") Long codigo) {
 		Usuario usuario = usuRepository.buscarComGrupos(codigo);
 		ModelAndView mv = novo(usuario);
+		mv.addObject("grupoUser", gruUserRepository.findAll());
 		mv.addObject(usuario);
 		return mv;
+	}
+	
+	@PutMapping("/status")
+	@ResponseStatus(HttpStatus.OK)
+	public void atualizarStatus(@RequestParam("codigos[]") Long[] codigos, @RequestParam("status") StatusUsuario statusUsuario) {
+		usuService.alterarStatus(codigos, statusUsuario);
 	}
 
 }
