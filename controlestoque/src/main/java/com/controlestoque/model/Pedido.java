@@ -1,6 +1,7 @@
 package com.controlestoque.model;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +35,8 @@ public class Pedido {
 	private Long codigo;
 
 	@Column(name = "data_criacao")
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	private LocalDateTime dataCriacao;
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDate dataCriacao;
 
 	private String observacao;
 
@@ -63,11 +64,11 @@ public class Pedido {
 		this.codigo = codigo;
 	}
 
-	public LocalDateTime getDataCriacao() {
+	public LocalDate getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(LocalDateTime dataCriacao) {
+	public void setDataCriacao(LocalDate dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
@@ -132,7 +133,10 @@ public class Pedido {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codigo);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
 	}
 
 	@Override
@@ -144,7 +148,15 @@ public class Pedido {
 		if (getClass() != obj.getClass())
 			return false;
 		Pedido other = (Pedido) obj;
-		return Objects.equals(codigo, other.codigo);
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
 	}
+
+	
+	
 
 }

@@ -3,6 +3,7 @@ package com.controlestoque.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import com.controlestoque.model.validation.AtributoConfirmacao;
 
@@ -34,7 +37,6 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-//	@NotBlank("")
 	@Size(min = 5, max = 100, message = "Nome deve conter de 5 à 100 caracteres")
 	private String nome;
 
@@ -42,7 +44,7 @@ public class Usuario implements Serializable {
 	@Email
 	private String email;
 
-	@NotBlank(message = "Senha é obrigatório")
+	
 	private String senha;
 
 	@Transient
@@ -50,9 +52,10 @@ public class Usuario implements Serializable {
 
 	private Boolean ativo;
 
-//	@NotNull(message = "Campo 'Perfil de usuário' deve conter uma seleção")
+
 	@Size(min = 1, message = "Campo 'Perfil de usuário' deve conter uma seleção")
 	@ManyToMany
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinTable(name = "usuario_grupo_user", joinColumns = @JoinColumn(name = "codigo_usuario"), inverseJoinColumns = @JoinColumn(name = "codigo_grupo_user"))
 	private List<GrupoUser> grupoUser;
 
@@ -120,6 +123,7 @@ public class Usuario implements Serializable {
 	public boolean isUsuarioNovo() {
 		return codigo == null;
 	}
+
 
 	@Override
 	public int hashCode() {

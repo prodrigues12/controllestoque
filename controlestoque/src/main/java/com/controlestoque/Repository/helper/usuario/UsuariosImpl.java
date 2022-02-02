@@ -60,9 +60,9 @@ public class UsuariosImpl implements UsuariosQueries {
 	}
 
 	@Override
-	public Usuario buscarComGrupos(Long codigo) {
+	public Usuario buscarComGrupoUser(Long codigo) {
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Usuario.class);
-		criteria.createAlias("grupoUsers", "g", JoinType.LEFT_OUTER_JOIN);
+		criteria.createAlias("grupoUser", "g", JoinType.LEFT_OUTER_JOIN);
 		criteria.add(Restrictions.eq("codigo", codigo));
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		return (Usuario) criteria.uniqueResult();

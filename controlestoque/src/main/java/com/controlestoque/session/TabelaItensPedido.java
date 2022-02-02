@@ -76,7 +76,6 @@ class TabelaItensPedido {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((itens == null) ? 0 : itens.hashCode());
 		result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
 		return result;
 	}
@@ -90,11 +89,6 @@ class TabelaItensPedido {
 		if (getClass() != obj.getClass())
 			return false;
 		TabelaItensPedido other = (TabelaItensPedido) obj;
-		if (itens == null) {
-			if (other.itens != null)
-				return false;
-		} else if (!itens.equals(other.itens))
-			return false;
 		if (uuid == null) {
 			if (other.uuid != null)
 				return false;
@@ -102,8 +96,5 @@ class TabelaItensPedido {
 			return false;
 		return true;
 	}
-
-	
-
 
 }

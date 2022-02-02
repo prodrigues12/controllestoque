@@ -71,9 +71,8 @@ Controllestoque.TabelaItens = (function() {
 
 	function onExclusaoItemClick(evento) {
 		var codigoProduto = $(evento.target).data('codigo-produto');
-		console.log('uuid: ', this.uuid);
 		var resposta = $.ajax({
-			url: 'item/' + this.uuid +'/' + codigoProduto,
+			url: 'item/' + this.uuid + '/' + codigoProduto,
 			method: 'DELETE'
 		});
 
