@@ -40,6 +40,7 @@ public class PedidoController {
 		ModelAndView mv = new ModelAndView("pedido/pedidoNovo");
 		pedido.setUuid(UUID.randomUUID().toString());
 		mv.addObject("turno", Turno.values());
+		mv.addObject("itens", pedido.getItens());
 		return mv;
 	}
 	

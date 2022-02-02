@@ -6,13 +6,22 @@ Controllestoque.TabelaItens = (function() {
 		this.uuid = $('#uuid').val();
 		this.emitter = $({});
 		this.on = this.emitter.on.bind(this.emitter);
+		
 	}
+	
 	TabelaItens.prototype.iniciar = function() {
 		this.autocomplete.on('item-selecionado', onItemSelecionado.bind(this));
 
-	}
-	function onItemSelecionado(evento, item) {
 
+bindTabelaItem.call(this);
+
+	}
+	
+	
+	
+	
+	
+	function onItemSelecionado(evento, item) {
 		var resposta = $.ajax({
 			url: 'item',
 			method: 'POST',
@@ -28,18 +37,13 @@ Controllestoque.TabelaItens = (function() {
 
 	function onItemAtualizarNoServidor(html) {
 		this.tabelaProdutoContainer.html(html);
-
-		var quantidadeItemInput = $('.js-tabela-produto-quantidade-item');
-		quantidadeItemInput.on('change', onQuantidadeItemAlterado.bind(this));
-//		quantidadeItemInput.maskMoney({ precision: 0, thousands: '' });
-
-		var tabelaItem = $('.js-tabela-item');
-		tabelaItem.on('dblclick', onDoubleClick);
-		$('.js-exclusao-item-btn').on('click', onExclusaoItemClick.bind(this));
 		
-//		this.emitter.trigger('tabela-itens-atualizada', tabelaItem.data('valor-total'));
+			bindQuantidade.call(this);
+			
+			var tabelaItem = bindTabelaItem.call(this);
+		this.emitter.trigger('tabela-itens-atualizada', tabelaItem.data('valor-total'));
+}
 
-	}
 
 	function onQuantidadeItemAlterado(evento) {
 		var input = $(evento.target);
@@ -49,7 +53,6 @@ Controllestoque.TabelaItens = (function() {
 			input.val(1);
 			quantidade = 1;
 		}
-		
 		
 		var codigoProduto = input.data('codigo-produto');
 
@@ -65,8 +68,11 @@ Controllestoque.TabelaItens = (function() {
 		resposta.done(onItemAtualizarNoServidor.bind(this));
 	}
 
-	function onDoubleClick(evento) {
-		$(this).toggleClass('solicitando-exclusao');
+	function onDoubleClick(event) {
+		var item = $(event.currentTarget);
+		item.toggleClass('solicitando-exclusao');
+		
+//		$(this).toggleClass('solicitando-exclusao');
 	}
 
 	function onExclusaoItemClick(evento) {
@@ -77,6 +83,19 @@ Controllestoque.TabelaItens = (function() {
 		});
 
 		resposta.done(onItemAtualizarNoServidor.bind(this));
+	}
+	
+	function bindQuantidade(){
+		var quantidadeItemInput = $('.js-tabela-cerveja-quantidade-item');
+		quantidadeItemInput.on('change', onQuantidadeItemAlterado.bind(this));
+//		quantidadeItemInput.maskMoney({ precision: 0, thousands: '' });
+	}
+	
+	function bindTabelaItem(){
+		var tabelaItem = $('.js-tabela-item');
+		tabelaItem.on('dblclick', onDoubleClick);
+		$('.js-exclusao-item-btn').on('click', onExclusaoItemClick.bind(this));
+		return tabelaItem;
 	}
 
 	return TabelaItens;
