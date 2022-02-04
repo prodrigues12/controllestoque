@@ -51,7 +51,7 @@ public class Pedido {
 	private Turno turno;
 
 	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<ItemPedido> itens = new ArrayList<>();
+	private List<ItemPedido> itens;
 
 	@Transient
 	private String uuid;

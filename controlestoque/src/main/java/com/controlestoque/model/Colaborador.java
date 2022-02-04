@@ -40,6 +40,7 @@ public class Colaborador implements Serializable{
 	
 	@NotBlank(message = "Campo Nome é obrigatório")
 	@Size(min = 5 , max = 50, message = "Campo Nome deve conter de 5 à 50 caracteries")
+	
 	private String nome;
 	
 
@@ -84,7 +85,7 @@ public class Colaborador implements Serializable{
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.nome = nome.toUpperCase();
 	}
 
 	public TipoIdentificacao getTipoIdentificacao() {

@@ -5,20 +5,20 @@ import com.controlestoque.model.validation.gruop.*;
 
 public enum TipoIdentificacao {
 
-	MAGALU("Magalu", "ID:", "000000", IdGroup.class) {
+	ID("Magalu", "ID:", "000000", IdGroup.class) {
 		public String formatar(String cpfCnpjId) {
 			return cpfCnpjId.replaceAll("(\\d{6})", "$1");
 		}
 
 	},
 
-	FISICA("Terceirizado", "CPF:", "000.000.000-00", CpfGroup.class) {
+	CPF("Terceirizado", "CPF:", "000.000.000-00", CpfGroup.class) {
 		@Override
 		public String formatar(String cpfCnpjId) {
 			return cpfCnpjId.replaceAll("(\\d{3})(\\d{3})(\\d{3})", "$1.$2.$3-");
 		}
 	},
-	JURIDICA("Filial", "CNPJ:", "00.000.000/0000-00", CnpjGroup.class) {
+	CNPJ("Filial", "CNPJ:", "00.000.000/0000-00", CnpjGroup.class) {
 		@Override
 		public String formatar(String cpfCnpjId) {
 			return cpfCnpjId.replaceAll("(\\d{2})(\\d{3})(\\d{3})(\\d{4})", "$1.$2.$3/$4-");

@@ -41,7 +41,7 @@ Controllestoque.TabelaItens = (function() {
 
 	}
 
-	function onQuantidadeItemAlterado(evento) {
+function onQuantidadeItemAlterado(evento) {
 		var input = $(evento.target);
 		var quantidade = input.val();
 		
@@ -50,18 +50,17 @@ Controllestoque.TabelaItens = (function() {
 			quantidade = 1;
 		}
 		
-		
 		var codigoProduto = input.data('codigo-produto');
-
+		
 		var resposta = $.ajax({
 			url: 'item/' + codigoProduto,
-			mathod: 'PUT',
+			method: 'PUT',
 			data: {
 				quantidade: quantidade,
 				uuid: this.uuid
 			}
 		});
-
+		
 		resposta.done(onItemAtualizarNoServidor.bind(this));
 	}
 

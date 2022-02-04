@@ -48,9 +48,10 @@ public class PedidoController {
 	public ModelAndView salvar(Pedido pedido , RedirectAttributes attributes, BindingResult result) {
 		
 
+
 			pedido.adicionarItens(tabalaItens.getItens(pedido.getUuid()));
 			pedService.salvar(pedido);
-			attributes.addFlashAttribute("mensagem", "Pedido Salvo com sucesso");
+			attributes.addFlashAttribute("mensagem", "Pedido realizado com sucesso!");
 			return new ModelAndView("redirect:/pedido/novo");
 	}
 
@@ -63,7 +64,7 @@ public class PedidoController {
 		return mvTabelaPedido(uuid);
 	}
 	
-	@PutMapping("/item/{codigo}")
+	@PutMapping("/item/{codigoProduto}")
 	public ModelAndView alterarQuantidadeItem(@PathVariable("codigoProduto") Produto  produto, 
 			Integer quantidade, String uuid) {
 	
