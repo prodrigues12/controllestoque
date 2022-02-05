@@ -36,17 +36,18 @@
 
 			<form method="POST" th:action="@{/pedido/novo}" th:object="${pedido}">
 
+
+				<input type="hidden" id="uuid" th:field="*{uuid}" />
+
 				<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 				<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
-
-				<input type="hidden" id="uuid" th:field="*{uuid}"/>
 
 				<div class="row">
 					<div class="col-md-6">
 						<label for="nomeColaborador" class="col-form-label-sm">Colaborador</label>
 						<div class="input-group">
 							<input id="nomeColaborador" type="text" readonly="readonly"
-								class="form-control form-control-sm"
+								class="form-control form-control-sm" th:field="*{colaborador.nome}"
 								placeholder="Clique na lupa para pesquisar o colaborador" /> <input
 								id="codigoColaborador" type="hidden" th:field="*{colaborador}" />
 							<div class="input-group-prepend">
@@ -85,20 +86,8 @@
 				<br>
 
 				<div class="bw-tabela-cervejas  js-tabela-produto-container">
-					<!-- 								data:valor="${valorTotalItens}"> -->
 					<th:block th:replace="pedido/tabelaItensPedido" />
-
 				</div>
-
-
-				<div class="bw-tabela-cervejas  js-tabela-cerveja-container">
-					<div class="bw-tabela-cervejas__vazio">
-						<i class=" bx bx-cart "> <span>Nenhum item foi
-								adicionado</span></i>
-					</div>
-				</div>
-				<!-- 								<th:block th:replace="venda/tabelaItensVenda" /> -->
-
 
 
 				<p>
@@ -117,16 +106,11 @@
 	</div>
 
 	<br>
-	<a type="button" class="btn btn-dark btn-sm"
-		th:href="@{/colaborador/novo}">Primeira vez aqui</a>
 
 
 	<div
 		th:replace="colaborador/pesquisaRapidaColaborador :: modalColaborador"></div>
 	<div th:replace="hbs/TemplateAutocompleteProduto"></div>
-
-
-
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

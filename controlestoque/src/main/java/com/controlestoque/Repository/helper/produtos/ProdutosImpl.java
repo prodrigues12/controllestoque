@@ -31,6 +31,7 @@ public class ProdutosImpl implements ProdutosQueries {
 	@Autowired
 	private PaginacaoUtil paginacaoUltil;
 
+	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public Page<Produto> filtrar(ProdutoFilter filtro, Pageable pageable) {
 
