@@ -1,5 +1,6 @@
 package com.controlestoque.Repository.helper.pedido;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -77,33 +78,36 @@ public class PedidosImpl implements PedidosQueries {
 				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
 			}
 
-//			if (filtro.getStatus() != null) {
-//				criteria.add(Restrictions.eq("status", filtro.getStatus()));
+			if (filtro.getStatus() != null) {
+				criteria.add(Restrictions.eq("status", filtro.getStatus()));
+			}
+			
+			if (filtro.getStatus() != null) {
+				criteria.add(Restrictions.eq("turno", filtro.getTurno()));
+			}
+
+////			if (filtro.getDataInicio() != null) {
+////				LocalDate desde = LocalDate.MIN.
 //			}
-//			
-//			if (filtro.getStatus() != null) {
-//				criteria.add(Restrictions.eq("turno", filtro.getTurno()));
-//			}
-//
-//			if (filtro.getDataInicio() != null) {
-//				LocalDateTime desde = LocalDateTime.of(filtro.getDataInicio(), LocalTime.of(0, 0));
-//				criteria.add(Restrictions.ge("dataCriacao", desde));
-//			}
-//
-//			if (filtro.getDataFim() != null) {
-//				LocalDateTime ate = LocalDateTime.of(filtro.getDataFim(), LocalTime.of(23, 59));
-//				criteria.add(Restrictions.le("dataCriacao", ate));
-//			}
-//
-//
-//			if (!StringUtils.isEmpty(filtro.getNomeColaborador())) {
-//				criteria.add(Restrictions.ilike("c.nome", filtro.getNomeColaborador(), MatchMode.ANYWHERE));
-//			}
-//
-//			if (!StringUtils.isEmpty(filtro.getCpfCnpjId())) {
-//				criteria.add(
-//						Restrictions.eq("c.cpfCnpjId", TipoIdentificacao.removerFormatacao(filtro.getCpfCnpjId())));
-//			}
+			if (filtro.getDataInicio() != null) {
+				LocalDateTime desde = LocalDateTime.of(filtro.getDataInicio(), LocalTime.of(0, 0));
+				criteria.add(Restrictions.ge("dataCriacao", desde));
+			}
+
+			if (filtro.getDataFim() != null) {
+				LocalDateTime ate = LocalDateTime.of(filtro.getDataFim(), LocalTime.of(23, 59));
+				criteria.add(Restrictions.le("dataCriacao", ate));
+			}
+
+
+			if (!StringUtils.isEmpty(filtro.getNomeColaborador())) {
+				criteria.add(Restrictions.ilike("c.nome", filtro.getNomeColaborador(), MatchMode.ANYWHERE));
+			}
+
+			if (!StringUtils.isEmpty(filtro.getCpfCnpjId())) {
+				criteria.add(
+						Restrictions.eq("c.cpfCnpjId", TipoIdentificacao.removerFormatacao(filtro.getCpfCnpjId())));
+			}
 		}
 	}
 }

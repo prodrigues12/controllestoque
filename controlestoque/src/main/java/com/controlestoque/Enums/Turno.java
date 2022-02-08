@@ -2,9 +2,9 @@ package com.controlestoque.Enums;
 
 public enum Turno {
 
-	PRIMEIRO("1º Tuno"),
-	SEGUNDO("2º Tuno"),
-	TERCEIRO("3º Tuno"),
+	PRIMEIRO("1º Turno"),
+	SEGUNDO("2º Turno"),
+	TERCEIRO("3º Turno"),
 	COMERCIAL("Comercial");
 	
 	
