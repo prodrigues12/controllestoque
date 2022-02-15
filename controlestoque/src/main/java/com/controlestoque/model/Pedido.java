@@ -35,8 +35,8 @@ public class Pedido {
 	private Long codigo;
 
 	@Column(name = "data_criacao")
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private LocalDate dataCriacao;
+//	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDateTime dataCriacao;
 
 	private String observacao;
 
@@ -64,11 +64,11 @@ public class Pedido {
 		this.codigo = codigo;
 	}
 
-	public LocalDate getDataCriacao() {
+	public LocalDateTime getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(LocalDate dataCriacao) {
+	public void setDataCriacao(LocalDateTime dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 

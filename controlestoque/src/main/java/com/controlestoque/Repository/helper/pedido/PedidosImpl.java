@@ -82,20 +82,21 @@ public class PedidosImpl implements PedidosQueries {
 				criteria.add(Restrictions.eq("status", filtro.getStatus()));
 			}
 			
-			if (filtro.getStatus() != null) {
+			if (filtro.getTurno() != null) {
 				criteria.add(Restrictions.eq("turno", filtro.getTurno()));
 			}
 
-////			if (filtro.getDataInicio() != null) {
-////				LocalDate desde = LocalDate.MIN.
-//			}
+			
 			if (filtro.getDataInicio() != null) {
+				
 				LocalDateTime desde = LocalDateTime.of(filtro.getDataInicio(), LocalTime.of(0, 0));
 				criteria.add(Restrictions.ge("dataCriacao", desde));
+				System.out.println(">>>>>>>>>>>>>>Data passada: " + filtro.getDataInicio());
 			}
+			
 
 			if (filtro.getDataFim() != null) {
-				LocalDateTime ate = LocalDateTime.of(filtro.getDataFim(), LocalTime.of(23, 59));
+				LocalDateTime ate = LocalDateTime.of(filtro.getDataFim(), LocalTime.of(0, 0));
 				criteria.add(Restrictions.le("dataCriacao", ate));
 			}
 
