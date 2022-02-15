@@ -45,7 +45,7 @@ bindTabelaItem.call(this);
 }
 
 
-	function onQuantidadeItemAlterado(evento) {
+function onQuantidadeItemAlterado(evento) {
 		var input = $(evento.target);
 		var quantidade = input.val();
 		
@@ -55,16 +55,16 @@ bindTabelaItem.call(this);
 		}
 		
 		var codigoProduto = input.data('codigo-produto');
-
+		
 		var resposta = $.ajax({
 			url: 'item/' + codigoProduto,
-			mathod: 'PUT',
+			method: 'PUT',
 			data: {
 				quantidade: quantidade,
 				uuid: this.uuid
 			}
 		});
-
+		
 		resposta.done(onItemAtualizarNoServidor.bind(this));
 	}
 

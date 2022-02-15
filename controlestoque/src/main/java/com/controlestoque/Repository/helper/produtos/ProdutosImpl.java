@@ -31,6 +31,7 @@ public class ProdutosImpl implements ProdutosQueries {
 	@Autowired
 	private PaginacaoUtil paginacaoUltil;
 
+	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public Page<Produto> filtrar(ProdutoFilter filtro, Pageable pageable) {
 
@@ -54,9 +55,9 @@ public class ProdutosImpl implements ProdutosQueries {
 	private void adicionarFiltro(ProdutoFilter filtro, Criteria criteria) {
 
 		if (filtro != null) {
-			if (!StringUtils.isEmpty(filtro.getCodigo())) {
-				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
-			}
+//			if (!StringUtils.isEmpty(filtro.getCodigo())) {
+//				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
+//			}
 
 			if (!StringUtils.isEmpty(filtro.getNome())) {
 				criteria.add(Restrictions.ilike("nome", filtro.getNome(), MatchMode.ANYWHERE));
