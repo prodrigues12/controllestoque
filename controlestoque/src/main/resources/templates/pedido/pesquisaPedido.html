@@ -76,13 +76,14 @@
 					<!-- 					Data Criação -->
 					<div class="col-auto">
 						<label for="dataCriacao" class="col-form-label-sm">Data de
-							criação:</label> <input class="form-control form-control-sm" type="text" th:field="*{dataInicio}"/>
-						&nbsp;&nbsp;
+							criação:</label> <input class="form-control form-control-sm " 
+							type="date" th:field="*{dataInicio}" /> &nbsp;&nbsp;
 					</div>
 
 					<div class="col-auto">
 						<label for="dataFim" class="col-form-label-sm">Até:</label> <input
-							class="form-control form-control-sm" type="date" th:field="*{dataFim}"/> &nbsp;&nbsp;
+							class="form-control form-control-sm" type="date"
+							th:field="*{dataFim}" /> &nbsp;&nbsp;
 					</div>
 
 				</div>
@@ -147,8 +148,8 @@
 						th:href="@{/pedido/{codigo}(codigo=${pedido.codigo})}"><i
 							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp; <a
 						class=" js-exclusao-btn" title="Excluir" href="#"
-						data:url="@{/pedido/{codigo}(codigo=${pedido.codigo})}"
-						> <i class="bx bx-trash ce-icon"></i>
+						data:url="@{/pedido/{codigo}(codigo=${pedido.codigo})}">
+							<i class="bx bx-trash ce-icon"></i>
 					</a>&nbsp;&nbsp;<a><i class="bx bx-error-circle ce-icon"></i></a></td>
 				</tr>
 				<tr th:if="${pagina.vazia}">
@@ -188,6 +189,8 @@
 	<script src="/js/colaborador.pesquisa-rapida.js"></script>
 	<script src="/js/pedido.autocomplete-itens.js"></script>
 	<script src="/js/pedido.tabela-itens.js"></script>
+	<!-- 	<script src="/js/controllestoque.js"></script> -->
+
 
 </body>
 </html>

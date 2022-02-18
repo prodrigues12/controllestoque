@@ -1,8 +1,12 @@
 package com.controlestoque.Repository.helper.pedido;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -44,6 +48,9 @@ public class PedidosImpl implements PedidosQueries {
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
 
 		paginacaoUltil.preparar(criteria, pageable);
+		
+		System.out.println(">>>>>>>>>>>>>>Data passada: " + filter.getDataInicio());
+        
 		adicionarFiltro(filter, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filter));
@@ -91,12 +98,12 @@ public class PedidosImpl implements PedidosQueries {
 				
 				LocalDateTime desde = LocalDateTime.of(filtro.getDataInicio(), LocalTime.of(0, 0));
 				criteria.add(Restrictions.ge("dataCriacao", desde));
-				System.out.println(">>>>>>>>>>>>>>Data passada: " + filtro.getDataInicio());
+				
 			}
 			
 
 			if (filtro.getDataFim() != null) {
-				LocalDateTime ate = LocalDateTime.of(filtro.getDataFim(), LocalTime.of(0, 0));
+				LocalDateTime ate = LocalDateTime.of(filtro.getDataFim(), LocalTime.of(23, 58));
 				criteria.add(Restrictions.le("dataCriacao", ate));
 			}
 
