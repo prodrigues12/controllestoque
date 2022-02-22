@@ -45,7 +45,7 @@
 					<!-- 				Codigo -->
 					<div class=" col-md-1">
 						<label class=" col-form-label-sm">Codigo:</label> <input
-							class="form-control form-control-sm" type="text"
+							class="form-control form-control-sm js-date" type="text"
 							th:field="*{codigo}">
 					</div>
 
@@ -76,15 +76,15 @@
 					<!-- 					Data Criação -->
 					<div class="col-auto">
 						<label for="dataCriacao" class="col-form-label-sm">Data de
-							criação:</label> <input class="form-control form-control-sm " 
-							type="date" th:field="*{dataInicio}" /> &nbsp;&nbsp;
+							criação:</label> <input class="form-control form-control-sm js-date"
+							type="date" th:field="*{desde}"> &nbsp;&nbsp;
 					</div>
 
-					<div class="col-auto">
-						<label for="dataFim" class="col-form-label-sm">Até:</label> <input
-							class="form-control form-control-sm" type="date"
-							th:field="*{dataFim}" /> &nbsp;&nbsp;
-					</div>
+										<div class="col-auto">
+											<label for="dataFim" class="col-form-label-sm">Até:</label> <input
+												class="form-control form-control-sm" type="date"
+												th:field="*{ate}" /> &nbsp;&nbsp;
+										</div>
 
 				</div>
 
@@ -124,10 +124,10 @@
 				<th class="col-1"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
 
-				</th>
-				<!-- 					<th class="col-2"><th:block -->
-				<!-- 							th:replace="fragmentos/ordenacao :: order (${pagina}, 'status' , 'Status')"></th:block> -->
-				<!-- 					</th> -->
+<!-- 				</th> -->
+<!-- 									<th class="col-2"><th:block -->
+<!-- 											th:replace="fragmentos/ordenacao :: order (${pagina}, 'status' , 'Status')"></th:block> -->
+<!-- 									</th> -->
 
 				<th class="col-auto">Data</th>
 				<th class="col-auto">Colaborador</th>
@@ -139,17 +139,17 @@
 
 			<tbody>
 				<tr th:each="pedido :${pagina.conteudo}">
-					<td th:text="${pedido.codigo}">12</td>
-					<!-- 						<td th:text="${pedido.status}">Produto Teste</td> -->
-					<td th:text="${pedido.dataCriacao}">Limpeza</td>
-					<td th:text="${pedido.colaborador.nome}">Limpeza</td>
-					<td th:text="${pedido.turno}">4</td>
+					<td th:text="${pedido.codigo}"></td>
+<!-- 					<td th:text="${pedido.status}">Produto Teste</td> -->
+					<td th:text="${pedido.dataCriacao}"></td>
+					<td th:text="${pedido.colaborador.nome}"></td>
+					<td th:text="${pedido.turno}"></td>
 					<td><a title="Editar"
 						th:href="@{/pedido/{codigo}(codigo=${pedido.codigo})}"><i
 							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp; <a
 						class=" js-exclusao-btn" title="Excluir" href="#"
-						data:url="@{/pedido/{codigo}(codigo=${pedido.codigo})}">
-							<i class="bx bx-trash ce-icon"></i>
+						data:url="@{/pedido/{codigo}(codigo=${pedido.codigo})}"> <i
+							class="bx bx-trash ce-icon"></i>
 					</a>&nbsp;&nbsp;<a><i class="bx bx-error-circle ce-icon"></i></a></td>
 				</tr>
 				<tr th:if="${pagina.vazia}">
@@ -183,13 +183,9 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-	<script src="/js/vendors/handlebars.min.js"></script>
-	<script src="/js/vendors/jquery.easy-autocomplete.min.js"></script>
 	<script src="/js/sindebar.js"></script>
-	<script src="/js/colaborador.pesquisa-rapida.js"></script>
 	<script src="/js/pedido.autocomplete-itens.js"></script>
-	<script src="/js/pedido.tabela-itens.js"></script>
-	<!-- 	<script src="/js/controllestoque.js"></script> -->
+	<script src="/js/controllestoque.js"></script>
 
 
 </body>

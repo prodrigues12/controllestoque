@@ -2,7 +2,7 @@ package com.controlestoque.Repository.filter;
 
 import java.time.LocalDate;
 
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 import com.controlestoque.Enums.StatusPedido;
 import com.controlestoque.Enums.Turno;
@@ -12,9 +12,8 @@ public class PedidoFilter {
 	private Long codigo;
 	private StatusPedido status;
 	private Turno turno;
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private LocalDate dataInicio;
-	private LocalDate dataFim;
+	private String desde;
+	private String ate;
 	private String nomeColaborador;
 	private String cpfCnpjId;
 
@@ -42,20 +41,21 @@ public class PedidoFilter {
 		this.turno = turno;
 	}
 
-	public LocalDate getDataInicio() {
-		return dataInicio;
+
+	public String getDesde() {
+		return desde;
 	}
 
-	public void setDataInicio(LocalDate dataInicio) {
-		this.dataInicio = dataInicio;
+	public void setDesde(String desde) {
+		this.desde = desde;
 	}
 
-	public LocalDate getDataFim() {
-		return dataFim;
+	public String getAte() {
+		return ate;
 	}
 
-	public void setDataFim(LocalDate dataFim) {
-		this.dataFim = dataFim;
+	public void setAte(String ate) {
+		this.ate = ate;
 	}
 
 	public String getNomeColaborador() {
