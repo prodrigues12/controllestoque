@@ -3,6 +3,7 @@ package com.controlestoque.service;
 import java.math.BigDecimal;
 
 import javax.persistence.PersistenceException;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -47,5 +48,12 @@ public class ProdutoService {
 			throw new ImpossivelExcluirEntidadeException("Impossivel apagar Produto. Existe movimentação.");
 		}
 	}
+	@Transactional
+	public void ajusteEstoque(Produto produto) {
+		prodRepository.save(produto);
+		
+	}
+
+
 
 }

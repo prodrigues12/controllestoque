@@ -84,7 +84,7 @@ public class ProdutoController {
 	}
 
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<ProdutoDTO> pesquisar(String codigoOuNome){
+	public @ResponseBody List<ProdutoDTO> pesquisar(String codigoOuNome) {
 		return proRepository.codigoOuNome(codigoOuNome);
 	}
 
@@ -103,31 +103,40 @@ public class ProdutoController {
 	public ModelAndView editar(@PathVariable("codigo") Produto produto) {
 		ModelAndView mv = novo(produto);
 		mv.addObject(produto);
+		mv.addObject("uniMedida", UnidadeMedia.values());
 		mv.addObject(mv);
 		return mv;
 
 	}
 
-
 	@RequestMapping("/estoque")
 	public ModelAndView estoque(ProdutoFilter produtoFilter, BindingResult result,
-			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest)  {
+			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("estoque/estoque");
 		mv.addObject("uniMedida", UnidadeMedia.values());
-		
+
 		PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.filtrar(produtoFilter, pageable),
 				httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 
-		
 	}
 
-	@RequestMapping("/ajuste")
-	public ModelAndView estoqueAjuste(Produto produto) {
+	@GetMapping("/estoque/ajuste/{codigo}")
+	public ModelAndView editarEstoque(@PathVariable("codigo") Produto produto) {
 		ModelAndView mv = new ModelAndView("estoque/ajusteEstoque");
-
+		mv.addObject(produto);
+		mv.addObject(mv);
 		return mv;
+
 	}
-	
+
+	@RequestMapping(value = { "/estoque/ajuste", "{\\d+}" }, method = RequestMethod.POST)
+	public ModelAndView novoEstoque(Produto produto, BindingResult result, RedirectAttributes attributes) {
+
+		prodService.ajusteEstoque(produto);
+
+		return new ModelAndView("redirect:/produto/novo");
+	}
+
 }
