@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -108,35 +109,9 @@ public class ProdutoController {
 		return mv;
 
 	}
+	
+	
 
-	@RequestMapping("/estoque")
-	public ModelAndView estoque(ProdutoFilter produtoFilter, BindingResult result,
-			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
-		ModelAndView mv = new ModelAndView("estoque/estoque");
-		mv.addObject("uniMedida", UnidadeMedia.values());
 
-		PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.filtrar(produtoFilter, pageable),
-				httpServletRequest);
-		mv.addObject("pagina", paginaWrapper);
-		return mv;
-
-	}
-
-	@GetMapping("/estoque/ajuste/{codigo}")
-	public ModelAndView editarEstoque(@PathVariable("codigo") Produto produto) {
-		ModelAndView mv = new ModelAndView("estoque/ajusteEstoque");
-		mv.addObject(produto);
-		mv.addObject(mv);
-		return mv;
-
-	}
-
-	@RequestMapping(value = { "/estoque/ajuste", "{\\d+}" }, method = RequestMethod.POST)
-	public ModelAndView novoEstoque(Produto produto, BindingResult result, RedirectAttributes attributes) {
-
-		prodService.ajusteEstoque(produto);
-
-		return new ModelAndView("redirect:/produto/novo");
-	}
-
+	
 }

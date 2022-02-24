@@ -37,31 +37,34 @@
 		</div>
 		<div class="card-body">
 
-			<!-- 			<form action="pesquisa-estoque" method="post"> -->
+		<form action="" method="get" th:object="${produtoFilter}">
+		
 			<div class=" row mb-0">
 
 				<!-- 				codigo -->
 				<div class=" col-md-1">
 					<label class=" col-form-label-sm">Codigo:</label> <input
-						class="form-control form-control-sm" type="text" />
+						class="form-control form-control-sm" type="text" th:field="*{codigo}" />
 				</div>
 
 				<!-- 				Nome -->
 				<div class="col-md-11">
 					<label class="col-form-label-sm">Nome:</label> <input
-						class="form-control form-control-sm" placeholder="Nome do produto">
+						class="form-control form-control-sm" placeholder="Nome do produto" th:field=*{nome}>
 
 				</div>
 
 				<p>
 				<div class="form-row">
 					<button type="submit" class="btn btn-primary">Pesquisar</button>
+					<a type="submit" class="btn btn-outline-warning btn-sm"
+						th:href="@{/estoque/}">Limpar filtro</a>
 				</div>
 			</div>
+			</form>
 		</div>
+
 		
-		
-		<!-- 			</form> -->
 		<div class="table-responsive">
 			<table class="table table-bordered table-houver  table-sm"
 				style="text-align: center">
@@ -90,7 +93,7 @@
 						<td th:text="${produto.agrupar.subgrupo.grupo.nome}">Limpeza</td>
 						<td th:text="${produto.qtdEstoque}">4</td>
 						<td><a title="Editar"
-							th:href="@{/produto/estoque/ajuste/{codigo}(codigo=${produto.codigo})}"><i
+							th:href="@{/estoque/ajuste/{codigo}(codigo=${produto.codigo})}"><i
 								class=" bx bx-edit ce-icon"></i> </a></td>
 					</tr>
 					<tr th:if="${pagina.vazia}">
@@ -129,6 +132,7 @@
 	<script src="/js/vendors/jquery.maskMoney.min.js"></script>
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/controllestoque.js"></script>
+	
 
 </body>
 </html>
