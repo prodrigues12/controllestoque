@@ -29,9 +29,6 @@ public class ProdutoService {
 		if (produto.getQtdEstMin() == null) {
 			produto.setQtdEstMin(BigDecimal.ONE);
 		}
-		if (produto.getQtdEstoque() == null) {
-			produto.setQtdEstoque(BigDecimal.ZERO);
-		}
 
 		prodRepository.save(produto);
 
@@ -49,8 +46,10 @@ public class ProdutoService {
 		}
 	}
 	@Transactional
-	public void ajusteEstoque(Produto produto) {
-		prodRepository.save(produto);
+	public void atualizarEstoque(Long codigos, BigDecimal estoque ) {
+		Produto pro = prodRepository.findByCodigo(codigos);
+		pro.setQtdEstoque(estoque);
+		prodRepository.save(pro);
 		
 	}
 

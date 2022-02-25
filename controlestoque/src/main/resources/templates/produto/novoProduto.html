@@ -151,9 +151,16 @@
 							th:field="*{qtdEstMin}"
 							class="form-control form-control-sm js-decimal"
 							placeholder="Ex: 10,00">
+</div>
+				
+						<div class=" col-md-2" th:unless="${produto.produtoNovo}">
+						<label for="estoque" class="col-form-label-sm">Estoque:</label> <input id="estoque" type="text"
+							th:field="*{qtdEstoque}"
+							class="form-control form-control-sm js-decimal"
+							readonly="readonly">
 
 					</div>
-				</div>
+				
 
 				<p>
 

@@ -21,7 +21,7 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
-	<form method="#"
+	<form method="post"
 		th:action=" @{/estoque/ajuste/{codigo}(codigo=${produto.codigo})}"
 		th:object="${produto}">
 
@@ -49,10 +49,6 @@
 
 					<div class="row mb-3">
 
-						<div class="col-md-2" >
-							<label class="col-form-label-sm">Estoque:</label> <input
-								class="form-control form-control-sm" type="text" readonly >
-						</div>
 						<div class=" col-md-2">
 						<label for="uniMedida" class="col-form-label-sm">Unid. de
 							medida:</label> <input class="form-control form-control-sm" th:field="*{uniMedida}" readonly>
@@ -63,16 +59,7 @@
 							<label class="col-form-label-sm">Novo estoque:</label> <input
 								class="form-control form-control-sm"  th:field="*{qtdEstoque}">
 						</div>
-						<div class=" col-md-2">
-						<label for="uniMedida" class="col-form-label-sm">Unid. de
-							medida:</label> <select id="uniMedida"
-							class=" form-control form-select form-select-sm"
-							th:field="*{uniMedida}">
-							<option value="">Selecione</option>
-							<option class="form-control" th:each="uniMedida : ${uniMedida}"
-								th:value="${uniMedida}" th:text="${uniMedida.descricao}">a</option>
-						</select>
-					</div>
+				
 					</div>
 
 					<p>

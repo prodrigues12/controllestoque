@@ -3,7 +3,6 @@ package com.controlestoque.controller;
 import java.math.BigDecimal;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -12,11 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.controlestoque.Enums.UnidadeMedia;
 import com.controlestoque.Repository.Grupos;
@@ -73,19 +71,14 @@ public class EstoqueController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/ajuste", method = RequestMethod.POST)
-	public ModelAndView novoEstoque(@Valid Produto produto, BindingResult result, RedirectAttributes attributes) {
+	@RequestMapping(value = "/ajuste/{codigo}", method = RequestMethod.POST)
+	public ModelAndView novoEstoque(@RequestParam("codigo") Long codigo,
+			@RequestParam("qtdEstoque") BigDecimal estoque  ) {
 
-		System.out.println("chegou aqui?");
-		
-//		if (result.hasErrors()) {
-//			System.out.println("Deu erro");
-//			return editarEstoque(produto);
-//		} else {
-//
-//		prodService.salvar(produto);
-//			attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
-			return new ModelAndView("redirect:/produto/novo");
+	
+		prodService.atualizarEstoque(codigo, estoque);
+			
+			return new ModelAndView("redirect:/estoque");
 //		}
 	}
 
