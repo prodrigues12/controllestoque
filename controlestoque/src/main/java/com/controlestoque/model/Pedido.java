@@ -35,7 +35,7 @@ public class Pedido {
 	private Long codigo;
 
 	@Column(name = "data_criacao")
-//	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dataCriacao;
 
 	private String observacao;

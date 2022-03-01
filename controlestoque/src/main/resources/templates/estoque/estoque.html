@@ -78,8 +78,9 @@
 							th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Nome')"></th:block>
 					</th>
 					<th class="col-3">Seção</th>
-					<th class="col-1">Grupo</th>
+					
 					<th class="col-1 ">Estoque</th>
+					<th class="col-1">Un Med</th>
 					<th class="col-1">Ação</th>
  
 
@@ -90,8 +91,8 @@
 						<td th:text="${produto.codigo}">1</td>
 						<td th:text="${produto.nome}">Produto Teste</td>
 						<td th:text="${produto.secao.nome}">Limpeza</td>
-						<td th:text="${produto.agrupar.subgrupo.grupo.nome}">Limpeza</td>
 						<td th:text="${produto.qtdEstoque}">4</td>
+						<td th:text="${produto.uniMedida}">Limpeza</td>
 						<td><a title="Editar"
 							th:href="@{/estoque/ajuste/{codigo}(codigo=${produto.codigo})}"><i
 								class=" bx bx-edit ce-icon"></i> </a></td>

@@ -18,4 +18,10 @@ Controllestoque.MaskMoney = (function() {
 }());
 
 
+$(function(){
 	
+	var maskMoney = new Controllestoque.MaskMoney();
+	maskMoney.enable();
+}
+
+)

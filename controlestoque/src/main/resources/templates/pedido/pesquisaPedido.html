@@ -75,16 +75,27 @@
 
 					<!-- 					Data Criação -->
 					<div class="col-auto">
-						<label for="dataCriacao" class="col-form-label-sm">Data de
-							criação:</label> <input class="form-control form-control-sm js-date"
-							type="date" th:field="*{desde}"> &nbsp;&nbsp;
-					</div>
+						<label for="dataCriacao" class="col-form-label-sm">Data de Criação:</label>
 
-										<div class="col-auto">
-											<label for="dataFim" class="col-form-label-sm">Até:</label> <input
-												class="form-control form-control-sm" type="date"
-												th:field="*{ate}" /> &nbsp;&nbsp;
-										</div>
+						<div class="row ">
+							<div class="col-auto">
+								<label for="de" class="col-form-label-sm">De:</label>
+							</div>
+							<div class="col-auto">
+								<input class="form-control form-control-sm js-date" type="date"
+									th:field="*{desde}">
+							</div>
+							<div class="col-auto">
+								<label for="ate" class="col-form-label-sm">Até:</label>
+							</div>
+							<div class="col-auto">
+								<input class="form-control form-control-sm" type="date"
+									th:field="*{ate}" />
+							</div>
+
+						</div>
+
+					</div>
 
 				</div>
 
@@ -124,11 +135,8 @@
 				<th class="col-1"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
 
-<!-- 				</th> -->
-<!-- 									<th class="col-2"><th:block -->
-<!-- 											th:replace="fragmentos/ordenacao :: order (${pagina}, 'status' , 'Status')"></th:block> -->
-<!-- 									</th> -->
-
+					<!-- 				</th> --> <!-- 									<th class="col-2"><th:block --> <!-- 											th:replace="fragmentos/ordenacao :: order (${pagina}, 'status' , 'Status')"></th:block> -->
+					<!-- 									</th> -->
 				<th class="col-auto">Data</th>
 				<th class="col-auto">Colaborador</th>
 				<th class="col-auto">Turno</th>
@@ -140,7 +148,7 @@
 			<tbody>
 				<tr th:each="pedido :${pagina.conteudo}">
 					<td th:text="${pedido.codigo}"></td>
-<!-- 					<td th:text="${pedido.status}">Produto Teste</td> -->
+					<!-- 					<td th:text="${pedido.status}">Produto Teste</td> -->
 					<td th:text="${pedido.dataCriacao}"></td>
 					<td th:text="${pedido.colaborador.nome}"></td>
 					<td th:text="${pedido.turno}"></td>

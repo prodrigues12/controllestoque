@@ -86,17 +86,17 @@
 			style="text-align: center">
 			<thead class="thead-dark" style="text-align: center">
 
-				<th class="col-1"><th:block
+				<th class="col-auto"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
 
 				</th>
-				<th class="col-4"><th:block
+				<th class="col-auto"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Nome')"></th:block>
 				</th>
-				<th class="col-2">Seção</th>
-				<th class="col-2">Grupo</th>
-				<th class="col-1">Estoque</th>
-				<th class="col-2">Ação</th>
+				<th class="col-auto">Seção</th>
+				<th class="col-auto">Grupo</th>
+				<th class="col-auto">Estoque</th>
+				<th class="col-auto">Ação</th>
 
 
 			</thead>
@@ -107,14 +107,14 @@
 					<td th:text="${produto.nome}">Produto Teste</td>
 					<td th:text="${produto.secao.nome}">Limpeza</td>
 					<td th:text="${produto.agrupar.subgrupo.grupo.nome}">Limpeza</td>
-					<td th:text="${produto.qtdEstoque}">4</td>
+					<td th:text="${produto.qtdEstoque}"class="js-decimal">4</td>
 					<td><a title="Editar"
 						th:href="@{/produto/{codigo}(codigo=${produto.codigo})}"><i
-							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp; <a
+							class=" bx bx-edit ce-icon"></i> </a> &nbsp; <a
 						class=" js-exclusao-btn" title="Excluir" href="#"
 						data:url="@{/produto/{codigo}(codigo=${produto.codigo})}"
 						data:objeto="${produto.nome}"> <i class="bx bx-trash ce-icon"></i>
-					</a>&nbsp;&nbsp;<a><i class="bx bx-error-circle ce-icon"></i></a></td>
+					</a>&nbsp;<a><i class="bx bx-error-circle ce-icon"></i></a></td>
 				</tr>
 				<tr th:if="${pagina.vazia}">
 					<td colspan="7">Nenhum registro encontrado</td>

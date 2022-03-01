@@ -42,10 +42,6 @@ public class PedidosImpl implements PedidosQueries {
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
 
 		paginacaoUltil.preparar(criteria, pageable);
-
-		System.out.println("DATA INICIAL: " + filter.getDesde());
-		System.out.println("codigo: " + filter.getCodigo());
-		System.out.println("NOME: " + filter.getNomeColaborador());
 		adicionarFiltro(filter, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filter));
@@ -89,24 +85,22 @@ public class PedidosImpl implements PedidosQueries {
 			
 			if (filtro.getDesde() != null) {
 				if (filtro.getDesde().isBlank()) {
-					System.out.println("DATA INICIAL: " + filtro.getDesde());
 					filtro.setDesde(null);
 
 				} else {
 					LocalDate localDate = LocalDate.parse(filtro.getDesde());
-					criteria.add(Restrictions.eq("dataCriacao", localDate));
+					criteria.add(Restrictions.ge("dataCriacao", localDate));
 
 				}
 			}
 			
 			if (filtro.getAte() != null) {
 				if (filtro.getAte().isBlank()) {
-					System.out.println("DATA INICIAL: " + filtro.getDesde());
-					filtro.setAte(null);
+					filtro.setAte(filtro.getDesde());
 
 				} else {
 					LocalDate localDate = LocalDate.parse(filtro.getAte());
-					criteria.add(Restrictions.eq("dataCriacao", localDate));
+					criteria.add(Restrictions.le("dataCriacao", localDate));
 				
 				}
 				

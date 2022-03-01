@@ -28,6 +28,7 @@ import com.controlestoque.Repository.Produtos;
 import com.controlestoque.Repository.filter.PedidoFilter;
 import com.controlestoque.controller.page.PageWrapper;
 import com.controlestoque.controller.validator.PedidoValidator;
+import com.controlestoque.model.ItemPedido;
 import com.controlestoque.model.Pedido;
 import com.controlestoque.model.Produto;
 import com.controlestoque.service.PedidoService;
@@ -61,9 +62,7 @@ public class PedidoController {
 	public ModelAndView novo(Pedido pedido) {
 		ModelAndView mv = new ModelAndView("pedido/pedidoNovo");
 
-		if (StringUtils.isEmpty(pedido.getUuid())) {
-			pedido.setUuid(UUID.randomUUID().toString());
-		}
+		setUuid(pedido);
 
 		mv.addObject("turno", Turno.values());
 		mv.addObject("itens", pedido.getItens());
@@ -120,6 +119,25 @@ public class PedidoController {
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 
+	}
+	
+	public ModelAndView editar(@PathVariable Long codigo) {
+		Pedido pedido = pedRepository.buscarComItens(codigo);
+		
+		setUuid(pedido);
+		for(ItemPedido item : pedido.getItens()) {
+			tabalaItens.adicionarItem(pedido.getUuid(), item.getProduto(), item.getQuantidade());
+		}
+		
+		ModelAndView mv = novo(pedido);
+		mv.addObject(pedido);
+		return mv;
+	}
+
+	private void setUuid(Pedido pedido) {
+		if (StringUtils.isEmpty(pedido.getUuid())) {
+			pedido.setUuid(UUID.randomUUID().toString());
+		}
 	}
 
 	private ModelAndView mvTabelaPedido(String uuid) {

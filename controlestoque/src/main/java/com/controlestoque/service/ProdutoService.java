@@ -29,6 +29,9 @@ public class ProdutoService {
 		if (produto.getQtdEstMin() == null) {
 			produto.setQtdEstMin(BigDecimal.ONE);
 		}
+		if (produto.getQtdEstoque() == null) {
+			produto.setQtdEstoque(BigDecimal.ZERO);
+		}
 
 		prodRepository.save(produto);
 
