@@ -134,6 +134,7 @@ public class PedidoController {
 		return mv;
 	}
 
+	@SuppressWarnings("deprecation")
 	private void setUuid(Pedido pedido) {
 		if (StringUtils.isEmpty(pedido.getUuid())) {
 			pedido.setUuid(UUID.randomUUID().toString());

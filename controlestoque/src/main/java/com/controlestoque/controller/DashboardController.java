@@ -16,7 +16,10 @@ public class DashboardController {
 	@GetMapping("/")
 	public ModelAndView layout() {
 		ModelAndView mv = new ModelAndView("dashboard");
-		mv.addObject("pedidosNovo", pedRepository.statusNovo());
+		mv.addObject("pedidosNovos", pedRepository.statusIgualNovo());
+		mv.addObject("pedidosEspera", pedRepository.statusIgualEspera());
+		mv.addObject("pedidosCancelados", pedRepository.statusIgualCancelado());
+		mv.addObject("pedidosFinalizados", pedRepository.statusIgualFinalizado());
 		return mv;
 		
 	}
