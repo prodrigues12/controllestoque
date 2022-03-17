@@ -34,12 +34,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/path/to/allow").permitAll()
 				.antMatchers(HttpMethod.GET, "/path/to/allow").permitAll().antMatchers("/produto/**")
 				.hasRole("CADASTRAR_PRODUTO")
-//				.antMatchers("/usuario/**").hasRole("CADASTRAR_USUARIO")
+				.antMatchers("/usuario/**").hasRole("CADASTRAR_USUARIO")
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/", true)
-				.permitAll().and().exceptionHandling().accessDeniedPage("/403");
+				.permitAll().and().exceptionHandling().accessDeniedPage("/403").and().csrf().disable();;
 	}
 
 	@Bean

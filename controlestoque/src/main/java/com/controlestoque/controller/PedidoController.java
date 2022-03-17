@@ -63,24 +63,10 @@ public class PedidoController {
 		ModelAndView mv = new ModelAndView("pedido/pedidoNovo");
 
 		setUuid(pedido);
-
+	
 		mv.addObject("turno", Turno.values());
 		mv.addObject("itens", pedido.getItens());
 		return mv;
-	}
-
-	@PostMapping("/novo")
-	public ModelAndView salvar(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
-		pedido.adicionarItens(tabalaItens.getItens(pedido.getUuid()));
-
-		pedidoValidator.validate(pedido, result);
-		if (result.hasErrors()) {
-			return novo(pedido);
-		} else {
-			pedService.salvar(pedido);
-			attributes.addFlashAttribute("mensagem", "Pedido realizado com sucesso!");
-			return new ModelAndView("redirect:/pedido/novo");
-		}
 	}
 
 	@PostMapping("/item")
@@ -92,10 +78,39 @@ public class PedidoController {
 		return mvTabelaPedido(uuid);
 	}
 
-	@PutMapping("/item/{codigoProduto}")
-	public ModelAndView alterarQuantidadeItem(@PathVariable("codigoProduto") Produto produto, Integer quantidade,
-			String uuid) {
+	@PostMapping("/novo")
+	public ModelAndView salvar(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
+		pedido.adicionarItens(tabalaItens.getItens(pedido.getUuid()));
 
+		pedidoValidator.validate(pedido, result);
+		if (result.hasErrors()) {
+			return novo(pedido);
+		}
+		
+		pedido = pedService.salvar(pedido);
+	
+		attributes.addFlashAttribute("mensagem", String.format("Pedido nº %d criado com sucesso!", pedido.getCodigo()));
+		return new ModelAndView("redirect:/pedido/novo");
+
+	}
+
+	@GetMapping("/{codigo}")
+	public ModelAndView editar(@PathVariable Long codigo) {
+		Pedido pedido = pedRepository.buscarComItens(codigo);
+
+		setUuid(pedido);
+		for (ItemPedido item : pedido.getItens()) {
+			tabalaItens.adicionarItem(pedido.getUuid(), item.getProduto(), item.getQuantidade());
+		}
+
+		ModelAndView mv = novo(pedido);
+		mv.addObject(pedido);
+		return mv;
+	}
+
+	@PutMapping("/item/{codigoProduto}")
+	public ModelAndView alterarQuantidadeItem(@PathVariable("codigoProduto") Produto produto,
+			Integer quantidade, String uuid) {
 		tabalaItens.alterarQauntidadeItem(uuid, produto, quantidade);
 		return mvTabelaPedido(uuid);
 	}
@@ -119,19 +134,6 @@ public class PedidoController {
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 
-	}
-	
-	public ModelAndView editar(@PathVariable Long codigo) {
-		Pedido pedido = pedRepository.buscarComItens(codigo);
-		
-		setUuid(pedido);
-		for(ItemPedido item : pedido.getItens()) {
-			tabalaItens.adicionarItem(pedido.getUuid(), item.getProduto(), item.getQuantidade());
-		}
-		
-		ModelAndView mv = novo(pedido);
-		mv.addObject(pedido);
-		return mv;
 	}
 
 	@SuppressWarnings("deprecation")
