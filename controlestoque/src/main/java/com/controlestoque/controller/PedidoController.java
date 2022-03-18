@@ -45,7 +45,7 @@ public class PedidoController {
 	private Pedidos pedRepository;
 
 	@Autowired
-	private TabelaItemSession tabalaItens;
+	private TabelaItemSession tabelaItens;
 
 	@Autowired
 	private PedidoService pedService;
@@ -63,34 +63,27 @@ public class PedidoController {
 		ModelAndView mv = new ModelAndView("pedido/pedidoNovo");
 
 		setUuid(pedido);
-	
+
 		mv.addObject("turno", Turno.values());
 		mv.addObject("itens", pedido.getItens());
 		return mv;
 	}
 
-	@PostMapping("/item")
-	public ModelAndView adicionarItem(Long codigoProduto, String uuid) {
-
-		Produto produto = proRepository.findByCodigo(codigoProduto);
-		tabalaItens.adicionarItem(uuid, produto, 1);
-
-		return mvTabelaPedido(uuid);
-	}
-
 	@PostMapping("/novo")
 	public ModelAndView salvar(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
-		pedido.adicionarItens(tabalaItens.getItens(pedido.getUuid()));
 
 		pedidoValidator.validate(pedido, result);
+
 		if (result.hasErrors()) {
 			return novo(pedido);
+		} else {
+
+			pedido = pedService.salvar(pedido);
+			attributes.addFlashAttribute("mensagem",
+					String.format("Pedido nº %d criado com sucesso!", pedido.getCodigo()));
+
+			return new ModelAndView("redirect:/pedido/novo");
 		}
-		
-		pedido = pedService.salvar(pedido);
-	
-		attributes.addFlashAttribute("mensagem", String.format("Pedido nº %d criado com sucesso!", pedido.getCodigo()));
-		return new ModelAndView("redirect:/pedido/novo");
 
 	}
 
@@ -99,8 +92,9 @@ public class PedidoController {
 		Pedido pedido = pedRepository.buscarComItens(codigo);
 
 		setUuid(pedido);
+
 		for (ItemPedido item : pedido.getItens()) {
-			tabalaItens.adicionarItem(pedido.getUuid(), item.getProduto(), item.getQuantidade());
+			tabelaItens.adicionarItem(pedido.getUuid(), item.getProduto(), item.getQuantidade());
 		}
 
 		ModelAndView mv = novo(pedido);
@@ -108,16 +102,23 @@ public class PedidoController {
 		return mv;
 	}
 
+	@PostMapping("/item")
+	public ModelAndView adicionarItem(Long codigoProduto, String uuid) {
+		Produto produto = proRepository.findByCodigo(codigoProduto);
+		tabelaItens.adicionarItem(uuid, produto, 1);
+		return mvTabelaPedido(uuid);
+	}
+
 	@PutMapping("/item/{codigoProduto}")
-	public ModelAndView alterarQuantidadeItem(@PathVariable("codigoProduto") Produto produto,
-			Integer quantidade, String uuid) {
-		tabalaItens.alterarQauntidadeItem(uuid, produto, quantidade);
+	public ModelAndView alterarQuantidadeItem(@PathVariable("codigoProduto") Produto produto, Integer quantidade,
+			String uuid) {
+		tabelaItens.alterarQauntidadeItem(uuid, produto, quantidade);
 		return mvTabelaPedido(uuid);
 	}
 
 	@DeleteMapping("/item/{uuid}/{codigoProduto}")
 	public ModelAndView excluirItem(@PathVariable("codigoProduto") Produto produto, @PathVariable String uuid) {
-		tabalaItens.excluirItem(uuid, produto);
+		tabelaItens.excluirItem(uuid, produto);
 		return mvTabelaPedido(uuid);
 
 	}
@@ -145,7 +146,7 @@ public class PedidoController {
 
 	private ModelAndView mvTabelaPedido(String uuid) {
 		ModelAndView mv = new ModelAndView("pedido/tabelaItensPedido");
-		mv.addObject("itens", tabalaItens.getItens(uuid));
+		mv.addObject("itens", tabelaItens.getItens(uuid));
 		return mv;
 	}
 }

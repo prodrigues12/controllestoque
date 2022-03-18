@@ -15,9 +15,9 @@
 	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 <link rel="stylesheet" href="/css/sindebar.css" />
 <link rel="stylesheet" href="/css/controller.css" />
-
 <link rel="stylesheet" href="/css/brewer.css" />
 </head>
+
 <body id="body-pd">
 
 	<div th:replace="fragmentos/fragmentos :: header"></div>
@@ -41,7 +41,7 @@
 			<form method="POST" th:action="@{/pedido/novo}" th:object="${pedido}">
 
 				<input type="hidden" id="uuid" th:field="*{uuid}"/>
-				<input type="hidden" th:filed="*{codigo}"/>
+				<input type="hidden" th:field="*{codigo}"/>
 
 				<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 				<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
