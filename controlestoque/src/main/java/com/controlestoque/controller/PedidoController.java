@@ -63,6 +63,7 @@ public class PedidoController {
 		ModelAndView mv = new ModelAndView("pedido/pedidoNovo");
 
 		setUuid(pedido);
+		System.out.println("UUID pagaina nova: " + pedido.getUuid());
 
 		mv.addObject("turno", Turno.values());
 		mv.addObject("itens", pedido.getItens());
@@ -72,18 +73,15 @@ public class PedidoController {
 	@PostMapping("/novo")
 	public ModelAndView salvar(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
 
-		pedidoValidator.validate(pedido, result);
+		validarPedido(pedido, result);
 
 		if (result.hasErrors()) {
 			return novo(pedido);
-		} else {
-
-			pedido = pedService.salvar(pedido);
-			attributes.addFlashAttribute("mensagem",
-					String.format("Pedido nº %d criado com sucesso!", pedido.getCodigo()));
-
-			return new ModelAndView("redirect:/pedido/novo");
 		}
+		pedService.salvar(pedido);
+		attributes.addFlashAttribute("mensagem", String.format("Pedido nº %d criado com sucesso!", pedido.getCodigo()));
+
+		return new ModelAndView("redirect:/pedido/novo");
 
 	}
 
@@ -92,6 +90,8 @@ public class PedidoController {
 		Pedido pedido = pedRepository.buscarComItens(codigo);
 
 		setUuid(pedido);
+
+		System.out.println(">>> UUID Existente: " + pedido.getUuid());
 
 		for (ItemPedido item : pedido.getItens()) {
 			tabelaItens.adicionarItem(pedido.getUuid(), item.getProduto(), item.getQuantidade());
@@ -148,5 +148,11 @@ public class PedidoController {
 		ModelAndView mv = new ModelAndView("pedido/tabelaItensPedido");
 		mv.addObject("itens", tabelaItens.getItens(uuid));
 		return mv;
+	}
+
+	private void validarPedido(Pedido pedido, BindingResult result) {
+		pedido.adicionarItens(tabelaItens.getItens(pedido.getUuid()));
+		pedidoValidator.validate(pedido, result);
+
 	}
 }

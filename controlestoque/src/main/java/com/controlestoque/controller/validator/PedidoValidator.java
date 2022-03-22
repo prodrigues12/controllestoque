@@ -27,6 +27,7 @@ public class PedidoValidator implements Validator {
 	}
 
 	private void validarSeInformouItens(Errors errors, Pedido pedido) {
+		System.out.println(pedido.getItens().size());
 		if(pedido.getItens().isEmpty()) {
 			errors.reject("", "Adicione pelo menos um item no pedido");
 		}

@@ -28,17 +28,17 @@ Controllestoque.TabelaItens = (function() {
 
 	}
 
-	function onItemAtualizarNoServidor(html) {
+	function onItemAtualizadoNoServidor(html) {
+		this.tabelaCervejasContainer.html(html);
 		
-		this.tabelaProdutoContainer.html(html);
-		var quantidadeItemInput = $('.js-tabela-produto-quantidade-item');
-		quantidadeItemInput.on('change', onQuantidadeItemAlterado.bind(this));
-		var tabelaItem = $('.js-tabela-item');
-		tabelaItem.on('dblclick', onDoubleClick);
-		$('.js-exclusao-item-btn').on('click', onExclusaoItemClick.bind(this));
+		bindQuantidade.call(this);
+		
+		var tabelaItem = bindTabelaItem.call(this); 
+		this.emitter.trigger('tabela-itens-atualizada', tabelaItem.data('valor-total'));
 	}
 
 	function onQuantidadeItemAlterado(evento) {
+
 		var input = $(evento.target);
 		var quantidade = input.val();
 
@@ -64,19 +64,32 @@ Controllestoque.TabelaItens = (function() {
 	function onDoubleClick(evento) {
 		$(this).toggleClass('solicitando-exclusao');
 	}
-
+	
 	function onExclusaoItemClick(evento) {
-		var codigoProduto = $(evento.target).data('codigo-produto');
+		var codigoCerveja = $(evento.target).data('codigo-cerveja');
 		var resposta = $.ajax({
-			url: 'item/' + this.uuid + '/' + codigoProduto,
+			url: 'item/' + this.uuid + '/' + codigoCerveja,
 			method: 'DELETE'
 		});
-
-		resposta.done(onItemAtualizarNoServidor.bind(this));
+		
+		resposta.done(onItemAtualizadoNoServidor.bind(this));
 	}
-
+	
+	function bindQuantidade() {
+		var quantidadeItemInput = $('.js-tabela-produto-quantidade-item');
+		quantidadeItemInput.on('change', onQuantidadeItemAlterado.bind(this));
+		quantidadeItemInput.maskMoney({ precision: 0, thousands: '' });
+	}
+	
+	function bindTabelaItem() {
+		var tabelaItem = $('.js-tabela-item');
+		tabelaItem.on('dblclick', onDoubleClick);
+		$('.js-exclusao-item-btn').on('click', onExclusaoItemClick.bind(this));
+		return tabelaItem;
+	}
+	
 	return TabelaItens;
-
+	
 }());
 
 $(function() {
