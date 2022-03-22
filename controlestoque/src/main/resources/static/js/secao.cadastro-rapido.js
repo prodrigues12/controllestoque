@@ -2,10 +2,9 @@ var Controlestoque = Controlestoque || {};
 
 Controlestoque.SecaoCadastroRapido = (function() {
 
-	//construtor
-	//Objeto
+
 	function SecaoCadastroRapido() {
-//		//inicializações
+
 		this.modal = $('#secaoModal');
 		this.botaoSalvar = this.modal.find('.js-modal-cadastro-secao-salvar-btn');
 		this.form = this.modal.find('form');
@@ -13,8 +12,7 @@ Controlestoque.SecaoCadastroRapido = (function() {
 		this.inputNomeSecao = $('#nomeSecao');
 		this.containerMensagemErro = $('.js-mensagem-cadastro-rapido-secao');
 	}
-//
-//prototype
+
 	SecaoCadastroRapido.prototype.iniciar = function() {
 		this.form.on('submit', function(event) { event.preventDefault() });// enter no form não submit
 		this.modal.on('shown.bs.modal', onModalShow.bind(this));
@@ -49,8 +47,8 @@ Controlestoque.SecaoCadastroRapido = (function() {
 	function onErroSalvandoSecao(obj) {
 		var mensagemErro = obj.responseText;
 		this.containerMensagemErro.removeClass('hidden');
-		this.containerMensagemErro.html('<span>' + mensagemErro + '</span>');
-		this.form.find('.form-group').addClass('has-error');
+		this.containerMensagemErro.html('<span class="alert alert-danger">' + mensagemErro + '</span>');
+		this.form.find('.form-row').addClass('has-error');
 	}
 
 	function onSecaoSalvo(secao) {
@@ -65,7 +63,7 @@ Controlestoque.SecaoCadastroRapido = (function() {
 }());
 
 $(function() {
-	// criar objeto e iniciar 
+
 	var secaoCadastroRapido = new Controlestoque.SecaoCadastroRapido();
 	secaoCadastroRapido.iniciar();
 

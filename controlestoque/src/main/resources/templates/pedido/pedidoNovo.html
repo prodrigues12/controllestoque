@@ -15,29 +15,33 @@
 	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 <link rel="stylesheet" href="/css/sindebar.css" />
 <link rel="stylesheet" href="/css/controller.css" />
-
 <link rel="stylesheet" href="/css/brewer.css" />
 </head>
+
 <body id="body-pd">
 
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
 	<div class="card">
-		<div class="card-header">
-			<div class="row">
-				<div class=" col-md-10">
-					<h4>Pedido</h4>
+	<div class="card-header">
+				<div class="row">
+					<div class=" col-md-10">
+						<h4 th:if="${pedido.pedidoNovo}">Novo Pedido</h4>
+						<h4 th:unless="${pedido.pedidoNovo}"
+							th:text="|Editando pedido: ${pedido.codigo}|"></h4>
+					</div>
+					<div class="col-md-2">
+						<a th:href="@{/pedido}" class="btn btn-primary btn-sm">Pesquisar</a>
+					</div>
 				</div>
-
 			</div>
-		</div>
 		<div class="card-body">
 
 			<form method="POST" th:action="@{/pedido/novo}" th:object="${pedido}">
 
-
-				<input type="hidden" id="uuid" th:field="*{uuid}" />
+				<input type="hidden" id="uuid" th:field="*{uuid}"/>
+				<input type="hidden" th:field="*{codigo}"/>
 
 				<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 				<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>

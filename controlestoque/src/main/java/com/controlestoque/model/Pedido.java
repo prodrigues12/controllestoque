@@ -2,10 +2,9 @@ package com.controlestoque.model;
 
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -120,9 +119,11 @@ public class Pedido {
 		this.uuid = uuid;
 	}
 
-	public boolean isNovo() {
+	public boolean isPedidoNovo() {
 		return codigo == null;
 	}
+	
+
 
 	public void adicionarItens(List<ItemPedido> itens) {
 

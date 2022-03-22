@@ -63,7 +63,6 @@ public class Produto implements Serializable {
 	@OneToMany(mappedBy = "produto")
 	private List<Endereco> endereco;
 	
-	
 
 	public Long getCodigo() {
 		return codigo;
@@ -165,5 +164,8 @@ public class Produto implements Serializable {
 			return false;
 		return true;
 	}
+	
+
+	
 
 }

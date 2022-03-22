@@ -9,16 +9,16 @@ Controllestoque.Autocomplete = (function() {
 		this.emitter = $({});
 		this.on = this.emitter.on.bind(this.emitter);
 
-
 	}
 
 	Autocomplete.prototype.iniciar = function() {
+		
 		var options = {
 			url: function(codigoOuNome) {
-				return this.codigoOuNomeInput.data('url')+'?codigoOuNome=' + codigoOuNome;
+				return this.codigoOuNomeInput.data('url') + '?codigoOuNome=' + codigoOuNome;
 			}.bind(this),
 			getValue: 'nome',
-//			minCharNumber:3,
+//			minCharNumber: 3,
 			requestDelay: 300,
 			ajaxSettings: {
 				contentType: 'application/json'
@@ -38,15 +38,15 @@ Controllestoque.Autocomplete = (function() {
 	}
 
 	function onItemSelecionado() {
-		
+
 		this.emitter.trigger('item-selecionado', this.codigoOuNomeInput.getSelectedItemData());
-		this.codigoOuNomeInput.val('');	
+		this.codigoOuNomeInput.val('');
 		this.codigoOuNomeInput.focus();
 
 	}
 
-	function template (nome, produto){
-					return this.template(produto);
+	function template(nome, produto) {
+		return this.template(produto);
 	}
 
 	return Autocomplete;

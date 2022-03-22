@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -84,7 +85,7 @@ public class ProdutoController {
 	}
 
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<ProdutoDTO> pesquisar(String codigoOuNome){
+	public @ResponseBody List<ProdutoDTO> pesquisar(String codigoOuNome) {
 		return proRepository.codigoOuNome(codigoOuNome);
 	}
 
@@ -103,31 +104,14 @@ public class ProdutoController {
 	public ModelAndView editar(@PathVariable("codigo") Produto produto) {
 		ModelAndView mv = novo(produto);
 		mv.addObject(produto);
+		mv.addObject("uniMedida", UnidadeMedia.values());
 		mv.addObject(mv);
 		return mv;
 
 	}
+	
+	
 
 
-	@RequestMapping("/estoque")
-	public ModelAndView estoque(ProdutoFilter produtoFilter, BindingResult result,
-			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest)  {
-		ModelAndView mv = new ModelAndView("estoque/estoque");
-		mv.addObject("uniMedida", UnidadeMedia.values());
-		
-		PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.filtrar(produtoFilter, pageable),
-				httpServletRequest);
-		mv.addObject("pagina", paginaWrapper);
-		return mv;
-
-		
-	}
-
-	@RequestMapping("/ajuste")
-	public ModelAndView estoqueAjuste(Produto produto) {
-		ModelAndView mv = new ModelAndView("estoque/ajusteEstoque");
-
-		return mv;
-	}
 	
 }

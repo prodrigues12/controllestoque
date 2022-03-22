@@ -1,7 +1,6 @@
 package com.controlestoque.service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import javax.transaction.Transactional;
 
@@ -13,17 +12,21 @@ import com.controlestoque.model.Pedido;
 
 @Service
 public class PedidoService {
-	
+
 	@Autowired
 	private Pedidos pedRepository;
-	
+
 	@Transactional
-	public void salvar(Pedido pedido) {
-		if(pedido.isNovo()) {
+	public Pedido salvar(Pedido pedido) {
+		if (pedido.isPedidoNovo()) {
 			pedido.setDataCriacao(LocalDate.now());
+		} else {
+			Pedido pedidoExistente = pedRepository.getById(pedido.getCodigo());
+			pedido.setDataCriacao(pedidoExistente.getDataCriacao());
+
 		}
-		
-		pedRepository.save(pedido);
+
+		return pedRepository.saveAndFlush(pedido);
 	}
 
 }

@@ -1,15 +1,10 @@
 package com.controlestoque.session;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
 import java.util.Optional;
 import java.util.stream.IntStream;
-
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
-
 
 import com.controlestoque.model.ItemPedido;
 import com.controlestoque.model.Produto;
@@ -18,7 +13,7 @@ class TabelaItensPedido {
 
 	private String uuid;
 	public List<ItemPedido> itens = new ArrayList<>();
-	
+
 	public TabelaItensPedido(String uuid) {
 		this.uuid = uuid;
 	}
@@ -36,28 +31,25 @@ class TabelaItensPedido {
 			itemPedido.setProduto(produto);
 			itemPedido.setQuantidade(quantidade);
 
-			itens.add(0,itemPedido);
+			itens.add(0, itemPedido);
 		}
 	}
-	
+
 	public void alterarQuantidadeItem(Produto produto, Integer quantidade) {
 		ItemPedido itemPedido = buscarItemPorProduto(produto).get();
 		itemPedido.setQuantidade(quantidade);
 	}
-	
-	
-	public void excluirItem( Produto produto) {
-		int indice = IntStream.range(0, itens.size())
-				.filter(i-> itens.get(i).getProduto().equals(produto))
-				.findAny().getAsInt();
+
+	public void excluirItem(Produto produto) {
+		int indice = IntStream.range(0, itens.size()).filter(i -> itens.get(i).getProduto().equals(produto)).findAny()
+				.getAsInt();
 		itens.remove(indice);
-		
+
 	}
 
 	private Optional<ItemPedido> buscarItemPorProduto(Produto produto) {
-		return itens.stream().filter(i -> i.getProduto().equals(produto))
-				.findAny();
-		
+		return itens.stream().filter(i -> i.getProduto().equals(produto)).findAny();
+
 	}
 
 	public int total() {

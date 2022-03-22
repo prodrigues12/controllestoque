@@ -27,97 +27,102 @@
 			<div class="row">
 				<div class=" col-md-10">
 					<h4>Estoque</h4>
-				</div>				
+				</div>
 				<div class="col-md-2">
-			<a class="btn btn-dark btn-sm " th:href="@{dashboard}"> 
-			 Voltar
-			</a>
-			
-		</div>
+					<a class="btn btn-dark btn-sm " th:href="@{dashboard}"> Voltar
+					</a>
+
+				</div>
 			</div>
 		</div>
 		<div class="card-body">
 
-			<!-- 			<form action="pesquisa-estoque" method="post"> -->
-			<div class=" row mb-3">
+		<form action="" method="get" th:object="${produtoFilter}">
+		
+			<div class=" row mb-0">
 
-					<!-- 				Nome -->
-					<div class="col-md-12">
-						<label class="col-form-label-sm">Nome:</label> <input
-							class="form-control form-control-sm"
-							placeholder="Ex: Caneta vermelha">
-					</div>
-					
+				<!-- 				codigo -->
+				<div class=" col-md-1">
+					<label class=" col-form-label-sm">Codigo:</label> <input
+						class="form-control form-control-sm" type="text" th:field="*{codigo}" />
+				</div>
+
+				<!-- 				Nome -->
+				<div class="col-md-11">
+					<label class="col-form-label-sm">Nome:</label> <input
+						class="form-control form-control-sm" placeholder="Nome do produto" th:field=*{nome}>
+
+				</div>
+
 				<p>
-				
 				<div class="form-row">
-						<button type="submit" class="btn btn-primary">
-							Pesquisar</button>
-					</div>
+					<button type="submit" class="btn btn-primary">Pesquisar</button>
+					<a type="submit" class="btn btn-outline-warning btn-sm"
+						th:href="@{/estoque/}">Limpar filtro</a>
+				</div>
 			</div>
-			</div>
-			<!-- 			</form> -->
-<div class="table-responsive">
-		<table class="table table-bordered table-houver  table-sm"
-			style="text-align: center">
-			<thead class="thead-dark" style="text-align: center">
+			</form>
+		</div>
 
-				<th class="col-1"><th:block
-						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
+		
+		<div class="table-responsive">
+			<table class="table table-bordered table-houver  table-sm"
+				style="text-align: center">
+				<thead class="thead-dark" style="text-align: center">
 
-				</th>
-				<th class="col-4"><th:block
-						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Nome')"></th:block>
-				</th>
-				<th class="col-2">Seção</th>
-				<th class="col-2">Grupo</th>
-				<th class="col-1">Estoque</th>
-				<th class="col-2">Ação</th>
+					<th class="col-1"><th:block
+							th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
+
+					</th>
+					<th class="col-4"><th:block
+							th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Nome')"></th:block>
+					</th>
+					<th class="col-3">Seção</th>
+					
+					<th class="col-1 ">Estoque</th>
+					<th class="col-1">Un Med</th>
+					<th class="col-1">Ação</th>
+ 
+
+				</thead>
+
+				<tbody>
+					<tr th:each="produto :${pagina.conteudo}">
+						<td th:text="${produto.codigo}">1</td>
+						<td th:text="${produto.nome}">Produto Teste</td>
+						<td th:text="${produto.secao.nome}">Limpeza</td>
+						<td th:text="${produto.qtdEstoque}">4</td>
+						<td th:text="${produto.uniMedida}">Limpeza</td>
+						<td><a title="Editar"
+							th:href="@{/estoque/ajuste/{codigo}(codigo=${produto.codigo})}"><i
+								class=" bx bx-edit ce-icon"></i> </a></td>
+					</tr>
+					<tr th:if="${pagina.vazia}">
+						<td colspan="7">Nenhum registro encontrado</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+
+		<div class="col-sm-12 text-center" th:if="${not pagina.vazia}">
+			<nav>
+				<ul class="pagination  pagination-sm"
+					th:with="paginaAtual=${pagina.atual}">
+
+					<th:block th:each="p : ${#numbers.sequence(1, pagina.total)}"
+						th:with="numeroPagina=${p - 1}">
+						<li th:class="${paginaAtual == numeroPagina} ? active"><a
+							class="page-link" th:href="${pagina.urlParaPagina(numeroPagina)}">[[${p}]]</a></li>
+
+					</th:block>
 
 
-			</thead>
+				</ul>
+			</nav>
+		</div>
 
-			<tbody>
-				<tr th:each="produto :${pagina.conteudo}">
-					<td th:text="${produto.codigo}">1</td>
-					<td th:text="${produto.nome}">Produto Teste</td>
-					<td th:text="${produto.secao.nome}">Limpeza</td>
-					<td th:text="${produto.agrupar.subgrupo.grupo.nome}">Limpeza</td>
-					<td th:text="${produto.qtdEstoque}">4</td>
-					<td><a title="Editar"
-						th:href="@{/produto/{codigo}(codigo=${produto.codigo})}"><i
-							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp; <a
-						class=" js-exclusao-btn" title="Excluir" href="#"
-						data:url="@{/produto/{codigo}(codigo=${produto.codigo})}"
-						data:objeto="${produto.nome}"> <i class="bx bx-trash ce-icon"></i>
-					</a>&nbsp;&nbsp;<a><i class="bx bx-error-circle ce-icon"></i></a></td>
-				</tr>
-				<tr th:if="${pagina.vazia}">
-					<td colspan="7">Nenhum registro encontrado</td>
-				</tr>
-
-			</tbody>
-		</table>
 	</div>
-
-	<div class="col-sm-12 text-center" th:if="${not pagina.vazia}">
-		<nav>
-			<ul class="pagination  pagination-sm"
-				th:with="paginaAtual=${pagina.atual}">
-
-				<th:block th:each="p : ${#numbers.sequence(1, pagina.total)}"
-					th:with="numeroPagina=${p - 1}">
-					<li th:class="${paginaAtual == numeroPagina} ? active"><a
-						class="page-link" th:href="${pagina.urlParaPagina(numeroPagina)}">[[${p}]]</a></li>
-
-				</th:block>
-
-
-			</ul>
-		</nav>
-	</div>
-
-
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script
@@ -128,6 +133,7 @@
 	<script src="/js/vendors/jquery.maskMoney.min.js"></script>
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/controllestoque.js"></script>
+	
 
 </body>
 </html>
