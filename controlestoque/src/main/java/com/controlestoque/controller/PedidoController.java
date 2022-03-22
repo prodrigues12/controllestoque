@@ -112,7 +112,7 @@ public class PedidoController {
 	@PutMapping("/item/{codigoProduto}")
 	public ModelAndView alterarQuantidadeItem(@PathVariable("codigoProduto") Produto produto, Integer quantidade,
 			String uuid) {
-		tabelaItens.alterarQauntidadeItem(uuid, produto, quantidade);
+		tabelaItens.alterarQuantidadeItem(uuid, produto, quantidade);
 		return mvTabelaPedido(uuid);
 	}
 
