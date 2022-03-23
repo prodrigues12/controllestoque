@@ -63,7 +63,6 @@ public class PedidoController {
 		ModelAndView mv = new ModelAndView("pedido/pedidoNovo");
 
 		setUuid(pedido);
-		System.out.println("UUID pagaina nova: " + pedido.getUuid());
 
 		mv.addObject("turno", Turno.values());
 		mv.addObject("itens", pedido.getItens());
@@ -79,7 +78,7 @@ public class PedidoController {
 			return novo(pedido);
 		}
 		pedService.salvar(pedido);
-		attributes.addFlashAttribute("mensagem", String.format("Pedido nº %d criado com sucesso!", pedido.getCodigo()));
+		attributes.addFlashAttribute("mensagem", String.format("Pedido nº %d salvo com sucesso!", pedido.getCodigo()));
 
 		return new ModelAndView("redirect:/pedido/novo");
 
@@ -91,10 +90,9 @@ public class PedidoController {
 
 		setUuid(pedido);
 
-		System.out.println(">>> UUID Existente: " + pedido.getUuid());
-
 		for (ItemPedido item : pedido.getItens()) {
 			tabelaItens.adicionarItem(pedido.getUuid(), item.getProduto(), item.getQuantidade());
+
 		}
 
 		ModelAndView mv = novo(pedido);

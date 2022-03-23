@@ -26,7 +26,6 @@ public class TabelaItemSession {
 
 	public void alterarQuantidadeItem(String uuid, Produto produto, Integer quantidade) {
 		TabelaItensPedido tabela = buscarTabelaPorUuid(uuid);
-		System.out.println(tabela);
 		tabela.alterarQuantidadeItem(produto, quantidade);
 		
 	}

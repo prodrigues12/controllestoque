@@ -24,34 +24,35 @@
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
 	<div class="card">
-	<div class="card-header">
-				<div class="row">
-					<div class=" col-md-10">
-						<h4 th:if="${pedido.pedidoNovo}">Novo Pedido</h4>
-						<h4 th:unless="${pedido.pedidoNovo}"
-							th:text="|Editando pedido: ${pedido.codigo}|"></h4>
-					</div>
-					<div class="col-md-2">
-						<a th:href="@{/pedido}" class="btn btn-primary btn-sm">Pesquisar</a>
-					</div>
+		<div class="card-header">
+			<div class="row">
+				<div class=" col-md-10">
+					<h4 th:if="${pedido.pedidoNovo}">Novo Pedido</h4>
+					<h4 th:unless="${pedido.pedidoNovo}"
+						th:text="|Editando pedido: ${pedido.codigo}|"></h4>
+				</div>
+				<div class="col-md-2">
+					<a th:href="@{/pedido}" class="btn btn-primary btn-sm">Pesquisar</a>
 				</div>
 			</div>
+		</div>
 		<div class="card-body">
 
 			<form method="POST" th:action="@{/pedido/novo}" th:object="${pedido}">
 
-				<input type="hidden" id="uuid" th:field="*{uuid}"/>
-				<input type="hidden" th:field="*{codigo}"/>
-
-				<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
-				<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
-
+				<input type="hidden" id="uuid" th:field="*{uuid}" /> <input
+					type="hidden" th:field="*{codigo}" />
+				<div>
+					<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
+					<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
+				</div>
 				<div class="row">
 					<div class="col-md-6">
 						<label for="nomeColaborador" class="col-form-label-sm">Colaborador</label>
 						<div class="input-group">
 							<input id="nomeColaborador" type="text" readonly="readonly"
-								class="form-control form-control-sm" th:field="*{colaborador.nome}"
+								class="form-control form-control-sm"
+								th:field="*{colaborador.nome}"
 								placeholder="Clique na lupa para pesquisar o colaborador" /> <input
 								id="codigoColaborador" type="hidden" th:field="*{colaborador}" />
 							<div class="input-group-prepend">
@@ -112,9 +113,10 @@
 	<br>
 
 
-	<div
-		th:replace="colaborador/pesquisaRapidaColaborador :: modalColaborador"></div>
-	<div th:replace="hbs/TemplateAutocompleteProduto"></div>
+
+	<th:block
+		th:replace="colaborador/pesquisaRapidaColaborador :: modalColaborador"></th:block>
+	<th:block th:replace="hbs/TemplateAutocompleteProduto"></th:block>
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

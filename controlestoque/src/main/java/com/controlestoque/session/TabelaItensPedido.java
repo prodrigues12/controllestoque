@@ -37,8 +37,6 @@ class TabelaItensPedido {
 
 	public void alterarQuantidadeItem(Produto produto, Integer quantidade) {
 		ItemPedido itemPedido = buscarItemPorProduto(produto).get();
-
-		System.out.println("item pedido: " + itemPedido.getProduto() + "total de itens" + total());
 		itemPedido.setQuantidade(quantidade);
 	}
 

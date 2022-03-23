@@ -24,15 +24,13 @@
 		</div>
 
 	</div>
-
-	<div class="bw-tabela-item__painel-exclusao" th:if="pedido != null">
-			<button type="button" class="btn btn-dangers js-exclusao-item-btn"
-				data:codigo-produto="${item.produto.codigo}">
-				<i class="bx bx-trash"></i> x
-			</button>
-
-	</div>
 	
+	<div class="bw-tabela-item__painel-exclusao" >
+			<span class="bw-tabela-item__titulo-exclusao">Excluir este item da venda?</span>
+			<button type="button" class="btn  btn-danger  js-exclusao-item-btn"
+				data:codigo-produto="${item.produto.codigo}"><i class="bx bx-trash"></i></button>
+		</div>
+
 </div>
 
 <div class="bw-tabela-cervejas__vazio" th:if="${itens.empty}">

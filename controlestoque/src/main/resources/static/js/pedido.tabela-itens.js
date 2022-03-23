@@ -9,7 +9,9 @@ Controllestoque.TabelaItens = (function() {
 	}
 
 	TabelaItens.prototype.iniciar = function() {
-		this.autocomplete.on('item-selecionado', onItemSelecionado.bind(this));	
+		this.autocomplete.on('item-selecionado', onItemSelecionado.bind(this));
+		bindQuantidade.call(this);
+		bindTabelaItem.call(this);
 
 	}
 
@@ -28,17 +30,17 @@ Controllestoque.TabelaItens = (function() {
 
 	}
 
-	function onItemAtualizadoNoServidor(html) {
-		this.tabelaCervejasContainer.html(html);
-		
+	function onItemAtualizarNoServidor(html) {
+
+		this.tabelaProdutoContainer.html(html);
+
 		bindQuantidade.call(this);
-		
-		var tabelaItem = bindTabelaItem.call(this); 
+
+		var tabelaItem = bindTabelaItem.call(this);
 		this.emitter.trigger('tabela-itens-atualizada', tabelaItem.data('valor-total'));
 	}
 
 	function onQuantidadeItemAlterado(evento) {
-
 		var input = $(evento.target);
 		var quantidade = input.val();
 
@@ -62,34 +64,36 @@ Controllestoque.TabelaItens = (function() {
 	}
 
 	function onDoubleClick(evento) {
-		$(this).toggleClass('solicitando-exclusao');
+		//		$(this).toggleClass('solicitando-exclusao');
+		var item = $(evento.currentTarget);
+		item.toggleClass('solicitando-exclusao');
 	}
-	
+
 	function onExclusaoItemClick(evento) {
-		var codigoCerveja = $(evento.target).data('codigo-cerveja');
+		var codigoProduto = $(evento.target).data('codigo-produto');
 		var resposta = $.ajax({
-			url: 'item/' + this.uuid + '/' + codigoCerveja,
+			url: 'item/' + this.uuid + '/' + codigoProduto,
 			method: 'DELETE'
 		});
-		
-		resposta.done(onItemAtualizadoNoServidor.bind(this));
+
+		resposta.done(onItemAtualizarNoServidor.bind(this));
 	}
-	
+
 	function bindQuantidade() {
 		var quantidadeItemInput = $('.js-tabela-produto-quantidade-item');
 		quantidadeItemInput.on('change', onQuantidadeItemAlterado.bind(this));
-		quantidadeItemInput.maskMoney({ precision: 0, thousands: '' });
+		//		quantidadeItemInput.maskMoney({ precision: 0, thousands: '' });
 	}
-	
+
 	function bindTabelaItem() {
 		var tabelaItem = $('.js-tabela-item');
 		tabelaItem.on('dblclick', onDoubleClick);
 		$('.js-exclusao-item-btn').on('click', onExclusaoItemClick.bind(this));
 		return tabelaItem;
 	}
-	
+
 	return TabelaItens;
-	
+
 }());
 
 $(function() {
