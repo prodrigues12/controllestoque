@@ -4,7 +4,7 @@
 }
 
 .navbar {
-	background-color: #0e87fe;
+	background-color: #3e92cc;
 }
 
 
@@ -14,7 +14,7 @@
 }
 
 .nav-link {
-	background-color: #0e87fe;
+	background-color: #3e92cc;
 }
 
 .nav-link:hover {
@@ -45,14 +45,14 @@
 	width: auto;
 	left: inherit;
 	border-width: 2px;
-	border-color: #191970;
+	border-color: #0A2463;
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
 	
 }
 
 .card-header {
-	background-color: #191970;
+	background-color: #0A2463;
 	font-weight: bold;
 	color: #FAF2F2;
 }
@@ -67,7 +67,7 @@ a {
 
 .dropdown-item {
 	/* 	nome=  sub-menu */
-	color: #0e87fe;
+	color: #3e92cc;
 	cursor: pointer;
 	font-weight: bold;
 	font-size: 14px;
@@ -87,7 +87,7 @@ a {
 }
 
 .rodape {
-	background-color: #00008B;
+	background-color: #0A2463;
 	color: #fff;
 	position: absolute;
 }
@@ -98,12 +98,42 @@ a {
 
 .table .thead-dark th {
 	color: #fff;
-	background-color: #000080;
+	background-color: #0A2463;
+}
+
+.btn {
+  border-radius: 999px;
+  box-shadow: #5E5DF0 0 10px 20px -10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+}
+
+.btn-primary {
+  background: #5E5DF0;
+  color: #FFFFFF;
 }
 
 .btn-info {
 	color: #fff;
-	background-color: #0e87fe;
+	background-color: #808080;
+}
+
+.btn-success {
+	color: #fff;
+	background-color: #228B22;
 }
 
 
@@ -114,7 +144,7 @@ a {
 
 .form-control {
 	border-width: 2px;
-	border-color: #191970;
+	border-color: #0A2463;
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
 	font-weight: bold;
@@ -123,7 +153,7 @@ a {
 
 .form-control-label {
 	border-width: 2px;
-	border-color: #191970;
+	border-color: #0A2463;
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
 	font-weight: bold;
@@ -151,7 +181,7 @@ a {
 	
 }
 .ce-icon{
-	color: #191970;
+	color: #0A2463;
 	font-size: 25px;
 }
 
@@ -165,15 +195,359 @@ a {
 }
 
 .bx-error-circle:hover{
-	color:#00BFFF;
+	color:#3e92cc;
 	
 }
 
-.bw-field-action {
+.field-action {
 	display: flex;
 }
 
-.bw-field-action__icon {
+.field-action__icon {
 	margin: 6px 0 0 5px;
 }
+
+/*###############################
+
+/*
+######################
+# UTILIDADES
+######################
+*/
+.glyphicon-large {
+	font-size: 18px;
+}
+
+.required > .control-label:after {
+	content: "*";
+}
+
+
+
+/*
+######################
+# COMPONENTES
+######################
+*/
+
+/* Field Action */
+.field-action {
+	display: flex;
+}
+
+.field-action__icon {
+	margin: 6px 0 0 5px;
+}
+
+/* Upload */
+.upload {
+	padding: 15px;
+	
+	border: 1px dashed #ddd;
+	border-radius: 4px;
+	background: #fafafa;
+	
+	text-align: center;
+}
+
+.upload-form-file {
+	display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1px;
+}
+
+.upload-form-file > input[type=file] {
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+    
+    font-size: 500px;
+}
+
+/* Tabela Simples */
+.tabela-simples {
+	margin-top: 15px;
+}
+
+.tabela-simples table tr th {
+	border-bottom-width: 1px;
+}
+
+.tabela-simples table tr td {
+    border-top: none;
+    border-bottom: 1px solid #e7eaec;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+/*
+###################
+# PÁGINAS DO SISTEMA
+###################
+*/
+
+/* Colunas comuns */
+.table-col-acoes {
+	width: 80px;
+}
+
+/* Colunas - Pesquisa de Cervejas */
+.table-produtos-col-foto {
+	min-width: 50px;
+	width: 50px
+}
+
+.table-produtos-col-sku {
+	width: 90px;
+	text-align: center;
+}
+
+/* .table-produtos-col-nome { */
+	
+/* } */
+
+.table-produtos-col-estilo {
+	width: 120px;
+}
+
+.table-produtos-col-origem {
+	width: 100px;
+}
+
+.table-produtos-col-valor {
+	width: 100px;
+	text-align: right;
+}
+
+.table-produtos-col-acoes {
+	width: 80px;
+}
+
+/* Colunas - Pesquisa de Estilos */
+.table-estilos-col-codigo {
+	width: 80px;
+}
+
+/* /* Colunas - Pesquisa de Clientes */ */
+/* .table-clientes-col-nome { */
+	
+/* } */
+
+.table-clientes-col-tipo-pessoa {
+	width: 120px;
+	text-align: center;
+}
+
+.table-clientes-col-cpf-cnpj {
+	width: 140px;
+	text-align: right;
+}
+
+.table-clientes-col-telefone {
+	width: 140px;
+	text-align: right;
+}
+
+.table-clientes-col-cidade-estado {
+	width: 140px;
+	text-align: right;
+}
+
+/* Colunas - Pesquisa de cidades */
+/* .table-cidades-col-nome { */
+	
+/* } */
+
+.table-cidades-col-estado {
+	width: 140px;
+	text-align: right;
+}
+
+/* Colunas - Pesquisa de usuários */
+.table-usuarios-col-status {
+	width: 30px;
+	text-align: center;
+}
+
+/* Tabela Cervejas página de Venda */
+.tabela-produtos {
+	margin-bottom: 15px;
+}
+
+.tabela-produtos__vazio {
+	padding: 15px 15px;
+	
+	border: 1px dashed #0A2463;
+	
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: 300;
+	color: #0A2463;
+}
+
+
+/*
+######################################
+# CUSTOMIZAÇÃO DE COMPONENTES
+######################################
+*/
+
+.checkbox input[type="checkbox"]:checked + input + label::after {
+    font-family: 'FontAwesome';
+    content: "\f00c"; 
+}
+
+/* Easy Autocomplete */
+.easy-autocomplete input {
+	border-radius: 2px !important;
+}
+
+.easy-autocomplete-container ul li {
+	font-size: 1em !important;
+	padding: 0px 5px !important;
+}
+
+/* Box */
+.negativo .aw-box__value {
+	color: red;
+}
+
+/* Tabela Item */
+.tabela-item {
+	position: relative; /* Para que o painel de exclusão apareça dentro da linha */
+	
+	padding: 15px 0;
+	background-color:#0A2463;
+	color:#fff;
+	
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.tabela-item:after {
+	clear: both;
+	display: block;
+    content: "";
+}
+
+.tabela-item ~ .tabela-item {
+	border-top: 1px solid #ddd;
+}
+
+.tabela-item__coluna {
+	padding: 0 10px;
+}
+
+.tabela-item__coluna--foto {
+	float: left;
+	width: 60px;
+	
+	text-align: center;
+}
+
+.tabela-item__coluna--valores {
+	padding-right: 0px;
+}
+
+.tabela-item__coluna--detalhes, .tabela-item__coluna--valores {
+	margin-left: 60px;
+}
+
+.tabela-produto-nome {
+	font-weight: 500;
+	font-size: 1.1em;
+	display: block;
+}
+
+.tabela-produto-origem {
+	color: #aaa;
+	display: block;
+	font-weight: 200;
+}
+
+.tabela-produto-campo-quantidade {
+	width: 30px;
+	text-align: right;
+}
+
+.tabela-produto-valor-pequeno {
+	font-weight: 300;
+	font-size: 1em;
+}
+
+.tabela-produto-valor-medio {
+	font-weight: 300;
+	font-size: 1.3em;
+}
+
+.tabela-produto-valor-grande {
+	font-weight: 300;
+	font-size: 1.6em;
+}
+
+.tabela-item__painel-exclusao {
+    position: absolute;
+    top: 1;
+    right: 100000px;
+/* 	height: 100%; */
+    width: 50%;
+    
+    text-align: center;
+    padding-top: 35px;
+    
+	background-color: #0A2463;
+	
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+.solicitando-exclusao .tabela-item__painel-exclusao {
+	right: 0;
+	opacity: 1;
+	background-color:#FF8C00;
+	
+}
+
+.tabela-item__titulo-exclusao {
+/*     display: block; */
+    margin-bottom: 3px;
+
+	color: #fff;
+    font-size: 1.2em;
+}
+
+@media (min-width: 768px) { /* screen-sm-min */
+	.tabela-item__painel-exclusao {
+		width: 40%;
+		padding-top: 10px;
+	}
+	
+	.tabela-item__coluna {
+		float: left;
+		margin-left: 0px;
+	}
+	
+	.tabela-item__coluna--detalhes {
+		width: calc(70% - 30px);
+	}
+	
+	.tabela-item__coluna--valores {
+		width: calc(30% - 30px);
+
+		text-align: right;
+	}
+}
+
+
+
+
+
 
