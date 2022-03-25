@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 
 import javax.validation.constraints.NotNull;
 
-
 @Entity
 public class Endereco implements Serializable {
 
@@ -111,17 +110,17 @@ public class Endereco implements Serializable {
 		return Objects.equals(codigo, other.codigo);
 	}
 
-
 	public String getEndereco() {
 		if (this.sala != null) {
-			return this.bloco.getNome() + " - " + this.apartamento.getNome() + " - " + this.sala.getNome();
+			return this.rua.getNome() + " - " + bloco.getNome() + " - " + this.apartamento.getNome() + " - "
+					+ this.sala.getNome();
 		}
 
 		if (this.apartamento != null) {
-			return this.bloco.getNome() + " - " + this.apartamento.getNome();
+			return this.rua.getNome() + " - " + bloco.getNome() + " - " + this.apartamento.getNome();
 		}
 
-		return this.bloco.getNome();
+		return this.rua.getNome() + " - " + bloco.getNome();
 
 	}
 }

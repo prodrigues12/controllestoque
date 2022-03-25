@@ -45,18 +45,17 @@
 	width: auto;
 	left: inherit;
 	border-width: 2px;
-	border-color: #0A2463;
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
 	
 }
+
 
 .card-header {
 	background-color: #0A2463;
 	font-weight: bold;
 	color: #FAF2F2;
 }
-
 
 a {
 	cursor: pointer;
@@ -239,36 +238,7 @@ a {
 	margin: 6px 0 0 5px;
 }
 
-/* Upload */
-.upload {
-	padding: 15px;
-	
-	border: 1px dashed #ddd;
-	border-radius: 4px;
-	background: #fafafa;
-	
-	text-align: center;
-}
 
-.upload-form-file {
-	display: inline-block;
-    vertical-align: middle;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 1px;
-}
-
-.upload-form-file > input[type=file] {
-	position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    opacity: 0;
-    cursor: pointer;
-    
-    font-size: 500px;
-}
 
 /* Tabela Simples */
 .tabela-simples {

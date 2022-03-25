@@ -1,0 +1,480 @@
+
+.row {
+    margin-right: -10px;
+    margin-bottom: 5px;
+}
+
+.modal-backdrop {
+    z-index: 9;
+}
+
+.modal {
+    z-index: 10;
+}
+
+.navbar-static-top {
+    z-index: 8;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.input-group-customButton {
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+}
+
+.div-header {
+    color: #337ab7;
+}
+
+.no-word-wrap {
+    white-space: nowrap;
+}
+
+.v-text-center {
+    vertical-align: middle !important;
+}
+
+.table-footer {
+    background-color: #b3b3ff;
+    font-weight: 700;
+}
+
+.btn-circle-sm {
+    width: 18px;
+    height: 18px;
+    padding: 3px 1px;
+    line-height: 0.5em;
+    border-radius: 9px;
+    font-size: 12px;
+}
+
+.popover {
+    border-color: #009900;
+}
+
+.popover-title {
+    background-color: #009900;
+    border-color: #009900;
+    color: #FFFFFF;
+    font-size: 14px;
+    text-align: center;
+}
+
+.popover-content {
+    border-color: #009900;
+}
+
+.popover.right > .arrow {
+    border-right-color: #009900;
+}
+
+input[type='checkbox'] {
+    margin: 0;
+}
+
+.nav-tabs > li > a {
+    font-weight: 700;
+}
+
+.alert-warning {
+    background-color: #ffff99;
+}
+
+.select2-container--default.select2-container--disabled .select2-selection--single {
+    cursor: not-allowed;
+}
+
+.btn-circle-lg {
+    width: 72px;
+    height: 72px;
+    border-radius: 36px;
+    padding: 12px 0;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.428571429;
+}
+
+.chosen-button {
+    cursor: not-allowed;
+    border: 2px solid;
+    border-color: #0043FF;
+}
+
+.chosen-button:hover {
+    border: 2px solid;
+    border-color: #0043FF;
+}
+
+.close-lg {
+    font-size: 26px;
+    font-weight: 900;
+}
+
+.close-red {
+    color: red;
+    filter: alpha(opacity=60);
+    opacity: .5;
+}
+
+.close-red:hover {
+    color: red;
+    filter: alpha(opacity=100);
+    opacity: 1;
+}
+
+.divFixedButtons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 2%;
+    width: 100%;
+    text-align: right;
+}
+
+@media (min-width: 992px) {
+    .modal-lg {
+        width: 1150px;
+    }
+}
+
+.has-error .select2-selection {
+    border-color: #a94442;
+}
+
+.radiobutton td {
+    padding-right: 15px;
+}
+
+.mediaAbaixo {
+    background-color: #FF4D4D;
+}
+
+.mediaAtencao {
+    background-color: #FFFF99;
+}
+
+.mediaDentro {
+    background-color: #99FF66;
+}
+
+.mediaAcima {
+    background-color: #00cc66;
+}
+
+.emAtraso {
+    background-color: #cb4dff;
+}
+
+.emAndamento {
+    background-color: #d9edf7;
+}
+
+.legenda {
+    padding: 0 17px 0 17px;
+    border: 1px solid black;
+}
+
+.mediaNA {
+    padding: 0 8px 0 8px;
+}
+
+.hierarquia .row {
+    margin-top: 10px;
+}
+
+.input-group-addon {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+    height: 27px;
+}
+
+.btn-file input[type='file'] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.paginacaoGrid a {
+    border-color: black;
+}
+
+.paginacaoGrid a, .paginacaoGrid span {
+    margin-left: 5px;
+}
+
+.paginacaoGrid a:hover {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: white;
+}
+
+.paginacaoGrid table {
+    float: right;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.curtir {
+    color: #205081;
+    font-size: 14px;
+}
+
+.curtir:hover {
+    color: #4796e6;
+}
+
+.autoSizeText14 {
+    font-size: 14px !important;
+    resize: none;
+    overflow: hidden;
+}
+
+.new-row {
+    padding-top: 23px;
+}
+
+.carret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+.bs-callout p:last-child {
+    font-size: 12px;
+}
+
+/*  Estilos para página de Espelho e Relatório do Cartão de Ponto*/
+.cabecalho{
+    max-width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.border-cabecalho{
+    border: 1px solid #ddd !important;
+    padding: 5px !important;
+}
+
+.font-13{
+    font-size: 13px !important;
+    height: 31px !important;
+}
+
+.mg-lf-5{
+    margin-left: 5px !important;
+}
+
+.RowStyle {
+    height: 12px !important;
+}
+
+.font-11{
+    font-size: 12px !important;
+}
+
+.redlink a{
+    color: red !important;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.mg-top-5{
+    margin-top: 5px !important;
+}
+
+.mg-top-18{
+    margin-top: 18px !important;
+}
+
+.mg-top-22{
+    margin-top: 22px !important;
+}
+
+/*  Estilos para novas páginas ( Holerite )*/
+
+.header-holerite{
+    border-left: 1px #337ab7 solid !important;
+    border-bottom: 1px #337ab7 solid !important;
+    padding: 3px !important;
+}
+
+.mg-left-19{
+    margin-left: 19px !important;
+}
+
+.mg-left-10{
+    margin-left: 10px !important;
+}
+
+.pagination-ys {
+    /*display: inline-block;*/
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.pagination-ys table > tbody > tr > td {
+    display: inline;
+}
+
+.pagination-ys table > tbody > tr > td > a,
+.pagination-ys table > tbody > tr > td > span {
+    position: relative;
+    float: left;
+    padding: 8px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: #1416dd;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    margin-left: -1px;
+}
+
+.pagination-ys table > tbody > tr > td > span {
+    position: relative;
+    float: left;
+    padding: 8px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;    
+    margin-left: -1px;
+    z-index: 2;
+    color: #aea79f;
+    background-color: #f5f5f5;
+    border-color: #dddddd;
+    cursor: default;
+}
+
+.pagination-ys table > tbody > tr > td:first-child > a,
+.pagination-ys table > tbody > tr > td:first-child > span {
+    margin-left: 0;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.pagination-ys table > tbody > tr > td:last-child > a,
+.pagination-ys table > tbody > tr > td:last-child > span {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.pagination-ys table > tbody > tr > td > a:hover,
+.pagination-ys table > tbody > tr > td > span:hover,
+.pagination-ys table > tbody > tr > td > a:focus,
+.pagination-ys table > tbody > tr > td > span:focus {
+    color: #97310e;
+    background-color: #eeeeee;
+    border-color: #dddddd;
+}
+
+.strip-multi-colors {
+	float: left;
+	height: 4px;
+	width: 100%;
+	/*overflow: hidden;
+	position: absolute;*/
+	z-index: 1;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+	
+.yellow {
+	background-color: #FFCE00;
+	width: 10%;
+	height: 5px;
+	float: left;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+	
+.orange {
+	background-color: #ffa000;
+	width: 10%;
+	height: 5px;
+	float: left;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+	
+.red {
+	background-color: #E25335;
+	width: 10%;
+	height: 5px;
+	float: left;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+	
+.rose {
+	background-color: #DE349E;
+	width: 10%;
+	height: 5px;
+	float: left;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+	
+.purple {
+	background-color: #BF2FDC;
+	width: 10%;
+	height: 5px;
+	float: left;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+	
+.deep-purple {
+	background-color: #5D33D5;
+	width: 10%;
+	height: 5px;
+	float: left;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+	
+.blue {
+	background-color: #2B7CD7;
+	width: 10%;
+	height: 5px;
+	float: left;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+	
+.cyan {
+	background-color: #33C3DD;
+	width: 10%;
+	height: 5px;
+	float: left;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+	
+.light-green {
+	background-color: #32D9A1;
+	width: 10%;
+	height: 5px;
+	float: left;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}
+	
+.green {
+	background-color: #3FCB2A;
+	width: 10%;
+	height: 5px;
+	float: left;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
+}

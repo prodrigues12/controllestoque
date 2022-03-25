@@ -15,6 +15,7 @@
 	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 <link rel="stylesheet" href="/css/sindebar.css" />
 <link rel="stylesheet" href="/css/controller.css" />
+<link rel="stylesheet" href="/css/magalu.css" />
 </head>
 
 <body id="body-pd">
@@ -28,7 +29,16 @@
 		<div class="header_img">
 			<a class="nav_link"> <i class="bx bxs-user-circle nav_icon"></i></a>
 		</div>
+		
 	</header>
+	<div class="strip-multi-colors" id="cores" th:fragment	=magalu>
+				<span class="yellow"></span> <span class="orange"></span> <span
+					class="red"></span> <span class="rose"></span> <span class="purple"></span>
+				<span class="deep-purple"></span> <span class="blue"></span> <span
+					class="cyan"></span> <span class="light-green"></span> <span
+					class="green"></span>
+					<p>
+			</div>
 
 	<div class="l-navbar" id="nav-bar" th:fragment=sindebar>
 		<nav class="nav">
@@ -80,6 +90,10 @@
 						</a>
 
 						<div class="collapse" id="collapseEndereco">
+						
+						<a th:href="@{/endereco}" class="nav_link" title="Rua"> <i
+								class=" bx bx-map nav_icon_mini"></i> <span
+								class="nav_name"> Rua</span></a>
 
 							<a th:href="@{/rua}" class="nav_link" title="Rua"> <i
 								class=" bx bx-building-house nav_icon_mini"></i> <span
@@ -150,6 +164,7 @@
 				Todos os direitos reservados.</span>
 		</div>
 	</footer>
+	
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script
