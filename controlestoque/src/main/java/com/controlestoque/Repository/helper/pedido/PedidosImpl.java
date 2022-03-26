@@ -2,7 +2,7 @@ package com.controlestoque.Repository.helper.pedido;
 
 
 import java.time.LocalDate;
-
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
@@ -25,6 +25,7 @@ import com.controlestoque.Enums.StatusPedido;
 import com.controlestoque.Enums.TipoIdentificacao;
 import com.controlestoque.Repository.filter.PedidoFilter;
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
+import com.controlestoque.dto.PedidosMes;
 import com.controlestoque.model.Pedido;
 
 public class PedidosImpl implements PedidosQueries {
@@ -154,6 +155,13 @@ public class PedidosImpl implements PedidosQueries {
 		adicionarFiltro(filtro, criteria);
 		criteria.setProjection(Projections.rowCount());
 		return (Long) criteria.uniqueResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PedidosMes> totalPorMes() {
+		List<PedidosMes> pedidosMes = manager.createNamedQuery("Pedidos.totalPorMes").getResultList();
+		return pedidosMes;
 	}
 
 }
