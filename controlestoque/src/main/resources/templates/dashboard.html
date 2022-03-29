@@ -21,13 +21,9 @@
 
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
-	
 	<div th:replace="fragmentos/fragmentos :: magalu"></div>
-			
-	
-
+		
 <div class="row">
-
 <p>
 <h4>Pedidos</h4>
 				<!-- valor estoque -->
@@ -182,9 +178,45 @@
 					</div>
 				</div>
 				
-				
-
 			</div>
+			
+			<div class="row">
+			<div class="col-sm-6">
+				<div class="aw-graph-box">
+					<div class="aw-graph-box__header">
+						<h2 class="aw-graph-box__title">Vendas por mês <small>últimos 6 meses</small></h2>
+					</div>
+					<div class="aw-graph-box__content">
+						<!--<div class="aw-graph-box__no-data">
+							<i class="fa  fa-line-chart  fa-2x"></i>
+							<span>Não há dados</span>
+						</div>-->
+						<div>
+							<canvas id="graficoVendasPorMes" height="160"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="col-sm-6">
+				<div class="aw-graph-box">
+					<div class="aw-graph-box__header">
+						<h2 class="aw-graph-box__title">Vendas por origem <small>últimos 6 meses</small></h2>
+					</div>
+					<div class="aw-graph-box__content">
+						<div class="aw-graph-box__no-data">
+							<i class="fa  fa-line-chart  fa-2x"></i>
+							<span>Não há dados</span>
+						</div>
+						<div>
+							<canvas id="pizzaVendasPorMes" height="160"></canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
 	
 	
 	
@@ -194,9 +226,12 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<!-- 	<script -->
+<!-- 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+		
 	<script src="/js/sindebar.js"></script>
+	<script src="/js/dashboard.graficos.js"></script>
 	
 </body>
 </html>
