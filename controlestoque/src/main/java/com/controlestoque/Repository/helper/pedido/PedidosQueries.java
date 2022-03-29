@@ -1,12 +1,12 @@
 package com.controlestoque.Repository.helper.pedido;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
 
 import com.controlestoque.Repository.filter.PedidoFilter;
+import com.controlestoque.dto.PedidosMes;
 import com.controlestoque.model.Pedido;
 
 public interface PedidosQueries {
@@ -22,5 +22,7 @@ public interface PedidosQueries {
 	public Long statusIgualEspera();
 
 	public Long statusIgualCancelado();
+	
+	public List<PedidosMes> totalPorMes();
 
 }
