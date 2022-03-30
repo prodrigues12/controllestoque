@@ -1,6 +1,5 @@
 package com.controlestoque.controller;
 
-import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -30,7 +28,6 @@ import com.controlestoque.Repository.Produtos;
 import com.controlestoque.Repository.filter.PedidoFilter;
 import com.controlestoque.controller.page.PageWrapper;
 import com.controlestoque.controller.validator.PedidoValidator;
-import com.controlestoque.dto.PedidosMes;
 import com.controlestoque.model.ItemPedido;
 import com.controlestoque.model.Pedido;
 import com.controlestoque.model.Produto;
@@ -136,12 +133,6 @@ public class PedidoController {
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 
-	}
-	
-	
-	@GetMapping("/totalPorMes")
-	public @ResponseBody List<PedidosMes> listarTotalPedidoPorMes(){
-		return pedRepository.totalPorMes();
 	}
 
 	@SuppressWarnings("deprecation")
