@@ -140,7 +140,7 @@ public class PedidoController {
 	
 	
 	@GetMapping("/totalPorMes")
-	public @ResponseBody List<PedidosMes> listarTotalPedidoPorMes(){
+	public @ResponseBody List<Pedido> listarTotalPedidoPorMes(){
 		return pedRepository.totalPorMes();
 	}
 

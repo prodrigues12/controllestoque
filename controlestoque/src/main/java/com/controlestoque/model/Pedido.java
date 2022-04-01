@@ -1,13 +1,13 @@
 package com.controlestoque.model;
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,7 +16,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicUpdate;
@@ -24,9 +26,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import com.controlestoque.Enums.StatusPedido;
 import com.controlestoque.Enums.Turno;
+import com.controlestoque.dto.PedidosMes;
 
 @Entity
 @DynamicUpdate
+
+@NamedNativeQuery(name = "Pedidos.totalPorMes", query = "select * from pedido ", resultClass = Pedido.class)
+//@SqlResultSetMapping(name = "", classes = @ConstructorResult(targetClass = PedidosMes.class, columns = {
+//		@ColumnResult(name = "mes"), @ColumnResult(name = "total") }))
+
 public class Pedido {
 
 	@Id
@@ -122,8 +130,6 @@ public class Pedido {
 	public boolean isPedidoNovo() {
 		return codigo == null;
 	}
-	
-
 
 	public void adicionarItens(List<ItemPedido> itens) {
 
@@ -156,8 +162,5 @@ public class Pedido {
 			return false;
 		return true;
 	}
-
-	
-	
 
 }

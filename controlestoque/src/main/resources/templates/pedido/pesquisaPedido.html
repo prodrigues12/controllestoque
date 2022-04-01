@@ -8,64 +8,61 @@
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <title>Pedido</title>
 <meta name="author" content="Paulino Rodrigues">
-<!-- <script src="https://kit.fontawesome.com/006642858d.js"></script> -->
+<script src="https://kit.fontawesome.com/006642858d.js"></script>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 <link rel="stylesheet" href="/css/sindebar.css" />
 <link rel="stylesheet" href="/css/controller.css" />
-<link rel="stylesheet" href="/css/magalu.css" />
-</head>
 
+<link rel="stylesheet" href="/css/brewer.css" />
+</head>
 <body id="body-pd">
 
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
+
 	<div class="card">
 		<div class="card-header">
 			<div class="row">
 				<div class=" col-md-10">
-					<h4 th:if="${pedido.pedidoNovo}">Novo Pedido</h4>
-					<h4 th:unless="${pedido.pedidoNovo}"
-						th:text="|Editando pedido: ${pedido.codigo}|"></h4>
+					<h4>Pesquisa Pedido</h4>
 				</div>
 				<div class="col-md-2">
-					<a th:href="@{/pedido}" class="btn btn-primary btn-sm">Pesquisar</a>
+					<a class="btn btn-primary btn-sm" th:href="@{/pedido/novo}">Novo
+						Pedido</a>
 				</div>
 			</div>
 		</div>
-			<div th:replace="fragmentos/fragmentos :: magalu"></div>
 		<div class="card-body">
 
-			<form method="POST" th:action="@{/pedido/novo}" th:object="${pedido}">
+			<form action="" method="get" th:object="${pedidoFilter}">
 
-				<input type="hidden" id="uuid" th:field="*{uuid}" /> <input
-					type="hidden" th:field="*{codigo}" />
-				<div>
-					<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
-					<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<label for="nomeColaborador" class="col-form-label-sm">Colaborador</label>
-						<div class="input-group">
-							<input id="nomeColaborador" type="text" readonly="readonly"
-								class="form-control form-control-sm"
-								th:field="*{colaborador.nome}"
-								placeholder="Clique na lupa para pesquisar o colaborador" /> <input
-								id="codigoColaborador" type="hidden" th:field="*{colaborador}" />
-							<div class="input-group-prepend">
-								<button type="button" class="btn btn-primary btn-sm"
-									data-bs-toggle="modal" data-bs-target="#colaboradorModal">
-									<!-- 											th:disabled="${venda.salvarProibido}"> -->
-									<i class="bx bx-search-alt"></i>
-								</button>
-							</div>
-						</div>
+				<div class="row mb-3">
+
+					<!-- 				Codigo -->
+					<div class=" col-md-1">
+						<label class=" col-form-label-sm">Codigo:</label> <input
+							class="form-control form-control-sm" type="text"
+							th:field="*{codigo}">
 					</div>
-					<div class=" col-md-6">
+
+					<!-- 				Status -->
+					<div class="col-auto">
+						<label for="turno" class="col-form-label-sm">Status:</label> <select
+							id="turno" class=" form-control form-select form-select-sm"
+							th:field="*{status}">
+
+							<option value="">Selecione o Status</option>
+							<option class="form-control" th:each="status : ${status}"
+								th:value="${status}" th:text="${status.descricao}">a</option>
+						</select>
+					</div>
+
+					<!-- 				Turno -->
+					<div class="col-auto">
 						<label for="turno" class="col-form-label-sm">Turno:</label> <select
 							id="turno" class=" form-control form-select form-select-sm"
 							th:field="*{turno}">
@@ -75,49 +72,109 @@
 								th:value="${turno}" th:text="${turno.descricao}">a</option>
 						</select>
 					</div>
+
+					<!-- 					Data Criação -->
+					<div class="col-auto">
+						<label for="dataCriacao" class="col-form-label-sm">Data de
+							criação:</label> <input class="form-control form-control-sm" type="date" />
+						&nbsp;&nbsp;
+					</div>
+
+					<div class="col-auto">
+						<label for="dataFim" class="col-form-label-sm">Até:</label> <input
+							class="form-control form-control-sm" type="date" /> &nbsp;&nbsp;
+					</div>
+
 				</div>
 
-				<p>
-				<p>
+				<div class="row mb-3">
 
-					<!-- Produto -->
-				<div class="row">
-					<div class="col-md-12">
-						<label for="produto" class="col-form-label-sm">Produto: </label> <input
-							type="text" class="form-control form-control-sm js-produto-input"
-							id="produto" placeholder="Nome do Produto" data:url="@{/produto}">
+					<!-- 					Colaborador -->
+					<div class="col-md-4">
+						<label for="secao" class="col-form-label-sm">Colaborador:</label>
+						<input class="form-control form-control-sm" type="text"
+							th:field="*{nomeColaborador}" />
+					</div>
+
+					<!-- Identificação -->
+					<div class="col-md-4">
+						<label for="secao" class="col-form-label-sm">Identificação:</label>
+						<input class="form-control form-control-sm" type="text"
+							th:field="*{cpfCnpjId}" />
 					</div>
 				</div>
 
-				<br>
 
-				<div class="tabela-produtos  js-tabela-produto-container">
-					<th:block th:replace="pedido/tabelaItensPedido" />
-				</div>
-
-
-				<p>
 				<div class="form-row">
-					<button type="button" class="btn btn-danger offset-md-9">Cancelar</button>
-					&nbsp;
-					<button type="submit" class="btn btn-success offset">
-						Confirmar</button>
-
+					<button type="submit" class="btn btn-primary btn-sm">Pesquisar</button>
+					<a type="submit" class="btn btn-outline-warning btn-sm"
+						th:href="@{/pedido/}">Limpar filtro</a>
 				</div>
-
 			</form>
-
 		</div>
-
 	</div>
 
-	<br>
+	</form>
+	<div class="table-responsive">
+		<table class="table table-bordered table-houver  table-sm"
+			style="text-align: center">
+			<thead class="thead-dark" style="text-align: center">
+
+				<th class="col-1"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
+
+				</th>
+				<!-- 					<th class="col-2"><th:block -->
+				<!-- 							th:replace="fragmentos/ordenacao :: order (${pagina}, 'status' , 'Status')"></th:block> -->
+				<!-- 					</th> -->
+
+				<th class="col-auto">Data</th>
+				<th class="col-auto">Colaborador</th>
+				<th class="col-auto">Turno</th>
+				<th class="col-auto">Ação</th>
 
 
+			</thead>
 
-	<th:block
-		th:replace="colaborador/pesquisaRapidaColaborador :: modalColaborador"></th:block>
-	<th:block th:replace="hbs/TemplateAutocompleteProduto"></th:block>
+			<tbody>
+				<tr th:each="pedido :${pagina.conteudo}">
+					<td th:text="${pedido.codigo}">12</td>
+					<!-- 						<td th:text="${pedido.status}">Produto Teste</td> -->
+					<td th:text="${pedido.dataCriacao}">Limpeza</td>
+					<td th:text="${pedido.colaborador.nome}">Limpeza</td>
+					<td th:text="${pedido.turno}">4</td>
+					<td><a title="Editar"
+						th:href="@{/pedido/{codigo}(codigo=${pedido.codigo})}"><i
+							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp; <a
+						class=" js-exclusao-btn" title="Excluir" href="#"
+						data:url="@{/pedido/{codigo}(codigo=${pedido.codigo})}"
+						> <i class="bx bx-trash ce-icon"></i>
+					</a>&nbsp;&nbsp;<a><i class="bx bx-error-circle ce-icon"></i></a></td>
+				</tr>
+				<tr th:if="${pagina.vazia}">
+					<td colspan="7">Nenhum registro encontrado</td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+
+	<div class="col-sm-12 text-center" th:if="${not pagina.vazia}">
+		<nav>
+			<ul class="pagination  pagination-sm"
+				th:with="paginaAtual=${pagina.atual}">
+
+				<th:block th:each="p : ${#numbers.sequence(1, pagina.total)}"
+					th:with="numeroPagina=${p - 1}">
+					<li th:class="${paginaAtual == numeroPagina} ? active"><a
+						class="page-link" th:href="${pagina.urlParaPagina(numeroPagina)}">[[${p}]]</a></li>
+
+				</th:block>
+
+
+			</ul>
+		</nav>
+	</div>
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

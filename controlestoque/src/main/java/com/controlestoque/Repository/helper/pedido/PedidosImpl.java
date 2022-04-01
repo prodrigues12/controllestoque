@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -159,9 +160,11 @@ public class PedidosImpl implements PedidosQueries {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<PedidosMes> totalPorMes() {
-		List<PedidosMes> pedidosMes = manager.createNamedQuery("Pedidos.totalPorMes").getResultList();
-		return pedidosMes;
+	public List<Pedido> totalPorMes() {
+//		List<Pedido> pedidosMes = manager.createNamedQuery("Pedidos.totalPorMes").getResultList();
+		List<Pedido> results = this.manager.createNativeQuery("SELECT * FROM pedido", Pedido.class).getResultList();
+
+		return results;
 	}
 
 }
