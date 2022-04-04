@@ -7,7 +7,7 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -26,7 +26,6 @@ import com.controlestoque.Enums.StatusPedido;
 import com.controlestoque.Enums.TipoIdentificacao;
 import com.controlestoque.Repository.filter.PedidoFilter;
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
-import com.controlestoque.dto.PedidosMes;
 import com.controlestoque.model.Pedido;
 
 public class PedidosImpl implements PedidosQueries {
@@ -51,6 +50,7 @@ public class PedidosImpl implements PedidosQueries {
 		return new PageImpl<>(criteria.list(), pageable, total(filter));
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	@Transactional(readOnly = true)
 	public Pedido buscarComItens(Long codigo) {
@@ -161,10 +161,11 @@ public class PedidosImpl implements PedidosQueries {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Pedido> totalPorMes() {
-//		List<Pedido> pedidosMes = manager.createNamedQuery("Pedidos.totalPorMes").getResultList();
-		List<Pedido> results = this.manager.createNativeQuery("SELECT * FROM pedido", Pedido.class).getResultList();
-
-		return results;
+		List<Pedido> pedidosMes = manager.createNamedQuery("Pedidos.totalPorMes")
+	
+				.getResultList();
+	
+		return pedidosMes;
 	}
 
 }

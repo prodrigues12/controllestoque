@@ -4,21 +4,38 @@ Controlestoque.GraficosPedidosMes = (function() {
 
 	function GraficoPedidoMes() {
 		this.ctx = $('#graficoVendasPorMes');
-		
+
 	}
 
 	GraficoPedidoMes.prototype.iniciar = function() {
+		
+		$.ajax({
+			url:'pedido/totalPorMes',
+			method:'GET',
+			success: onDadosRecebidos.bind(this)
+		});
+		}
+		
+		function onDadosRecebidos (pedidoMes){
 
+		var meses = ['Dezembro', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'];
+		var valor = [6, 5, 10, 7, 9, 4];
+		
+		pedidoMes.forEach(function(obj){
+			meses.unshift(obj.mes);
+			valor.unshift(obj.total)
+		});
+		
 		var grafico = new Chart(this.ctx, {
 			type: 'line',
 			data: {
-				labels: ['dez','jan', 'fev', 'mar','abr','mai'],
+				labels: meses,
 				datasets: [{
 					backgroundColor: 'rgb(123, 12, 132)',
-					label: 'My First ',
+					label: 'Pedidos ',
 					borderColor: 'rgb(75, 192, 192)',
-					data: [6,2 ,9, 7, 3, 5],
-					
+					data: valor,
+
 
 				}]
 			},
