@@ -31,9 +31,8 @@ import com.controlestoque.dto.PedidosMes;
 @Entity
 @DynamicUpdate
 
-@NamedNativeQuery(name = "Pedidos.totalPorMes", query = "select * from pedido ", resultClass = Pedido.class)
-//@SqlResultSetMapping(name = "", classes = @ConstructorResult(targetClass = PedidosMes.class, columns = {
-//		@ColumnResult(name = "mes"), @ColumnResult(name = "total") }))
+@SqlResultSetMapping(name = "mappingPedidos", classes = @ConstructorResult(targetClass = PedidosMes.class, columns = {
+		@ColumnResult(name = "mes", type = String.class), @ColumnResult(name = "total" ,type = Integer.class) }))
 
 public class Pedido {
 
@@ -62,6 +61,7 @@ public class Pedido {
 
 	@Transient
 	private String uuid;
+	
 
 	public Long getCodigo() {
 		return codigo;

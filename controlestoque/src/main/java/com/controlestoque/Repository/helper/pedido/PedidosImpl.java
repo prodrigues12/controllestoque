@@ -7,13 +7,14 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+import javax.persistence.Query;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+
 import org.hibernate.sql.JoinType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,6 +27,7 @@ import com.controlestoque.Enums.StatusPedido;
 import com.controlestoque.Enums.TipoIdentificacao;
 import com.controlestoque.Repository.filter.PedidoFilter;
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
+import com.controlestoque.dto.PedidosMes;
 import com.controlestoque.model.Pedido;
 
 public class PedidosImpl implements PedidosQueries {
@@ -160,12 +162,16 @@ public class PedidosImpl implements PedidosQueries {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Pedido> totalPorMes() {
-		List<Pedido> pedidosMes = manager.createNamedQuery("Pedidos.totalPorMes")
-	
-				.getResultList();
-	
-		return pedidosMes;
+	public List<PedidosMes> totalPorMes() {
+
+		String query = "select date_format(data_criacao, '%Y/%m') mes, count(*) total from pedido where data_criacao > date_sub(now(), interval 6 month) and status = 'FINALIZADO' group by date_format(data_criacao, '%Y/%m') order by date_format(data_criacao, '%Y/%m') desc";
+		
+				Query nativeQuery = manager.createNativeQuery(query, "mappingPedidos");
+				List<PedidosMes> lista = nativeQuery.getResultList();
+				
+				return lista;
+				
+		
 	}
 
 }

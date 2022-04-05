@@ -23,6 +23,6 @@ public interface PedidosQueries {
 
 	public Long statusIgualCancelado();
 	
-	public List<Pedido> totalPorMes();
+	public List<PedidosMes> totalPorMes();
 
 }

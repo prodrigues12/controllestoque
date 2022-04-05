@@ -18,8 +18,8 @@ Controlestoque.GraficosPedidosMes = (function() {
 		
 		function onDadosRecebidos (pedidoMes){
 
-		var meses = ['Dezembro', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'];
-		var valor = [6, 5, 10, 7, 9, 4];
+		var meses = [];
+		var valor = [];
 		
 		pedidoMes.forEach(function(obj){
 			meses.unshift(obj.mes);

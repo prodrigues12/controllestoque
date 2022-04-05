@@ -11,6 +11,4 @@ import com.controlestoque.model.Pedido;
 
 public interface Pedidos extends JpaRepository<Pedido, Long>, PedidosQueries {
 
-
-//	teste
 }

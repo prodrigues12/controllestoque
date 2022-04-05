@@ -1,5 +1,7 @@
 package com.controlestoque.dto;
 
+
+
 public class PedidosMes {
 	
 	private String mes;
@@ -10,7 +12,6 @@ public class PedidosMes {
 	}
 
 	public PedidosMes(String mes, Integer total) {
-		super();
 		this.mes = mes;
 		this.total = total;
 	}
