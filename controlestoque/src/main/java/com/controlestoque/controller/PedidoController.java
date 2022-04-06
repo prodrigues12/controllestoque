@@ -71,6 +71,19 @@ public class PedidoController {
 		mv.addObject("itens", pedido.getItens());
 		return mv;
 	}
+	
+	@GetMapping("/lista")
+	public ModelAndView lista(PedidoFilter pedidoFilter, BindingResult result,
+			@PageableDefault(size = 50) Pageable pageable, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView("pedido/listaPedidos");
+		mv.addObject("turno", Turno.values());
+		mv.addObject("status", StatusPedido.values());
+
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrar(pedidoFilter, pageable),
+				httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+	}
 
 	@PostMapping("/novo")
 	public ModelAndView salvar(Pedido pedido, BindingResult result, RedirectAttributes attributes) {

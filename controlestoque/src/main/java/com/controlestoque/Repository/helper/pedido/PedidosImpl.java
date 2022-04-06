@@ -1,6 +1,5 @@
 package com.controlestoque.Repository.helper.pedido;
 
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -91,7 +90,8 @@ public class PedidosImpl implements PedidosQueries {
 
 			if (filtro.getAte() != null) {
 				if (filtro.getAte().isBlank()) {
-					filtro.setAte(filtro.getDesde());
+					
+					filtro.setAte(LocalDate.now().toString());
 
 				} else {
 					LocalDate localDate = LocalDate.parse(filtro.getAte());
@@ -165,13 +165,25 @@ public class PedidosImpl implements PedidosQueries {
 	public List<PedidosMes> totalPorMes() {
 
 		String query = "select date_format(data_criacao, '%Y/%m') mes, count(*) total from pedido where data_criacao > date_sub(now(), interval 6 month) and status = 'FINALIZADO' group by date_format(data_criacao, '%Y/%m') order by date_format(data_criacao, '%Y/%m') desc";
-		
-				Query nativeQuery = manager.createNativeQuery(query, "mappingPedidos");
-				List<PedidosMes> lista = nativeQuery.getResultList();
-				
-				return lista;
-				
-		
+
+		Query nativeQuery = manager.createNativeQuery(query, "mappingPedidos");
+		List<PedidosMes> lista = nativeQuery.getResultList();
+
+		LocalDate hoje = LocalDate.now();
+
+		for (int i = 1; i <= 6; i++) {
+			String mesIdeal = String.format("%d/%02d", hoje.getYear(), hoje.getMonthValue());
+
+			boolean possueMes = lista.stream().filter(v -> v.getMes().equals(mesIdeal)).findAny().isPresent();
+			if (!possueMes) {
+				lista.add(i - 1, new PedidosMes(mesIdeal, 0));
+			}
+
+			hoje = hoje.minusMonths(1);
+		}
+
+		return lista;
+
 	}
 
 }
