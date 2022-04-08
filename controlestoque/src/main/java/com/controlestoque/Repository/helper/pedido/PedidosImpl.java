@@ -46,7 +46,22 @@ public class PedidosImpl implements PedidosQueries {
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
 
 		paginacaoUltil.preparar(criteria, pageable);
+
 		adicionarFiltro(filter, criteria);
+
+		return new PageImpl<>(criteria.list(), pageable, total(filter));
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(readOnly = true)
+	public Page<Pedido> filtrarPedidoNovo(PedidoFilter filter, Pageable pageable) {
+
+		@SuppressWarnings("deprecation")
+		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
+
+		paginacaoUltil.preparar(criteria, pageable);
+		filtroStatusNovo(filter, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filter));
 	}
@@ -80,25 +95,65 @@ public class PedidosImpl implements PedidosQueries {
 			if (filtro.getDesde() != null) {
 				if (filtro.getDesde().isBlank()) {
 					filtro.setDesde(null);
-
 				} else {
 					LocalDate localDate = LocalDate.parse(filtro.getDesde());
 					criteria.add(Restrictions.ge("dataCriacao", localDate));
-
 				}
 			}
 
 			if (filtro.getAte() != null) {
 				if (filtro.getAte().isBlank()) {
-					
+					filtro.setAte(LocalDate.now().toString());
+				} else {
+					LocalDate localDate = LocalDate.parse(filtro.getAte());
+					criteria.add(Restrictions.le("dataCriacao", localDate));
+				}
+			}
+
+			if (filtro.getTurno() != null) {
+				criteria.add(Restrictions.eq("turno", filtro.getTurno()));
+			}
+
+			if (!StringUtils.isEmpty(filtro.getNomeColaborador())) {
+				criteria.add(Restrictions.ilike("c.nome", filtro.getNomeColaborador(), MatchMode.ANYWHERE));
+			}
+
+			if (!StringUtils.isEmpty(filtro.getCpfCnpjId())) {
+				criteria.add(
+						Restrictions.eq("c.cpfCnpjId", TipoIdentificacao.removerFormatacao(filtro.getCpfCnpjId())));
+			}
+		}
+	}
+
+	@SuppressWarnings({ "deprecation", "unused" })
+	private void filtroStatusNovo(PedidoFilter filtro, Criteria criteria) {
+		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.NOVO));
+
+		if (filtro != null) {
+
+			if (!StringUtils.isEmpty(filtro.getCodigo())) {
+				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
+			}
+
+			if (filtro.getDesde() != null) {
+				if (filtro.getDesde().isBlank()) {
+					filtro.setDesde(null);
+
+				} else {
+					LocalDate localDate = LocalDate.parse(filtro.getDesde());
+					criteria.add(Restrictions.ge("dataCriacao", localDate));
+				}
+			}
+
+			if (filtro.getAte() != null) {
+				if (filtro.getAte().isBlank()) {
+
 					filtro.setAte(LocalDate.now().toString());
 
 				} else {
 					LocalDate localDate = LocalDate.parse(filtro.getAte());
 					criteria.add(Restrictions.le("dataCriacao", localDate));
-
 				}
-
 			}
 
 			if (filtro.getTurno() != null) {
@@ -152,19 +207,14 @@ public class PedidosImpl implements PedidosQueries {
 		return optional.orElse(Long.valueOf(0));
 	}
 
-	private Long total(PedidoFilter filtro) {
-		@SuppressWarnings("deprecation")
-		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
-		adicionarFiltro(filtro, criteria);
-		criteria.setProjection(Projections.rowCount());
-		return (Long) criteria.uniqueResult();
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PedidosMes> totalPorMes() {
 
-		String query = "select date_format(data_criacao, '%Y/%m') mes, count(*) total from pedido where data_criacao > date_sub(now(), interval 6 month) and status = 'FINALIZADO' group by date_format(data_criacao, '%Y/%m') order by date_format(data_criacao, '%Y/%m') desc";
+		String query = "select date_format(data_criacao, '%Y/%m') mes, count(*) "
+				+ "total from pedido where data_criacao > date_sub(now(), interval 6 month) "
+				+ "and status = 'FINALIZADO' group by date_format(data_criacao, '%Y/%m')"
+				+ " order by date_format(data_criacao, '%Y/%m') desc";
 
 		Query nativeQuery = manager.createNativeQuery(query, "mappingPedidos");
 		List<PedidosMes> lista = nativeQuery.getResultList();
@@ -184,6 +234,14 @@ public class PedidosImpl implements PedidosQueries {
 
 		return lista;
 
+	}
+
+	private Long total(PedidoFilter filtro) {
+		@SuppressWarnings("deprecation")
+		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
+		adicionarFiltro(filtro, criteria);
+		criteria.setProjection(Projections.rowCount());
+		return (Long) criteria.uniqueResult();
 	}
 
 }

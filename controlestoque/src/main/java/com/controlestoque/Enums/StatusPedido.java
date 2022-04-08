@@ -5,7 +5,8 @@ public enum StatusPedido {
 	NOVO("Novo"), 
 	FINALIZADO("Finalizado"), 
 	CANCELADO("Cancelado"),
-	ESPERA("Espera");
+	ESPERA("Espera"),
+	SEPARACAO("Separação");
 
 	private String descricao;
 

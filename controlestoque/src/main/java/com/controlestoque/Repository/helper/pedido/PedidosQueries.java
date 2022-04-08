@@ -25,4 +25,6 @@ public interface PedidosQueries {
 	
 	public List<PedidosMes> totalPorMes();
 
+	Page<Pedido> filtrarPedidoNovo(PedidoFilter filter, Pageable pageable);
+
 }
