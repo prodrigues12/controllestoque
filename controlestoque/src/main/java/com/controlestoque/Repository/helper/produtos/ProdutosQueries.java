@@ -1,5 +1,6 @@
 package com.controlestoque.Repository.helper.produtos;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -17,5 +18,8 @@ public interface ProdutosQueries {
 	
 	public Produto buscaCompleta(Long codigo);
 	
+	public BigDecimal totalItensEstoque();
+	
+	public Long estoqueBaixo() ;
 	
 }

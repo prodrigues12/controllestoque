@@ -71,35 +71,23 @@ public class PedidoController {
 		mv.addObject("itens", pedido.getItens());
 		return mv;
 	}
+
 	
-	@GetMapping("/pedidosNovos")
-	public ModelAndView lista(PedidoFilter pedidoFilter, BindingResult result,
-			@PageableDefault(size = 50) Pageable pageable, HttpServletRequest httpServletRequest) {
-		ModelAndView mv = new ModelAndView("pedido/listaPedidos");
+	@GetMapping
+	public ModelAndView pesquisar(PedidoFilter pedidoFilter, BindingResult result,
+			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView("pedido/pesquisaPedido");
 		mv.addObject("turno", Turno.values());
 		mv.addObject("status", StatusPedido.values());
 
-		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidoNovo(pedidoFilter, pageable),
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrar(pedidoFilter, pageable),
 				httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
-	}
-
-	@PostMapping("/novo")
-	public ModelAndView salvar(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
-
-		validarPedido(pedido, result);
-
-		if (result.hasErrors()) {
-			return novo(pedido);
-		}
-		pedService.salvar(pedido);
-		attributes.addFlashAttribute("mensagem", String.format("Pedido nº %d salvo com sucesso!", pedido.getCodigo()));
-
-		return new ModelAndView("redirect:/pedido/novo");
 
 	}
-
+	
+	
 	@GetMapping("/{codigo}")
 	public ModelAndView editar(@PathVariable Long codigo) {
 		Pedido pedido = pedRepository.buscarComItens(codigo);
@@ -115,13 +103,116 @@ public class PedidoController {
 		mv.addObject(pedido);
 		return mv;
 	}
+	
+	@GetMapping("/pedidosNovos")
+	public ModelAndView lista(PedidoFilter pedidoFilter, BindingResult result,
+			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView("pedido/listaPedidos");
+		mv.addObject("turno", Turno.values());
+		mv.addObject("status", StatusPedido.values());
 
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidoNovo(pedidoFilter, pageable),
+				httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+	}
+
+	@GetMapping("/totalPorMes")
+	public @ResponseBody List<PedidosMes> listarTotalPedidoPorMes() {
+		return pedRepository.totalPorMes();
+	}
+
+	@PostMapping(value = "/novo" , params ="novo")
+	public ModelAndView salvar(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
+
+		validarPedido(pedido, result);
+
+		if (result.hasErrors()) {
+			return novo(pedido);
+		}
+		if (pedido.isPedidoNovo()) {
+			pedService.salvar(pedido);
+			attributes.addFlashAttribute("mensagem",
+					String.format("Pedido nº %d Salvo com sucesso!", pedido.getCodigo()));
+
+			return new ModelAndView("redirect:/pedido/novo");
+		}
+
+		pedService.salvar(pedido);
+		attributes.addFlashAttribute("mensagem",
+				String.format("Pedido nº %d Alterado com sucesso!", pedido.getCodigo()));
+
+		return new ModelAndView("redirect:/pedido/novo");
+	}
+	
+	@PostMapping(value = "/novo" , params ="pendente")
+	public ModelAndView pendentePedido(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
+		validarPedido(pedido, result);
+		
+		if (result.hasErrors()) {
+			return novo(pedido);
+		}
+		
+		pedService.pendente(pedido);
+		attributes.addFlashAttribute("mensagem",
+				String.format("Pedido nº %d alterando para: Pendete", pedido.getCodigo()));
+
+		return new ModelAndView("redirect:/pedido/novo");
+	}
+	
+	@PostMapping(value = "/novo" , params ="cancelado")
+	public ModelAndView canceladoPedido(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
+		validarPedido(pedido, result);
+		
+		if (result.hasErrors()) {
+			return novo(pedido);
+		}
+		
+		pedService.cancelar(pedido);
+		attributes.addFlashAttribute("mensagem",
+				String.format("Pedido nº %d alterando para: Cancelado", pedido.getCodigo()));
+
+		return new ModelAndView("redirect:/pedido/novo");
+	}
+	
+	@PostMapping(value = "/novo" , params ="separacao")
+	public ModelAndView separacaoPedido(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
+		validarPedido(pedido, result);
+		
+		if (result.hasErrors()) {
+			return novo(pedido);
+		}
+		
+		pedService.emSeparacao(pedido);
+		attributes.addFlashAttribute("mensagem",
+				String.format("Pedido nº %d alterando para: Pendete", pedido.getCodigo()));
+
+		return new ModelAndView("redirect:/pedido/novo");
+	}
+	
+
+	@PostMapping(value = "/novo" , params ="finalizar")
+	public ModelAndView finlizarPedido(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
+		validarPedido(pedido, result);
+		
+		if (result.hasErrors()) {
+			return novo(pedido);
+		}
+		
+		pedService.finalizar(pedido);
+		attributes.addFlashAttribute("mensagem",
+				String.format("Pedido nº %d Finalizado com sucesso! ", pedido.getCodigo()));
+
+		return new ModelAndView("redirect:/pedido/novo");
+	}
+	
 	@PostMapping("/item")
 	public ModelAndView adicionarItem(Long codigoProduto, String uuid) {
 		Produto produto = proRepository.findByCodigo(codigoProduto);
 		tabelaItens.adicionarItem(uuid, produto, 1);
 		return mvTabelaPedido(uuid);
 	}
+	
 
 	@PutMapping("/item/{codigoProduto}")
 	public ModelAndView alterarQuantidadeItem(@PathVariable("codigoProduto") Produto produto, Integer quantidade,
@@ -136,27 +227,7 @@ public class PedidoController {
 		return mvTabelaPedido(uuid);
 
 	}
-
-	@GetMapping
-	public ModelAndView pesquisar(PedidoFilter pedidoFilter, BindingResult result,
-			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
-		ModelAndView mv = new ModelAndView("pedido/pesquisaPedido");
-		mv.addObject("turno", Turno.values());
-		mv.addObject("status", StatusPedido.values());
-
-		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrar(pedidoFilter, pageable),
-				httpServletRequest);
-		mv.addObject("pagina", paginaWrapper);
-		return mv;
-
-	}
 	
-	
-	@GetMapping("/totalPorMes")
-	public @ResponseBody List<PedidosMes> listarTotalPedidoPorMes(){
-		return pedRepository.totalPorMes();
-	}
-
 	@SuppressWarnings("deprecation")
 	private void setUuid(Pedido pedido) {
 		if (StringUtils.isEmpty(pedido.getUuid())) {

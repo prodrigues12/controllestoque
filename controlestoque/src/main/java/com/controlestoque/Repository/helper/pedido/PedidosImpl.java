@@ -193,7 +193,7 @@ public class PedidosImpl implements PedidosQueries {
 	public Long statusIgualEspera() {
 		Optional<Long> optional = Optional
 				.ofNullable(manager.createQuery("select count(*) from Pedido where status= :status", Long.class)
-						.setParameter("status", StatusPedido.ESPERA).getSingleResult());
+						.setParameter("status", StatusPedido.PENDENTE).getSingleResult());
 
 		return optional.orElse(Long.valueOf(0));
 	}
@@ -203,6 +203,15 @@ public class PedidosImpl implements PedidosQueries {
 		Optional<Long> optional = Optional
 				.ofNullable(manager.createQuery("select count(*) from Pedido where status= :status", Long.class)
 						.setParameter("status", StatusPedido.CANCELADO).getSingleResult());
+
+		return optional.orElse(Long.valueOf(0));
+	}
+	
+	@Override
+	public Long statusIgualSeparando() {
+		Optional<Long> optional = Optional
+				.ofNullable(manager.createQuery("select count(*) from Pedido where status= :status", Long.class)
+						.setParameter("status", StatusPedido.SEPARACAO).getSingleResult());
 
 		return optional.orElse(Long.valueOf(0));
 	}

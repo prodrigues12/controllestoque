@@ -18,26 +18,34 @@ public class PedidoService {
 
 	@Autowired
 	private Pedidos pedRepository;
-	
+
 	@Autowired
 	private ApplicationEventPublisher publisher;
 
 	@Transactional
 	public void salvar(Pedido pedido) {
-		
+
 		if (pedido.isPedidoNovo()) {
 			pedido.setDataCriacao(LocalDate.now());
-			
 		} else {
 			Pedido pedidoExistente = pedRepository.getById(pedido.getCodigo());
 			pedido.setDataCriacao(pedidoExistente.getDataCriacao());
-
 		}
-
-		 pedRepository.save(pedido);
+		pedRepository.save(pedido);
 	}
 	
+	@Transactional
+	public void emSeparacao(Pedido pedido) {
+		pedido.setStatus(StatusPedido.SEPARACAO);
+		salvar(pedido);
+	}
 	
+	@Transactional
+	public void pendente(Pedido pedido) {
+		pedido.setStatus(StatusPedido.PENDENTE);
+		salvar(pedido);
+	}
+
 	@Transactional
 	public void cancelar(Pedido pedido) {
 		Pedido pedidoExistente = pedRepository.getById(pedido.getCodigo());
@@ -45,14 +53,12 @@ public class PedidoService {
 		pedidoExistente.setStatus(StatusPedido.CANCELADO);
 		pedRepository.save(pedidoExistente);
 	}
-	
-	@Transactional void finalizar(Pedido pedido) {
+
+	@Transactional
+	public void finalizar(Pedido pedido) {
 		pedido.setStatus(StatusPedido.FINALIZADO);
 		salvar(pedido);
-		
 		publisher.publishEvent(new PedidoEvent(pedido));
 	}
-	
-	
 
 }

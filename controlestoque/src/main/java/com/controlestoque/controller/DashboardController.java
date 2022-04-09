@@ -6,12 +6,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.controlestoque.Repository.Pedidos;
+import com.controlestoque.Repository.Produtos;
 
 @Controller
 public class DashboardController {
 	
 	@Autowired
 	private Pedidos pedRepository;
+	@Autowired
+	private Produtos proRepository;
+	
 	
 	@GetMapping("/")
 	public ModelAndView layout() {
@@ -20,6 +24,8 @@ public class DashboardController {
 		mv.addObject("pedidosEspera", pedRepository.statusIgualEspera());
 		mv.addObject("pedidosCancelados", pedRepository.statusIgualCancelado());
 		mv.addObject("pedidosFinalizados", pedRepository.statusIgualFinalizado());
+		mv.addObject("totalItensEstoque", proRepository.totalItensEstoque());
+		mv.addObject("estoqueBaixo", proRepository.estoqueBaixo());
 		return mv;
 		
 	}

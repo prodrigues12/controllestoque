@@ -1,6 +1,8 @@
 package com.controlestoque.Repository.helper.produtos;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import com.controlestoque.Enums.StatusPedido;
 import com.controlestoque.Repository.filter.ProdutoFilter;
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
 import com.controlestoque.dto.ProdutoDTO;
@@ -100,5 +103,20 @@ public class ProdutosImpl implements ProdutosQueries {
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		return (Produto) criteria.uniqueResult();
 	}
+	
+	public BigDecimal totalItensEstoque() {
+		
+		return manager.createQuery("select sum(qtdEstoque) from Produto", BigDecimal.class).getSingleResult();
+	}
+	
+	public Long estoqueBaixo() {
+	Optional<Long> optional = Optional
+			.ofNullable(manager.createQuery("select count(*) from Produto where qtdEstMin > qtdEstoque", Long.class)
+					.getSingleResult());
+
+	return optional.orElse(Long.valueOf(0));
+}
+
+
 
 }

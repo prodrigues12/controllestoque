@@ -3,10 +3,10 @@ package com.controlestoque.Enums;
 public enum StatusPedido {
 
 	NOVO("Novo"), 
+	PENDENTE("Pendente"),	
+	SEPARACAO("Em Separação"),
 	FINALIZADO("Finalizado"), 
-	CANCELADO("Cancelado"),
-	ESPERA("Espera"),
-	SEPARACAO("Separação");
+	CANCELADO("Cancelado");
 
 	private String descricao;
 

@@ -36,10 +36,11 @@
 				</div>
 			</div>
 		</div>
-			<div th:replace="fragmentos/fragmentos :: magalu"></div>
+		<div th:replace="fragmentos/fragmentos :: magalu"></div>
 		<div class="card-body">
 
-			<form method="POST" th:action="@{/pedido/novo}" th:object="${pedido}">
+			<form method="POST" th:action="@{/pedido/novo}" th:object="${pedido}"
+				class="js-formulario-principal">
 
 				<input type="hidden" id="uuid" th:field="*{uuid}" /> <input
 					type="hidden" th:field="*{codigo}" />
@@ -97,23 +98,43 @@
 
 
 				<p>
-				<div class="form-row">
+				<div class="form-row" th:if="${pedido.pedidoNovo}">
 					<button type="button" class="btn btn-danger offset-md-9">Cancelar</button>
 					&nbsp;
-					<button type="submit" class="btn btn-success offset">
-						Confirmar</button>
-
+					<button type="submit" class="btn btn-success offset js-submit-btn"
+						data:acao="novo">Confirmar</button>
 				</div>
 
+				<div class="form-row" th:unless="${pedido.pedidoNovo}">
+					<div class="btn-group" role="group"
+						aria-label="Button group with nested dropdown">
+						<a class="btn btn-primary">Pedido [[${pedido.status}]], salvar
+							como:</a>
+
+						<div class="btn-group" role="group">
+							<button id="alterarStatus" type="button"
+								class="btn btn-primary dropdown-toggle"
+								data-bs-toggle="dropdown" aria-expanded="false"></button>
+							<ul class="dropdown-menu" aria-labelledby="btnStatus">
+								<li><a class="dropdown-item btn-dark js-submit-btn"
+									data:acao="finalizar" href="#">Finalizar</a></li>
+								<li><a class="dropdown-item btn-info js-submit-btn"
+									data:acao="pendente" href="#">Pendente</a></li>
+								<li><a class="dropdown-item btn-warning js-submit-btn"
+									data:acao="separacao" href="#">Em separação</a></li>
+								<li><a class="dropdown-item btn-dtn-danger js-submit-btn"
+									data:acao="cancelado" href="#">Cancelado</a></li>
+								<li><a class="dropdown-item btn-success js-submit-btn"
+									data:acao="novo" href="#">Novo</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</form>
 
 		</div>
 
 	</div>
-
-	<br>
-
-
 
 	<th:block
 		th:replace="colaborador/pesquisaRapidaColaborador :: modalColaborador"></th:block>
@@ -131,6 +152,8 @@
 	<script src="/js/colaborador.pesquisa-rapida.js"></script>
 	<script src="/js/pedido.autocomplete-itens.js"></script>
 	<script src="/js/pedido.tabela-itens.js"></script>
+	<script src="/js/pedido.botoes-status.js"></script>
+	<script src="/js/"></script>
 
 </body>
 </html>

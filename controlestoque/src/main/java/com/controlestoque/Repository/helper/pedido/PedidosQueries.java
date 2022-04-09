@@ -23,8 +23,12 @@ public interface PedidosQueries {
 
 	public Long statusIgualCancelado();
 	
+	public Long statusIgualSeparando();
+
+	
 	public List<PedidosMes> totalPorMes();
 
 	Page<Pedido> filtrarPedidoNovo(PedidoFilter filter, Pageable pageable);
 
+	
 }
