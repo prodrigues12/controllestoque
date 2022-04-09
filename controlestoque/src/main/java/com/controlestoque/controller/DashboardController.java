@@ -21,11 +21,13 @@ public class DashboardController {
 	public ModelAndView layout() {
 		ModelAndView mv = new ModelAndView("dashboard");
 		mv.addObject("pedidosNovos", pedRepository.statusIgualNovo());
-		mv.addObject("pedidosEspera", pedRepository.statusIgualEspera());
+		mv.addObject("pedidosPendentes", pedRepository.statusIgualPendente());
 		mv.addObject("pedidosCancelados", pedRepository.statusIgualCancelado());
 		mv.addObject("pedidosFinalizados", pedRepository.statusIgualFinalizado());
+		mv.addObject("pedidosSeparados", pedRepository.statusIgualSeparando());
 		mv.addObject("totalItensEstoque", proRepository.totalItensEstoque());
 		mv.addObject("estoqueBaixo", proRepository.estoqueBaixo());
+		
 		return mv;
 		
 	}

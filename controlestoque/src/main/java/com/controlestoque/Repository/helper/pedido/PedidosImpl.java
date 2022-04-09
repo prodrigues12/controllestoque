@@ -190,7 +190,7 @@ public class PedidosImpl implements PedidosQueries {
 	}
 
 	@Override
-	public Long statusIgualEspera() {
+	public Long statusIgualPendente() {
 		Optional<Long> optional = Optional
 				.ofNullable(manager.createQuery("select count(*) from Pedido where status= :status", Long.class)
 						.setParameter("status", StatusPedido.PENDENTE).getSingleResult());

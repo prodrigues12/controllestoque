@@ -19,7 +19,7 @@ public interface PedidosQueries {
 
 	public Long statusIgualFinalizado();
 
-	public Long statusIgualEspera();
+	public Long statusIgualPendente();
 
 	public Long statusIgualCancelado();
 	
