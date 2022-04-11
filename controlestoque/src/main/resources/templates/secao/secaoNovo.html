@@ -22,7 +22,7 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
-		<form  method="post" th:action="@{/secao/novo}" th:object="${secao}">
+		<form id="form-secao" method="post" th:action="@{/secao/novo}" th:object="${secao}">
 
 		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
@@ -43,7 +43,7 @@
 
 			<div class="row mb-3">
 				<div class="col-md-12">
-					<label class="col-form-label-sm">Nome:</label> <input id="nomeSecao"
+					<label class="col-form-label-sm">Nome:</label> <input id="nomeSecao" name="nomeSecao"
 						class="form-control form-control-sm" placeholder="Nome da seção" th:field="*{nome}">
 				</div>
 			</div>
@@ -52,7 +52,7 @@
 			<div class="form-row">
 				<a type="button" class="btn btn-danger offset-md-9" th:href="@{/secao/novo}">Cancelar</a>
 		
-				<button type="submit" class="btn btn-success offset js-salvar-btn">
+				<button type="button" class="btn btn-success offset js-salvar-btn">
 					Salvar</button>
 			</div>
 		</div>

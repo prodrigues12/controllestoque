@@ -5,6 +5,7 @@ Controllestoque.DialogoSalvar = (function() {
 	function DialogoSalvar() {
 		this.salvarBtn = $('.js-salvar-btn');
 
+
 	}
 
 	DialogoSalvar.prototype.iniciar = function() {
@@ -13,11 +14,15 @@ Controllestoque.DialogoSalvar = (function() {
 
 	function onSalvarClique() {
 
+		var form = document.querySelector("#form-secao");
+//		var inputNome = document.getElementById('nomeSecao');
+		let secao = { nome: form.nomeSecao.value }
+
 		$.ajax({
 			url: "/secao",
 			method: 'POST',
-			concontentType: "application/json",
-
+			contentType: "application/json",
+			data: JSON.stringify(secao),
 			success: chamarModalSucesso(),
 			error: onErroExcluir()
 

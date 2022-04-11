@@ -76,7 +76,7 @@ public class SecaoController {
 
 	@GetMapping
 	public ModelAndView pesquisarSecao(SecaoFilter secaoFilter, BindingResult result,
-			@PageableDefault(size = 3) Pageable pageable, HttpServletRequest httpServletRequest) {
+			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("secao/pesquisarSecao");
 		mv.addObject("secao", secRepository.findAll());
 
