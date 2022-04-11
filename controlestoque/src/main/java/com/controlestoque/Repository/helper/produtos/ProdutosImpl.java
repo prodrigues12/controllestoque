@@ -116,7 +116,14 @@ public class ProdutosImpl implements ProdutosQueries {
 
 	return optional.orElse(Long.valueOf(0));
 }
+	
+	public Long estoqueZero() {
+		Optional<Long> optional = Optional
+				.ofNullable(manager.createQuery("select count(*) from Produto where qtdEstoque <= 0", Long.class)
+						.getSingleResult());
 
+		return optional.orElse(Long.valueOf(0));
+	}
 
 
 }

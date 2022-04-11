@@ -15,7 +15,7 @@ Controllestoque.DialogoExcluir = (function() {
 	}
 
 	function onExcluirClicado(evento) {
-		event.preventDefault();
+		evento.preventDefault();
 		var botaoClicado = $(evento.currentTarget);
 		var url = botaoClicado.data('url');
 		var objeto = botaoClicado.data('objeto');
@@ -44,7 +44,7 @@ Controllestoque.DialogoExcluir = (function() {
 				} else {
 					swal("Cancelado com Sucesso", "", "success");
 				}
-				
+
 			});
 	}
 
@@ -54,7 +54,7 @@ Controllestoque.DialogoExcluir = (function() {
 			url: url,
 			method: 'DELETE',
 			success: onExcluidoSucesso(),
-			//				error: onErroExcluir()
+			error: onErroExcluir()
 
 		});
 	}

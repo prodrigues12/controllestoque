@@ -14,7 +14,6 @@
 	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 <link rel="stylesheet" href="/css/sindebar.css" />
 <link rel="stylesheet" href="/css/controller.css" />
-<link rel="stylesheet" href="/css/brewer.css" />
 <link rel="stylesheet" href="/css/magalu.css" />
 </head>
 
@@ -22,7 +21,7 @@
 
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
-	
+
 
 	<form method="post"
 		th:action="${produto.produtoNovo} ? @{/produto/novo} : @{/produto/{codigo}(codigo=${produto.codigo})}"
@@ -199,6 +198,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="/js/vendors/jquery.mask.min.js"></script>
 	<script src="/js/vendors/jquery.maskMoney.min.js"></script>
 	<script src="/js/sindebar.js"></script>

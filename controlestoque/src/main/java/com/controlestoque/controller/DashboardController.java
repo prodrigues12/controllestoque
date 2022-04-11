@@ -27,6 +27,7 @@ public class DashboardController {
 		mv.addObject("pedidosSeparados", pedRepository.statusIgualSeparando());
 		mv.addObject("totalItensEstoque", proRepository.totalItensEstoque());
 		mv.addObject("estoqueBaixo", proRepository.estoqueBaixo());
+		mv.addObject("estoqueZero", proRepository.estoqueZero());
 		
 		return mv;
 		

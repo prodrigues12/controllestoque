@@ -12,14 +12,16 @@ import com.controlestoque.model.Produto;
 
 public interface ProdutosQueries {
 
-	public Page<Produto>filtrar(ProdutoFilter filtro, Pageable pageable);
-	
+	public Page<Produto> filtrar(ProdutoFilter filtro, Pageable pageable);
+
 	public List<ProdutoDTO> codigoOuNome(String codigoOuNome);
-	
+
 	public Produto buscaCompleta(Long codigo);
-	
+
 	public BigDecimal totalItensEstoque();
-	
-	public Long estoqueBaixo() ;
-	
+
+	public Long estoqueBaixo();
+
+	public Long estoqueZero();
+
 }
