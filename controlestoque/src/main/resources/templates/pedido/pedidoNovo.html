@@ -108,23 +108,23 @@
 				<div class="form-row" th:unless="${pedido.pedidoNovo}">
 					<div class="btn-group" role="group"
 						aria-label="Button group with nested dropdown">
-						<a class="btn btn-primary">Pedido [[${pedido.status}]], salvar
+						<a class="btn btn-primary">Salvar
 							como:</a>
 
 						<div class="btn-group" role="group">
-							<button id="alterarStatus" type="button"
+							<a id="alterarStatus" 
 								class="btn btn-primary dropdown-toggle"
-								data-bs-toggle="dropdown" aria-expanded="false"></button>
+								data-bs-toggle="dropdown" aria-expanded="false"></a>
 							<ul class="dropdown-menu" aria-labelledby="btnStatus">
-								<li><a class="dropdown-item btn-dark js-submit-btn"
-									data:acao="finalizar" href="#">Finalizar</a></li>
-								<li><a class="dropdown-item btn-info js-submit-btn"
+								<li><a class="dropdown-item  js-submit-btn"
+									data:acao="finalizar" href="#">Finalizado</a></li>
+								<li><a class="dropdown-item  js-submit-btn"
 									data:acao="pendente" href="#">Pendente</a></li>
-								<li><a class="dropdown-item btn-warning js-submit-btn"
+								<li><a class="dropdown-item  js-submit-btn"
 									data:acao="separacao" href="#">Em separação</a></li>
-								<li><a class="dropdown-item btn-dtn-danger js-submit-btn"
+								<li><a class="dropdown-item  js-submit-btn"
 									data:acao="cancelado" href="#">Cancelado</a></li>
-								<li><a class="dropdown-item btn-success js-submit-btn"
+								<li><a class="dropdown-item  js-submit-btn"
 									data:acao="novo" href="#">Novo</a></li>
 							</ul>
 						</div>
@@ -153,7 +153,7 @@
 	<script src="/js/pedido.autocomplete-itens.js"></script>
 	<script src="/js/pedido.tabela-itens.js"></script>
 	<script src="/js/pedido.botoes-status.js"></script>
-	<script src="/js/"></script>
+<!-- 	<script src="/js/"></script> -->
 
 </body>
 </html>

@@ -31,6 +31,7 @@ public class PedidoService {
 			Pedido pedidoExistente = pedRepository.getById(pedido.getCodigo());
 			pedido.setDataCriacao(pedidoExistente.getDataCriacao());
 		}
+		
 		pedRepository.save(pedido);
 	}
 	
@@ -58,6 +59,7 @@ public class PedidoService {
 	public void finalizar(Pedido pedido) {
 		pedido.setStatus(StatusPedido.FINALIZADO);
 		salvar(pedido);
+		System.out.println("Service");
 		publisher.publishEvent(new PedidoEvent(pedido));
 	}
 

@@ -19,7 +19,7 @@ public class PedidoListener {
 	@EventListener
 	public void pedidoFinalizado(PedidoEvent pedidoEvent) {
 		for (ItemPedido item : pedidoEvent.getPedido().getItens()) {
-			Produto produto = proRepository.findByCodigo(item.getPedido().getCodigo());
+			Produto produto = proRepository.findByCodigo(item.getProduto().getCodigo());
 			produto.setQtdEstoque(produto.getQtdEstoque().subtract(new BigDecimal(item.getQuantidade())));
 			proRepository.save(produto);
 		}
