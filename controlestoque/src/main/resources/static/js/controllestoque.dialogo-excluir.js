@@ -15,7 +15,7 @@ Controllestoque.DialogoExcluir = (function() {
 	}
 
 	function onExcluirClicado(evento) {
-		evento.preventDefault();
+//		evento.preventDefault();
 		var botaoClicado = $(evento.currentTarget);
 		var url = botaoClicado.data('url');
 		var objeto = botaoClicado.data('objeto');
@@ -31,6 +31,7 @@ Controllestoque.DialogoExcluir = (function() {
 			dangerMode: true,
 		})
 			.then(function(isConfirm) {
+				console.log('chegou aqui')
 				if (isConfirm) {
 					onExclusaoConfirmado(url);
 
@@ -50,11 +51,12 @@ Controllestoque.DialogoExcluir = (function() {
 
 
 	function onExclusaoConfirmado(url) {
+		console.log(url)
 		$.ajax({
 			url: url,
 			method: 'DELETE',
-			success: onExcluidoSucesso(),
-			error: onErroExcluir()
+			success: onExcluidoSucesso.bind(this),
+			error: onErroExcluir.bind(this)
 
 		});
 	}

@@ -85,8 +85,12 @@
 				<tr th:each="secao :${pagina.conteudo}">
 					<td th:text="${secao.codigo}">1</td>
 					<td th:text="${secao.nome}">Produto Teste</td>
-					<td><a> <i class=" bx bx-pencil ce-icon"></i>
-					</a> <a> <i class="bx bx-trash ce-icon"></i>
+					<td><a th:href="@{/secao/{codigo}(codigo=${secao.codigo})}"><i
+							class=" bx bx-edit ce-icon"></i>
+					</a>  &nbsp; <a
+						class=" js-exclusao-btn" title="Excluir" href="#"
+						data:url="@{/secao/{codigo}(codigo=${secao.codigo})}"
+						data:objeto="${secao.nome}"> <i class="bx bx-trash ce-icon"></i>
 					</a></td>
 				</tr>
 				<tr th:if="${pagina.vazia}">
@@ -120,11 +124,14 @@
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+			<script src="https://cdnout.com/sweetalert"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 	<script src="/js/sindebar.js"></script>
+	<script src="/js/controllestoque.dialogo-excluir.js"></script>
+	
 
 
 </body>
