@@ -11,5 +11,11 @@ public class ErroController {
 		return "404";
 		
 	}
+	
+	@GetMapping("/500")
+	public String paginaNaoExiste() {
+		return "500";
+		
+	}
 
 }

@@ -26,19 +26,35 @@
 		</div>
 
 		<div>Sistema de Gerenciamento de Estoque CD-994</div>
-		<div class="header_img">
-			<a class="nav_link"> <i class="bx bxs-user-circle nav_icon"></i></a>
-		</div>
-		
-	</header>
-	<div class="strip-multi-colors" id="cores" th:fragment	=magalu>
-				<span class="yellow"></span> <span class="orange"></span> <span
-					class="red"></span> <span class="rose"></span> <span class="purple"></span>
-				<span class="deep-purple"></span> <span class="blue"></span> <span
-					class="cyan"></span> <span class="light-green"></span> <span
-					class="green"></span>
-					<p>
+		<div>
+
+			<div class="btn-group btn-group-sm" role="group"
+				aria-label="Button group with nested dropdown">
+				<div class="btn-group" role="group">
+					<a id="userLogado" th:text="${#authentication.name }"
+						class="nomeUser" data-bs-toggle="dropdown" aria-expanded="false">
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="userLOgado">
+						<li><a class="dropdown-item" href="#">Sobre</a></li>
+						<li><a class="dropdown-item" href="#">Feedback</a></li>
+						<li><a class="dropdown-item" href="#">Central de ajuda e suporte</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><a class="dropdown-item" th:href="@{/logout}"><i
+								class='bx bx-log-out'></i> <span class="nav_name navbar-text">Sair</span></a></li>
+					</ul>
+				</div>
 			</div>
+		</div>
+
+	</header>
+	<div class="strip-multi-colors" id="cores" th:fragment=magalu>
+		<span class="yellow"></span> <span class="orange"></span> <span
+			class="red"></span> <span class="rose"></span> <span class="purple"></span>
+		<span class="deep-purple"></span> <span class="blue"></span> <span
+			class="cyan"></span> <span class="light-green"></span> <span
+			class="green"></span>
+		<p>
+	</div>
 
 	<div class="l-navbar" id="nav-bar" th:fragment=sindebar>
 		<nav class="nav">
@@ -90,12 +106,10 @@
 						</a>
 
 						<div class="collapse" id="collapseEndereco">
-						
-						<a th:href="@{/endereco}" class="nav_link" title="Rua"> <i
-								class=" bx bx-map nav_icon_mini"></i> <span
-								class="nav_name"> Rua</span></a>
 
-							<a th:href="@{/rua}" class="nav_link" title="Rua"> <i
+							<a th:href="@{/endereco}" class="nav_link" title="Rua"> <i
+								class=" bx bx-map nav_icon_mini"></i> <span class="nav_name">
+									Rua</span></a> <a th:href="@{/rua}" class="nav_link" title="Rua"> <i
 								class=" bx bx-building-house nav_icon_mini"></i> <span
 								class="nav_name"> Rua</span>
 
@@ -132,9 +146,9 @@
 								class='bx bx-user-circle nav_icon'></i> <span class="nav_name">
 									Usuario</span>
 
-							</a> <a th:href="@{/colaborador}" class="nav_link" title="Colaborador">
-								<i class='bx bxs-user-badge nav_icon'></i> <span class="nav_name">
-									Colaborador</span>
+							</a> <a th:href="@{/colaborador}" class="nav_link"
+								title="Colaborador"> <i class='bx bxs-user-badge nav_icon'></i>
+								<span class="nav_name"> Colaborador</span>
 							</a>
 						</div>
 
@@ -148,9 +162,7 @@
 					</div>
 				</div>
 			</div>
-						<a th:href="@{/logout}" class="nav_link"><i
-							class='bx bx-log-out nav_icon'></i> <span
-							class="nav_name navbar-text">Sair</span></a>
+
 		</nav>
 	</div>
 
@@ -164,7 +176,7 @@
 				Todos os direitos reservados.</span>
 		</div>
 	</footer>
-	
+
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script

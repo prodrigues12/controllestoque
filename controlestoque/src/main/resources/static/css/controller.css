@@ -173,6 +173,13 @@ a {
 	text-align: center;
 }
 
+.nomeUser{
+	color: #0A2463;
+	font-size: 15px;
+	display: flex;
+	
+}
+
 .ce-field-action{
 	display: flex;
 	
