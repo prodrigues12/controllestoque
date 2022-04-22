@@ -20,8 +20,8 @@
 <body id="">
 
 	<div th:replace="fragmentos/fragmentos :: header"></div>
-	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
-
+<!-- 	<div th:replace="fragmentos/fragmentos :: sindebar"></div> -->
+<div th:replace="fragmentos/fragmentos :: magalu"></div>
 	<div class="card">
 		<div class="card-header">
 			<div class="row">
@@ -35,7 +35,7 @@
 				</div>
 			</div>
 		</div>
-		<div th:replace="fragmentos/fragmentos :: magalu"></div>
+		
 		<div class="card-body">
 
 			<form method="POST" th:action="@{/pedido/novo}" th:object="${pedido}"

@@ -34,18 +34,23 @@
 						th:if="${#bools.isTrue(param.error)}">O e-mail e/ou senha
 						não conferem</div>
 					<div class="form-group">
-						<input class="form-control" type="text" placeholder="Login" name="username"/>
+						<input class="form-control" type="text" placeholder="Login"
+							name="username" />
 					</div>
 
 					<div class="form-group">
 
 						<input class="form-control" type="password"
-							style="font-style: italic;" placeholder="Senha" name="password"/>
+							style="font-style: italic;" placeholder="Senha" name="password" />
 
 					</div>
 
 
 					<button type="submit" class="btn btn-primary">Login</button>
+					<div>
+						<input class="" type="checkbox" id="remember-me" name="remember-me" /> <label
+							for="remember-me">Lembrar-me</label>
+					</div>
 
 
 				</form>

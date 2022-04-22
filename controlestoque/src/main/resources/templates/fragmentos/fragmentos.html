@@ -20,7 +20,7 @@
 
 <body id="body-pd">
 
-	<header class="header" id="header" th:fragment=header>
+	<header class="header" id="header" th:fragment=header >
 		<div class="header_toggle">
 			<i class='bx bx-chevron-right' id="header-toggle"></i>
 		</div>
@@ -31,10 +31,10 @@
 			<div class="btn-group btn-group-sm" role="group"
 				aria-label="Button group with nested dropdown">
 				<div class="btn-group" role="group">
-					<a id="userLogado" th:text="${#authentication.name }"
+					<a id="userLogado" th:text="${#authentication.name}"
 						class="nomeUser" data-bs-toggle="dropdown" aria-expanded="false">
 					</a>
-					<ul class="dropdown-menu" aria-labelledby="userLOgado">
+					<ul class="dropdown-menu" aria-labelledby="userLogado">
 						<li><a class="dropdown-item" href="#">Sobre</a></li>
 						<li><a class="dropdown-item" href="#">Feedback</a></li>
 						<li><a class="dropdown-item" href="#">Central de ajuda e suporte</a></li>
@@ -56,7 +56,7 @@
 		<p>
 	</div>
 
-	<div class="l-navbar" id="nav-bar" th:fragment=sindebar>
+	<div class="l-navbar" id="nav-bar" th:fragment=sindebar >
 		<nav class="nav">
 			<div>
 				<a class="nav_logo"> <i class=" bx bx-sidebar nav_logo-icon"></i>

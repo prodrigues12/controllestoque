@@ -149,6 +149,7 @@
 
 					<!-- 				Estoque minimo -->
 					<div class=" col-md-2">
+
 						<label for="estoqueMin" class="col-form-label-sm">Estoque
 							minimo:</label> <input id="estoqueMin" type="text"
 							th:field="*{qtdEstMin}"
@@ -156,12 +157,21 @@
 							placeholder="Ex: 10,00">
 					</div>
 
-					<div class=" col-md-2" th:unless="${produto.produtoNovo}">
-						<label for="estoque" class="col-form-label-sm">Estoque:</label> <input
-							id="estoque" type="text" th:field="*{qtdEstoque}"
-							class="form-control form-control-sm js-decimal"
-							readonly="readonly">
-
+					<!-- 				Estoque -->
+					<div class=" col-md-3" th:unless="${produto.produtoNovo}">
+						
+							<label for="estoque" class="col-form-label-sm">Estoque:</label>
+							<div class="input-group"> <input
+								id="estoque" type="text" th:field="*{qtdEstoque}"
+								class="form-control form-control-sm js-decimal"
+								readonly="readonly">  &nbsp;
+							<div class="input-group-btn">
+								<a class="btn btn-primary"
+									th:href="@{/estoque/ajuste/{codigo}(codigo=${produto.codigo})}">
+									<i class="bx bx-coin-stack "></i>
+								</a>
+							</div>
+						</div>
 					</div>
 
 
@@ -180,7 +190,7 @@
 					<!-- 				Botões -->
 					<div class="form-row">
 						<a type="button" th:href="@{/produto}"
-							class="btn btn-danger offset-md-10">Cancelar</a> &nbsp; &nbsp;
+							class="btn btn-danger offset-md-10">Cancelar</a>
 						<button type="submit" class="btn btn-success offset">
 							Salvar</button>
 					</div>

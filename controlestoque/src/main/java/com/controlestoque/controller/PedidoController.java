@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -64,6 +65,17 @@ public class PedidoController {
 	@GetMapping("/novo")
 	public ModelAndView novo(Pedido pedido) {
 		ModelAndView mv = new ModelAndView("pedido/pedidoNovo");
+
+		setUuid(pedido);
+
+		mv.addObject("turno", Turno.values());
+		mv.addObject("itens", pedido.getItens());
+		return mv;
+	}
+	
+	@GetMapping("/novo/pedido")
+	public ModelAndView novoPedido(Pedido pedido) {
+		ModelAndView mv = new ModelAndView("pedido/pedidoNovoPedido");
 
 		setUuid(pedido);
 
@@ -206,7 +218,7 @@ public class PedidoController {
 		return new ModelAndView("redirect:/pedido/novo");
 	}
 	
-	@PostMapping("/item")
+	@RequestMapping(value = "/item", method = RequestMethod.POST)
 	public ModelAndView adicionarItem(Long codigoProduto, String uuid) {
 		Produto produto = proRepository.findByCodigo(codigoProduto);
 		tabelaItens.adicionarItem(uuid, produto, 1);
