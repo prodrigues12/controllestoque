@@ -22,13 +22,19 @@ public interface PedidosQueries {
 	public Long statusIgualPendente();
 
 	public Long statusIgualCancelado();
-	
+
 	public Long statusIgualSeparando();
 
-	
 	public List<PedidosMes> totalPorMes();
 
-	Page<Pedido> filtrarPedidoNovo(PedidoFilter filter, Pageable pageable);
+	public Page<Pedido> filtrarPedidosNovos(PedidoFilter filter, Pageable pageable);
 
-	
+	public Page<Pedido> filtrarPedidosPendentes(PedidoFilter filter, Pageable pageable);
+
+	public Page<Pedido> filtrarPedidosSeparacao(PedidoFilter filter, Pageable pageable);
+
+	public Page<Pedido> filtrarPedidosCancelados(PedidoFilter filter, Pageable pageable);
+
+	public Page<Pedido> filtrarPedidosFinalizados(PedidoFilter filter, Pageable pageable);
+
 }

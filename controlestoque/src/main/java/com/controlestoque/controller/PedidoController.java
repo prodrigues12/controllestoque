@@ -89,8 +89,7 @@ public class PedidoController {
 	public ModelAndView pesquisar(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("pedido/pesquisaPedido");
-		mv.addObject("turno", Turno.values());
-		mv.addObject("status", StatusPedido.values());
+		objetosPedidos(mv);
 
 		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrar(pedidoFilter, pageable),
 				httpServletRequest);
@@ -116,18 +115,71 @@ public class PedidoController {
 		return mv;
 	}
 	
+	
 	@GetMapping("/pedidosNovos")
-	public ModelAndView lista(PedidoFilter pedidoFilter, BindingResult result,
+	public ModelAndView listaPedidosNovos(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
-		ModelAndView mv = new ModelAndView("pedido/listaPedidos");
-		mv.addObject("turno", Turno.values());
-		mv.addObject("status", StatusPedido.values());
+		ModelAndView mv = new ModelAndView("pedido/listaPedidosNovos");
+		objetosPedidos(mv);
 
-		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidoNovo(pedidoFilter, pageable),
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosNovos(pedidoFilter, pageable),
+				httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+
+	}
+	
+	
+	
+	@GetMapping("/pedidosPendentes")
+	public ModelAndView listaPedidosPendentes(PedidoFilter pedidoFilter, BindingResult result,
+			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView("pedido/listaPedidosPendentes");
+		objetosPedidos(mv);
+
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosPendentes(pedidoFilter, pageable),
 				httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}
+
+	
+	@GetMapping("/pedidosSeparacao")
+	public ModelAndView listaPedidosSeparacao(PedidoFilter pedidoFilter, BindingResult result,
+			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView("pedido/listaPedidosSeparacao");
+		objetosPedidos(mv);
+
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosSeparacao(pedidoFilter, pageable),
+				httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+	}
+	
+	@GetMapping("/pedidosCancelados")
+	public ModelAndView listaPedidosCancelados(PedidoFilter pedidoFilter, BindingResult result,
+			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView("pedido/listaPedidosNovos");
+		objetosPedidos(mv);
+
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosCancelados(pedidoFilter, pageable),
+				httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+	}
+	
+	@GetMapping("/pedidosFinalizados")
+	public ModelAndView listaPedidosFinalizados(PedidoFilter pedidoFilter, BindingResult result,
+			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView("pedido/listaPedidosNovos");
+		objetosPedidos(mv);
+
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosFinalizados(pedidoFilter, pageable),
+				httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+	}
+	
 
 	@GetMapping("/totalPorMes")
 	public @ResponseBody List<PedidosMes> listarTotalPedidoPorMes() {
@@ -197,7 +249,7 @@ public class PedidoController {
 		
 		pedService.emSeparacao(pedido);
 		attributes.addFlashAttribute("mensagem",
-				String.format("Pedido nº %d alterando para: Pendete", pedido.getCodigo()));
+				String.format("Pedido nº %d alterando para: Separação", pedido.getCodigo()));
 
 		return new ModelAndView("redirect:/pedido/novo");
 	}
@@ -257,5 +309,11 @@ public class PedidoController {
 		pedido.adicionarItens(tabelaItens.getItens(pedido.getUuid()));
 		pedidoValidator.validate(pedido, result);
 
+	}
+	
+
+	private void objetosPedidos(ModelAndView mv) {
+		mv.addObject("turno", Turno.values());
+		mv.addObject("status", StatusPedido.values());
 	}
 }

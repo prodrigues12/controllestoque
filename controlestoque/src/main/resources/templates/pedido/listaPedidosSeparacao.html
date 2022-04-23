@@ -28,7 +28,7 @@
 		<div class="card-header">
 			<div class="row">
 				<div class=" col-md-10">
-					<h4>Pesquisa Pedido</h4>
+					<h4>Pedidos Novos</h4>
 				</div>
 				<div class="col-md-2">
 					<a class="btn btn-primary btn-sm" th:href="@{/pedido/novo}">Novo
@@ -42,26 +42,14 @@
 
 				<div class="row mb-3">
 
-					<!-- 				Codigo -->
+					<!-- 									Codigo -->
 					<div class=" col-md-1">
 						<label class=" col-form-label-sm">Codigo:</label> <input
-							class="form-control form-control-sm" type="text"
+							class="form-control form-control-sm" type="text" placeholder="Ex:1"
 							th:field="*{codigo}">
 					</div>
 
-					<!-- 				Status -->
-					<div class="col-auto">
-						<label for="turno" class="col-form-label-sm">Status:</label> <select
-							id="turno" class=" form-control form-select form-select-sm"
-							th:field="*{status}">
-
-							<option value="">Selecione o Status</option>
-							<option class="form-control" th:each="status : ${status}"
-								th:value="${status}" th:text="${status.descricao}">a</option>
-						</select>
-					</div>
-
-					<!-- 				Turno -->
+					<!-- 									Turno -->
 					<div class="col-auto">
 						<label for="turno" class="col-form-label-sm">Turno:</label> <select
 							id="turno" class=" form-control form-select form-select-sm"
@@ -73,7 +61,7 @@
 						</select>
 					</div>
 
-					<!-- 					Data Criação -->
+					<!-- 										Data Criação -->
 					<div class="col-auto">
 						<label for="dataCriacao" class="col-form-label-sm">Data de
 							criação:</label> <input class="form-control form-control-sm" type="date"
@@ -84,32 +72,28 @@
 						<label for="dataFim" class="col-form-label-sm">Até:</label> <input
 							class="form-control form-control-sm" type="date"
 							th:field="*{ate}" /> &nbsp;&nbsp;
+
+
 					</div>
 
-				</div>
-
-				<div class="row mb-3">
-
-					<!-- 					Colaborador -->
-					<div class="col-md-4">
+					<!-- 										Colaborador -->
+					<div class="col-auto">
 						<label for="secao" class="col-form-label-sm">Colaborador:</label>
-						<input class="form-control form-control-sm" type="text"
+						<input class="form-control form-control-sm" type="text" placeholder="Nome colaborador"
 							th:field="*{nomeColaborador}" />
 					</div>
-
-					<!-- Identificação -->
-					<div class="col-md-4">
-						<label for="secao" class="col-form-label-sm">Identificação:</label>
-						<input class="form-control form-control-sm" type="text"
+					<div class="col-auto">
+						<label for="secao" class="col-form-label-sm">Identificador:</label>
+						<input class="form-control form-control-sm" type="text" placeholder="ID / CPF / Filial"
 							th:field="*{cpfCnpjId}" />
 					</div>
-				</div>
 
+				</div>
 
 				<div class="form-row">
 					<button type="submit" class="btn btn-primary btn-sm">Pesquisar</button>
 					<a type="submit" class="btn btn-outline-warning btn-sm"
-						th:href="@{/pedido/}">Limpar filtro</a>
+						th:href="@{/pedido/lista}">Limpar filtro</a>
 				</div>
 			</form>
 		</div>
@@ -117,33 +101,42 @@
 
 	</form>
 	<div class="table-responsive">
-		<table class="table table-sm table-striped"
-			style="text-align: center">
+		<table class="table    table-sm" style="text-align: center">
 			<thead class="thead-dark" style="text-align: center">
 
 				<th class="col-1"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
+
 				</th>
 				<th class="col-2"><th:block
-						th:replace="fragmentos/ordenacao :: order (${pagina}, 'status' , 'Status')"></th:block>
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'dataCriacao' , 'Data do Pedido')"></th:block>
+				<th class="col-4"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'colaborador' , 'Colaborador')"></th:block>
+
 				</th>
-				<th class="col-auto">Data</th>
-				<th class="col-auto">Colaborador</th>
-				<th class="col-auto">Turno</th>
-				<th class="col-auto">Ação</th>
+
+				<th class="col-2">Turno</th>
+				<th class="col-3">Ação</th>
+
 
 			</thead>
 
 			<tbody>
 				<tr th:each="pedido :${pagina.conteudo}">
-					<td th:text="${pedido.codigo}">12</td>
-					<td th:text="${pedido.status}">Produto Teste</td>
-					<td th:text="${pedido.dataCriacao}">Limpeza</td>
-					<td th:text="${pedido.colaborador.nome}">Limpeza</td>
-					<td th:text="${pedido.turno}">4</td>
-					<td><a title="Visualizar"
+					<td th:text="${pedido.codigo}"></td>
+					<!-- 					<td th:text="${pedido.status}">Produto Teste</td> -->
+					<td th:text="${pedido.dataCriacao}"></td>
+
+					<td th:text="${pedido.colaborador.nome}"></td>
+					<td th:text="${pedido.turno}"></td>
+					<td><a title="Editar"
 						th:href="@{/pedido/{codigo}(codigo=${pedido.codigo})}"><i
-							class="bx bx-show-alt ce-icon"></i> </a>
+							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp; <a
+						class=" js-exclusao-btn" title="Cancelar" href="#"
+						data:url="@{/pedido/{codigo}(codigo=${pedido.codigo})}"> <i
+							class="bx bx-x-circle ce-icon"></i>
+					</a>&nbsp;&nbsp;<a><i class="bx 	 ce-icon"
+							title="Visializar"></i></a></td>
 				</tr>
 				<tr th:if="${pagina.vazia}">
 					<td colspan="7">Nenhum registro encontrado</td>

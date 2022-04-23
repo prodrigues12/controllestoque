@@ -22,235 +22,246 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 	<div th:replace="fragmentos/fragmentos :: magalu"></div>
-		
-<div class="row">
-<p>
-<h4>Pedidos</h4>
-				<!-- valor estoque -->
-				<div class="row">
-				<div class="col-xl-3 col-md-6 mb-2">
-					<div class="card border-left-success shadow h-100 py-2">
-						<div class="card-body" >
-							<div class="row no-gutters align-items-center">
-								<div class="col mr-2">
-									<div
-										class=" mb-2">
-										<a class="text-xs font-weight-bold text-success text-uppercase" th:href="@{/pedido/pedidosNovos}">Novo</a> </div>
-										
-									<div class="h5 mb-0 font-weight-bold text-gray-800">[[${pedidosNovos}]]</div>
+
+	<div class="row">
+		<p>
+		<h4>Pedidos</h4>
+		<!-- valor estoque -->
+		<div class="row">
+			<div class="col-xl-3 col-md-6 mb-2">
+				<div class="card border-left-success shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class=" mb-2">
+									<a class="text-xs font-weight-bold text-success text-uppercase"
+										th:href="@{/pedido/pedidosNovos}">Novo</a>
 								</div>
-								<div class="col-auto">
-									<i class="bx bx-plus-circle  fa-2x text-gray-300"></i>
-								</div>
+
+								<div class="h5 mb-0 font-weight-bold text-gray-800">[[${pedidosNovos}]]</div>
+							</div>
+							<div class="col-auto">
+								<i class="bx bx-plus-circle  fa-2x text-gray-300"></i>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
 
-				<div class="col-xl-2 col-md-6 mb-2">
-					<div class="card border-left-success shadow h-100 py-2">
-						<div class="card-body">
-							<div class="row no-gutters align-items-center">
-								<div class="col mr-2">
-									<div
-										class="text-xs font-weight-bold text-info text-uppercase mb-1">
-										Pendentes</div>
+			<div class="col-xl-2 col-md-6 mb-2">
+				<div class="card border-left-success shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class=" mb-2">
+									<a
+										class="text-xs font-weight-bold text-info text-uppercase mb-1"
+										th:href="@{/pedido/pedidosPendentes}"> Pendentes </a>
+								</div>
 								<div class="h5 mb-0 font-weight-bold text-gray-800">[[${pedidosPendentes}]]</div>
 
-								</div>
-								<div class="col-auto">
-									<i class="fa fa-shopping-cart fa-2x text-gray-300"></i>
+							</div>
+							<div class="col-auto">
+								<i class="fa fa-shopping-cart fa-2x text-gray-300"></i>
 
-								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-xl-2 col-md-6 mb-2">
-					<div class="card border-left-success shadow h-100 py-2">
-						<div class="card-body">
-							<div class="row no-gutters align-items-center">
-								<div class="col mr-2">
-									<div
-										class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-										Em separação</div>
+			</div>
+			<div class="col-xl-2 col-md-6 mb-2">
+				<div class="card border-left-success shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class=" mb-2">
+									<a
+										class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+										th:href="@{/pedido/pedidosSeparacao}"> Em separação </a>
+								</div>
 								<div class="h5 mb-0 font-weight-bold text-gray-800">[[${pedidosSeparados}]]</div>
 
-								</div>
-								<div class="col-auto">
-									<i class="fa fa-shopping-cart fa-2x text-gray-300"></i>
+							</div>
+							<div class="col-auto">
+								<i class="fa fa-shopping-cart fa-2x text-gray-300"></i>
 
-								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				
-				<div class="col-xl-2 col-md-6 mb-2">
-					<div class="card border-left-success shadow h-100 py-2">
-						<div class="card-body">
-							<div class="row no-gutters align-items-center">
-								<div class="col mr-2">
-									<div
-										class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-										Cancelados</div>
+			</div>
+
+			<div class="col-xl-2 col-md-6 mb-2">
+				<div class="card border-left-success shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class=" mb-2">
+									<a
+										class="text-xs font-weight-bold text-danger text-uppercase mb-1"
+										th:href="@{/pedido/pedidosCancelados}"> Cancelados </a>
+								</div>
 								<div class="h5 mb-0 font-weight-bold text-gray-800">[[${pedidosCancelados}]]</div>
 
-								</div>
-								<div class="col-auto">
-									<i class="fa  fa-shopping-cart fa-2x text-gray-300"></i>
-
-								</div>
 							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-xl-3 col-md-6 mb-2">
-					<div class="card border-left-primary shadow h-100 py-2">
-						<div class="card-body">
-							<div class="row no-gutters align-items-center">
-								<div class="col mr-2">
-									<div
-										class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-										Finalizado</div>
-									<div class="h5 mb-0 font-weight-bold text-gray-800">[[${pedidosFinalizados}]]</div>
-								</div>
-								<div class="col-auto">
-									<i class="fa  fa-signal fa-2x text-gray-300"></i>
-								</div>
+							<div class="col-auto">
+								<i class="fa  fa-shopping-cart fa-2x text-gray-300"></i>
+
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>	
-			
-
-<h4>Estoque</h4>
-
-			</div>
-
-			<div class="row">
-
-				<!-- Earnings (Monthly) Card Example -->
-				<div class="col-xl-4 col-md-6 mb-4">
-					<div class="card border-left-success shadow h-100 py-2">
-						<div class="card-body">
-							<div class="row no-gutters align-items-center">
-								<div class="col mr-2">
-									<div
-										class="text-xs font-weight-bold text-info text-uppercase mb-1">
-										Total de Produtos</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">[[${totalItensEstoque}]]</div>
-									<div class="dark"></div>
-
-								</div>
-								<div class="col-auto">
-									<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
-				<!-- Earnings (Monthly) Card Example -->
-					<div class="col-xl-4 col-md-6 mb-4">
-					<div class="card border-left-success shadow h-100 py-2">
-						<div class="card-body">
-							<div class="row no-gutters align-items-center">
-								<div class="col mr-2">
-									<div
-										class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-										Estoque abaixo do minimo.</div>
-										<div class="h5 mb-0 font-weight-bold text-gray-800">[[${estoqueBaixo}]]</div>
-									<div class="aw-box__value"></div>
-									<div class="dark"></div>
-
-								</div>
-								<div class="col-auto">
-									<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<!-- Earnings (Monthly) Card Example -->
-				<div class="col-xl-4 col-md-6 mb-4">
-					<div class="card border-left-success shadow h-100 py-2">
-						<div class="card-body">
-							<div class="row no-gutters align-items-center">
-								<div class="col mr-2">
-									<div
-										class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-										Estoque Zerado</div>
-									<div class="h5 mb-0 font-weight-bold text-gray-800">[[${estoqueZero}]]</div>
-
-								</div>
-								<div class="col-auto">
-									<i class="fa  fa-shopping-cart fa-2x text-gray-300"></i>
-
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-			
-			<div class="row">
-			<div class="col-sm-6">
-				<div class="aw-graph-box">
-					<div class="aw-graph-box__header">
-						<h2 class="aw-graph-box__title">Pedidos nos últimos 6 meses</h2>
-					</div>
-					<div class="aw-graph-box__content">
-						<!--<div class="aw-graph-box__no-data">
-							<i class="fa  fa-line-chart  fa-2x"></i>
-							<span>Não há dados</span>
-						</div>-->
-						<div>
-							<canvas id="graficoVendasPorMes" height="160"></canvas>
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			
-			<div class="col-sm-6">
-				<div class="aw-graph-box">
-					<div class="aw-graph-box__header">
-						<h2 class="aw-graph-box__title">Vendas por origem <small>últimos 6 meses</small></h2>
-					</div>
-					<div class="aw-graph-box__content">
-						<div class="aw-graph-box__no-data">
-							<i class="fa  fa-line-chart  fa-2x"></i>
-							<span>Não há dados</span>
-						</div>
-						<div>
-							<canvas id="pizzaVendasPorMes" height="160"></canvas>
+
+			<div class="col-xl-3 col-md-6 mb-2">
+				<div class="card border-left-primary shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class=" mb-2">
+									<a
+										class="text-xs font-weight-bold text-dark text-uppercase mb-1"
+										th:href="@{/pedido/pedidosFinalizados}"> Finalizado</a>
+								</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">[[${pedidosFinalizados}]]</div>
+							</div>
+							<div class="col-auto">
+								<i class="fa  fa-signal fa-2x text-gray-300"></i>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+		<h4>Estoque</h4>
+
+	</div>
+
+	<div class="row">
+
+		<!-- Earnings (Monthly) Card Example -->
+		<div class="col-xl-4 col-md-6 mb-4">
+			<div class="card border-left-success shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div
+								class="text-xs font-weight-bold text-info text-uppercase mb-1">
+								Total de Produtos</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800">[[${totalItensEstoque}]]</div>
+							<div class="dark"></div>
+
+						</div>
+						<div class="col-auto">
+							<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Earnings (Monthly) Card Example -->
+		<div class="col-xl-4 col-md-6 mb-4">
+			<div class="card border-left-success shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div
+								class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+								Estoque abaixo do minimo.</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800">[[${estoqueBaixo}]]</div>
+							<div class="aw-box__value"></div>
+							<div class="dark"></div>
+
+						</div>
+						<div class="col-auto">
+							<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Earnings (Monthly) Card Example -->
+		<div class="col-xl-4 col-md-6 mb-4">
+			<div class="card border-left-success shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div
+								class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+								Estoque Zerado</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800">[[${estoqueZero}]]</div>
+
+						</div>
+						<div class="col-auto">
+							<i class="fa  fa-shopping-cart fa-2x text-gray-300"></i>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="aw-graph-box">
+				<div class="aw-graph-box__header">
+					<h2 class="aw-graph-box__title">Pedidos nos últimos 6 meses</h2>
+				</div>
+				<div class="aw-graph-box__content">
+					<!--<div class="aw-graph-box__no-data">
+							<i class="fa  fa-line-chart  fa-2x"></i>
+							<span>Não há dados</span>
+						</div>-->
+					<div>
+						<canvas id="graficoVendasPorMes" height="160"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-sm-6">
+			<div class="aw-graph-box">
+				<div class="aw-graph-box__header">
+					<h2 class="aw-graph-box__title">
+						Vendas por origem <small>últimos 6 meses</small>
+					</h2>
+				</div>
+				<div class="aw-graph-box__content">
+					<div class="aw-graph-box__no-data">
+						<i class="fa  fa-line-chart  fa-2x"></i> <span>Não há dados</span>
+					</div>
+					<div>
+						<canvas id="pizzaVendasPorMes" height="160"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- 	<script -->
-<!-- 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script> -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-		
+	<!-- 	<script -->
+	<!-- 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script> -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/dashboard.graficos.js"></script>
-	
+
 </body>
 </html>
