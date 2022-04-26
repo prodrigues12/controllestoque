@@ -10,7 +10,7 @@
 	<queryString language="SQL">
 		<![CDATA[select p.data_criacao as data_criacao, p.codigo as codigo, c.nome as nome from pedido p inner join colaborador c 
 on  p.codigo_colaborador = c.codigo where p.status = 'FINALIZADO' and p.data_criacao 
-between  $P{data_inicial} and  $P{data_final}  order by p.data_criacao asc]]>
+between $P{data_inicial}   and $P{data_final}   order by p.data_criacao asc]]>
 	</queryString>
 	<field name="data_criacao" class="java.sql.Date">
 		<property name="com.jaspersoft.studio.field.name" value="data_criacao"/>
@@ -117,11 +117,7 @@ between  $P{data_inicial} and  $P{data_final}  order by p.data_criacao asc]]>
 				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="-10" y="30" width="100" height="18" uuid="b97ba7fe-55bf-4b57-a475-8aa3b5e7ae1c"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
-			<textField pattern="HH:mm">
-				<reportElement x="49" y="30" width="100" height="20" uuid="37ab4d94-1335-4086-b18d-44715944ca16"/>
+				<reportElement x="-10" y="31" width="100" height="18" uuid="b97ba7fe-55bf-4b57-a475-8aa3b5e7ae1c"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
