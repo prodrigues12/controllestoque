@@ -59,6 +59,8 @@
 		</queryString>
 	</subDataset>
 	<parameter name="status" class="java.lang.String"/>
+	<parameter name="data_inicio" class="java.lang.String"/>
+	<parameter name="data_fim" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[select p.data_criacao as data_criacao
 , p.codigo as codigo, 
@@ -66,7 +68,7 @@ c.nome as nome from pedido p
 inner join colaborador c 
 on  p.codigo_colaborador = c.codigo 
 where p.status =  $P{status} 
-and p.data_criacao
+and p.data_criacao between  $P{data_inicio} and $P{data_fim} 
 order by p.data_criacao asc]]>
 	</queryString>
 	<field name="data_criacao" class="java.sql.Date">

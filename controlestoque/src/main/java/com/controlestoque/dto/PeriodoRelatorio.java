@@ -2,25 +2,36 @@ package com.controlestoque.dto;
 
 import java.time.LocalDate;
 
+import com.controlestoque.Enums.StatusPedido;
+
 public class PeriodoRelatorio {
 	
-	private LocalDate dataInicial;
-	private LocalDate dataFim;
+	private String dataInicial;
+	private String dataFim;
+	private StatusPedido status;
 
-	public LocalDate getDataInicial() {
+
+	public String getDataInicial() {
 		return dataInicial;
 	}
 
-	public void setDataIncial(LocalDate dataInicial) {
+	public void setDataInicial(String dataInicial) {
 		this.dataInicial = dataInicial;
 	}
 
-	public LocalDate getDataFim() {
+	public String getDataFim() {
 		return dataFim;
 	}
 
-	public void setDataFim(LocalDate dataFim) {
+	public void setDataFim(String dataFim) {
 		this.dataFim = dataFim;
 	}
 
+	public StatusPedido getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusPedido status) {
+		this.status = status;
+	}
 }

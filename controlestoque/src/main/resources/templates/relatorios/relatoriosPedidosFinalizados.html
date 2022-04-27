@@ -26,45 +26,64 @@
 
 	<div class="page-header">
 		<div class="container-fluid">
-			<h1>
-				Relatório de vendas emitidas
-			</h1>
+			<h1>Relatório de vendas emitidas</h1>
 		</div>
 	</div>
-	
+
 	<div class="container-fluid">
-		<form method="POST" th:object="${periodoRelatorio}" th:action="@{/relatorios/pedidosFinalizados}">
-<!-- 			<th:block th:include="fragments/MensagensErroValidacao"></th:block> -->
-			
-			<div class="row">
-				<div class="form-group  col-auto">
-					<label for="dataInicio">Data de criação</label>
-					<div class="form-inline">
-						<input type="date" class="form-control  aw-form-control-inline-sm  js-date" 
-							id="dataInicio" th:field="*{dataInicial}" autocomplete="off" />
-						<label for="a" class="aw-form-label-between">a</label>
-						<input type="date" class="form-control  aw-form-control-inline-sm  js-date" 
-							id="dataFim" th:field="*{dataFim}" autocomplete="off" />
+		<form method="POST" th:object="${periodoRelatorio}"
+			th:action="@{/relatorios/pedidosFinalizados}">
+			<!-- 			<th:block th:include="fragments/MensagensErroValidacao"></th:block> -->
+
+			<div class="row mb-3">
+				<div class="col-md-3">
+					<label for="turno" class="col-form-label-sm">Status:</label> <select
+						id="turno" class=" form-control form-select form-select-sm"
+						th:field="*{status}">
+
+						<option value="">Selecione o Status</option>
+						<option class="form-control" th:each="status : ${status}"
+							th:value="${status}" th:text="${status.descricao}">a</option>
+					</select>
+				</div>
+
+				<div class="col-md-9">
+					<label for="dataInicio" class="col-form-label-sm">Data de
+						criação:</label>
+
+
+					<div class="row mb-4">
+						<label for="dataInicio" class="col-sm-auto col-form-label">De:</label>
+						<div class="col-sm-4">
+							<input type="date" class="form-control form-control-sm"
+								id="dataInicio" th:field="*{dataInicial}" autocomplete="off" />
+						</div>
+						<label for="dataFim" class="col-sm-auto col-form-label">até:</label>
+						<div class="col-sm-4">
+							<input type="date" class="form-control form-control-sm"
+								id="dataFim" th:field="*{dataFim}" autocomplete="off" />
+						</div>
+
 					</div>
 				</div>
 			</div>
-				
+
+
+
 			<button type="submit" class="btn  btn-primary">Emitir</button>
 		</form>
-	</div>
+</div>
 
-
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-	<script src="/js/vendors/handlebars.min.js"></script>
-	<script src="/js/vendors/jquery.easy-autocomplete.min.js"></script>
-	<script src="/js/sindebar.js"></script>
-	<script src="/js/colaborador.pesquisa-rapida.js"></script>
-	<script src="/js/pedido.autocomplete-itens.js"></script>
-	<script src="/js/pedido.tabela-itens.js"></script>
-
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+		<script src="/js/vendors/handlebars.min.js"></script>
+		<script src="/js/vendors/jquery.easy-autocomplete.min.js"></script>
+		<script src="/js/sindebar.js"></script>
+		<script src="/js/colaborador.pesquisa-rapida.js"></script>
+		<script src="/js/pedido.autocomplete-itens.js"></script>
+		<script src="/js/pedido.tabela-itens.js"></script>
 </body>
 </html>
