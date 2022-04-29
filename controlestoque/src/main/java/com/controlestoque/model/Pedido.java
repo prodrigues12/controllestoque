@@ -32,7 +32,7 @@ import com.controlestoque.dto.PedidosMes;
 @DynamicUpdate
 
 @SqlResultSetMapping(name = "mappingPedidos", classes = @ConstructorResult(targetClass = PedidosMes.class, columns = {
-		@ColumnResult(name = "mes", type = String.class), @ColumnResult(name = "total" ,type = Integer.class) }))
+		@ColumnResult(name = "mes", type = String.class), @ColumnResult(name = "total", type = Integer.class) }))
 
 public class Pedido {
 
@@ -43,6 +43,10 @@ public class Pedido {
 	@Column(name = "data_criacao")
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dataCriacao;
+
+	@Column(name = "data_modificacao")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	private LocalDate dataModifucacao;
 
 	private String observacao;
 
@@ -61,7 +65,6 @@ public class Pedido {
 
 	@Transient
 	private String uuid;
-	
 
 	public Long getCodigo() {
 		return codigo;
@@ -77,6 +80,14 @@ public class Pedido {
 
 	public void setDataCriacao(LocalDate dataCriacao) {
 		this.dataCriacao = dataCriacao;
+	}
+
+	public LocalDate getDataModifucacao() {
+		return dataModifucacao;
+	}
+
+	public void setDataModifucacao(LocalDate dataModifucacao) {
+		this.dataModifucacao = dataModifucacao;
 	}
 
 	public String getObservacao() {

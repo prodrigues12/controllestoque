@@ -32,6 +32,7 @@ public class PedidoService {
 			pedido.setDataCriacao(pedidoExistente.getDataCriacao());
 		}
 		
+		pedido.setDataModifucacao(LocalDate.now());
 		pedRepository.save(pedido);
 	}
 	
