@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_pedidoCompleto_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5d97628d-5177-43bd-ba5d-a5b29f4f6590">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql - adapter"/>
+	<parameter name="data_inicio" class="java.lang.String"/>
+	<parameter name="data_fim" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[select pedido.codigo as codigo_pedido, colaborador.nome as colaborador_nome, produto.codigo as codigo_Produto,  
+produto.nome as nome_produto, pedido.status as pedido_status, item.quantidade as item_quantidade,
+pedido.data_criacao as pedido_data_criacao
+from item_pedido item  inner join produto produto inner join pedido pedido inner join colaborador colaborador
+on item.codigo_produto = produto.codigo where pedido.data_criacao between   $P{data_inicio}  and   $P{data_fim} 
+ and item.codigo_pedido = pedido.codigo and pedido.codigo_colaborador = colaborador.codigo
+order by pedido.codigo]]>
+	</queryString>
+	<field name="codigo_pedido" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.label" value="codigo_pedido"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pedido"/>
+	</field>
+	<field name="colaborador_nome" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="colaborador_nome"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="colaborador"/>
+	</field>
+	<field name="codigo_Produto" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.label" value="codigo_Produto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="nome_produto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nome"/>
+		<property name="com.jaspersoft.studio.field.label" value="nome_produto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="produto"/>
+	</field>
+	<field name="pedido_status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="pedido_status"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pedido"/>
+	</field>
+	<field name="item_quantidade" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="quantidade"/>
+		<property name="com.jaspersoft.studio.field.label" value="item_quantidade"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="item_pedido"/>
+	</field>
+	<field name="pedido_data_criacao" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="data_criacao"/>
+		<property name="com.jaspersoft.studio.field.label" value="pedido_data_criacao"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="pedido"/>
+	</field>
+	<group name="GrupoPedido">
+		<groupExpression><![CDATA[$F{codigo_pedido}]]></groupExpression>
+		<groupHeader>
+			<band height="41">
+				<textField>
+					<reportElement x="41" y="-1" width="100" height="15" uuid="8688e9c4-c56e-48d0-9ff7-242dc0ab0a36">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{codigo_pedido}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="-1" width="44" height="15" uuid="306934e7-bcc3-4bb3-a97f-5a10f63e5628">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Pedido:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="200" y="-1" width="210" height="15" uuid="262133db-a1b4-4f5e-817c-418f41cdf3e1">
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{colaborador_nome}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="17" width="556" height="1" uuid="884ff3ea-05a7-4e5f-8759-4448934e8486">
+						<property name="local_mesure_unitheight" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+				</line>
+				<staticText>
+					<reportElement x="7" y="21" width="30" height="15" uuid="16910075-f328-4b95-ab2f-7f56fbc32b1c">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font isItalic="false"/>
+					</textElement>
+					<text><![CDATA[Cód.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="51" y="21" width="100" height="15" uuid="64f5876b-2a0a-4942-8beb-e4ff081bd718">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textElement>
+						<font isItalic="false"/>
+					</textElement>
+					<text><![CDATA[Produto]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="21" width="50" height="15" uuid="322dc92c-50f2-450f-803a-fa683aa7f71f">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Center">
+						<font isItalic="false"/>
+					</textElement>
+					<text><![CDATA[Qtd.]]></text>
+				</staticText>
+				<textField pattern="dd/MM/yyyy">
+					<reportElement x="467" y="-1" width="86" height="15" uuid="7298d6eb-5923-42e7-9271-9809f348f5dc">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pedido_data_criacao}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="150" y="-1" width="100" height="15" uuid="7f2d38b2-b871-43b3-89d1-ce9f31272e1b">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Status:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="185" y="-1" width="100" height="15" uuid="5ef49d9b-765b-4af1-a1a9-cac44fe6c818">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{pedido_status}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+			<band height="10"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="77" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="3" width="200" height="25" uuid="b9cd69d5-956c-4705-abd6-ddf9e837e79c">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Controllestoque CD - 994]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="142" y="40" width="270" height="30" uuid="bbeae0e4-bc1b-4760-99df-63cc338891eb"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Pedidos - Completo]]></text>
+			</staticText>
+			<image>
+				<reportElement x="460" y="0" width="93" height="30" uuid="098f621f-d2cb-49df-b255-1b7e00f80a77">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["C:/Users/_paulino/Documents/DEV/Imagens -projetos/Controllestoque imagens/luizalabs-logo.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement stretchType="RelativeToTallestObject" x="4" y="0" width="85" height="50" uuid="914a6d1d-ecf9-4e56-b7eb-cbfb73195b40">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["C:/Users/_paulino/Pictures/large_beneficio20191111012601.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="19" splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="15">
+			<textField>
+				<reportElement x="51" y="0" width="338" height="15" uuid="00af7833-8714-432c-8b11-641268bb9673">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nome_produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="0" width="41" height="15" uuid="1b116919-be3c-4895-b8fa-d6fb61eb44f6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{codigo_Produto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="60" height="15" uuid="ff709fa7-839e-484a-8ceb-59e931d03cf7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{item_quantidade}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="12">
+			<textField>
+				<reportElement x="402" y="0" width="100" height="11" uuid="46cabc4e-5997-4995-80f1-d45f3e2af319">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pág. " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="502" y="0" width="100" height="11" uuid="869b7aa7-c9e1-4144-85ca-6c0b82391920">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyy HH:mm">
+				<reportElement x="4" y="0" width="100" height="11" uuid="cb8ad7bf-eac2-4d71-aee2-d10405e975b8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="9" splitType="Stretch"/>
+	</summary>
+</jasperReport>

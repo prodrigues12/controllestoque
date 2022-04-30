@@ -1,5 +1,6 @@
 package com.controlestoque.controller;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
@@ -48,10 +49,9 @@ public class RelatoriosController {
 	}
 
 	@PostMapping("/pedidosFinalizados")
-	public ResponseEntity<Object> getEmployeeRecordReport(@RequestParam Map<String, Object> parametros,
+	public ResponseEntity<Object> pedidosStatusPeriodo(@RequestParam Map<String, Object> parametros,
 			HttpServletResponse response, PeriodoRelatorio periodoRelatorio) throws Exception {
 
-		System.out.println(periodoRelatorio.getStatus().getDescricao());
 		parametros = parametros == null ? parametros = new HashMap<>() : parametros;
 		
 		parametros.put("data_inicio",periodoRelatorio.getDataInicial());
@@ -69,6 +69,34 @@ public class RelatoriosController {
 
 		headers.setContentType(MediaType.APPLICATION_PDF);
 		headers.setContentDispositionFormData("filename", "relatorio_pedidosStatus.pdf");
+
+		return new ResponseEntity<Object>(JasperExportManager.exportReportToPdf(empReport), headers, HttpStatus.OK);
+
+	}
+	
+	@GetMapping("/pedidoCompleto")
+	public ResponseEntity<Object> pedidosCompleto(@RequestParam Map<String, Object> parametros,
+			HttpServletResponse response, PeriodoRelatorio periodoRelatorio) throws Exception {
+
+		
+		parametros = parametros == null ? parametros = new HashMap<>() : parametros;
+		
+		periodoRelatorio.setDataInicial("2022-04-01");
+		periodoRelatorio.setDataFim("2022-04-29");
+		parametros.put("data_inicio",periodoRelatorio.getDataInicial());
+		parametros.put("data_fim",periodoRelatorio.getDataFim());	
+		
+	
+		JasperPrint empReport = JasperFillManager.fillReport(
+				JasperCompileManager.compileReport(ResourceUtils
+						.getFile("classpath:relatorios/relatorio_pedidoCompleto.jrxml").getAbsolutePath()),
+				parametros, dataSource.getConnection());
+
+//			##############
+		HttpHeaders headers = new HttpHeaders();
+
+		headers.setContentType(MediaType.APPLICATION_PDF);
+		headers.setContentDispositionFormData("filename", "relatorio_pedidoCompleto.pdf");
 
 		return new ResponseEntity<Object>(JasperExportManager.exportReportToPdf(empReport), headers, HttpStatus.OK);
 
