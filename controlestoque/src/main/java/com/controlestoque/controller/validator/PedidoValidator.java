@@ -23,6 +23,7 @@ public class PedidoValidator implements Validator {
 		Pedido pedido = (Pedido) target;
 		validarSeInformouTurno(errors,pedido);
 		validarSeInformouItens(errors, pedido);
+		validarSeInformouSetor(errors, pedido);
 		
 	}
 
@@ -34,9 +35,14 @@ public class PedidoValidator implements Validator {
 
 	private void validarSeInformouTurno(Errors errors, Pedido pedido) {
 		if(pedido.getTurno() == null) {
-			errors.rejectValue("turno", "", "Campo turno é obrigatorio");
+			errors.rejectValue("turno", "", "Campo 'Turno' é obrigatorio");
 		}
-		
+	}
+	
+		private void validarSeInformouSetor(Errors errors, Pedido pedido) {
+			if(pedido.getSetorMagalu() == null) {
+				errors.rejectValue("setorMagalu", "", "Campo 'Setor' é obrigatorio");
+			}
 	}
 
 }

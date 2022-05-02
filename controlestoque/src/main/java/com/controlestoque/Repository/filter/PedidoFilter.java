@@ -1,9 +1,5 @@
 package com.controlestoque.Repository.filter;
 
-import java.time.LocalDate;
-
-
-
 import com.controlestoque.Enums.StatusPedido;
 import com.controlestoque.Enums.Turno;
 

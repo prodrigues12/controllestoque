@@ -103,26 +103,27 @@
 		<table class="table table-sm table-striped" style="text-align: center">
 			<thead class="thead-dark" style="text-align: center">
 
-				<th class="col-1"><th:block
+				<th class="col-auto"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
 				</th>
-				<th class="col-2"><th:block
+				<th class="col-auto"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'dataCriacao' , 'Data do Pedido')"></th:block>
-				<th class="col-4"><th:block
+				<th class="col-auto"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'colaborador' , 'Colaborador')"></th:block>
 				</th>
-				<th class="col-2">Turno</th>
-				<th class="col-3">Ação</th>
+				<th class="col-auto">Turno</th>
+				<th class="col-auto">Turno</th>
+				<th class="col-auto">Ação</th>
 
 			</thead>
 
 			<tbody>
 				<tr th:each="pedido :${pagina.conteudo}">
-					<td th:text="${pedido.codigo}">12</td>
-<!-- 					<td th:text="${pedido.status}">Produto Teste</td> -->
-					<td th:text="${pedido.dataCriacao}">Limpeza</td>
-					<td th:text="${pedido.colaborador.nome}">Limpeza</td>
-					<td th:text="${pedido.turno}">4</td>
+					<td th:text="${pedido.codigo}"></td>
+					<td th:text="${pedido.dataCriacao}"></td>
+					<td th:text="${pedido.colaborador.nome}"></td>
+					<td th:text="${pedido.setorMagalu}"></td>
+					<td th:text="${pedido.turno}"></td>
 					<td><a title="Visualizar"
 						th:href="@{/pedido/{codigo}(codigo=${pedido.codigo})}"><i
 							class="bx bx-show-alt ce-icon"></i> </a>

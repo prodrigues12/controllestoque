@@ -24,6 +24,7 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.controlestoque.Enums.SetorMagalu;
 import com.controlestoque.Enums.StatusPedido;
 import com.controlestoque.Enums.Turno;
 import com.controlestoque.dto.PedidosMes;
@@ -59,6 +60,9 @@ public class Pedido {
 
 	@Enumerated(EnumType.STRING)
 	private Turno turno;
+
+	@Enumerated(EnumType.STRING)
+	private SetorMagalu setorMagalu;
 
 	@OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ItemPedido> itens = new ArrayList<>();
@@ -128,6 +132,14 @@ public class Pedido {
 
 	public void setTurno(Turno turno) {
 		this.turno = turno;
+	}
+
+	public SetorMagalu getSetorMagalu() {
+		return setorMagalu;
+	}
+
+	public void setSetorMagalu(SetorMagalu setorMagalu) {
+		this.setorMagalu = setorMagalu;
 	}
 
 	public String getUuid() {

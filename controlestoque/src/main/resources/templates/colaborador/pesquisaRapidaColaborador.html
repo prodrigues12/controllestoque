@@ -17,8 +17,8 @@
 
 <div class="modal fade" id=colaboradorModal tabindex="-1"
 	aria-labelledby="" aria-hidden="true" th:fragment="modalColaborador">
-	<div class="modal-dialog">
-		<div class="modal-content">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content ">
 			<div class="modal-header">
 				<h5 class="modal-title" id="colaboradorModalLabel">Pesquisa
 					Colaborador</h5>
@@ -30,11 +30,12 @@
 
 
 				<div
-					class="alert alert-danger alert-dismissible show  js-mensagem-erro"
+					class="alert alert-danger alert-dismissible show  "
 					role="alert">
 					<button type="button" class="btn-close btn-sm"
 						data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
+
 				<form class="form" method="get" th:action="@{/colaborador}">
 
 					<div class="row container">

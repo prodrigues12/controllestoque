@@ -140,15 +140,16 @@
 				<th class="col-1"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
 				</th>
-				<th class="col-2"><th:block
+				<th class="col-1"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'dataCriacao' , 'Data Craição')"></th:block>
 				</th>
-				<th class="col-2">Colaborador</th>
-				<th class="col-2">Turno</th>
+				<th class="col-4">Colaborador</th>
+					<th class="col-1">Setor</th>
+				<th class="col-1">Turno</th>
 				<th class="col-2"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'status' , 'Status')"></th:block>
 				</th>
-				<th class="col-2">Data Modificação</th>
+				<th class="col-1">Ultima alter.</th>
 
 
 				<th class="col-1">Ação</th>
@@ -160,6 +161,7 @@
 					<td th:text="${pedido.codigo}"></td>
 					<td th:text="${pedido.dataCriacao}"></td>
 					<td th:text="${pedido.colaborador.nome}"></td>
+					<td th:text="${pedido.setorMagalu}"></td>
 					<td th:text="${pedido.turno}"></td>
 					<td th:text="${pedido.status}"><a ></a></td>
 					<td th:text="${pedido.dataCriacao}"></td>

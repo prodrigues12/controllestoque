@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.controlestoque.Enums.SetorMagalu;
 import com.controlestoque.Enums.StatusPedido;
 import com.controlestoque.Enums.Turno;
 import com.controlestoque.Repository.Pedidos;
@@ -69,6 +70,7 @@ public class PedidoController {
 		setUuid(pedido);
 
 		mv.addObject("turno", Turno.values());
+		mv.addObject("setorMagalu", SetorMagalu.values());
 		mv.addObject("itens", pedido.getItens());
 		return mv;
 	}
