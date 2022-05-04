@@ -111,5 +111,30 @@ public class ProdutoController {
 		return mv;
 
 	}
+	
+	@GetMapping("/estoqueBaixo")
+	public ModelAndView estoqueBaixo(ProdutoFilter produtoFilter, BindingResult result,
+			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView("produto/estoqueMinimo");
+		mv.addObject("secao", sessaoRepository.findAll());
+
+		PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.estoqueMinimo(produtoFilter, pageable),
+				httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+	}
+	
+	@GetMapping("/estoqueZero")
+	public ModelAndView estoqueZero(ProdutoFilter produtoFilter, BindingResult result,
+			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView("produto/estoqueZero");
+		mv.addObject("secao", sessaoRepository.findAll());
+
+		PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.estoqueZerado(produtoFilter, pageable),
+				httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+	}
+	
 
 }

@@ -12,6 +12,7 @@ public class ProdutoFilter {
 	private UnidadeMedia uniMedida;
 	private Secao secao;
 	private BigDecimal qtdEstoque;
+	private BigDecimal qtdEstMin;
 	
 	
 	public Long getCodigo() {
@@ -44,6 +45,14 @@ public class ProdutoFilter {
 	public void setQtdEstoque(BigDecimal qtdEstoque) {
 		this.qtdEstoque = qtdEstoque;
 	}
+	public BigDecimal getQtdEstMin() {
+		return qtdEstMin;
+	}
+	public void setQtdEstMin(BigDecimal qtdEstMin) {
+		this.qtdEstMin = qtdEstMin;
+	}
+	
+	
 	
 	
 	

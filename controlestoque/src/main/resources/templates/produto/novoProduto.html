@@ -159,12 +159,11 @@
 
 					<!-- 				Estoque -->
 					<div class=" col-md-3" th:unless="${produto.produtoNovo}">
-						
 							<label for="estoque" class="col-form-label-sm">Estoque:</label>
 							<div class="input-group"> <input
 								id="estoque" type="text" th:field="*{qtdEstoque}"
-								class="form-control form-control-sm js-decimal"
-								readonly="readonly">  &nbsp;
+								class="form-control form-control-sm "
+								readonly>  &nbsp;
 							<div class="input-group-btn">
 								<a class="btn btn-primary"
 									th:href="@{/estoque/ajuste/{codigo}(codigo=${produto.codigo})}">
@@ -173,8 +172,6 @@
 							</div>
 						</div>
 					</div>
-
-
 					<p>
 
 						<!-- 						status -->

@@ -45,8 +45,8 @@
 					<!-- 									Codigo -->
 					<div class=" col-md-1">
 						<label class=" col-form-label-sm">Codigo:</label> <input
-							class="form-control form-control-sm" type="text" placeholder="Ex:1"
-							th:field="*{codigo}">
+							class="form-control form-control-sm" type="text"
+							placeholder="Ex:1" th:field="*{codigo}">
 					</div>
 
 					<!-- 									Turno -->
@@ -79,13 +79,13 @@
 					<!-- 										Colaborador -->
 					<div class="col-auto">
 						<label for="secao" class="col-form-label-sm">Colaborador:</label>
-						<input class="form-control form-control-sm" type="text" placeholder="Nome colaborador"
-							th:field="*{nomeColaborador}" />
+						<input class="form-control form-control-sm" type="text"
+							placeholder="Nome colaborador" th:field="*{nomeColaborador}" />
 					</div>
 					<div class="col-auto">
 						<label for="secao" class="col-form-label-sm">Identificador:</label>
-						<input class="form-control form-control-sm" type="text" placeholder="ID / CPF / Filial"
-							th:field="*{cpfCnpjId}" />
+						<input class="form-control form-control-sm" type="text"
+							placeholder="ID / CPF / Filial" th:field="*{cpfCnpjId}" />
 					</div>
 
 				</div>
@@ -112,7 +112,7 @@
 				<th class="col-3"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'colaborador' , 'Colaborador')"></th:block>
 				</th>
-				<th class="col-2">Turno</th>
+				<th class="col-2">Setor</th>
 				<th class="col-2">Turno</th>
 				<th class="col-2">Ação</th>
 
@@ -146,14 +146,11 @@
 					th:with="numeroPagina=${p - 1}">
 					<li th:class="${paginaAtual == numeroPagina} ? active"><a
 						class="page-link" th:href="${pagina.urlParaPagina(numeroPagina)}">[[${p}]]</a></li>
-
 				</th:block>
-
 
 			</ul>
 		</nav>
 	</div>
-
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script

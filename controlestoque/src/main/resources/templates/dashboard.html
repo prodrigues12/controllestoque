@@ -169,9 +169,12 @@
 				<div class="card-body">
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
-							<div
-								class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-								Estoque abaixo do minimo.</div>
+							<div>
+								<a
+									class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+									th:href="@{/produto/estoqueBaixo}"> Estoque abaixo do
+									minimo.</a>
+							</div>
 							<div class="h5 mb-0 font-weight-bold text-gray-800">[[${estoqueBaixo}]]</div>
 							<div class="aw-box__value"></div>
 							<div class="dark"></div>
@@ -191,9 +194,11 @@
 				<div class="card-body">
 					<div class="row no-gutters align-items-center">
 						<div class="col mr-2">
-							<div
-								class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-								Estoque Zerado</div>
+							<div>
+								<a
+									class="text-xs font-weight-bold text-danger text-uppercase mb-1"
+									th:href="@{/produto/estoqueZero}">Estoque Zerado </a>
+							</div>
 							<div class="h5 mb-0 font-weight-bold text-gray-800">[[${estoqueZero}]]</div>
 
 						</div>
@@ -215,12 +220,8 @@
 					<h2 class="aw-graph-box__title">Pedidos nos últimos 6 meses</h2>
 				</div>
 				<div class="aw-graph-box__content">
-					<!--<div class="aw-graph-box__no-data">
-							<i class="fa  fa-line-chart  fa-2x"></i>
-							<span>Não há dados</span>
-						</div>-->
 					<div>
-						<canvas id="graficoVendasPorMes" height="160"></canvas>
+						<canvas id="graficoVendasPorMes" height="150"></canvas>
 					</div>
 				</div>
 			</div>
@@ -230,16 +231,11 @@
 		<div class="col-sm-6">
 			<div class="aw-graph-box">
 				<div class="aw-graph-box__header">
-					<h2 class="aw-graph-box__title">
-						Vendas por origem <small>últimos 6 meses</small>
-					</h2>
+					<h2 class="aw-graph-box__title">TOP 5 dos produtos +solicitados</h2>
 				</div>
 				<div class="aw-graph-box__content">
-					<div class="aw-graph-box__no-data">
-						<i class="fa  fa-line-chart  fa-2x"></i> <span>Não há dados</span>
-					</div>
 					<div>
-						<canvas id="pizzaVendasPorMes" height="160"></canvas>
+						<canvas id="graficosTopProdutos" ></canvas>
 					</div>
 				</div>
 			</div>
