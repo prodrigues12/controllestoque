@@ -30,6 +30,7 @@ import com.controlestoque.Repository.Secoes;
 import com.controlestoque.Repository.filter.ProdutoFilter;
 import com.controlestoque.controller.page.PageWrapper;
 import com.controlestoque.dto.ProdutoDTO;
+import com.controlestoque.dto.ProdutosTopFive;
 import com.controlestoque.model.Produto;
 import com.controlestoque.service.ProdutoService;
 import com.controlestoque.service.exception.ImpossivelExcluirEntidadeException;
@@ -134,6 +135,12 @@ public class ProdutoController {
 				httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
+	}
+	
+	@GetMapping("/produtosTopFive")
+	public @ResponseBody List<ProdutosTopFive> listaProdutosTopFive(){
+		return proRepository.topFiveProdutos();
+		
 	}
 	
 

@@ -447,27 +447,13 @@ public class PedidosImpl implements PedidosQueries {
 	@Override
 	public List<PedidosMes> totalPorMes() {
 
-		String query = "select date_format(data_criacao, '%Y/%m') mes, count(*) "
-				+ "total from pedido where data_criacao > date_sub(now(), interval 6 month) "
-				+ "and status = 'FINALIZADO' group by date_format(data_criacao, '%Y/%m')"
-				+ " order by date_format(data_criacao, '%Y/%m') desc";
+		String query = "SELECT DATE_FORMAT(data_criacao, '%Y/%m') mes, COUNT(*) "
+				+ "total FROM pedido WHERE data_criacao BETWEEN CURDATE() - INTERVAL 5 MONTH AND CURDATE()"
+				+ "AND status = 'FINALIZADO' GROUP BY  DATE_FORMAT(data_criacao, '%Y/%m')"
+				+ "ORDER BY DATE_FORMAT(data_criacao, '%Y/%m') DESC";
 
 		Query nativeQuery = manager.createNativeQuery(query, "mappingPedidos");
 		List<PedidosMes> lista = nativeQuery.getResultList();
-
-		LocalDate hoje = LocalDate.now();
-
-		for (int i = 1; i <= 6; i++) {
-			String mesIdeal = String.format("%d/%02d", hoje.getYear(), hoje.getMonthValue());
-
-			boolean possueMes = lista.stream().filter(v -> v.getMes().equals(mesIdeal)).findAny().isPresent();
-			if (!possueMes) {
-				lista.add(i - 1, new PedidosMes(mesIdeal, 0));
-			}
-
-			hoje = hoje.minusMonths(1);
-		}
-
 		return lista;
 
 	}

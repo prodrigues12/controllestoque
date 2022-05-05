@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -23,7 +24,9 @@ import org.springframework.util.StringUtils;
 import com.controlestoque.Enums.StatusPedido;
 import com.controlestoque.Repository.filter.ProdutoFilter;
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
+import com.controlestoque.dto.PedidosMes;
 import com.controlestoque.dto.ProdutoDTO;
+import com.controlestoque.dto.ProdutosTopFive;
 import com.controlestoque.model.Produto;
 
 public class ProdutosImpl implements ProdutosQueries {
@@ -218,6 +221,25 @@ public class ProdutosImpl implements ProdutosQueries {
 				.createQuery("select count(*) from Produto where qtdEstoque <= 0", Long.class).getSingleResult());
 
 		return optional.orElse(Long.valueOf(0));
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ProdutosTopFive> topFiveProdutos() {
+		
+		String query = "SELECT  produto.nome AS produto_nome, count(item.quantidade) AS total "
+				+ "FROM item_pedido item INNER JOIN produto produto  INNER JOIN pedido pedido "
+				+ "ON item.codigo_produto = produto.codigo AND item.codigo_pedido = pedido.codigo "
+				+ "AND pedido.data_criacao BETWEEN CURDATE() - INTERVAL 5 MONTH AND CURDATE() "
+				+ "AND pedido.status='FINALIZADO'"
+				+ "GROUP BY produto.nome ORDER BY COUNT(item.quantidade) DESC LIMIT 5";
+				
+		
+		Query nativeQuery = manager.createNativeQuery(query, "mappingProtutosFive");
+		List<ProdutosTopFive> lista = nativeQuery.getResultList();
+
+		return lista;
+		
 	}
 
 }

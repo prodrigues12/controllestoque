@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.controlestoque.Repository.helper.produtos.ProdutosQueries;
+import com.controlestoque.dto.ProdutosTopFive;
 import com.controlestoque.model.Produto;
 
 @Repository
@@ -23,5 +24,7 @@ public interface Produtos extends JpaRepository<Produto, Long>, ProdutosQueries{
 	
 	@Query("select p from Produto p where p.codigo =:codigo")
 	public Produto findByCodigo(Long codigo);
+
+	
 }
 	

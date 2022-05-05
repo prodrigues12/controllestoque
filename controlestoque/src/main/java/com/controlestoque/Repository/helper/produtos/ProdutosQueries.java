@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 import com.controlestoque.Repository.filter.ProdutoFilter;
 import com.controlestoque.dto.ProdutoDTO;
+import com.controlestoque.dto.ProdutosTopFive;
 import com.controlestoque.model.Produto;
 
 public interface ProdutosQueries {
@@ -27,4 +28,6 @@ public interface ProdutosQueries {
 	public Page<Produto> estoqueMinimo(ProdutoFilter filtro, Pageable pageable);
 
 	public Page<Produto> estoqueZerado(ProdutoFilter filtro, Pageable pageable);
+	
+	public List<ProdutosTopFive> topFiveProdutos();
 }

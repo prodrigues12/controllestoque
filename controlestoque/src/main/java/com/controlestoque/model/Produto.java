@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,17 +16,26 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SqlResultSetMapping;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.NumberFormat;
 
 import com.controlestoque.Enums.UnidadeMedia;
+import com.controlestoque.dto.PedidosMes;
+import com.controlestoque.dto.ProdutosTopFive;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+
+@DynamicUpdate
+@SqlResultSetMapping(name = "mappingProtutosFive", classes = @ConstructorResult(targetClass = ProdutosTopFive.class, columns = {
+		@ColumnResult(name = "nome", type = String.class), @ColumnResult(name = "quantidade", type = Integer.class) }))
+
 public class Produto implements Serializable {
 
 	private static final long serialVersionUID = 1L;

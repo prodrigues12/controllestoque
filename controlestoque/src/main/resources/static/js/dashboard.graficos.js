@@ -36,7 +36,7 @@ Controlestoque.GraficosPedidosMes = (function() {
 
 					backgroundColor: [
 						'#6A5ACD',
-						'#FF00FF',
+						'#4876FF',
 						'#FFA500',
 						'#32CD32',
 						'#A020F0',
@@ -63,29 +63,73 @@ Controlestoque.GraficosTopProdutos = (function() {
 	}
 
 	GraficosTopProdutos.prototype.iniciar = function() {
-
-		var grafico = new Chart(this.ctx, {
-			type: 'pie',
-			data: {
-				labels: [
-					'Red',
-					'Blue',
-					'Yellow'
-				],
-				datasets: [{
-					label: 'My First Dataset',
-					data: [300, 50, 100],
-					backgroundColor: [
-						'rgb(255, 99, 132)',
-						'rgb(54, 162, 235)',
-						'rgb(255, 205, 86)'
-					],
-					hoverOffset: 4
-				}]
-			}
-			
+		$.ajax({
+			url: 'produto/produtosTopFive',
+			method: 'GET',
+			success: onInformacaoRecebida.bind(this)
 		});
-}
+	}
+
+	function onInformacaoRecebida(produtoTop) {
+
+		var nomes = [];
+		var quantidades = [];
+
+		produtoTop.forEach(function(obj) {
+			nomes.unshift(obj.nome);
+			quantidades.unshift(obj.quantidade)
+		});
+
+//		var graficoRosca = new Chart(this.ctx, {
+//			type: 'doughnut',
+//			data: {
+//				labels: [nomes],
+//				//					'Red',
+//				//					'Blue',
+//				//					'Yellow',
+//				//					'Greew',
+//				//					'Violet',
+//				//					
+//				//				],
+//				datasets: [{
+//					label: 'TOP 5 CD-994',
+//					data: [quantidades],
+//					backgroundColor: [
+//						'rgb(255, 99, 71)',
+//						'rgb(54, 162, 235)',
+//						'rgb(255 255 0)',
+//						'rgb(50 205 50)',
+//						'rgb(208, 32, 144)'
+//					],
+//					hoverOffset: 4
+//				}]
+//			}
+//
+//		});
+
+var grafico = new Chart(this.ctx, {
+			type: 'bar',
+			data: {
+				labels: nomes,
+				datasets: [{
+					data: quantidades,
+					label: 'Pedidos ',
+
+					backgroundColor: [
+						'#6A5ACD',
+						'#4876FF',
+						'#FFA500',
+						'#32CD32',
+						'#A020F0',
+						'#FF7F50'
+					],
+					borderColor: '#fff',
+					pointBorderColor: '#fff',
+					pointBackgroundColor: "#fff",
+				}]
+			},
+		});
+	}
 	return GraficosTopProdutos;
 
 }());
