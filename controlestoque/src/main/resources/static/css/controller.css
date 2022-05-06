@@ -500,6 +500,16 @@ a {
     font-size: 1.2em;
 }
 
+.layout-footer{
+	text-align: center;
+	font-weight:bold;	
+}
+
+.icon_dasboard{
+	font-size: 45px
+}
+
+
 @media (min-width: 768px) { /* screen-sm-min */
 	.tabela-item__painel-exclusao {
 		width: 40%;

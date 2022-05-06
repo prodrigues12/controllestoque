@@ -35,16 +35,16 @@ Controlestoque.GraficosPedidosMes = (function() {
 					label: 'Pedidos ',
 
 					backgroundColor: [
-						'#6A5ACD',
-						'#4876FF',
-						'#FFA500',
-						'#32CD32',
-						'#A020F0',
-						'#FF7F50'
+						'#90EE90',
+						'#FF6347',
+						'#F0E68C',	
+						'#9370DB',
+						'#D3D3D3',
+						'#F4A460'
 					],
-					borderColor: '#fff',
-					pointBorderColor: '#fff',
-					pointBackgroundColor: "#fff",
+					borderColor: '#000',
+					pointBorderColor: '#000',
+					pointBackgroundColor: "#000",
 				}]
 			},
 		});
@@ -80,55 +80,41 @@ Controlestoque.GraficosTopProdutos = (function() {
 			quantidades.unshift(obj.quantidade)
 		});
 
-//		var graficoRosca = new Chart(this.ctx, {
-//			type: 'doughnut',
-//			data: {
-//				labels: [nomes],
-//				//					'Red',
-//				//					'Blue',
-//				//					'Yellow',
-//				//					'Greew',
-//				//					'Violet',
-//				//					
-//				//				],
-//				datasets: [{
-//					label: 'TOP 5 CD-994',
-//					data: [quantidades],
-//					backgroundColor: [
-//						'rgb(255, 99, 71)',
-//						'rgb(54, 162, 235)',
-//						'rgb(255 255 0)',
-//						'rgb(50 205 50)',
-//						'rgb(208, 32, 144)'
-//					],
-//					hoverOffset: 4
-//				}]
-//			}
-//
-//		});
-
-var grafico = new Chart(this.ctx, {
-			type: 'bar',
+		var graficoRosca = new Chart(this.ctx, {
+			type: 'doughnut',
 			data: {
 				labels: nomes,
+				
 				datasets: [{
 					data: quantidades,
-					label: 'Pedidos ',
-
 					backgroundColor: [
-						'#6A5ACD',
-						'#4876FF',
+						'#DC143C',
+						'#90EE90',
+						'#20B2AA',
 						'#FFA500',
-						'#32CD32',
-						'#A020F0',
-						'#FF7F50'
+//						'#A020F0',
+						'#2F4F4F'
 					],
-					borderColor: '#fff',
-					pointBorderColor: '#fff',
-					pointBackgroundColor: "#fff",
-				}]
+					hoverOffset: 10
+				}],
+				
 			},
+			options:{
+				aspectRatio:2,
+				 plugins: {
+            subtitle: {
+                display: true,
+                text: 'Nos últimos 6 meses'
+            },
+            legend:{
+	position:'right'
+}
+        }
+				
+			}
+
 		});
+
 	}
 	return GraficosTopProdutos;
 

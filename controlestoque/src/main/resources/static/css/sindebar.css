@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
 :root {
-    --header-height: 3rem;
+/* 	parte superior onde fica o nome do projeto */
+    --header-height: 2rem;
+/*     comprimento da barra lateral encolhida */
     --nav-width: 68px;
-    --first-color: #0A2463;
+   	--first-color: #0A2463;
     --first-color-light: #AFA5D9;
     --white-color: #F7F6FB;
     --body-font: 'Nunito', sans-serif;
@@ -16,7 +18,7 @@
 ::after {
     box-sizing: border-box;
     margin: 0;
-	padding: 0;
+	padding: 110;
 	box-sizing: border-box;
 }
 
@@ -83,12 +85,13 @@ a {
 }
 
 .nav {
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
      margin: 0 auto !important;
+     
     
 }
 
