@@ -29,12 +29,13 @@
 					<h4>Pesquisa Seção</h4>
 				</div>
 				<div class="col-md-2">
-					<a class="btn btn-primary btn-sm" th:href="@{/secao/novo}">Nova Seção</a>
+					<a class="btn btn-primary btn-sm" th:href="@{/secao/novo}">Nova
+						Seção</a>
 				</div>
 			</div>
 		</div>
-		
-			<div th:replace="fragmentos/fragmentos :: magalu"></div>
+
+		<div th:replace="fragmentos/fragmentos :: magalu"></div>
 		<div class="card-body">
 
 			<form action="" method="get" th:object="${secaoFilter}">
@@ -44,7 +45,8 @@
 					<!-- 				Codigo -->
 					<div class=" col-md-1">
 						<label class=" col-form-label-sm">Codigo:</label> <input
-							class="form-control form-control-sm" type="text" th:field="*{codigo}"/>
+							class="form-control form-control-sm" type="text"
+							th:field="*{codigo}" />
 					</div>
 
 					<!-- 				Nome -->
@@ -59,16 +61,15 @@
 
 				<div class="form-row">
 					<button type="submit" class="btn btn-primary btn-sm">Pesquisar</button>
-					<a type="submit" class="btn btn-outline-warning btn-sm" th:href="@{/secao/}">Limpar filtro</a>
+					<a type="submit" class="btn btn-outline-warning btn-sm"
+						th:href="@{/secao/}">Limpar filtro</a>
 				</div>
 			</form>
 		</div>
 	</div>
 	<div class="table-responsive">
-		<table class="table table-bordered table-houver  table-sm"
-			style="text-align: center">
+		<table class="table table-sm table-striped" style="text-align: center">
 			<thead class="thead-dark" style="text-align: center">
-
 				<th class="col-1"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
 
@@ -86,8 +87,7 @@
 					<td th:text="${secao.codigo}">1</td>
 					<td th:text="${secao.nome}">Produto Teste</td>
 					<td><a th:href="@{/secao/{codigo}(codigo=${secao.codigo})}"><i
-							class=" bx bx-edit ce-icon"></i>
-					</a>  &nbsp; <a
+							class=" bx bx-edit ce-icon"></i> </a> &nbsp; <a
 						class=" js-exclusao-btn" title="Excluir" href="#"
 						data:url="@{/secao/{codigo}(codigo=${secao.codigo})}"
 						data:objeto="${secao.nome}"> <i class="bx bx-trash ce-icon"></i>
@@ -124,14 +124,14 @@
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-			<script src="https://cdnout.com/sweetalert"></script>
+	<script src="https://cdnout.com/sweetalert"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/controllestoque.dialogo-excluir.js"></script>
-	
+
 
 
 </body>

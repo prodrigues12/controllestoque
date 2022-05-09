@@ -11,6 +11,7 @@ import javax.persistence.Query;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
@@ -137,7 +138,7 @@ public class PedidosImpl implements PedidosQueries {
 
 	@SuppressWarnings("deprecation")
 	private void adicionarFiltro(PedidoFilter filtro, Criteria criteria) {
-		criteria.createAlias("colaborador", "c");
+		criteria.createAlias("colaborador", "c").addOrder(Order.desc("codigo"));
 
 		if (filtro != null) {
 			if (!StringUtils.isEmpty(filtro.getCodigo())) {
@@ -184,7 +185,8 @@ public class PedidosImpl implements PedidosQueries {
 
 	@SuppressWarnings("deprecation" )
 	private void filtroStatusNovo(PedidoFilter filtro, Criteria criteria) {
-		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.NOVO));
+		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.NOVO))
+		.addOrder(Order.desc("codigo"));
 
 		if (filtro != null) {
 
@@ -226,9 +228,10 @@ public class PedidosImpl implements PedidosQueries {
 		}
 	}
 
-	@SuppressWarnings( "deprecation")
+	@SuppressWarnings("deprecation")
 	private void filtroStatusPendente(PedidoFilter filtro, Criteria criteria) {
-		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.PENDENTE));
+		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.PENDENTE))
+		.addOrder(Order.desc("codigo"));
 
 		if (filtro != null) {
 
@@ -269,9 +272,10 @@ public class PedidosImpl implements PedidosQueries {
 		}
 	}
 
-	@SuppressWarnings( "deprecation")
+	@SuppressWarnings("deprecation")
 	private void filtroStatusSeparacao(PedidoFilter filtro, Criteria criteria) {
-		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.SEPARACAO));
+		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.SEPARACAO))
+		.addOrder(Order.desc("codigo"));
 
 		if (filtro != null) {
 
@@ -312,7 +316,7 @@ public class PedidosImpl implements PedidosQueries {
 		}
 	}
 
-	@SuppressWarnings( "deprecation")
+	@SuppressWarnings("deprecation")
 	private void filtroStatusCancelado(PedidoFilter filtro, Criteria criteria) {
 		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.CANCELADO));
 

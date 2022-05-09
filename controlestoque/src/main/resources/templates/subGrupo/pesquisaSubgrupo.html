@@ -29,20 +29,21 @@
 					<h4>Pesquisa Subgrupo</h4>
 				</div>
 				<div class="col-md-2">
-					<a class="btn btn-primary btn-sm" th:href="@{/subgrupo/novo}">Novo subrupo</a>
+					<a class="btn btn-primary btn-sm" th:href="@{/subgrupo/novo}">Novo
+						subrupo</a>
 				</div>
 			</div>
 		</div>
-		
-			<div th:replace="fragmentos/fragmentos :: magalu"></div>
+
+		<div th:replace="fragmentos/fragmentos :: magalu"></div>
 		<div class="card-body">
 
 			<form action="" method="get" th:object="${subgrupoFilter}">
 
 				<div class="row mb-3">
 
-					
-					
+
+
 					<div class="col-md-3">
 						<label for="grupo" class="col-form-label-sm">Grupo:</label>
 						<div class="input-group">
@@ -57,11 +58,11 @@
 
 						</div>
 					</div>
-					
-						<!-- 				Nome -->
+
+					<!-- 				Nome -->
 					<div class="col-md-9">
 						<label class="col-form-label-sm">Nome do subgrupo:</label> <input
-							class="form-control form-control-sm" th:field="*{nome}"/>
+							class="form-control form-control-sm" th:field="*{nome}" />
 					</div>
 
 				</div>
@@ -69,27 +70,26 @@
 
 				<div class="form-row">
 					<button type="submit" class="btn btn-primary btn-sm">Pesquisar</button>
-					<a type="submit" class="btn btn-outline-warning btn-sm" th:href="@{/subgrupo/}">Limpar filtro</a>
+					<a type="submit" class="btn btn-outline-warning btn-sm"
+						th:href="@{/subgrupo/}">Limpar filtro</a>
 				</div>
 			</form>
 		</div>
 	</div>
-	
-	<div class="table-responsive">
-		<table class="table table-bordered table-houver  table-sm"
-			style="text-align: center">
-			<thead class="thead-dark" style="text-align: center">
 
-				<th class="col-3">
-								<th:block th:replace="fragmentos/ordenacao :: order (${pagina}, 'grupo' , 'Grupo')"></th:block>
-								</th>
-								
-								<th class="col-6">
-								<th:block th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Subgrupo')"></th:block>
-								
-								</th>
-								<th class="col-3">Ação</th>
-							</thead>
+	<div class="table-responsive">
+		<table class="table table-sm table-striped" style="text-align: center">
+			<thead class="thead-dark" style="text-align: center">
+				<th class="col-3"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'grupo' , 'Grupo')"></th:block>
+				</th>
+
+				<th class="col-6"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Subgrupo')"></th:block>
+
+				</th>
+				<th class="col-3">Ação</th>
+			</thead>
 
 
 			<tbody>

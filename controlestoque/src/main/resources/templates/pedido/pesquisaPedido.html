@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="/css/sindebar.css" />
 <link rel="stylesheet" href="/css/controller.css" />
 
-<link rel="stylesheet" href="/css/brewer.css" />
 </head>
 <body id="body-pd">
 
@@ -73,35 +72,24 @@
 						</select>
 					</div>
 
-					<!-- 					Data Criação -->
-<!-- 					<div class="col-auto"> -->
-<!-- 						<label for="dataCriacao" class="col-form-label-sm">Data de -->
-<!-- 							criação:</label> <input class="form-control form-control-sm" type="date" -->
-<!-- 							th:field="*{desde}" /> &nbsp;&nbsp; -->
-<!-- 					</div> -->
 
-<!-- 					<div class="col-auto"> -->
-<!-- 						<label for="dataFim" class="col-form-label-sm">Até:</label> <input -->
-<!-- 							class="form-control form-control-sm" type="date" -->
-<!-- 							th:field="*{ate}" /> &nbsp;&nbsp; -->
-<!-- 					</div> -->
-	<div class="col-auto">
-					<label for="dataInicio" class="col-form-label-sm">Data de
-						criação:</label>
-					<div class="row mb-4">
-						<label for="dataInicio" class="col-sm-auto col-form-label">De:</label>
-						<div class="col-sm-4">
-							<input type="date" class="form-control form-control-sm"
-								id="desde" th:field="*{desde}" autocomplete="off" />
-						</div>
-						<label for="dataFim" class="col-sm-auto col-form-label">até:</label>
-						<div class="col-sm-4">
-							<input type="date" class="form-control form-control-sm"
-								id="ate" th:field="*{ate}" autocomplete="off" />
-						</div>
+					<div class="col-auto">
+						<label for="dataInicio" class="col-form-label-sm">Data de
+							criação:</label>
+						<div class="row mb-4">
+							<label for="dataInicio" class="col-sm-auto col-form-label">De:</label>
+							<div class="col-sm-4">
+								<input type="date" class="form-control form-control-sm"
+									id="desde" th:field="*{desde}" autocomplete="off" />
+							</div>
+							<label for="dataFim" class="col-sm-auto col-form-label">até:</label>
+							<div class="col-sm-4">
+								<input type="date" class="form-control form-control-sm" id="ate"
+									th:field="*{ate}" autocomplete="off" />
+							</div>
 
+						</div>
 					</div>
-				</div>
 
 				</div>
 
@@ -141,10 +129,10 @@
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
 				</th>
 				<th class="col-1"><th:block
-						th:replace="fragmentos/ordenacao :: order (${pagina}, 'dataCriacao' , 'Data Craição')"></th:block>
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'dataCriacao' , 'Data Criação')"></th:block>
 				</th>
 				<th class="col-3">Colaborador</th>
-					<th class="col-2">Setor</th>
+				<th class="col-2">Setor</th>
 				<th class="col-">Turno</th>
 				<th class="col-2"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'status' , 'Status')"></th:block>
@@ -163,8 +151,8 @@
 					<td th:text="${pedido.colaborador.nome}"></td>
 					<td th:text="${pedido.setorMagalu}"></td>
 					<td th:text="${pedido.turno}"></td>
-					<td th:text="${pedido.status}"><a ></a></td>
-					<td th:text="${pedido.dataCriacao}"></td>
+					<td th:text="${pedido.status}"><a></a></td>
+					<td  class= "js-data "th:text="${pedido.dataModifucacao}"></td>
 					<td><a title="Visualizar"
 						th:href="@{/pedido/{codigo}(codigo=${pedido.codigo})}"><i
 							class="bx bx-show-alt ce-icon"></i> </a>
@@ -206,6 +194,7 @@
 	<script src="/js/colaborador.pesquisa-rapida.js"></script>
 	<script src="/js/pedido.autocomplete-itens.js"></script>
 	<script src="/js/pedido.tabela-itens.js"></script>
+
 
 </body>
 </html>

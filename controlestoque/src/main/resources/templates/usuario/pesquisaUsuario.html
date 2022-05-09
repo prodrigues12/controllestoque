@@ -70,10 +70,8 @@
 	</div>
 
 	<div class="table-responsive">
-		<table class="table table-bordered table-houver  table-sm"
-			style="text-align: center">
+		<table class="table table-sm table-striped" style="text-align: center">
 			<thead class="thead-dark" style="text-align: center">
-
 				<th class="col-1"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
 				</th>
@@ -83,7 +81,7 @@
 
 				</th>
 				<th class="col-4">Email</th>
-				
+
 
 				<th class="col-2">Ação</th>
 			</thead>
@@ -99,8 +97,7 @@
 							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp; <a
 						class=" js-exclusao-btn" title="Excluir" href="#"
 						data:url="@{/usuario/{codigo}(codigo=${usuario.codigo})}"
-						data:objeto="${usuario.nome}"> <i
-							class="bx bx-trash ce-icon"></i>
+						data:objeto="${usuario.nome}"> <i class="bx bx-trash ce-icon"></i>
 					</a></td>
 				</tr>
 				<tr th:if="${pagina.vazia}">
