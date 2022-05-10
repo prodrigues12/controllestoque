@@ -16,7 +16,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Transient;
@@ -47,7 +46,7 @@ public class Pedido {
 
 	@Column(name = "data_modificacao")
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
-	private LocalDate dataModifucacao;
+	private LocalDate dataModificacao;
 
 	private String observacao;
 
@@ -86,12 +85,12 @@ public class Pedido {
 		this.dataCriacao = dataCriacao;
 	}
 
-	public LocalDate getDataModifucacao() {
-		return dataModifucacao;
+	public LocalDate getDataModificacao() {
+		return dataModificacao;
 	}
 
-	public void setDataModifucacao(LocalDate dataModifucacao) {
-		this.dataModifucacao = dataModifucacao;
+	public void setDataModifucacao(LocalDate dataModificacao) {
+		this.dataModificacao = dataModificacao;
 	}
 
 	public String getObservacao() {

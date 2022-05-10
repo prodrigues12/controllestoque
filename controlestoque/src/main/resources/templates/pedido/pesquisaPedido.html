@@ -137,7 +137,7 @@
 				<th class="col-2"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'status' , 'Status')"></th:block>
 				</th>
-				<th class="col-1">Ultima alter.</th>
+				<th class="col-1">Última alter.</th>
 
 
 				<th class="col-1">Ação</th>
@@ -147,12 +147,12 @@
 			<tbody>
 				<tr th:each="pedido :${pagina.conteudo}">
 					<td th:text="${pedido.codigo}"></td>
-					<td th:text="${pedido.dataCriacao}"></td>
+					<td th:text="${#temporals.format(pedido.dataCriacao,'dd/MM/yyyy')}"></td>
 					<td th:text="${pedido.colaborador.nome}"></td>
 					<td th:text="${pedido.setorMagalu}"></td>
 					<td th:text="${pedido.turno}"></td>
 					<td th:text="${pedido.status}"><a></a></td>
-					<td  class= "js-data "th:text="${pedido.dataModifucacao}"></td>
+					<td  th:text="${#temporals.format(pedido.dataModificacao, 'dd/MM/yyyy')}"></td>
 					<td><a title="Visualizar"
 						th:href="@{/pedido/{codigo}(codigo=${pedido.codigo})}"><i
 							class="bx bx-show-alt ce-icon"></i> </a>
@@ -194,7 +194,7 @@
 	<script src="/js/colaborador.pesquisa-rapida.js"></script>
 	<script src="/js/pedido.autocomplete-itens.js"></script>
 	<script src="/js/pedido.tabela-itens.js"></script>
-
+	<script src="/js/controllestoque.js"></script>
 
 </body>
 </html>

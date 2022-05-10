@@ -121,7 +121,7 @@ public class PedidoController {
 	@GetMapping("/pedidosNovos")
 	public ModelAndView listaPedidosNovos(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
-		ModelAndView mv = new ModelAndView("pedido/listaPedidosNovos");
+		ModelAndView mv = new ModelAndView("pedido/listaPedidosPorStatus");
 		objetosPedidos(mv);
 
 		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosNovos(pedidoFilter, pageable),
@@ -136,7 +136,7 @@ public class PedidoController {
 	@GetMapping("/pedidosPendentes")
 	public ModelAndView listaPedidosPendentes(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
-		ModelAndView mv = new ModelAndView("pedido/listaPedidosPendentes");
+		ModelAndView mv = new ModelAndView("pedido/listaPedidosPorStatus");
 		objetosPedidos(mv);
 
 		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosPendentes(pedidoFilter, pageable),
@@ -149,7 +149,7 @@ public class PedidoController {
 	@GetMapping("/pedidosSeparacao")
 	public ModelAndView listaPedidosSeparacao(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
-		ModelAndView mv = new ModelAndView("pedido/listaPedidosSeparacao");
+		ModelAndView mv = new ModelAndView("pedido/listaPedidosPorStatus");
 		objetosPedidos(mv);
 
 		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosSeparacao(pedidoFilter, pageable),
@@ -161,7 +161,7 @@ public class PedidoController {
 	@GetMapping("/pedidosCancelados")
 	public ModelAndView listaPedidosCancelados(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
-		ModelAndView mv = new ModelAndView("pedido/listaPedidosNovos");
+		ModelAndView mv = new ModelAndView("pedido/listaPedidosPorStatus");
 		objetosPedidos(mv);
 
 		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosCancelados(pedidoFilter, pageable),
@@ -173,7 +173,7 @@ public class PedidoController {
 	@GetMapping("/pedidosFinalizados")
 	public ModelAndView listaPedidosFinalizados(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
-		ModelAndView mv = new ModelAndView("pedido/listaPedidosNovos");
+		ModelAndView mv = new ModelAndView("pedido/listaPedidosPorStatus");
 		objetosPedidos(mv);
 
 		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosFinalizados(pedidoFilter, pageable),
