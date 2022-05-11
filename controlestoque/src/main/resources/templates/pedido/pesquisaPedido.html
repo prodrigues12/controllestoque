@@ -137,7 +137,8 @@
 				<th class="col-2"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'status' , 'Status')"></th:block>
 				</th>
-				<th class="col-1">Última alter.</th>
+				<th class="col-1"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'dataModificacao' , 'Última alter.')"></th:block>
 
 
 				<th class="col-1">Ação</th>

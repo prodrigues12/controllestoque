@@ -18,8 +18,7 @@ Controllestoque.Autocomplete = (function() {
 				return this.codigoOuNomeInput.data('url') + '?codigoOuNome=' + codigoOuNome;
 			}.bind(this),
 			getValue: 'nome',
-//			minCharNumber: 3,
-			requestDelay: 300,
+			requestDelay: 400,
 			ajaxSettings: {
 				contentType: 'application/json'
 			},

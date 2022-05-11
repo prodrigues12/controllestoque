@@ -149,8 +149,6 @@ public class ProdutosImpl implements ProdutosQueries {
 	}
 
 	private void filtroEstoqueZerado(ProdutoFilter filtro, Criteria criteria) {
-
-//		criteria.add(Restrictions.sqlRestriction("qtd_estoque = :valor", criteria , BigDecimal.ZERO);
 		criteria.add(Restrictions.eq("qtdEstoque", BigDecimal.ZERO));
 		
 		if (filtro != null) {

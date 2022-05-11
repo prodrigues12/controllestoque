@@ -414,7 +414,7 @@ public class PedidosImpl implements PedidosQueries {
 	@Override
 	public Long statusIgualFinalizado() {
 		Optional<Long> optional = Optional
-				.ofNullable(manager.createQuery("select count(*) from Pedido where status= :status", Long.class)
+				.ofNullable(manager.createQuery("select count(*) from Pedido where status= :status and datediff(curdate(), dataModificacao)<90", Long.class)
 						.setParameter("status", StatusPedido.FINALIZADO).getSingleResult());
 
 		return optional.orElse(Long.valueOf(0));
@@ -453,7 +453,7 @@ public class PedidosImpl implements PedidosQueries {
 
 		String query = "SELECT DATE_FORMAT(data_criacao, '%Y/%m') mes, COUNT(*) "
 				+ "total FROM pedido WHERE data_criacao BETWEEN CURDATE() - INTERVAL 5 MONTH AND CURDATE()"
-				+ "AND status = 'FINALIZADO' GROUP BY  DATE_FORMAT(data_criacao, '%Y/%m')"
+				+ " GROUP BY  DATE_FORMAT(data_criacao, '%Y/%m')"
 				+ "ORDER BY DATE_FORMAT(data_criacao, '%Y/%m') DESC";
 
 		Query nativeQuery = manager.createNativeQuery(query, "mappingPedidos");
