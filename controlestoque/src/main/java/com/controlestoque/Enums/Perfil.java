@@ -11,6 +11,5 @@ public enum Perfil {
 	private Perfil (String perfil) {
 		this.perfil=perfil;
 	}
-	
-	
 }
+	

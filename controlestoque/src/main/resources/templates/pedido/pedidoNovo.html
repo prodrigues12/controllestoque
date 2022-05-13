@@ -48,7 +48,7 @@
 					<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
 				</div>
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<label for="nomeColaborador" class="col-form-label-sm">Colaborador</label>
 						<div class="input-group">
 							<input id="nomeColaborador" type="text" readonly="readonly"
@@ -64,7 +64,7 @@
 							</div>
 						</div>
 					</div>
-					<div class=" col-md-4">
+					<div class=" col-md-3">
 						<label for="turno" class="col-form-label-sm">Turno:</label> <select
 							id="turno" class=" form-control form-select form-select-sm"
 							th:field="*{turno}">
@@ -74,15 +74,17 @@
 								th:value="${turno}" th:text="${turno.descricao}">a</option>
 						</select>
 					</div>
-					
-					<div class=" col-md-4">
-						<label for="setorMagalu" class="col-form-label-sm">Setor:</label> <select
-							id="setorMagalu" class=" form-control form-select form-select-sm"
+
+					<div class=" col-md-3">
+						<label for="setorMagalu" class="col-form-label-sm">Setor:</label>
+						<select id="setorMagalu"
+							class=" form-control form-select form-select-sm"
 							th:field="*{setorMagalu}">
 
 							<option value="">Selecione seu setor</option>
-							<option class="form-control" th:each="setorMagalu : ${setorMagalu}"
-								th:value="${setorMagalu}" th:text="${setorMagalu.descricao}">a</option>
+							<option class="form-control"
+								th:each="setorMagalu : ${setorMagalu}" th:value="${setorMagalu}"
+								th:text="${setorMagalu.descricao}">a</option>
 						</select>
 					</div>
 				</div>
@@ -94,8 +96,10 @@
 				<div class="row">
 					<div class="col-md-12">
 						<label for="produto" class="col-form-label-sm">Produto: </label> <input
-							type="text" class="js-produto-input form-control form-control-sm "
-							id="produto" placeholder="Código ou Nome do Produto" data:url="@{/produto}">
+							type="text"
+							class="js-produto-input form-control form-control-sm "
+							id="produto" placeholder="Código ou Nome do Produto"
+							data:url="@{/produto}">
 					</div>
 				</div>
 
@@ -115,27 +119,31 @@
 				</div>
 
 				<div class="form-row" th:unless="${pedido.pedidoNovo} ">
-					<div class="btn-group" 
-						aria-label="Button group with nested dropdown">
-						<button class="btn btn-secondary dropdown-toggle"data-bs-toggle="dropdown" aria-expanded="false">Salvar
-							como  </button>
-							<ul class="dropdown-menu" aria-labelledby="btnStatus">
-								<li><a class="dropdown-item  js-submit-btn"
-									data:acao="finalizar" href="#">Finalizado</a></li>
-									<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item  js-submit-btn"
-									data:acao="pendente" href="#">Pendente</a></li>
-									<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item  js-submit-btn"
-									data:acao="separacao" href="#">Em separação</a></li>
-									<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item  js-submit-btn"
-									data:acao="cancelado" href="#">Cancelado</a></li>
-									<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item  js-submit-btn"
-									data:acao="novo" href="#">Novo</a></li>
-							</ul>
-						
+
+					
+					<div class="btn-group"
+						aria-label="Button group with nested dropdown" th:unless=${pedido.pedidoFinalizado}>
+						<button class="btn btn-secondary " >Salvar como:
+							</button>
+						<button class="btn btn-secondary dropdown-toggle "
+							data-bs-toggle="dropdown" aria-expanded="false"></button>
+						<ul class="dropdown-menu" aria-labelledby="btnStatus">
+							<li><a class="dropdown-item  js-submit-btn"
+								data:acao="finalizar" href="#">Finalizado</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item  js-submit-btn"
+								data:acao="pendente" href="#">Pendente</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item  js-submit-btn"
+								data:acao="separacao" href="#">Em separação</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item  js-submit-btn"
+								data:acao="cancelado" href="#">Cancelado</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item  js-submit-btn" data:acao="novo"
+								href="#">Novo</a></li>
+						</ul>
+
 					</div>
 				</div>
 			</form>
@@ -161,7 +169,7 @@
 	<script src="/js/pedido.autocomplete-itens.js"></script>
 	<script src="/js/pedido.tabela-itens.js"></script>
 	<script src="/js/pedido.botoes-status.js"></script>
-<!-- 	<script src="/js/"></script> -->
+	<!-- 	<script src="/js/"></script> -->
 
 </body>
 </html>

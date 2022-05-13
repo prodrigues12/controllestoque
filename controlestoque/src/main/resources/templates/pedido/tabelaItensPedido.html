@@ -7,11 +7,17 @@
 	<div class="tabela-item__coluna  tabela-item__coluna--foto">
 
 	</div>
+	
+	<div class="tabela-item__coluna  tabela-item__coluna--foto">
+	 <span th:text="|Cod: ${item.produto.codigo}|"></span>
+			</div>
 
 	<div class="tabela-item__coluna  tabela-item__coluna--detalhes">
-		<span class="tabela-produto-nome" th:text="${item.produto.nome}"></span>
-		SECAO: <span class="label label-default"
-			th:text="${item.produto.secao.nome}"></span>
+		<span class="tabela-produto-nome" th:text="${item.produto.nome}">
+		</span>
+<!-- 		SECAO: -->
+<!-- 		 <span class="label label-default" -->
+<!-- 			th:text="${item.produto.secao.nome}"></span> -->
 	</div>
 
 	<div class="tabela-item__coluna  tabela-item__coluna--valores">

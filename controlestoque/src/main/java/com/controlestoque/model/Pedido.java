@@ -152,6 +152,10 @@ public class Pedido {
 	public boolean isPedidoNovo() {
 		return codigo == null;
 	}
+	
+	public boolean isPedidoFinalizado() {
+		return status == StatusPedido.FINALIZADO;
+	}
 
 	public void adicionarItens(List<ItemPedido> itens) {
 

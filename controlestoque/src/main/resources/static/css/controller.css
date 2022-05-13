@@ -138,7 +138,7 @@ a {
 
 .col-form-label-sm {
 	font-weight: bold;
-	font-size: 17px;
+	font-size: 15px;
 }
 
 .form-control {
@@ -156,8 +156,10 @@ a {
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
 	font-weight: bold;
-	font-size: 14px;		
+	font-size: 13px;		
 }
+
+
 
 .form-check-label{
 	font-weight: bold;
@@ -255,13 +257,17 @@ a {
 	border-bottom-width: 1px;
 }
 
-.tabela-simples table tr td {
-    border-top: none;
-    border-bottom: 1px solid #e7eaec;
-    padding: 10px;
-    vertical-align: middle;
+table tr td {
+	color: #333333;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: small-caps;
+	border-top: none;
+	border-bottom: 1px solid #e7eaec;
+	padding: 10px;
+	vertical-align: middle;
 }
-
 /*
 ###################
 # PÁGINAS DO SISTEMA
@@ -398,7 +404,7 @@ a {
 .tabela-item {
 	position: relative; /* Para que o painel de exclusão apareça dentro da linha */
 	
-	padding: 15px 0;
+	padding: 15px 1px;
 	background-color:#0A2463;
 	color:#fff;
 	
