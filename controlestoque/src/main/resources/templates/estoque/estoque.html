@@ -29,9 +29,9 @@
 				<div class=" col-md-10">
 					<h4>Estoque</h4>
 				</div>
-				<div class="col-md-2">
-					<a th:href="@{/}" class="btn btn-primary btn-sm">Iniciar</a>
-				</div>
+<!-- 				<div class="col-md-2"> -->
+<!-- 					<a th:href="@{/}" class="btn btn-primary btn-sm">Iniciar</a> -->
+<!-- 				</div> -->
 			</div>
 		</div>
 			<div th:replace="fragmentos/fragmentos :: magalu"></div>
@@ -89,7 +89,7 @@
 						<td th:text="${produto.codigo}">1</td>
 						<td th:text="${produto.nome}">Produto Teste</td>
 						<td th:text="${produto.secao.nome}">Limpeza</td>
-						<td th:text="${produto.qtdEstoque}">4</td>
+						<td th:text="${#numbers.formatDecimal(produto.qtdEstoque,2,2)}">4</td>
 						<td th:text="${produto.uniMedida}">Limpeza</td>
 						<td><a title="Editar"
 							th:href="@{/estoque/ajuste/{codigo}(codigo=${produto.codigo})}"><i

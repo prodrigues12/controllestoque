@@ -34,13 +34,14 @@
 					</div>
 				</div>
 			</div>
-				<div th:replace="fragmentos/fragmentos :: magalu"></div>
+			<div th:replace="fragmentos/fragmentos :: magalu"></div>
 			<div class="card-body">
 				<div class="row mb-3">
 
 					<div class="col-md-1">
 						<label class="col-form-label-sm">Código:</label> <input
-							class="form-control form-control-sm" th:field=*{codigo} type="text" readonly>
+							class="form-control form-control-sm" th:field=*{codigo}
+							type="text" readonly>
 					</div>
 					<div class="col-md-11">
 						<label class="col-form-label-sm">Nome:</label> <input
@@ -52,22 +53,25 @@
 					<div class="row mb-3">
 
 						<div class=" col-md-2">
-						<label for="uniMedida" class="col-form-label-sm">Unid. de
-							medida:</label> <input class="form-control form-control-sm" th:field="*{uniMedida}" readonly>
-					</div>
+							<label for="uniMedida" class="col-form-label-sm">Unid. de
+								medida:</label> <input class="form-control form-control-sm"
+								th:field="*{uniMedida}" readonly>
+						</div>
 
 
 						<div class="col-md-2">
 							<label class="col-form-label-sm">Novo estoque:</label> <input
-								class="form-control form-control-sm " placeholder="0,00" th:field="*{qtdEstoque}">
+								class="form-control form-control-sm " placeholder="0,00"
+								th:field="*{qtdEstoque}">
 						</div>
-				
+
 					</div>
 
 					<p>
 					<div class="form-row">
-						&nbsp; &nbsp;
-						<button type="submit" class="btn btn-success offset">
+						<a type="button" class="btn btn-danger offset-9"
+							th:href="@{/estoque}">Cancelar</a>&nbsp;
+						<button type="submit" class="btn btn-success ">
 							Salvar</button>
 					</div>
 				</div>
