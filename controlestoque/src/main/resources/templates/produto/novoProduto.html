@@ -106,7 +106,7 @@
 						<div class="ce-field-action ">
 							<select id="grupos"
 								class="form-select form-control form-select-sm"
-								th:field="*{agrupar.subgrupo.grupo.codigo}">
+								th:field="*{grupo.codigo}">
 								<option value="">Selecionar um Grupo</option>
 								<option class="form-control-label" th:each="grupo : ${grupos}"
 									th:value="${grupo.codigo}" th:text="${grupo.nome}"></option>
@@ -115,22 +115,7 @@
 					</div>
 
 					<!-- 					Sub-grupo -->
-					<div class="col-md-4">
-
-						<label for="subgrupo" class="col-form-label-sm">Sub-Grupo:</label>
-						<div class="ce-field-action">
-							<input type="hidden" id="inputHiddenSubgrupoSelecionado"
-								th:value="*{agrupar.subgrupo} != null ? *{agrupar.subgrupo.codigo}" />
-							<select id="subgrupo" class="form-control"
-								data:url="@{/subgrupo}" th:field="*{agrupar.subgrupo.codigo}">
-								<option value="">Selecione Subgrupo</option>
-							</select>
-							<div class="bw-field-action__icon  js-img-loading-bloco"
-								style="display: none">
-								<img th:src="@{/img/mini-loading.gif}" />
-							</div>
-						</div>
-					</div>
+					
 				</div>
 
 				<div class="row mb-3">
@@ -153,7 +138,7 @@
 						<label for="estoqueMin" class="col-form-label-sm">Estoque
 							minimo:</label> <input id="estoqueMin" type="text"
 							th:field="*{qtdEstMin}"
-							class="form-control form-control-sm js-decimal"
+							class="form-control form-control-sm"
 							placeholder="Ex: 10,00">
 					</div>
 

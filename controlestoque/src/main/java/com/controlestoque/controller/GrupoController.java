@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.controlestoque.Repository.Grupos;
+import com.controlestoque.Repository.Secoes;
 import com.controlestoque.Repository.filter.GrupoFilter;
 import com.controlestoque.controller.page.PageWrapper;
 import com.controlestoque.model.Grupo;
@@ -31,10 +32,14 @@ public class GrupoController {
 	
 	@Autowired
 	private Grupos gruRepository;
+	
+	@Autowired
+	private Secoes secRepository;
 
 	@RequestMapping("/novo")
 	public ModelAndView novo(Grupo grupo) {
 		ModelAndView mv = new ModelAndView("grupo/grupoNovo");
+		mv.addObject("secao", secRepository.findAll());
 
 		return mv;
 	}
@@ -62,7 +67,7 @@ public class GrupoController {
 	public ModelAndView pesquisarGrupo(GrupoFilter grupoFilter, BindingResult result,
 			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("grupo/pesquisaGrupo");
-		mv.addObject("grupo", gruRepository.findAll());
+		mv.addObject("secao", secRepository.findAll());
 
 		PageWrapper<Grupo> paginaWrapper = new PageWrapper<>(gruRepository.filtrar(grupoFilter, pageable),
 				httpServletRequest);

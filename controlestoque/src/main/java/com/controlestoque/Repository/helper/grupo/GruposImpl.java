@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import com.controlestoque.Repository.filter.BlocoFilter;
 import com.controlestoque.Repository.filter.GrupoFilter;
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
 import com.controlestoque.model.Grupo;
@@ -55,7 +56,14 @@ public class GruposImpl implements GruposQueries {
 			if (!StringUtils.isEmpty(filtro.getNome())) {
 				criteria.add(Restrictions.ilike("nome", filtro.getNome(), MatchMode.ANYWHERE));
 			}
+			if (isSecaoPresente(filtro)) {
+				criteria.add(Restrictions.eq("secao", filtro.getSecao()));
+			}
 
 		}
+	}
+	
+	private boolean isSecaoPresente(GrupoFilter filtro) {
+		return filtro.getSecao() != null && filtro.getSecao().getCodigo() != null;
 	}
 }

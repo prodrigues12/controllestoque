@@ -53,19 +53,17 @@ public class Produto implements Serializable {
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal qtdEstoque;
 
-	// @NotNull(message = "Campo é obrigatória")
 	@DecimalMin(value = "1.0", message = "Estoque deve ser no mínimo 1")
-	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal qtdEstMin;
 
 	@NotNull(message = "Campo 'Seção' é obrigatório")
 	@ManyToOne
 	@JoinColumn(name = "codigo_secao")
 	private Secao secao;
-
-	@JsonIgnore
-	@Embedded
-	private Agrupar agrupar;
+	
+	@ManyToOne
+	@JoinColumn(name = "codigo_grupo")
+	private Grupo grupo;
 
 	@NotNull(message = "O unidade de medida é obrigatório")
 	@Enumerated(EnumType.STRING)
@@ -123,12 +121,13 @@ public class Produto implements Serializable {
 		this.secao = secao;
 	}
 
-	public Agrupar getAgrupar() {
-		return agrupar;
+
+	public Grupo getGrupo() {
+		return grupo;
 	}
 
-	public void setAgrupar(Agrupar agrupar) {
-		this.agrupar = agrupar;
+	public void setGrupo(Grupo grupo) {
+		this.grupo = grupo;
 	}
 
 	public UnidadeMedia getUniMedida() {

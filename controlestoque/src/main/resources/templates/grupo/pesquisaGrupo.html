@@ -47,9 +47,18 @@
 							class="form-control form-control-sm" type="text"
 							th:field="*{codigo}" />
 					</div>
+					
+					<div class="col-md-4">
+						<label class="col-form-label-sm">Secao:</label> <select id="secao_grupo_pesquisa"
+							class="form-select form-control form-select-sm" th:field="*{secao}">
+							<option value=" ">Selecionar Secao</option>
+							<option class="form-control-label" th:each="secao : ${secao}"
+								th:value="${secao.codigo}" th:text="${secao.nome}"></option>
+						</select>
+					</div>
 
 					<!-- 				Nome -->
-					<div class="col-md-11">
+					<div class="col-md-7">
 						<label class="col-form-label-sm">Nome:</label> <input
 							class="form-control form-control-sm" th:field="*{nome}" />
 					</div>
@@ -71,11 +80,16 @@
 			<thead class="thead-dark" style="text-align: center">
 
 				<th class="col-1"><th:block
-						th:replace="fragmentos/ordenacao :: order (${pagina}, 'grupo' , 'Grupo')"></th:block>
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Código')"></th:block>
 				</th>
 
-				<th class="col-9"><th:block
-						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Subgrupo')"></th:block>
+				<th class="col-4"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Grupo')"></th:block>
+
+				</th>
+				
+				<th class="col-4"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'secao' , 'Secao')"></th:block>
 
 				</th>
 				<th class="col-2">Ação</th>
@@ -86,6 +100,7 @@
 				<tr th:each="grupo :${pagina.conteudo}">
 					<td th:text="${grupo.codigo}">1</td>
 					<td th:text="${grupo.nome}">Produto Teste</td>
+					<td th:text="${grupo.secao.nome}">Produto Teste</td>
 					<td><a> <i class=" bx bx-pencil ce-icon"></i>
 					</a> <a> <i class="bx bx-trash ce-icon"></i>
 					</a></td>

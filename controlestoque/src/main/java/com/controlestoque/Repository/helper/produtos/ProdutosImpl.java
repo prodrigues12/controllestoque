@@ -47,9 +47,6 @@ public class ProdutosImpl implements ProdutosQueries {
 
 		adicionarFiltro(filtro, criteria);
 
-		criteria.createAlias("agrupar.subgrupo", "s", JoinType.LEFT_OUTER_JOIN);
-		criteria.createAlias("s.grupo", "g", JoinType.LEFT_OUTER_JOIN);
-
 		return new PageImpl<>(criteria.list(), pageable, total(filtro));
 	}
 
