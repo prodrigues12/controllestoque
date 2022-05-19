@@ -82,7 +82,7 @@ public class ColaboradorController {
 	public @ResponseBody List<Colaborador> pesquisar(String nome) {
 
 		validarTamanhoNome(nome);
-		return colRepository.findByNomeStartingWithIgnoreCase(nome);
+		return colRepository.listpfCnpjId(nome);
 	}
 
 	@ExceptionHandler (IllegalArgumentException.class)

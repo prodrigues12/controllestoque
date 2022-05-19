@@ -42,12 +42,10 @@ public class RelatoriosController {
 	public ModelAndView reltoriosPedidosFinalizados(PeriodoRelatorio periodoRelatorio) {
 		ModelAndView mv = new ModelAndView("relatorios/relatoriosPedidosFinalizados");
 		mv.addObject("status", StatusPedido.values());
-//		mv.addObject(new PeriodoRelatorio());
-
 		return mv;
 
 	}
-
+	
 	@PostMapping("/pedidosFinalizados")
 	public ResponseEntity<Object> pedidosStatusPeriodo(@RequestParam Map<String, Object> parametros,
 			HttpServletResponse response, PeriodoRelatorio periodoRelatorio) throws Exception {
@@ -74,15 +72,23 @@ public class RelatoriosController {
 
 	}
 	
-	@GetMapping("/pedidoCompleto")
+
+	@GetMapping("/pedidosCompleto")
+	public ModelAndView reltoriosPedidos(PeriodoRelatorio periodoRelatorio) {
+		ModelAndView mv = new ModelAndView("relatorios/relatoriosPedidos");
+		mv.addObject("status", StatusPedido.values());
+		return mv;
+
+	}
+
+	
+	@PostMapping("/pedidosCompleto")
 	public ResponseEntity<Object> pedidosCompleto(@RequestParam Map<String, Object> parametros,
 			HttpServletResponse response, PeriodoRelatorio periodoRelatorio) throws Exception {
 
 		
 		parametros = parametros == null ? parametros = new HashMap<>() : parametros;
 		
-		periodoRelatorio.setDataInicial("2022-04-01");
-		periodoRelatorio.setDataFim("2022-04-29");
 		parametros.put("data_inicio",periodoRelatorio.getDataInicial());
 		parametros.put("data_fim",periodoRelatorio.getDataFim());	
 		
@@ -92,7 +98,6 @@ public class RelatoriosController {
 						.getFile("classpath:relatorios/relatorio_pedidoCompleto.jrxml").getAbsolutePath()),
 				parametros, dataSource.getConnection());
 
-//			##############
 		HttpHeaders headers = new HttpHeaders();
 
 		headers.setContentType(MediaType.APPLICATION_PDF);

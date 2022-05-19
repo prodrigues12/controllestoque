@@ -60,10 +60,6 @@ public class Produto implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "codigo_secao")
 	private Secao secao;
-	
-	@ManyToOne
-	@JoinColumn(name = "codigo_grupo")
-	private Grupo grupo;
 
 	@NotNull(message = "O unidade de medida é obrigatório")
 	@Enumerated(EnumType.STRING)
@@ -121,14 +117,6 @@ public class Produto implements Serializable {
 		this.secao = secao;
 	}
 
-
-	public Grupo getGrupo() {
-		return grupo;
-	}
-
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
-	}
 
 	public UnidadeMedia getUniMedida() {
 		return uniMedida;

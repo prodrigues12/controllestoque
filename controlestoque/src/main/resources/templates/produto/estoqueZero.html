@@ -93,7 +93,6 @@
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Nome')"></th:block>
 				</th>
 				<th class="col-auto">Seção</th>
-				<th class="col-auto">Grupo</th>
 				<th class="col-auto">Estoque Min.</th>
 				<th class="col-auto">Estoque</th>
 				<th class="col-auto">Ação</th>
@@ -106,9 +105,8 @@
 					<td th:text="${produto.codigo}">1</td>
 					<td th:text="${produto.nome}">Produto Teste</td>
 					<td th:text="${produto.secao.nome}">Limpeza</td>
-					<td th:text="${produto.agrupar.subgrupo.grupo.nome}">Limpeza</td>
-					<td th:text="${produto.qtdEstMin}">4</td>
-					<td th:text="${produto.qtdEstoque}">4</td>
+					<td th:text="${#numbers.formatDecimal(produto.qtdEstMin,1,2)}">4</td>
+					<td th:text="${#numbers.formatDecimal(produto.qtdEstoque,1,2)}">4</td>
 					<td><a title="Estoque" class="btn btn-primary"
 						th:href="@{/estoque/ajuste/{codigo}(codigo=${produto.codigo})}">
 							<i class="bx bx-coin-stack "></i>

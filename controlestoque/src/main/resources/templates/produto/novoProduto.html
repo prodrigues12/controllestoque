@@ -83,7 +83,7 @@
 
 				<div class=" row mb-3">
 					<!-- 				Seção -->
-					<div class="col-md-4"
+					<div class="col-md-3"
 						th:classappend="${#fields.hasErrors('secao')} ? has-error">
 						<label for="secao" class="col-form-label-sm">Seção:</label>
 						<div class="input-group">
@@ -100,28 +100,9 @@
 						</div>
 					</div>
 
-					<!-- 		Grupo -->
-					<div class="col-md-4">
-						<label for="grupo" class="col-form-label-sm">Grupo:</label>
-						<div class="ce-field-action ">
-							<select id="grupos"
-								class="form-select form-control form-select-sm"
-								th:field="*{grupo.codigo}">
-								<option value="">Selecionar um Grupo</option>
-								<option class="form-control-label" th:each="grupo : ${grupos}"
-									th:value="${grupo.codigo}" th:text="${grupo.nome}"></option>
-							</select>
-						</div>
-					</div>
-
-					<!-- 					Sub-grupo -->
-					
-				</div>
-
-				<div class="row mb-3">
 
 					<!-- 				Unidade de Media -->
-					<div class=" col-md-2">
+					<div class="col-md-3">
 						<label for="uniMedida" class="col-form-label-sm">Unid. de
 							medida:</label> <select id="uniMedida"
 							class=" form-control form-select form-select-sm"
@@ -133,22 +114,19 @@
 					</div>
 
 					<!-- 				Estoque minimo -->
-					<div class=" col-md-2">
-
+					<div class="col-md-3">
 						<label for="estoqueMin" class="col-form-label-sm">Estoque
 							minimo:</label> <input id="estoqueMin" type="text"
-							th:field="*{qtdEstMin}"
-							class="form-control form-control-sm"
+							th:field="*{qtdEstMin}" class="form-control form-control-sm"
 							placeholder="Ex: 10,00">
 					</div>
 
 					<!-- 				Estoque -->
 					<div class=" col-md-3" th:unless="${produto.produtoNovo}">
-							<label for="estoque" class="col-form-label-sm">Estoque:</label>
-							<div class="input-group"> <input
-								id="estoque" type="text" th:field="*{qtdEstoque}"
-								class="form-control form-control-sm "
-								readonly>  &nbsp;
+						<label for="estoque" class="col-form-label-sm">Estoque:</label>
+						<div class="input-group">
+							<input id="estoque" type="text" th:field="*{qtdEstoque}"
+								class="form-control form-control-sm " readonly> &nbsp;
 							<div class="input-group-btn">
 								<a class="btn btn-primary"
 									th:href="@{/estoque/ajuste/{codigo}(codigo=${produto.codigo})}">
@@ -157,17 +135,16 @@
 							</div>
 						</div>
 					</div>
-					<p>
 
-						<!-- 						status -->
-					<div class="row mb-3">
-						<div class="form-check form-switch">
-							<label class="form-check-label" for="status"> Status</label> <input
-								class="form-check-input" type="checkbox" role="switch"
-								id="status" checked>
-						</div>
-					</div>
 				</div>
+
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" 
+						id="status_produto" checked> <label
+						class="form-check-label" for="status_produto"> Ativo </label>
+				</div>
+
+
 				<div class="row mb-3">
 					<!-- 				Botões -->
 					<div class="form-row">
@@ -179,6 +156,7 @@
 				</div>
 			</div>
 		</div>
+
 
 	</form>
 

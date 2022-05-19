@@ -18,7 +18,7 @@ import org.springframework.util.StringUtils;
 import com.controlestoque.Repository.filter.ApartamentoFilter;
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
 import com.controlestoque.model.Apartamento;
-import com.controlestoque.model.Grupo;
+
 
 public class ApartamentosImpl implements ApartamentosQuery{
 	

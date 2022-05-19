@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.controlestoque.Enums.UnidadeMedia;
-import com.controlestoque.Repository.Grupos;
 import com.controlestoque.Repository.Produtos;
 import com.controlestoque.Repository.Secoes;
 import com.controlestoque.Repository.filter.ProdutoFilter;
@@ -35,8 +34,7 @@ public class EstoqueController {
 	@Autowired
 	private Secoes sessaoRepository;
 
-	@Autowired
-	private Grupos gruRepsitory;
+	
 	
 	@Autowired
 	private ProdutoService prodService;
@@ -48,7 +46,7 @@ public class EstoqueController {
 		ModelAndView mv = new ModelAndView("estoque/estoque");
 		mv.addObject("uniMedida", UnidadeMedia.values());
 		mv.addObject("secao", sessaoRepository.findAll());
-		mv.addObject("grupos", gruRepsitory.findAll());
+
 
 		PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.filtrar(produtoFilter, pageable),
 				httpServletRequest);
@@ -65,7 +63,7 @@ public class EstoqueController {
 		mv.addObject(produto);
 		mv.addObject("uniMedida", UnidadeMedia.values());
 		mv.addObject("secao", sessaoRepository.findAll());
-		mv.addObject("grupos", gruRepsitory.findAll());
+		
 		
 		mv.addObject(mv);
 		return mv;

@@ -54,7 +54,7 @@ order by pedido.codigo]]>
 		<groupHeader>
 			<band height="41">
 				<textField>
-					<reportElement x="41" y="-1" width="100" height="15" uuid="8688e9c4-c56e-48d0-9ff7-242dc0ab0a36">
+					<reportElement x="46" y="-1" width="100" height="15" uuid="8688e9c4-c56e-48d0-9ff7-242dc0ab0a36">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<textElement>
@@ -63,7 +63,7 @@ order by pedido.codigo]]>
 					<textFieldExpression><![CDATA[$F{codigo_pedido}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="-1" width="44" height="15" uuid="306934e7-bcc3-4bb3-a97f-5a10f63e5628">
+					<reportElement x="5" y="-1" width="44" height="15" uuid="306934e7-bcc3-4bb3-a97f-5a10f63e5628">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<textElement>
@@ -72,17 +72,17 @@ order by pedido.codigo]]>
 					<text><![CDATA[Pedido:]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="200" y="-1" width="210" height="15" uuid="262133db-a1b4-4f5e-817c-418f41cdf3e1">
+					<reportElement x="271" y="-1" width="210" height="15" uuid="262133db-a1b4-4f5e-817c-418f41cdf3e1">
 						<property name="com.jaspersoft.studio.unit.y" value="px"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
-					<textElement textAlignment="Right">
+					<textElement textAlignment="Left">
 						<font fontName="Arial" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{colaborador_nome}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement x="0" y="17" width="556" height="1" uuid="884ff3ea-05a7-4e5f-8759-4448934e8486">
+					<reportElement x="0" y="12" width="556" height="1" uuid="884ff3ea-05a7-4e5f-8759-4448934e8486">
 						<property name="local_mesure_unitheight" value="pixel"/>
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
@@ -125,7 +125,7 @@ order by pedido.codigo]]>
 					<textFieldExpression><![CDATA[$F{pedido_data_criacao}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="150" y="-1" width="100" height="15" uuid="7f2d38b2-b871-43b3-89d1-ce9f31272e1b">
+					<reportElement x="130" y="-1" width="100" height="15" uuid="7f2d38b2-b871-43b3-89d1-ce9f31272e1b">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<textElement>
@@ -134,7 +134,7 @@ order by pedido.codigo]]>
 					<text><![CDATA[Status:]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="185" y="-1" width="100" height="15" uuid="5ef49d9b-765b-4af1-a1a9-cac44fe6c818">
+					<reportElement x="165" y="-1" width="100" height="15" uuid="5ef49d9b-765b-4af1-a1a9-cac44fe6c818">
 						<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					</reportElement>
 					<textElement>
@@ -187,7 +187,7 @@ order by pedido.codigo]]>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="19" splitType="Stretch"/>
+		<band height="21" splitType="Stretch"/>
 	</pageHeader>
 	<detail>
 		<band height="15">
@@ -248,6 +248,6 @@ order by pedido.codigo]]>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="9" splitType="Stretch"/>
+		<band height="25" splitType="Stretch"/>
 	</summary>
 </jasperReport>

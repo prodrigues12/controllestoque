@@ -73,7 +73,7 @@
 						</a> <a class="nav_link" data-bs-toggle="collapse"
 							href="#collapseProduto" role="button" aria-expanded="false"
 							aria-controls="collapseExample" title="Produtos"> <i
-							class='bx bx-shopping-bag nav_icon'></i> <span class="nav_name">Produtos</span>
+							class='bx bxs-component nav_icon'></i> <span class="nav_name">Produtos</span>
 						</a>
 
 						<div class="collapse" id="collapseProduto">
@@ -85,11 +85,6 @@
 							</a> <a th:href="@{/secao}" class="nav_link" title="Seção"> <i
 								class='bx bx-cabinet nav_icon_mini'></i> <span class="nav_name">
 									Seção</span>
-
-
-							</a> <a th:href="@{/grupo}" class="nav_link" title="Grupo"> <i
-								class='bx bxs-component nav_icon_mini'></i> <span
-								class="nav_name"> Grupo</span>
 
 							</a> 
 
@@ -152,6 +147,11 @@
 						<a th:href="@{/relatorios/pedidosFinalizados}" class="nav_link"> <i
 							class='bx bx-clipboard nav_icon iconAtivo'></i> <span
 							class="nav_name">Relatorio</span>
+						</a>
+						
+						<a th:href="@{/relatorios/pedidosCompleto}" class="nav_link"> <i
+							class='bx bx-spreadsheet nav_icon iconAtivo'></i> <span
+							class="nav_name">Relatorio Completo</span>
 						</a>
 
 

@@ -59,8 +59,7 @@ public class ProdutosImpl implements ProdutosQueries {
 
 		paginacaoUltil.preparar(criteria, pageable);
 
-		criteria.createAlias("agrupar.subgrupo", "s", JoinType.LEFT_OUTER_JOIN);
-		criteria.createAlias("s.grupo", "g", JoinType.LEFT_OUTER_JOIN);
+		
 
 		return new PageImpl<>(criteria.list(), pageable, total(filtro));
 	}
@@ -74,9 +73,6 @@ public class ProdutosImpl implements ProdutosQueries {
 		filtroEstoqueZerado(filtro, criteria);
 
 		paginacaoUltil.preparar(criteria, pageable);
-
-		criteria.createAlias("agrupar.subgrupo", "s", JoinType.LEFT_OUTER_JOIN);
-		criteria.createAlias("s.grupo", "g", JoinType.LEFT_OUTER_JOIN);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filtro));
 	}
