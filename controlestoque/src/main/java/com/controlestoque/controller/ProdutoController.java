@@ -83,6 +83,7 @@ public class ProdutoController {
 		return mv;
 	}
 
+	//autocomplete 
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<ProdutoDTO> pesquisar(String codigoOuNome) {
 		return proRepository.codigoOuNome(codigoOuNome);

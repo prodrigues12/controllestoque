@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="/css/magalu.css" />
 </head>
 
-<body id="body-pd" >
+<body id="body-pd">
 
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
@@ -44,16 +44,16 @@
 					</div>
 				</div>
 			</div>
-			
-				<div th:replace="fragmentos/fragmentos :: magalu"></div>
-			
+
+			<div th:replace="fragmentos/fragmentos :: magalu"></div>
+
 			<div class="card-body">
 
 				<div class="row">
-				
+
 					<!--Rua -->
-				
-					<div class="col-md-3">
+
+					<div class="col-md-4">
 						<label for="rua" class="col-form-label-sm">Rua:</label> <select
 							id="rua" class="form-control form-select form-select-sm">
 							<option value="">Selecionar Rua</option>
@@ -63,11 +63,10 @@
 					</div>
 
 
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<label for="bloco" class="col-form-label-sm">Bloco:</label>
 						<div class="ce-field-action">
-							<input type="hidden" id="inputHiddenBlocoSelecionado"
-								value="1" />
+							<input type="hidden" id="inputHiddenBlocoSelecionado" value="1" />
 							<select id="bloco"
 								class="form-control form-select form-select-sm"
 								data:url="@{/bloco}" th:field="*{bloco}">
@@ -80,24 +79,24 @@
 						</div>
 					</div>
 
-					<div class="col-md-6">
+					<div class="col-md-4">
 						<label for="apartamento" class="col-form-label-sm">Apartamento:</label>
-						<input id="apartamento" class="form-control form-select-sm" th:field="*{nome}"
-							placeholder="Nome da apartamento">
+						<input id="apartamento" class="form-control form-control-sm"
+							th:field="*{nome}" placeholder="Nome do Apartamento">
 					</div>
-
-					<p>
-						<!-- 					Botões -->
-					<div class="form-row">
-						<a type="button" th:href="@{/apartamento}"
-							class="btn btn-danger offset-md-10">Cancelar</a> &nbsp; 
-						<button type="submit" class="btn btn-success offset">
-							Salvar</button>
-					</div>
-
 				</div>
+				<p>
+					<!-- 					Botões -->
+				<div class="form-row">
+					<a type="button" th:href="@{/apartamento}"
+						class="btn btn-danger offset-md-9">Cancelar</a> &nbsp;
+					<button type="submit" class="btn btn-success offset">
+						Salvar</button>
+				</div>
+
 			</div>
 		</div>
+
 	</form>
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

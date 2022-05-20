@@ -1,6 +1,8 @@
 package com.controlestoque.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,8 +12,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Endereco implements Serializable {
@@ -21,29 +24,23 @@ public class Endereco implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
+	
+	@Size(min = 7, max = 40, message = "O campo ''Endereço'' deve contar de 7 à 40 caracteries")
+	@NotBlank
+	private String nomeEndereco;
+	
+	private BigDecimal quantidade;
+	
+	private LocalDate dataAlteracao;
+	
+//	private boolean status;
 
-	@NotNull(message = "Campo Produto é obrigatorio")
+//	@NotNull(message = "Campo Produto é obrigatorio")
 	@ManyToOne
 	@JoinColumn(name = "codigo_produto")
 	private Produto produto;
 
-	@NotNull(message = "Campo Rua é obrigatorio")
-	@ManyToOne
-	@JoinColumn(name = "codigo_rua")
-	private Rua rua;
-
-	@NotNull(message = "Campo Rua é obrigatorio")
-	@ManyToOne
-	@JoinColumn(name = "codigo_bloco")
-	private Bloco bloco;
-
-	@ManyToOne
-	@JoinColumn(name = "codigo_apartamento")
-	private Apartamento apartamento;
-
-	@ManyToOne
-	@JoinColumn(name = "codigo_sala")
-	private Sala sala;
+	
 
 	public Long getCodigo() {
 		return codigo;
@@ -52,6 +49,39 @@ public class Endereco implements Serializable {
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
+		
+
+	public String getNomeEndereco() {
+		return nomeEndereco;
+	}
+
+	public void setNomeEndereco(String nomeEndereco) {
+		this.nomeEndereco = nomeEndereco;
+	}
+
+	public BigDecimal getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(BigDecimal quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public LocalDate getDataAlteracao() {
+		return dataAlteracao;
+	}
+
+	public void setDataAlteracao(LocalDate dataAlteracao) {
+		this.dataAlteracao = dataAlteracao;
+	}
+
+//	public boolean isStatus() {
+//		return status;
+//	}
+//
+//	public void setStatus(boolean status) {
+//		this.status = status;
+//	}
 
 	public Produto getProduto() {
 		return produto;
@@ -61,37 +91,6 @@ public class Endereco implements Serializable {
 		this.produto = produto;
 	}
 
-	public Rua getRua() {
-		return rua;
-	}
-
-	public void setRua(Rua rua) {
-		this.rua = rua;
-	}
-
-	public Bloco getBloco() {
-		return bloco;
-	}
-
-	public void setBloco(Bloco bloco) {
-		this.bloco = bloco;
-	}
-
-	public Apartamento getApartamento() {
-		return apartamento;
-	}
-
-	public void setApartamento(Apartamento apartamento) {
-		this.apartamento = apartamento;
-	}
-
-	public Sala getSala() {
-		return sala;
-	}
-
-	public void setSala(Sala sala) {
-		this.sala = sala;
-	}
 
 	@Override
 	public int hashCode() {
@@ -110,17 +109,5 @@ public class Endereco implements Serializable {
 		return Objects.equals(codigo, other.codigo);
 	}
 
-	public String getEndereco() {
-		if (this.sala != null) {
-			return this.rua.getNome() + " - " + bloco.getNome() + " - " + this.apartamento.getNome() + " - "
-					+ this.sala.getNome();
-		}
-
-		if (this.apartamento != null) {
-			return this.rua.getNome() + " - " + bloco.getNome() + " - " + this.apartamento.getNome();
-		}
-
-		return this.rua.getNome() + " - " + bloco.getNome();
-
-	}
+	
 }

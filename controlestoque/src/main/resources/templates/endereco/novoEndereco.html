@@ -28,7 +28,7 @@
 		th:object="${endereco}">
 
 
-		<!-- 			<input type="hidden" th:field="*{codigo}"> -->
+<!-- 					<input type="hidden" th:field="*{codigo}"> -->
 
 		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
@@ -45,87 +45,19 @@
 					</div>
 				</div>
 			</div>
-	<div th:replace="fragmentos/fragmentos :: magalu"></div>
+			<div th:replace="fragmentos/fragmentos :: magalu"></div>
 			<div class="card-body">
 
 				<div class="row mb-3">
 
-					<div class="col-md-12">
-						<label for="rua" class="col-form-label-sm">Produto:</label>
-						<div class="ce-field-action ">
-							<select id="sala"
-								class="form-control form-select  form-select-sm"
-								th:field="*{produto}">
-								<option value="">Selecionar Produto</option>
-								<option class="form-control form-control-label"
-									th:each="produto : ${produto}" th:value="${produto.codigo}"
-									th:text="${produto.nome}"></option>
-							</select>
-						</div>
+			<div class="col-md-11">
+						<label class="col-form-label-sm">Nome:</label> <input
+							class="form-control form-control-sm" th:field="*{nomeEndereco}">
+
 					</div>
-				</div>
-				<!-- 													Rua -->
+				</div>		
+			
 
-				<div class="row mb-3">
-					<div class="col-md-3">
-						<label for="rua" class="col-form-label-sm">Rua:</label>
-						<div class="ce-field-action ">
-							<select id="rua" class="form-control form-select  form-select-sm"
-								th:field="*{rua}">
-								<option value="">Selecionar Rua</option>
-								<option class="form-control form-control-label"
-									th:each="rua : ${rua}" th:value="${rua.codigo}"
-									th:text="${rua.nome}"></option>
-							</select>
-						</div>
-					</div>
-
-					<!-- 		Bloco -->
-					<div class="col-md-3">
-						<label for="bloco" class="col-form-label-sm">Bloco:</label>
-						<div class="ce-field-action">
-							<input type="hidden" id="inputHiddenBlocoSelecionado"
-								th:value="*{bloco} != null ? *{bloco.codigo}" /> <select id="bloco"
-								class="form-control form-select form-select-sm"
-								data:url="@{/bloco}" th:field="*{bloco}">
-								<option value="">Selecione Bloco</option>
-							</select>
-							<div class="bw-field-action__icon  js-img-loading-bloco"
-								style="display: none">
-								<img th:src="@{/img/mini-loading.gif}" />
-							</div>
-						</div>
-					</div>
-
-
-					<!-- 													Apartamento -->
-					<div class="col-md-3">
-						<label for="apartameto" class="col-form-label-sm">Apartmaneto:</label>
-						<div class="ce-field-action">
-							<input type="hidden" id="inputHiddenApartamentoSelecionado"
-								th:value="*{apartamento} != null ? *{apartamento.codigo}" /> <select
-								id="apartamento" class="form-control form-select form-select-sm"
-								data:url="@{/apartamento}" th:field="*{apartamento}">
-								<option value="">Selecione Apartamento</option>
-							</select>
-							<div class="bw-field-action__icon  js-img-loading-bloco"
-								style="display: none">
-								<img th:src="@{/img/mini-loading.gif}" />
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<label for="rua" class="col-form-label-sm">Sala:</label>
-						<div class="ce-field-action ">
-							<select id="sala"
-								class="form-control form-select  form-select-sm">
-							</select>
-						</div>
-					</div>
-
-
-				</div>
 				<p>
 			</div>
 			<div class="row mb-3">
@@ -133,7 +65,7 @@
 
 				<div class="form-row">
 					<a type="button" th:href="@{/produto}"
-						class="btn btn-danger offset-md-10">Cancelar</a> &nbsp; &nbsp;
+						class="btn btn-danger offset-md-10">Cancelar</a> &nbsp;
 					<button type="submit" class="btn btn-success offset">
 						Salvar</button>
 				</div>
@@ -142,23 +74,21 @@
 
 
 	</form>
-
-
-
-	<div th:replace="fragmentos/fragmentos :: footer"></div>
-
-
+	
+	<th:block th:replace="hbs/TemplateAutocompleteProduto"></th:block>
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-	<script src="/js/vendors/jquery.mask.min.js"></script>
-	<script src="/js/vendors/jquery.maskMoney.min.js"></script>
+	<script src="/js/vendors/handlebars.min.js"></script>
+	<script src="/js/vendors/jquery.easy-autocomplete.min.js"></script>
+	<script src="/js/sindebar.js"></script>
+	<script src="/js/endereco.autocomplete-itens.js"></script>
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/produto.combo-rua-bloco.js"></script>
 	<!-- 					<script src="/js/produto.combo-bloco-apartamento.js"></script> -->
-	<script src="/js/controllestoque.js"></script>
+
 </body>
 </html>

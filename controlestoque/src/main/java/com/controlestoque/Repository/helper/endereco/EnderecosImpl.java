@@ -49,29 +49,15 @@ public class EnderecosImpl implements EnderecosQueries {
 	private void adicionarFiltro(EnderecoFilter filtro, Criteria criteria) {
 
 		if (filtro != null) {
-//			if (!StringUtils.isEmpty(filtro.getCodigo())) {
-//				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
-//			}
+			if (!StringUtils.isEmpty(filtro.getCodigo())) {
+				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
+			}
 
 			if (!StringUtils.isEmpty(filtro.getProduto())) {
 				criteria.add(Restrictions.eq("produto", filtro.getProduto()));
 			}
 			
-			if (!StringUtils.isEmpty(filtro.getRua())) {
-				criteria.add(Restrictions.eq("rua", filtro.getRua()));
-			}
 			
-			if (!StringUtils.isEmpty(filtro.getBloco())) {
-				criteria.add(Restrictions.eq("bloco", filtro.getBloco()));
-			}
-			
-			if (!StringUtils.isEmpty(filtro.getApartamento())) {
-				criteria.add(Restrictions.eq("apartamento", filtro.getApartamento()));
-			}
-
-			if (!StringUtils.isEmpty(filtro.getSala())) {
-				criteria.add(Restrictions.eq("sala", filtro.getSala()));
-			}
 		}
 	}
 

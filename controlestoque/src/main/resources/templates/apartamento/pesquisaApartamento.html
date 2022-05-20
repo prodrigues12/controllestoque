@@ -36,16 +36,16 @@
 				</div>
 			</div>
 		</div>
-		
-			<div th:replace="fragmentos/fragmentos :: magalu"></div>
-			
+
+		<div th:replace="fragmentos/fragmentos :: magalu"></div>
+
 		<div class="card-body">
 
 			<form action="" method="get" th:object="${apartamentoFilter}">
 
 				<div class="row mb-3">
 
-						<div class="col-md-4">
+					<div class="col-md-4">
 						<label for="rua" class="col-form-label-sm">Rua:</label> <select
 							id="rua" class="form-control form-select form-select-sm">
 							<option value="">Selecionar Rua</option>
@@ -58,8 +58,7 @@
 					<div class="col-md-4">
 						<label for="bloco" class="col-form-label-sm">Bloco:</label>
 						<div class="ce-field-action">
-							<input type="hidden" id="inputHiddenBlocoSelecionado"
-								value="1" />
+							<input type="hidden" id="inputHiddenBlocoSelecionado" value="1" />
 							<select id="bloco"
 								class="form-control form-select form-select-sm"
 								data:url="@{/bloco}" th:field="*{bloco}">
@@ -73,19 +72,11 @@
 					</div>
 					<!-- 				Nome -->
 					<div class="col-md-4">
-						<label class="col-form-label-sm">Nome do Apartamento:</label> <input
-							class="form-control form-control-sm" th:field="*{nome}">
+						<label for="apartamento" class="col-form-label-sm">Apartamento:</label>
+						<input id="apartamento" class="form-control form-control-sm"
+							th:field="*{nome}" placeholder="Nome do Apartamento">
 					</div>
 
-					<!-- 					Bloco -->
-<!-- 					<div class="col-md-3"> -->
-<!-- 						<label class="col-form-label-sm">Bloco:</label> <select -->
-<!-- 							id="blocos" class="form-select form-control" th:field="*{bloco}"> -->
-<!-- 							<option value=" ">Selecionar Bloco</option> -->
-<!-- 							<option class="form-control-label" th:each="bloco : ${bloco}" -->
-<!-- 								th:value="${bloco.codigo}" th:text="${bloco.nome}"></option> -->
-<!-- 						</select> -->
-<!-- 					</div> -->
 
 				</div>
 
@@ -99,30 +90,34 @@
 	</div>
 	<!-- 	</form> -->
 	<div class="table-responsive">
-			<table class="table table-sm table-striped" style="text-align: center">
-			<thead class="thead-dark" style="text-align: center">
-				<!-- 				<th class="col-1"><th:block -->
-				<!-- 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block> -->
+		<table class="table table-sm table-striped">
+			<thead class="thead-dark">
+				<th class="col-1"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
 
-				<!-- 				</th> -->
-
-
-				<th class="col-2">Rua</th>
-				<th class="col-2">Bloco</th>
-				<th class="col-6"><th:block
-						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Apartamento')"></th:block>
 				</th>
-				<th class="col-2">Ação</th>
+
+				<th class="col-auto"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Apartamento')"></th:block>
+				<th class="col-auto">Bloco</th>
+
+
+				<th class="col-auto">Rua</th>
+
+
+				<th class="col-auto">Ação</th>
 
 
 			</thead>
 
 			<tbody>
 				<tr th:each="apartamento :${pagina.conteudo}">
-					<!-- 					<td th:text="${apartamento.codigo}">1</td> -->
-					<td th:text="${apartamento.bloco.rua.nome}">
-					<td th:text="${apartamento.bloco.nome}">Produto Teste</td>
+					<td th:text="${apartamento.codigo}">1</td>
 					<td th:text="${apartamento.nome}">Produto Teste</td>
+					<td th:text="${apartamento.bloco.nome}">Produto Teste</td>
+					<td th:text="${apartamento.bloco.rua.nome}">
+					
+					
 					<td><a title="Editar"
 						th:href="@{/apartamento/{codigo}(codigo=${apartamento.codigo})}"><i
 							class=" bx bx-edit ce-icon"></i> </a> &nbsp;&nbsp; <a
@@ -173,7 +168,7 @@
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/controllestoque.js"></script>
 	<script src="/js/controllestoque.dialogo-excluir.js"></script>
-		<script src="/js/produto.combo-rua-bloco.js"></script>
+	<script src="/js/produto.combo-rua-bloco.js"></script>
 
 </body>
 </html>
