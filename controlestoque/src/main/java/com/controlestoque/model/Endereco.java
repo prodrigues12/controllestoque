@@ -16,6 +16,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
+
 @Entity
 public class Endereco implements Serializable {
 
@@ -25,7 +27,7 @@ public class Endereco implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	@Size(min = 7, max = 40, message = "O campo ''Endereço'' deve contar de 7 à 40 caracteries")
+	@Size(min = 12 , max=12, message = "000.000.000.000")
 	@NotBlank
 	private String nomeEndereco;
 	
