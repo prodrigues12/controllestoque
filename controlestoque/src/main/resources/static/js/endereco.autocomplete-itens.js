@@ -8,7 +8,6 @@ Controllestoque.Autocomplete = (function() {
 		this.template = Handlebars.compile(htmlTemplateAutocomplete);
 		this.emitter = $({});
 		this.on = this.emitter.on.bind(this.emitter);
-		this.produto_endereco = $('#produto_endereco');
 
 	}
 
@@ -40,7 +39,8 @@ Controllestoque.Autocomplete = (function() {
 	function onItemSelecionado() {
 
 		this.emitter.trigger('item-selecionado', this.codigoOuNomeInput.getSelectedItemData());
-
+		this.codigoOuNomeInput.val('');
+		this.codigoOuNomeInput.focus();
 
 	}
 
@@ -51,6 +51,7 @@ Controllestoque.Autocomplete = (function() {
 	return Autocomplete;
 
 }());
+
 
 $(function() {
 

@@ -57,6 +57,10 @@ public class EnderecosImpl implements EnderecosQueries {
 				criteria.add(Restrictions.eq("produto", filtro.getProduto()));
 			}
 			
+			if (!StringUtils.isEmpty(filtro.getEndereco())) {
+				criteria.add(Restrictions.like("nomeEndereco", filtro.getEndereco(), MatchMode.ANYWHERE));
+			}
+			
 			
 		}
 	}

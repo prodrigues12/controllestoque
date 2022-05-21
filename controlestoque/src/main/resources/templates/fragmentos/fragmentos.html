@@ -70,11 +70,15 @@
 						</a> <a th:href="@{/pedido}" class="nav_link" title="Pedidos"> <i
 							class='bx bx-store nav_icon'></i> <span class="nav_name">Pedidos</span>
 
-						</a> <a class="nav_link" data-bs-toggle="collapse"
+						</a> 
+						
+<!-- 						PRODUTOS -->
+						<a class="nav_link" data-bs-toggle="collapse"
 							href="#collapseProduto" role="button" aria-expanded="false"
 							aria-controls="collapseExample" title="Produtos"> <i
 							class='bx bxs-component nav_icon'></i> <span class="nav_name">Produtos</span>
 						</a>
+
 
 						<div class="collapse" id="collapseProduto">
 
@@ -89,6 +93,8 @@
 							</a> 
 
 						</div>
+						
+<!-- 						ENDEREÇOS -->
 						<a class="nav_link" data-bs-toggle="collapse"
 							href="#collapseEndereco" role="button" aria-expanded="false"
 							aria-controls="collapseExample" title="Endereço"> <i
@@ -97,51 +103,40 @@
 
 						<div class="collapse" id="collapseEndereco">
 
-							<a th:href="@{/endereco}" class="nav_link" title="Rua"> <i
-								class=" bx bx-map nav_icon_mini"></i> <span class="nav_name">
+							<a th:href="@{/endereco}" class="nav_link" title="Endereçar"> <i
+								class="bx bx-compass nav_icon_mini"></i> <span class="nav_name">
 									Endereçar</span>
-									</a> <a th:href="@{/rua}" class="nav_link" title="Rua"> <i
-								class=" bx bx-building-house nav_icon_mini"></i> <span
-								class="nav_name"> Rua</span>
+									</a> <a th:href="@{/endereco/novo}" class="nav_link" title="Endereços"> <i
+								class="bx bx-map nav_icon_mini"></i> <span
+								class="nav_name"> Endereços</span>
 
-							</a> <a th:href="@{/bloco}" class="nav_link" title="Bloco"> <i
-								class='bx bx-building nav_icon_mini'></i> <span class="nav_name">
-									Bloco</span>
-
-
-							</a> <a th:href="@{/apartamento}" class="nav_link"
-								title="Apartamento"> <i class='bx bx-home nav_icon_mini'></i>
-								<span class="nav_name"> Apatamento</span>
-
-							</a> <a th:href="@{/sala}" class="nav_link" title="Sala"> <i
-								class='bx bx-door-open nav_icon_mini'></i> <span
-								class="nav_name"> Sala</span>
-
-							</a>
-
+							</a> 
 						</div>
-
+<!-- ESTOQUE -->
 
 						<a th:href="@{/estoque}" class="nav_link"> <i
 							class='bx bx-coin-stack nav_icon'></i> <span class="nav_name">Estoque</span>
-
-						</a> <a class="nav_link" data-bs-toggle="collapse"
+							</a>
+							
+							 <!-- USUARIOS -->
+						 <a class="nav_link" data-bs-toggle="collapse"
 							href="#collapseUser" role="button" aria-expanded="false"
 							aria-controls="collapseExample" title="Endereço"> <i
-							class='bx bx-user nav_icon'></i> <span class="nav_name">Endereço</span>
+							class='bx bx-user nav_icon'></i> <span class="nav_name">Usuários</span>
 						</a>
 
 						<div class="collapse" id="collapseUser">
 
 							<a th:href="@{/usuario}" class="nav_link" title="Usuario"> <i
-								class='bx bx-user-circle nav_icon'></i> <span class="nav_name">
+								class='bx bxs-user-badge nav_icon_mini'></i> <span class="nav_name">
 									Usuario</span>
 
 							</a> <a th:href="@{/colaborador}" class="nav_link"
-								title="Colaborador"> <i class='bx bxs-user-badge nav_icon'></i>
+								title="Colaborador"> <i class='bx bx-user nav_icon_mini'></i>
 								<span class="nav_name"> Colaborador</span>
 							</a>
 						</div>
+
 
 
 						<a th:href="@{/relatorios/pedidosFinalizados}" class="nav_link"> <i

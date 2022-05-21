@@ -50,10 +50,17 @@
 
 				<div class="row mb-3">
 
+					<div class="col-md-1">
+						<label class="col-form-label-sm">Código:</label> <input
+							class="form-control form-control-sm js-endereco"
+							th:field="*{codigo}" disabled="disabled">
+
+					</div>
+
 					<div class="col-md-auto">
 						<label class="col-form-label-sm">Endereço:</label> <input
-							class="form-control form-control-sm js-endereco"
-							th:field="*{nomeEndereco}" >
+							class="form-control form-control-sm js-endereco  js-idMagalu"
+							th:field="*{nomeEndereco}" placeholder="000.000.000.000">
 
 					</div>
 				</div>
@@ -65,7 +72,7 @@
 				<!-- 					Botões -->
 
 				<div class="form-row">
-					<a type="button" th:href="@{/produto}"
+					<a type="button" th:href="@{/endereco}"
 						class="btn btn-danger offset-md-10">Cancelar</a> &nbsp;
 					<button type="submit" class="btn btn-success offset">
 						Salvar</button>
@@ -77,20 +84,19 @@
 	</form>
 
 	<th:block th:replace="hbs/TemplateAutocompleteProduto"></th:block>
-
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	
+	
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/js/vendors/handlebars.min.js"></script>
 	<script src="/js/vendors/jquery.easy-autocomplete.min.js"></script>
+	<script src="/js/vendors/jquery.mask.js"></script>
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/endereco.autocomplete-itens.js"></script>
-	<script src="/js/sindebar.js"></script>
-	<script src="/js/endereco.mascara-endereco.js"></script>
+	<script src="/js/mascarasEndereco.js"></script>
 
 
 

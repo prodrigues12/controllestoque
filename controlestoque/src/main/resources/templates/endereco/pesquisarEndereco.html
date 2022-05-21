@@ -36,46 +36,37 @@
 				</div>
 			</div>
 		</div>
-			<div th:replace="fragmentos/fragmentos :: magalu"></div>
+		<div th:replace="fragmentos/fragmentos :: magalu"></div>
 		<div class="card-body">
 
 			<form action="" method="get" th:object="${enderecoFilter}">
 
 				<div class="row mb-3">
 
-					<!-- 				Produto -->
-					<div class=" col-md-6">
-						<label class=" col-form-label-sm">Produto:</label> <input
+					<div class=" col-md-1">
+						<label class=" col-form-label-sm">Código:</label> <input
 							class="form-control form-control-sm" type="text"
-							th:field="*{produto}" />
+							th:field="*{codigo}" />
 					</div>
 
-					<!-- 				Rua -->
-					<div class="col-md-3">
-						<label class="col-form-label-sm">Rua:</label> <input
-							class="form-control form-control-sm" th:field="*{rua}">
+					<!-- 					Endereco -->
+					<div class=" col-md-auto">
+						<label class=" col-form-label-sm">Endereço:</label> <input
+							class="form-control form-control-sm js-maskEndereco" type="text"
+							th:field="*{endereco}" placeholder="00.000.000.000" />
 					</div>
 
-					<!-- 					Bloco -->
-					<div class="col-md-3">
-						<label class="col-form-label-sm">Bloco:</label> <input
-							class="form-control form-control-sm" th:field="*{bloco}">
+					<!-- 				Produto -->
+					<div class=" col-md-4">
+						<label for="produto" class=" col-form-label-sm">Produto:</label>
+						<input type="text"
+							class="js-produto-input form-control form-control-sm "
+							id="produto" data:url="@{/produto}"/>
+<!-- 							th:field="*{produto}" /> -->
 					</div>
 
-				</div>
-				<div class="row mb-3">
 
-					<div class="col-md-4">
-						<label class="col-form-label-sm">Apartamento:</label> <input
-							class="form-control form-control-sm" th:field="*{apartamento}">
-					</div>
-
-					<div class="col-md-4">
-						<label class="col-form-label-sm">Apartamento:</label> <input
-							class="form-control form-control-sm" th:field="*{sala}">
-					</div>
-
-					<div class="col-md-4">
+					<div class="col-md-auto">
 						<label class="col-form-label-sm">Data de modificação:</label> <input
 							class="form-control form-control-sm" type="date">
 					</div>
@@ -96,12 +87,17 @@
 		<table class="table table-sm table-striped" style="text-align: center">
 			<thead class="thead-dark" style="text-align: center">
 
-				<th class="col-4"><th:block
-						th:replace="fragmentos/ordenacao :: order (${pagina}, 'produto' , 'Produto')"></th:block>
+				<th class="col-1"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Código')"></th:block>
 
 				</th>
-				<th class="col-4">Endereco</th>
-				<th class="col-2">Data de mod.</th>
+				<th class="col-4"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'endereco' , 'Endereco')"></th:block>
+
+				</th>
+				<th class="col-3">Produto</th>
+				<th class="col-2">Quantidade</th>
+				<th class="col-1">Ult. Alter.</th>
 				<th class="col-2">Ação</th>
 
 
@@ -109,9 +105,11 @@
 
 			<tbody>
 				<tr th:each="endereco :${pagina.conteudo}">
-					<td th:text="${endereco.produto.nome}">1</td>
-					<td th:text="${endereco.endereco}">Limpeza</td>
-					<td>21/01/2022</td>
+					<td th:text="${endereco.codigo}"></td>
+					<td th:text="${endereco.nomeEndereco}"></td>
+					<td th:text="${endereco.produto}"></td>
+					<td th:text="${endereco.quantidade}"></td>
+					<td th:text="${endereco.dataAlteracao}"></td>
 					<td><a title="Editar"
 						th:href="@{/endereco/{codigo}(codigo=${endereco.codigo})}"><i
 							class=" bx bx-edit ce-icon"></i></td>
@@ -140,16 +138,17 @@
 			</ul>
 		</nav>
 	</div>
-
-
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="/js/vendors/handlebars.min.js"></script>
+	<script src="/js/vendors/jquery.easy-autocomplete.min.js"></script>
 	<script src="/js/sindebar.js"></script>
-	<script src="/js/controllestoque.js"></script>
 	<script src="/js/controllestoque.dialogo-excluir.js"></script>
-
+	<script src="/js/mascarasEndereco.js"></script>
+	<script src="/js/vendors/jquery.mask.js"></script>
+	<script src="/js/endereco.autocomplete-itens.js"></script>
 </body>
 </html>

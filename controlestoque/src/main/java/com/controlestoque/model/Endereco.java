@@ -27,7 +27,7 @@ public class Endereco implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	@Size(min = 12 , max=12, message = "000.000.000.000")
+	@Size(min = 14, message = "Endereco deve segui o seguinte padrão: '00.000.000.000' ")
 	@NotBlank
 	private String nomeEndereco;
 	
