@@ -35,9 +35,11 @@ public class Endereco implements Serializable {
 	
 	private LocalDate dataAlteracao;
 	
-//	private boolean status;
+	private boolean status;
 
-//	@NotNull(message = "Campo Produto é obrigatorio")
+
+
+	//	@NotNull(message = "Campo Produto é obrigatorio")
 	@ManyToOne
 	@JoinColumn(name = "codigo_produto")
 	private Produto produto;
@@ -77,13 +79,13 @@ public class Endereco implements Serializable {
 		this.dataAlteracao = dataAlteracao;
 	}
 
-//	public boolean isStatus() {
-//		return status;
-//	}
-//
-//	public void setStatus(boolean status) {
-//		this.status = status;
-//	}
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	public Produto getProduto() {
 		return produto;

@@ -1,5 +1,7 @@
 package com.controlestoque.Repository.helper.endereco;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -18,6 +20,7 @@ import org.springframework.util.StringUtils;
 import com.controlestoque.Repository.filter.EnderecoFilter;
 
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
+import com.controlestoque.dto.ProdutoDTO;
 import com.controlestoque.model.Endereco;
 import com.controlestoque.model.Produto;
 
@@ -63,6 +66,17 @@ public class EnderecosImpl implements EnderecosQueries {
 			
 			
 		}
+	}
+	
+	public List<Endereco> enderecosDisponiveis(Endereco endereco) {
+		
+//		String jpql = "select new com.controlestoque.Endereco (nomeEndereco)"
+//				+ "from Endereco where lower(nomeEndereco) like lower(:codigoOuNome) or lower(codigo) like lower(:codigoOuNome)";
+//		List<ProdutoDTO> produtosFiltrados = manager.createQuery(jpql, ProdutoDTO.class)
+//				.setParameter("codigoOuNome", "%" + + "%").getResultList();
+
+		
+		return null;
 	}
 
 	

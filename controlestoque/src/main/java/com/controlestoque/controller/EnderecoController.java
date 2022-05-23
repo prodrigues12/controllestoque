@@ -41,7 +41,8 @@ public class EnderecoController {
 	@RequestMapping("/novo")
 	public ModelAndView novo(Endereco endereco) {
 		ModelAndView mv = new ModelAndView("endereco/novoEndereco");
-	
+//		mv.addObject("enderecos", endRepository.enderecosDisponiveis(endereco));
+		mv.addObject("enderecos",endRepository.findbyStatusFalse());
 		return mv;
 	}
 
@@ -52,15 +53,15 @@ public class EnderecoController {
 			return novo(endereco);
 		}
 		try {
-			
+
 			endService.salvandoEndereco(endereco);
-			
+
 		} catch (EnderecoJaCadastradoException e) {
-			
+
 			result.rejectValue("nomeEndereco", e.getMessage(), e.getMessage());
 			return novo(endereco);
 		}
-		
+
 		attributes.addFlashAttribute("mensagem", "Endereco Salvo com sucesso!");
 		return new ModelAndView("redirect:/endereco/novo");
 	}
@@ -76,13 +77,13 @@ public class EnderecoController {
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}
-	
+
 	@GetMapping("/{codigo}")
 	public ModelAndView editarEndereco(@PathVariable("codigo") Endereco endereco) {
-		ModelAndView mv =  novo(endereco);
+		ModelAndView mv = novo(endereco);
 		mv.addObject(endereco);
 		return mv;
-		
+
 	}
 
 }

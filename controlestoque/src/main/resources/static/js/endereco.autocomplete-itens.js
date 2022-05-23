@@ -23,12 +23,21 @@ Controllestoque.Autocomplete = (function() {
 				contentType: 'application/json'
 			},
 
-			template: {
-				type: 'custom',
-				method: template.bind(this)
-			},
 			list: {
-				onChooseEvent: onItemSelecionado.bind(this)
+				match: {
+			enabled: true
+		},
+		maxNumberOfElements: 6,
+
+		showAnimation: {
+			type: "slide",
+			time: 400
+		},
+		hideAnimation: {
+			type: "slide",
+			time: 400
+		},
+//				onChooseEvent: onItemSelecionado.bind(this)
 			}
 
 		};
@@ -42,10 +51,6 @@ Controllestoque.Autocomplete = (function() {
 		this.codigoOuNomeInput.val('');
 		this.codigoOuNomeInput.focus();
 
-	}
-
-	function template(nome, produto) {
-		return this.template(produto);
 	}
 
 	return Autocomplete;
