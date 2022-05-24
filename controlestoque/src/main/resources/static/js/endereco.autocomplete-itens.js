@@ -37,7 +37,7 @@ Controllestoque.Autocomplete = (function() {
 			type: "slide",
 			time: 400
 		},
-//				onChooseEvent: onItemSelecionado.bind(this)
+				onChooseEvent: onItemSelecionado.bind(this)
 			}
 
 		};
@@ -48,7 +48,8 @@ Controllestoque.Autocomplete = (function() {
 	function onItemSelecionado() {
 
 		this.emitter.trigger('item-selecionado', this.codigoOuNomeInput.getSelectedItemData());
-		this.codigoOuNomeInput.val('');
+		this.codigoOuNomeInput.val();
+		console.log('chegou aqui: ',this.codigoOuNomeInput.val());
 		this.codigoOuNomeInput.focus();
 
 	}

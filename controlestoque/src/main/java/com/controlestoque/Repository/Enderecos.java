@@ -13,7 +13,7 @@ public interface Enderecos extends JpaRepository<Endereco, Long>, EnderecosQueri
 
 	Optional<Endereco> findByNomeEndereco(String nomeEndereco);
 	
-	@Query("Select e from Endereco e where e.status=0 ")
-	List<Endereco> findbyStatusFalse();
+	@Query("Select e from Endereco e where e.status=1 ")
+	List<Endereco> findbyStatusTrue();
 
 }

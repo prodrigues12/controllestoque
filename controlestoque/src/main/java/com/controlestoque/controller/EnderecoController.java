@@ -41,8 +41,15 @@ public class EnderecoController {
 	@RequestMapping("/novo")
 	public ModelAndView novo(Endereco endereco) {
 		ModelAndView mv = new ModelAndView("endereco/novoEndereco");
-//		mv.addObject("enderecos", endRepository.enderecosDisponiveis(endereco));
-		mv.addObject("enderecos",endRepository.findbyStatusFalse());
+		mv.addObject("produto", proRepository.findAll());
+		return mv;
+	}
+	
+	@RequestMapping("/enderecar")
+	public ModelAndView enderecar(Endereco endereco) {
+		ModelAndView mv = new ModelAndView("endereco/novoEnderecar");
+		mv.addObject("produto", proRepository.findAll());
+		mv.addObject("enderecos",endRepository.findbyStatusTrue());
 		return mv;
 	}
 
@@ -64,6 +71,14 @@ public class EnderecoController {
 
 		attributes.addFlashAttribute("mensagem", "Endereco Salvo com sucesso!");
 		return new ModelAndView("redirect:/endereco/novo");
+	}
+	
+	@RequestMapping(value = { "/enderecar", "{\\d+}" }, method = RequestMethod.POST)
+	public ModelAndView enderecando(@Valid Endereco endereco, BindingResult result, RedirectAttributes attributes) {
+
+		endService.salvandoEndereamentoo(endereco);
+		
+		return new ModelAndView("redirect:/endereco/enderecar");
 	}
 
 	@GetMapping

@@ -94,6 +94,10 @@ public class Endereco implements Serializable {
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
+	
+	public boolean isEnderecoNovo() {
+		return this.codigo == null;
+	}
 
 
 	@Override
