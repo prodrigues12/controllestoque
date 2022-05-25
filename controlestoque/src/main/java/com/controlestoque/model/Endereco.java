@@ -16,8 +16,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
-
 @Entity
 public class Endereco implements Serializable {
 
@@ -26,25 +24,20 @@ public class Endereco implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
+
 	@Size(min = 14, message = "Endereco deve segui o seguinte padrão: '00.000.000.000' ")
 	@NotBlank
 	private String nomeEndereco;
-	
+
 	private BigDecimal quantidade;
-	
+
 	private LocalDate dataAlteracao;
-	
+
 	private boolean status;
 
-
-
-	//	@NotNull(message = "Campo Produto é obrigatorio")
 	@ManyToOne
 	@JoinColumn(name = "codigo_produto")
 	private Produto produto;
-
-	
 
 	public Long getCodigo() {
 		return codigo;
@@ -53,7 +46,6 @@ public class Endereco implements Serializable {
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
-		
 
 	public String getNomeEndereco() {
 		return nomeEndereco;
@@ -94,11 +86,10 @@ public class Endereco implements Serializable {
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
-	
+
 	public boolean isEnderecoNovo() {
 		return this.codigo == null;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -117,5 +108,4 @@ public class Endereco implements Serializable {
 		return Objects.equals(codigo, other.codigo);
 	}
 
-	
 }

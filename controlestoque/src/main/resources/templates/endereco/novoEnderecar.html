@@ -51,18 +51,30 @@
 			<div class="card-body">
 
 				<div class="row mb-3">
-
-					<div class="col-md-3">
-						<label for="endereco_nome" class="col-form-label-sm">Endereços:</label>
-						<select id="endereco_nome"
-							class=" form-control form-select form-select-sm"
-							th:field="*{nomeEndereco}">
-							<option value="">Selecione</option>
-							<option class="form-control" th:each="enderecos : ${enderecos}"
-								th:value="${enderecos.nomeEndereco}"
-								th:text="${enderecos.nomeEndereco}">a</option>
-						</select>
+				
+				<div class=" col-md-auto">
+						<label class=" col-form-label-sm">Codigo:</label> <input
+							class="form-control form-control-sm " type="text"
+							th:field="*{codigo}" disabled="disabled" />
 					</div>
+					
+					<div class=" col-md-auto">
+						<label class=" col-form-label-sm">Endereco:</label> <input
+							class="form-control form-control-sm js-maskEndereco" type="text"
+							th:field="*{nomeEndereco}" disabled="disabled" />
+					</div>
+
+<!-- 					<div class="col-md-3"> -->
+<!-- 						<label for="endereco_nome" class="col-form-label-sm">Endereços:</label> -->
+<!-- 						<select id="endereco_nome" -->
+<!-- 							class=" form-control form-select form-select-sm" -->
+<!-- 							th:field="*{nomeEndereco}"> -->
+<!-- 							<option value="">Selecione</option> -->
+<!-- 							<option class="form-control" th:each="enderecos : ${enderecos}" -->
+<!-- 								th:value="${enderecos.nomeEndereco}" -->
+<!-- 								th:text="${enderecos.nomeEndereco}">a</option> -->
+<!-- 						</select> -->
+<!-- 					</div> -->
 
 					<div class="col-md-3">
 						<label for="endereco_produto" class="col-form-label-sm">Produtos:</label>

@@ -16,4 +16,7 @@ public interface Enderecos extends JpaRepository<Endereco, Long>, EnderecosQueri
 	@Query("Select e from Endereco e where e.status=1 ")
 	List<Endereco> findbyStatusTrue();
 
+	@Query("Select e from Endereco e where e.codigo=:codigo")
+	public Endereco findByCodigo(Long codigo);
+
 }

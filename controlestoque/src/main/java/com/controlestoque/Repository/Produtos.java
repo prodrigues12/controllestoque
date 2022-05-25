@@ -25,6 +25,8 @@ public interface Produtos extends JpaRepository<Produto, Long>, ProdutosQueries{
 	@Query("select p from Produto p where p.codigo =:codigo")
 	public Produto findByCodigo(Long codigo);
 
+	@Query("select p from Produto p where p.codigo =0")
+	public Produto ProdutoPallet();
 	
 }
 	

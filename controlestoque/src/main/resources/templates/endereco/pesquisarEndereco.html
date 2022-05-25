@@ -115,7 +115,10 @@
 					<td th:text="${#temporals.format(endereco.dataAlteracao, 'dd/MM/yyyy')}" ></td>
 					<td><a title="Editar"
 						th:href="@{/endereco/{codigo}(codigo=${endereco.codigo})}"><i
-							class=" bx bx-edit ce-icon"></i></td>
+							class=" bx bx-edit ce-icon"></i></a>
+							<a title="Editar"
+						th:href="@{/endereco/enderecar/{codigo}(codigo=${endereco.codigo})}"><i
+							class=" bx bx-edit ce-icon"></i></a></td>
 				</tr>
 				<tr th:if="${pagina.vazia}">
 					<td colspan="7">Nenhum registro encontrado</td>

@@ -1,12 +1,16 @@
 package com.controlestoque.service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Optional;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.controlestoque.Repository.Enderecos;
+import com.controlestoque.Repository.Produtos;
 import com.controlestoque.model.Endereco;
 import com.controlestoque.service.exception.EnderecoJaCadastradoException;
 
@@ -16,30 +20,24 @@ public class EnderecoService {
 	@Autowired
 	private Enderecos endRepository;
 
+	@Autowired
+	private Produtos proRepository;
+
+	@Transactional
 	public Endereco salvandoEndereco(Endereco endereco) {
 
-		if (endereco.isEnderecoNovo()) {
-			System.out.println("endereco Novo");
+		Optional<Endereco> enderecoOptional = endRepository.findByNomeEndereco(endereco.getNomeEndereco());
 
-			Optional<Endereco> enderecoOptional = endRepository.findByNomeEndereco(endereco.getNomeEndereco());
-
-			if (enderecoOptional.isPresent()) {
-				throw new EnderecoJaCadastradoException("Enderecço " + endereco.getNomeEndereco() + " já cadastrado");
-			}
-
-		} else {
-			System.out.println("endereco existe");
+		if (enderecoOptional.isPresent()) {
+			throw new EnderecoJaCadastradoException("Enderecço " + endereco.getNomeEndereco() + " já cadastrado");
 		}
 
+		endereco.setProduto(proRepository.ProdutoPallet());
+		endereco.setQuantidade(BigDecimal.ZERO);
+
 		endereco.setDataAlteracao(LocalDate.now());
-		endereco.setStatus(true);
 
 		return endRepository.save(endereco);
-	}
-
-	public Endereco salvandoEndereamentoo(Endereco endereco) {
-
-		return endRepository.saveAndFlush(endereco);
 	}
 
 }
