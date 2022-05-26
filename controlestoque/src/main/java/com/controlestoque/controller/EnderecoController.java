@@ -41,17 +41,11 @@ public class EnderecoController {
 	@RequestMapping("/novo")
 	public ModelAndView novo(Endereco endereco) {
 		ModelAndView mv = new ModelAndView("endereco/novoEndereco");
-		mv.addObject("produto", proRepository.findAll());
+
 		return mv;
 	}
 
-	@RequestMapping("/enderecar")
-	public ModelAndView enderecar(Endereco endereco) {
-		ModelAndView mv = new ModelAndView("endereco/novoEnderecar");
-		mv.addObject("produto", proRepository.findAll());
-		mv.addObject("enderecos", endRepository.findbyStatusTrue());
-		return mv;
-	}
+
 
 	@RequestMapping(value = { "/novo", "{\\d+}" }, method = RequestMethod.POST)
 	public ModelAndView salvarEndereco(@Valid Endereco endereco, BindingResult result, RedirectAttributes attributes) {
@@ -93,12 +87,6 @@ public class EnderecoController {
 
 	}
 
-	@GetMapping("/enderecar/{codigo}")
-	public ModelAndView editarEnderecamento(@PathVariable("codigo") Endereco endereco) {
-		ModelAndView mv = enderecar(endereco);
-		mv.addObject(endereco);
-		return mv;
-
-	}
+	
 
 }

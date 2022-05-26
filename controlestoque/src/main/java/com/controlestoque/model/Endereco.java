@@ -1,8 +1,6 @@
 package com.controlestoque.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,10 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -29,15 +25,10 @@ public class Endereco implements Serializable {
 	@NotBlank
 	private String nomeEndereco;
 
-	private BigDecimal quantidade;
-
-	private LocalDate dataAlteracao;
-
-	private boolean status;
-
-	@ManyToOne
-	@JoinColumn(name = "codigo_produto")
-	private Produto produto;
+	@OneToMany(mappedBy = "endereco")
+	private List<Enderecar> enderecar;
+	
+	
 
 	public Long getCodigo() {
 		return codigo;
@@ -55,40 +46,12 @@ public class Endereco implements Serializable {
 		this.nomeEndereco = nomeEndereco;
 	}
 
-	public BigDecimal getQuantidade() {
-		return quantidade;
+	public List<Enderecar> getEnderecar() {
+		return enderecar;
 	}
 
-	public void setQuantidade(BigDecimal quantidade) {
-		this.quantidade = quantidade;
-	}
-
-	public LocalDate getDataAlteracao() {
-		return dataAlteracao;
-	}
-
-	public void setDataAlteracao(LocalDate dataAlteracao) {
-		this.dataAlteracao = dataAlteracao;
-	}
-
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
-
-	public boolean isEnderecoNovo() {
-		return this.codigo == null;
+	public void setEnderecar(List<Enderecar> enderecar) {
+		this.enderecar = enderecar;
 	}
 
 	@Override

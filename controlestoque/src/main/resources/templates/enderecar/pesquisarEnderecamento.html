@@ -34,7 +34,7 @@
 					<h4>Pesquisa Endereco</h4>
 				</div>
 				<div class="col-md-2">
-					<a class="btn btn-primary btn-sm" th:href="@{/endereco/novo}">Novo
+					<a class="btn btn-primary btn-sm" th:href="@{/enderecar/novo}">Novo
 						Endereco</a>
 				</div>
 			</div>
@@ -42,7 +42,7 @@
 		<div th:replace="fragmentos/fragmentos :: magalu"></div>
 		<div class="card-body">
 
-			<form action="" method="get" th:object="${enderecoFilter}">
+			<form action="" method="get" th:object="${enderecar}">
 
 				<div class="row mb-3">
 
@@ -57,6 +57,12 @@
 						<label class=" col-form-label-sm">Endereço:</label> <input
 							class="form-control form-control-sm js-maskEndereco" type="text"
 							th:field="*{endereco}" placeholder="00.000.000.000" />
+					</div>
+					
+						<div class=" col-md-5">
+						<label class=" col-form-label-sm">Produto:</label> <input
+							class="form-control form-control-sm js-maskEndereco" type="text"
+							th:field="*{Produto}"  />
 					</div>
 
 				
@@ -81,20 +87,30 @@
 				</th>
 				<th class="col-auto"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'endereco' , 'Endereco')"></th:block>
-
-				
+				</th>
+				<th class="col-auto"><th:block
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'produto' , 'Produto')"></th:block>
+				</th>
+					<th class="col-2">Quantidade</th>
 				<th class="col-2">Ação</th>
 
 
 			</thead>
 
 			<tbody>
-				<tr th:each="endereco :${pagina.conteudo}">
-					<td th:text="${endereco.codigo}"></td>
-					<td th:text="${endereco.nomeEndereco}"></td>
+				<tr th:each="enderecar :${pagina.conteudo}">
+					<td th:text="${enderecar.codigo}"></td>
+					<td th:text="${enderecar.endereco.nomeEndereco}"></td>
+					<td th:text="${enderecar.produto.nome}"></td>
+					<td th:text="${enderecar.quantidade}"></td>
 					<td><a title='Editar'
-						th:href="@{/endereco/{codigo}(codigo=${endereco.codigo})}"><i
-							class=" bx bx-edit ce-icon"></i></a></td>
+						th:href="@{/enderecar/{codigo}(codigo=${enderecar.codigo})}"><i
+							class=" bx bx-edit ce-icon"></i></a>
+							<a
+						class=" js-exclusao-btn" title="Excluir" href="#"
+						data:url="@{/enderecar/{codigo}(codigo=${enderecar.codigo})}"
+						data:objeto="${enderecar.produto.nome}"> <i class="bx bx-trash ce-icon"></i>
+					</a></td>
 				</tr>
 				<tr th:if="${pagina.vazia}">
 					<td colspan="7">Nenhum registro encontrado</td>

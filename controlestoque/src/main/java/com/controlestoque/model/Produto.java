@@ -66,9 +66,8 @@ public class Produto implements Serializable {
 	private UnidadeMedia uniMedida;
 
 	@OneToMany(mappedBy = "produto")
-	private List<Endereco> endereco;
+	private List<Enderecar> enderecar;
 	
-
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -126,12 +125,13 @@ public class Produto implements Serializable {
 		this.uniMedida = uniMedida;
 	}
 
-	public List<Endereco> getEndereco() {
-		return endereco;
+
+	public List<Enderecar> getEnderecar() {
+		return enderecar;
 	}
 
-	public void setEndereco(List<Endereco> endereco) {
-		this.endereco = endereco;
+	public void setEnderecar(List<Enderecar> enderecar) {
+		this.enderecar = enderecar;
 	}
 
 	public boolean isProdutoNovo() {
