@@ -1,6 +1,7 @@
 package com.controlestoque.service;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 import javax.persistence.PersistenceException;
 import javax.transaction.Transactional;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.controlestoque.Repository.Enderecamentos;
 import com.controlestoque.model.Enderecar;
 import com.controlestoque.service.exception.ImpossivelExcluirEntidadeException;
+import com.controlestoque.service.exception.enderecoOcupadoException;
 
 @Service
 public class EnderecarService {
@@ -20,6 +22,20 @@ public class EnderecarService {
 
 	@Transactional
 	public Enderecar salvandoEndereco(Enderecar enderecar) {
+		System.out.println(enderecar.getCodigo());
+
+		Optional<Enderecar> enderecarOpt = enderecamentoRepository.findByCodigo(enderecar.getCodigo());
+
+		if (enderecarOpt.isPresent() == false) {
+			
+			Optional<Enderecar> enderecarOptional = enderecamentoRepository.findByEndereco(enderecar.getEndereco());
+			if (enderecarOptional.isPresent()) {
+
+				throw new enderecoOcupadoException(
+						"Endereço " + enderecar.getEndereco().getNomeEndereco() + " está ocupado.");
+			}
+
+		}
 
 		enderecar.setDataAlteracao(LocalDate.now());
 

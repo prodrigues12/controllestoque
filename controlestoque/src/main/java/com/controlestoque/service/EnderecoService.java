@@ -27,8 +27,6 @@ public class EnderecoService {
 		if (enderecoOptional.isPresent()) {
 			throw new EnderecoJaCadastradoException("Enderecço " + endereco.getNomeEndereco() + " já cadastrado");
 		}
-
-
 		
 		return endRepository.save(endereco);
 	}

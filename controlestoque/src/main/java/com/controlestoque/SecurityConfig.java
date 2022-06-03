@@ -35,15 +35,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/pedido/novo/pedido").permitAll()
+//		.antMatchers("/pedido/novo/pedido").permitAll()
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/", true)
-				.permitAll().and().exceptionHandling().accessDeniedPage("/403").and().exceptionHandling().
-				and()
-				.rememberMe().and()
-				.csrf().disable();
+				.permitAll().and().exceptionHandling().accessDeniedPage("/403").and().exceptionHandling().and()
+				.rememberMe().and().csrf().disable();
 	}
-	
-	
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {

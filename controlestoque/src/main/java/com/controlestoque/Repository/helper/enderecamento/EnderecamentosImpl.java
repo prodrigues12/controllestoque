@@ -1,13 +1,13 @@
 package com.controlestoque.Repository.helper.enderecamento;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
-import com.controlestoque.Repository.filter.EnderecoFilter;
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
 import com.controlestoque.model.Enderecar;
 import com.controlestoque.model.Endereco;
@@ -56,25 +55,23 @@ public class EnderecamentosImpl implements EnderecamentosQueries {
 			if (!StringUtils.isEmpty(filtro.getProduto())) {
 				criteria.add(Restrictions.eq("produto", filtro.getProduto()));
 			}
-			
+
 			if (!StringUtils.isEmpty(filtro.getEndereco())) {
 				criteria.add(Restrictions.eq("endereco", filtro.getEndereco()));
 			}
-			
-			
+
 		}
 	}
-	
+
 	public List<Endereco> enderecosDisponiveis(Endereco endereco) {
-		
+
 //		String jpql = "select new com.controlestoque.Endereco (nomeEndereco)"
 //				+ "from Endereco where lower(nomeEndereco) like lower(:codigoOuNome) or lower(codigo) like lower(:codigoOuNome)";
 //		List<ProdutoDTO> produtosFiltrados = manager.createQuery(jpql, ProdutoDTO.class)
 //				.setParameter("codigoOuNome", "%" + + "%").getResultList();
 
-		
 		return null;
 	}
 
-	
+
 }

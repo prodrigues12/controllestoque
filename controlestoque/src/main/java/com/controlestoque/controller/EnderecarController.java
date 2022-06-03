@@ -30,6 +30,7 @@ import com.controlestoque.service.EnderecarService;
 import com.controlestoque.service.EnderecoService;
 import com.controlestoque.service.exception.EnderecoJaCadastradoException;
 import com.controlestoque.service.exception.ImpossivelExcluirEntidadeException;
+import com.controlestoque.service.exception.enderecoOcupadoException;
 
 @Controller
 @RequestMapping("/enderecar")
@@ -68,9 +69,9 @@ public class EnderecarController {
 
 			enderecarService.salvandoEndereco(enderecar);
 
-		} catch (EnderecoJaCadastradoException e) {
+		} catch (enderecoOcupadoException e) {
 
-			result.rejectValue("nomeEndereco", e.getMessage(), e.getMessage());
+			result.rejectValue("Endereco", e.getMessage(), e.getMessage());
 			return novo(enderecar);
 		}
 
@@ -89,7 +90,7 @@ public class EnderecarController {
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}
-//
+
 	@GetMapping("/{codigo}")
 	public ModelAndView editarEndereco(@PathVariable("codigo") Enderecar enderecar) {
 		ModelAndView mv = novo(enderecar);

@@ -138,7 +138,7 @@ a {
 
 .col-form-label-sm {
 	font-weight: bold;
-	font-size: 15px;
+	font-size: 17px;
 }
 
 .form-control {
@@ -147,7 +147,7 @@ a {
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
 	font-weight: bold;
-	font-size: 14px;		
+	font-size: 16px;		
 }
 
 .form-control-label {
@@ -260,13 +260,14 @@ a {
 table tr td {
 	color: #333333;
 	font-family: arial, helvetica, sans-serif;
-	font-size: 13px;
+	font-size: 16px;
 	font-style: normal;
 	font-variant: small-caps;
 	border-top: none;
 	border-bottom: 1px solid #e7eaec;
 	padding: 10px;
 	vertical-align: middle;
+	
 }
 /*
 ###################

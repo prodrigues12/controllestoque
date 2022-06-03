@@ -78,7 +78,7 @@ public class Enderecar implements Serializable {
 		this.dataAlteracao = dataAlteracao;
 	}
 
-	public boolean isEnderecoNovo() {
+	public boolean isEnderecamentoNovo() {
 		return this.codigo == null;
 	}
 

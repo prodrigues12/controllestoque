@@ -3,7 +3,7 @@ var Controllestoque = Controllestoque || {};
 Controllestoque.Autocomplete = (function() {
 
 	function Autocomplete() {
-		this.codigoOuNomeInput = $('.js-produto-input');
+		this.nomeInput = $('.js-produto-input');
 		var htmlTemplateAutocomplete = $('#template-autocomplete-produto').html();
 		this.template = Handlebars.compile(htmlTemplateAutocomplete);
 		this.emitter = $({});
@@ -15,7 +15,7 @@ Controllestoque.Autocomplete = (function() {
 
 		var options = {
 			url: function(codigoOuNome) {
-				return this.codigoOuNomeInput.data('url') + '?codigoOuNome=' + codigoOuNome;
+				return this.nomeInput.data('url') + '?codigoOuNome=' + codigoOuNome;
 			}.bind(this),
 			getValue: 'nome',
 			requestDelay: 400,
@@ -41,20 +41,19 @@ Controllestoque.Autocomplete = (function() {
 			}
 
 		};
-		this.codigoOuNomeInput.easyAutocomplete(options);
+		this.nomeInput.easyAutocomplete(options);
 	}
 
 	function onItemSelecionado() {
 
-		this.emitter.trigger('item-selecionado', this.codigoOuNomeInput.getSelectedItemData());
-		this.codigoOuNomeInput.val('');
-		this.codigoOuNomeInput.focus();
+		this.emitter.trigger('item-selecionado', this.nomeInput.getSelectedItemData());
+		this.nomeInput.val('');
+		this.nomeInput.focus();
 
 	}
 
 	return Autocomplete;
 
 }());
-
 
 

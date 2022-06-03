@@ -29,7 +29,6 @@ public class Endereco implements Serializable {
 	private List<Enderecar> enderecar;
 	
 	
-
 	public Long getCodigo() {
 		return codigo;
 	}
