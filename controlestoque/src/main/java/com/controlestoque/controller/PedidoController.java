@@ -75,16 +75,17 @@ public class PedidoController {
 		return mv;
 	}
 	
-	@GetMapping("/novo/pedido")
-	public ModelAndView novoPedido(Pedido pedido) {
-		ModelAndView mv = new ModelAndView("pedido/pedidoNovoPedido");
-
-		setUuid(pedido);
-
-		mv.addObject("turno", Turno.values());
-		mv.addObject("itens", pedido.getItens());
-		return mv;
-	}
+//	@GetMapping("/novo/pedido")
+//	public ModelAndView novoPedido(Pedido pedido) {
+//		ModelAndView mv = new ModelAndView("pedido/pedidoNovoPedido");
+//
+//		setUuid(pedido);
+//
+//		mv.addObject("turno", Turno.values());
+//		mv.addObject("setorMagalu", SetorMagalu.values());
+//		mv.addObject("itens", pedido.getItens());
+//		return mv;
+//	}
 
 	
 	@GetMapping

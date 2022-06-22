@@ -78,7 +78,7 @@ public class ColaboradorController {
 		return mv;
 	}
 
-	@RequestMapping(consumes = { MediaType.APPLICATION_JSON_VALUE })
+	@RequestMapping(value="/list", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public @ResponseBody List<Colaborador> pesquisar(String nome) {
 
 		validarTamanhoNome(nome);

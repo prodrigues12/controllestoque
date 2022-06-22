@@ -106,7 +106,7 @@ a {
   box-sizing: border-box;
   cursor: pointer;
   font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 20px;
   opacity: 1;
@@ -138,7 +138,7 @@ a {
 
 .col-form-label-sm {
 	font-weight: bold;
-	font-size: 17px;
+	font-size: 14px;
 }
 
 .form-control {
@@ -147,7 +147,7 @@ a {
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
 	font-weight: bold;
-	font-size: 16px;		
+	font-size: 14px;		
 }
 
 .form-control-label {
@@ -156,14 +156,14 @@ a {
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
 	font-weight: bold;
-	font-size: 13px;		
+	font-size: 14px;		
 }
 
 
 
 .form-check-label{
 	font-weight: bold;
-	font-size: 17px;	
+	font-size: 14px;	
 }
 
 .table {
@@ -260,7 +260,7 @@ a {
 table tr td {
 	color: #333333;
 	font-family: arial, helvetica, sans-serif;
-	font-size: 16px;
+	font-size: 14px;
 	font-style: normal;
 	font-variant: small-caps;
 	border-top: none;

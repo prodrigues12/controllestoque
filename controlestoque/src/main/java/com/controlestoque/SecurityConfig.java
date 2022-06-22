@@ -29,13 +29,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/css/**").antMatchers("/img/**");
+		web.ignoring().antMatchers("/css/**").antMatchers("/img/**").antMatchers("/js/**");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-//		.antMatchers("/pedido/novo/pedido").permitAll()
+		http.authorizeRequests()		
+		.antMatchers("/pedido/novo").permitAll()
+		.antMatchers("/pedido/item/**").permitAll()
+		.antMatchers("/pedido/tabelaItensPedido").permitAll()
+		.antMatchers("/hbs/**").permitAll()
+		.antMatchers("/produto/autocomplete/").permitAll()
+		.antMatchers("/colaborador/list/").permitAll()
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/", true)
 				.permitAll().and().exceptionHandling().accessDeniedPage("/403").and().exceptionHandling().and()
 				.rememberMe().and().csrf().disable();

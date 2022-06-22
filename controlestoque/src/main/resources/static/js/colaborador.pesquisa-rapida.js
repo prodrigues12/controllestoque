@@ -25,7 +25,7 @@ Controllestoque.PesquisaRapidaColaborador = (function() {
 		event.preventDefault();
 		
 		$.ajax({
-			url: this.pesquisaRapidaColaboradorModal.find('form').attr('action'),
+			url: this.pesquisaRapidaColaboradorModal.find('form').attr('action') + '/list/',
 			method: 'GET',
 			contentType: 'application/json',
 			data: {

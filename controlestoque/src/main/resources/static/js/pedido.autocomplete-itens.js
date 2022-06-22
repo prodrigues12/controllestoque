@@ -15,7 +15,7 @@ Controllestoque.Autocomplete = (function() {
 
 		var options = {
 			url: function(codigoOuNome) {
-				return this.nomeInput.data('url') + '?codigoOuNome=' + codigoOuNome;
+				return this.nomeInput.data('url') +'/autocomplete/'+ '?codigoOuNome=' + codigoOuNome;
 			}.bind(this),
 			getValue: 'nome',
 			requestDelay: 400,
@@ -45,7 +45,7 @@ Controllestoque.Autocomplete = (function() {
 	}
 
 	function onItemSelecionado() {
-
+console.log('Chegou no itemSelecionado, item:', this.nomeInput.getSelectedItemData());
 		this.emitter.trigger('item-selecionado', this.nomeInput.getSelectedItemData());
 		this.nomeInput.val('');
 		this.nomeInput.focus();
