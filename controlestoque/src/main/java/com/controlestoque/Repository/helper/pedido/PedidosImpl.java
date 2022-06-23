@@ -452,7 +452,7 @@ public class PedidosImpl implements PedidosQueries {
 	public List<PedidosMes> totalPorMes() {
 
 		String query = "SELECT DATE_FORMAT(data_criacao, '%Y/%m') mes, COUNT(*) "
-				+ "total FROM pedido WHERE data_criacao BETWEEN CURDATE() - INTERVAL 5 MONTH AND CURDATE()"
+				+ "total FROM pedido WHERE data_criacao BETWEEN CURDATE() - INTERVAL 6 MONTH AND CURDATE()"
 				+ " GROUP BY  DATE_FORMAT(data_criacao, '%Y/%m')"
 				+ "ORDER BY DATE_FORMAT(data_criacao, '%Y/%m') DESC";
 

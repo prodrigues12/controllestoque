@@ -32,6 +32,14 @@ public class DashboardController {
 		return mv;
 		
 	}
+	
+	@GetMapping("/sobre")
+	public ModelAndView pageSobre() {
+		ModelAndView mv = new ModelAndView("sobre");
+		return mv;
+		
+	}
+
 
 	
 }
