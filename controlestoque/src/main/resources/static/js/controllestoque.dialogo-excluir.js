@@ -15,7 +15,7 @@ Controllestoque.DialogoExcluir = (function() {
 	}
 
 	function onExcluirClicado(evento) {
-//		evento.preventDefault();
+		//		evento.preventDefault();
 		var botaoClicado = $(evento.currentTarget);
 		var url = botaoClicado.data('url');
 		var objeto = botaoClicado.data('objeto');
@@ -31,27 +31,39 @@ Controllestoque.DialogoExcluir = (function() {
 			dangerMode: true,
 		})
 			.then(function(isConfirm) {
-				console.log('chegou aqui')
+
 				if (isConfirm) {
 					onExclusaoConfirmado(url);
 
 					swal({
 						title: 'Excluido com Sucesso!',
-						timer: 2000,
+						timer: 3000,
 						icon: 'success'
 					}).then(function() {
+						location.reload();
 					});
 
 				} else {
-					swal("Cancelado com Sucesso", "", "success");
+					
+					swal({
+						title: 'Operação Cancelada!',
+						timer: 2000,
+						icon: 'info'
+					}).then(function() {
+						
+					});
+					
+					
 				}
 
 			});
+
+
 	}
 
 
 	function onExclusaoConfirmado(url) {
-		console.log(url)
+
 		$.ajax({
 			url: url,
 			method: 'DELETE',
@@ -66,18 +78,32 @@ Controllestoque.DialogoExcluir = (function() {
 		var separador = urlAtual.indexOf('?') > -1 ? '&' : '?';
 		var novaUrl = urlAtual.indexOf('excluido') > -1 ? urlAtual : urlAtual + separador + 'excluido';
 
+
 		window.location = novaUrl;
 
+
+
+
 	}
 
-	function onErroExcluir(e) {
-		console.log('ahahahah', e.responseText);
-		swal('Oops!', e.responseText, 'error');
+	function onErroExcluir(){
+
+		swal({
+			title: 'Ops!',
+			text: 'Não possível excluir objeto.',
+			timer: 6000,
+			icon: 'error'
+		}).then(function() {
+
+		});
 	}
+
 
 	return DialogoExcluir;
 
 }());
+
+
 
 $(function() {
 	var dialogo = new Controllestoque.DialogoExcluir();

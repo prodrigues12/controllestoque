@@ -19,7 +19,7 @@
 
 <body id="body-pd">
 
-	<header class="header" id="header" th:fragment=header >
+	<header class="header" id="header" th:fragment=header>
 		<div class="header_toggle">
 			<i class='bx bx-chevron-right' id="header-toggle"></i>
 		</div>
@@ -36,7 +36,8 @@
 					<ul class="dropdown-menu" aria-labelledby="userLogado">
 						<li><a class="dropdown-item" th:href="@{/sobre}">Sobre</a></li>
 						<li><a class="dropdown-item" href="#">Feedback</a></li>
-						<li><a class="dropdown-item" href="#">Central de ajuda e suporte</a></li>
+						<li><a class="dropdown-item" href="#">Central de ajuda e
+								suporte</a></li>
 						<li><hr class="dropdown-divider"></li>
 						<li><a class="dropdown-item" th:href="@{/logout}"><i
 								class='bx bx-log-out'></i> <span class="nav_name navbar-text">Sair</span></a></li>
@@ -55,7 +56,7 @@
 		<p>
 	</div>
 
-	<div class="l-navbar" id="nav-bar" th:fragment=sindebar >
+	<div class="l-navbar" id="nav-bar" th:fragment=sindebar>
 		<nav class="nav">
 			<div>
 				<a class="nav_logo"> <i class=" bx bx-sidebar nav_logo-icon"></i>
@@ -64,15 +65,19 @@
 
 				<div class="nav_list">
 					<div class="nav_list">
-						<a th:href="@{/}" class="nav_link active" title="Dashboard"> <i
-							class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span>
+						<a th:href="@{/}" class="nav_link active" title="Dashboard">
+							<img src="/img/botoes/grafico_pizza.svg" height="25" width="25" />
+							<!-- 						<i class='bx bx-grid-alt nav_icon'></i>  --> <span
+							class="nav_name">Dashboard</span>
 
-						</a> <a th:href="@{/pedido}" class="nav_link" title="Pedidos"> <i
-							class='bx bx-store nav_icon'></i> <span class="nav_name">Pedidos</span>
+						</a> <a th:href="@{/pedido}" class="nav_link" title="Pedidos"> 
+<!-- 						<i class='bx bx-store nav_icon'></i>  -->
+<img src="/img/botoes/loja.svg" height ="25" width="25"/> 
+						<span class="nav_name">Pedidos</span>
 
-						</a> 
-						
-<!-- 						PRODUTOS -->
+						</a>
+
+						<!-- 						PRODUTOS -->
 						<a class="nav_link" data-bs-toggle="collapse"
 							href="#collapseProduto" role="button" aria-expanded="false"
 							aria-controls="collapseExample" title="Produtos"> <i
@@ -90,11 +95,11 @@
 								class='bx bx-cabinet nav_icon_mini'></i> <span class="nav_name">
 									Seção</span>
 
-							</a> 
+							</a>
 
 						</div>
-						
-<!-- 						ENDEREÇOS -->
+
+						<!-- 						ENDEREÇOS -->
 						<a class="nav_link" data-bs-toggle="collapse"
 							href="#collapseEndereco" role="button" aria-expanded="false"
 							aria-controls="collapseExample" title="Endereço"> <i
@@ -103,51 +108,47 @@
 
 						<div class="collapse" id="collapseEndereco">
 
-							<a th:href="@{/enderecar/novo}" class="nav_link" title="Endereçar"> <i
-								class="bx bx-compass nav_icon_mini"></i> <span class="nav_name">
-									Endereçar</span>
-									</a> <a th:href="@{/endereco}" class="nav_link" title="Endereços"> <i
-								class="bx bx-map nav_icon_mini"></i> <span
-								class="nav_name"> Endereços</span>
+							<a th:href="@{/enderecar/novo}" class="nav_link"
+								title="Endereçar"> <i class="bx bx-compass nav_icon_mini"></i>
+								<span class="nav_name"> Endereçar</span>
+							</a> <a th:href="@{/endereco}" class="nav_link" title="Endereços">
+								<i class="bx bx-map nav_icon_mini"></i> <span class="nav_name">
+									Endereços</span>
 
-							</a> 
+							</a>
 						</div>
-<!-- ESTOQUE -->
+						<!-- ESTOQUE -->
 
 						<a th:href="@{/estoque}" class="nav_link"> <i
 							class='bx bx-coin-stack nav_icon'></i> <span class="nav_name">Estoque</span>
-							</a>
-							
-							 <!-- USUARIOS -->
-						 <a class="nav_link" data-bs-toggle="collapse"
-							href="#collapseUser" role="button" aria-expanded="false"
+						</a>
+
+						<!-- USUARIOS -->
+						<a class="nav_link" data-bs-toggle="collapse" href="#collapseUser"
+							role="button" aria-expanded="false"
 							aria-controls="collapseExample" title="Endereço"> <i
 							class='bx bx-user nav_icon'></i> <span class="nav_name">Usuários</span>
 						</a>
 
 						<div class="collapse" id="collapseUser">
 
-							<a th:href="@{/usuario}" class="nav_link" title="Usuario"> <i
-								class='bx bxs-user-badge nav_icon_mini'></i> <span class="nav_name">
-									Usuario</span>
+							<a th:href="@{/usuario}" class="nav_link" title="Usuario"> <!-- 							 <i	class='bx bxs-user-badge nav_icon_mini'></i>  -->
+								<img src="/img/botoes/id_card.svg" height="25" width="25" /> <span
+								class="nav_name"> Usuario</span>
 
 							</a> <a th:href="@{/colaborador}" class="nav_link"
-								title="Colaborador"> <i class='bx bx-user nav_icon_mini'></i>
-								<span class="nav_name"> Colaborador</span>
+								title="Colaborador"> <!-- 								 <i class='bx bx-user nav_icon_mini'></i> -->
+								<img src="/img/botoes/user.svg" height="25" width="25" /> <span
+								class="nav_name"> Colaborador</span>
 							</a>
 						</div>
 
 
 
-						<a th:href="@{/relatorios/pedidosFinalizados}" class="nav_link"> <i
-							class='bx bx-clipboard nav_icon iconAtivo'></i> <span
+						<a th:href="@{/relatorios/}" class="nav_link">
+							<i class='bx bx-clipboard nav_icon iconAtivo'></i> <span
 							class="nav_name">Relatorio</span>
-						</a>
-						
-						<a th:href="@{/relatorios/pedidosCompleto}" class="nav_link"> <i
-							class='bx bx-spreadsheet nav_icon iconAtivo'></i> <span
-							class="nav_name">Relatorio Completo</span>
-						</a>
+						</a> 
 
 
 					</div>

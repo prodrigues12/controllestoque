@@ -1,9 +1,6 @@
 package com.controlestoque.controller;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +34,12 @@ public class RelatoriosController {
 
 	@Autowired
 	private DataSource dataSource;
+	
+	@GetMapping()
+	public ModelAndView relatorio(PeriodoRelatorio periodoRelatorio) {
+		ModelAndView mv = new ModelAndView("relatorios/relatorios");
+		return mv;
+	}
 
 	@GetMapping("/pedidosFinalizados")
 	public ModelAndView reltoriosPedidosFinalizados(PeriodoRelatorio periodoRelatorio) {

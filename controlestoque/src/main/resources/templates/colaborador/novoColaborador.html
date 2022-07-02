@@ -45,7 +45,7 @@
 					</div>
 				</div>
 			</div>
-				<div th:replace="fragmentos/fragmentos :: magalu"></div>
+			<div th:replace="fragmentos/fragmentos :: magalu"></div>
 			<div class="card-body">
 
 				<div class="row mb-3">
@@ -61,8 +61,8 @@
 
 					<!-- 				tipo de colaborador -->
 					<div class=" col-md-auto">
-						<label for="tipoIdentificacao" class=" col-form-label-sm">Tipo de identificação:
-						</label>
+						<label for="tipoIdentificacao" class=" col-form-label-sm">Tipo
+							de identificação: </label>
 
 						<div class="col-form-label-sm">
 							<th:block th:each="tipoIdentificacao : ${tipoIdentificacao}">
@@ -85,8 +85,8 @@
 					<!-- 					Matricula/CPF -->
 
 					<div class=" col-md-auto">
-						<label for="cpfCnpjId" class=" col-form-label-sm">ID / CPF
-							/ CNPJ:</label> <input id="cpfCnpjId"
+						<label for="cpfCnpjId" class=" col-form-label-sm">ID
+							magalu / CNPJ:</label> <input id="cpfCnpjId"
 							class="form-control form-control-sm" type="text"
 							th:field=*{cpfCnpjId} disabled />
 					</div>
@@ -95,8 +95,8 @@
 				<p>
 					<!-- 				Botões -->
 				<div class="form-row">
-					<a type="button" th:href="@{/colaborador}" class="btn btn-danger offset-md-10">Cancelar</a>
-					&nbsp;
+					<a type="button" th:href="@{/colaborador}"
+						class="btn btn-danger offset-md-10">Cancelar</a> &nbsp;
 					<button type="submit" class="btn btn-success offset">
 						Salvar</button>
 				</div>

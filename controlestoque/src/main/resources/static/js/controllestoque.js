@@ -17,29 +17,29 @@ Controllestoque.MaskMoney = (function() {
 
 }());
 
-Controllestoque.DataFormat = (function() {
-
-	function DataFormat() {
-		this.inputDate = $('.js-data');
-
-	}
-
-	DataFormat.prototype.enable = function() {
-	
-this.inputDate.mask('00/00/0000');
-		this.inputDate.datepicker({
-			orientation: 'bottom',
-			language: 'pt-BR',
-			autoclose: true
-		});
-	
-	
-		console.log(data); // retorna: 30/12/2020
-	}
-
-	return DataFormat;
-
-}());
+//Controllestoque.DataFormat = (function() {
+//
+//	function DataFormat() {
+//		this.inputDate = $('.js-data');
+//
+//	}
+//
+//	DataFormat.prototype.enable = function() {
+//	
+//this.inputDate.mask('00/00/0000');
+//		this.inputDate.datepicker({
+//			orientation: 'bottom',
+//			language: 'pt-BR',
+//			autoclose: true
+//		});
+//	
+//	
+//		console.log(data); // retorna: 30/12/2020
+//	}
+//
+//	return DataFormat;
+//
+//}());
 
 
 $(function() {
@@ -47,9 +47,9 @@ $(function() {
 	var maskMoney = new Controllestoque.MaskMoney();
 	maskMoney.enable();
 
-
-	var dataFormat = new Controllestoque.DataFormat();
-	dataFormat.enable();
+//
+//	var dataFormat = new Controllestoque.DataFormat();
+//	dataFormat.enable();
 }
 
 )

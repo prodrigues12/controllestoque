@@ -12,12 +12,6 @@ public enum TipoIdentificacao {
 
 	},
 
-	CPF("Terceirizado", "CPF:", "000.000.000-00", CpfGroup.class) {
-		@Override
-		public String formatar(String cpfCnpjId) {
-			return cpfCnpjId.replaceAll("(\\d{3})(\\d{3})(\\d{3})", "$1.$2.$3-");
-		}
-	},
 	CNPJ("Filial", "CNPJ:", "00.000.000/0000-00", CnpjGroup.class) {
 		@Override
 		public String formatar(String cpfCnpjId) {
