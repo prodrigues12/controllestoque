@@ -23,54 +23,56 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
+	<div class="card">
+		<div class="card-header">
+			<h4>Relatório de Pedidos</h4>
+		</div>
+		<div class="card-body">
+			<div class="container-fluid">
+				<form method="POST" th:object="${periodoRelatorio}"
+					th:action="@{/relatorios/pedidosCompleto}">
 
-	<div class="page-header">
-		<div class="container-fluid">
-			<h1>Relatório de Pedidos</h1>
+					<div class="row">
+
+						<div class="col-md-9">
+							<label for="dataInicio" class="col-form-label-sm">Data de
+								criação:</label>
+								
+							<div class="row mb-4">
+								<label for="dataInicio" class="col-sm-auto col-form-label">De:</label>
+								<div class="col-sm-4">
+									<input type="date" class="form-control form-control-sm"
+										id="dataInicio" th:field="*{dataInicial}" autocomplete="off" />
+								</div>
+								<label for="dataFim" class="col-sm-auto col-form-label">até:</label>
+								<div class="col-sm-4">
+									<input type="date" class="form-control form-control-sm"
+										id="dataFim" th:field="*{dataFim}" autocomplete="off" />
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+
+					<button type="submit" class="btn  btn-primary">Emitir</button>
+				</form>
+			</div>
 		</div>
 	</div>
 
-	<div class="container-fluid">
-		<form method="POST" th:object="${periodoRelatorio}"
-			th:action="@{/relatorios/pedidosCompleto}">
 
-			<div class="row mb-3">
-
-				<div class="col-md-9">
-					<label for="dataInicio" class="col-form-label-sm">Data de
-						criação:</label>
-					<div class="row mb-4">
-						<label for="dataInicio" class="col-sm-auto col-form-label">De:</label>
-						<div class="col-sm-4">
-							<input type="date" class="form-control form-control-sm"
-								id="dataInicio" th:field="*{dataInicial}" autocomplete="off" />
-						</div>
-						<label for="dataFim" class="col-sm-auto col-form-label">até:</label>
-						<div class="col-sm-4">
-							<input type="date" class="form-control form-control-sm"
-								id="dataFim" th:field="*{dataFim}" autocomplete="off" />
-						</div>
-
-					</div>
-				</div>
-			</div>
-
-
-
-			<button type="submit" class="btn  btn-primary">Emitir</button>
-		</form>
-</div>
-
-		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-		<script src="/js/vendors/handlebars.min.js"></script>
-		<script src="/js/vendors/jquery.easy-autocomplete.min.js"></script>
-		<script src="/js/sindebar.js"></script>
-		<script src="/js/colaborador.pesquisa-rapida.js"></script>
-		<script src="/js/pedido.autocomplete-itens.js"></script>
-		<script src="/js/pedido.tabela-itens.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="/js/vendors/handlebars.min.js"></script>
+	<script src="/js/vendors/jquery.easy-autocomplete.min.js"></script>
+	<script src="/js/sindebar.js"></script>
+	<script src="/js/colaborador.pesquisa-rapida.js"></script>
+	<script src="/js/pedido.autocomplete-itens.js"></script>
+	<script src="/js/pedido.tabela-itens.js"></script>
 </body>
 </html>

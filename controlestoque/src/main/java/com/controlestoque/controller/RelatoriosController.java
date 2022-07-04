@@ -98,13 +98,13 @@ public class RelatoriosController {
 	
 		JasperPrint empReport = JasperFillManager.fillReport(
 				JasperCompileManager.compileReport(ResourceUtils
-						.getFile("classpath:relatorios/relatorio_pedidoCompleto.jrxml").getAbsolutePath()),
+						.getFile("classpath:relatorios/relatorio_pedidoFinalizado.jrxml").getAbsolutePath()),
 				parametros, dataSource.getConnection());
 
 		HttpHeaders headers = new HttpHeaders();
 
 		headers.setContentType(MediaType.APPLICATION_PDF);
-		headers.setContentDispositionFormData("filename", "relatorio_pedidoCompleto.pdf");
+		headers.setContentDispositionFormData("filename", "relatorio_pedidoFinalizado.pdf");
 
 		return new ResponseEntity<Object>(JasperExportManager.exportReportToPdf(empReport), headers, HttpStatus.OK);
 
