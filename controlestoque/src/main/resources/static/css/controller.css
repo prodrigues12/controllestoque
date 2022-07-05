@@ -129,7 +129,7 @@ a {
 }
 
 .btn:hover {
-	transform: translateY(-1px);
+	transform: translateY(-3px);
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -186,8 +186,26 @@ a {
 .btn-success {
 
 	color: #fff;
-	background-color: #0A2463;
+	background-color: #172340;
+	
+	border-radius:100px;
+	display:inline-block;
+	cursor:pointer;
+	font-size:15px;
+	font-weight:bold;
 }
+
+.btn-danger {
+
+	color: #425690;
+	background-color: #b0cfff;
+	border-radius:100px;
+	display:inline-block;
+	cursor:pointer;
+	font-size:15px;
+	font-weight:bold;
+}
+
 
 /* ############## */
 
