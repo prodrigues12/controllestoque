@@ -1,24 +1,31 @@
 var Controllestoque = Controllestoque || {};
 
+var alertList = document.querySelectorAll('.alert-success')
+alertList.forEach(function(alert) {
 
-this.alerta = $('.alert-danger');
-
-
-if(alerta.isElementPresent){
-console.log('chegou aqui');
-
- onSalvarClique();
-
-}
-function onSalvarClique() {
-	console.log('chegou aqui')
 	swal({
-		title: "Good job!",
-		text: "You clicked the button!",
+		title: "Salvo com sucesso!",
+		text: "Deseja adicionar outro objeto?",
 		icon: "success",
-		timer: 30000
-	});
+		buttons: [true,"Sim" ],
+		inforMode: ["Não", true]
+		
+	})
+		.then((willDelete) => {
+			if (willDelete) {
+				location.reload();
+			}
+			else {
+				var urlAtual = window.location.href;
+				var urlNova = urlAtual.replace('/novo', '');
+		window.location.href = urlNova;
 
-}
+			}
 
+			new bootstrap.Alert(alert)
+		})
+
+
+
+})
 
