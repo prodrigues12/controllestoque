@@ -158,25 +158,24 @@ a {
 }
 
 .btn-primary {
-	background-color:#3467bf;
-	border-radius:100px;
-	display:inline-block;
-	cursor:pointer;
-	color:#ffffff;
-	font-size:15px;
-	font-weight:bold;
-	
-	
-}
-.btn-primary:hover {
-	background-color:#1760ff;
-	color:#fff;
-}
-.btn-primary:active {
-	position:relative;
-	top:1px;
+	background-color: #3467bf;
+	border-radius: 100px;
+	display: inline-block;
+	cursor: pointer;
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: bold;
 }
 
+.btn-primary:hover {
+	background-color: #1760ff;
+	color: #fff;
+}
+
+.btn-primary:active {
+	position: relative;
+	top: 1px;
+}
 
 .btn-info {
 	color: #fff;
@@ -184,28 +183,24 @@ a {
 }
 
 .btn-success {
-
 	color: #fff;
 	background-color: #172340;
-	
-	border-radius:100px;
-	display:inline-block;
-	cursor:pointer;
-	font-size:15px;
-	font-weight:bold;
+	border-radius: 100px;
+	display: inline-block;
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: bold;
 }
 
 .btn-danger {
-
 	color: #425690;
 	background-color: #b0cfff;
-	border-radius:100px;
-	display:inline-block;
-	cursor:pointer;
-	font-size:15px;
-	font-weight:bold;
+	border-radius: 100px;
+	display: inline-block;
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: bold;
 }
-
 
 /* ############## */
 
@@ -214,7 +209,6 @@ a {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	
 }
 
 .col-form-label-sm {
@@ -381,7 +375,6 @@ table tr td {
 .table-estilos-col-codigo {
 	width: 80px;
 }
- 
 
 .table-clientes-col-tipo-pessoa {
 	width: 120px;
@@ -577,4 +570,10 @@ table tr td {
 		width: calc(30% - 30px);
 		text-align: right;
 	}
+}
+
+.controlle-footer {
+	position: fixed !important;
+	bottom: 0 !important;
+	width: 100% !important;
 }

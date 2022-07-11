@@ -74,20 +74,7 @@ public class PedidoController {
 		mv.addObject("itens", pedido.getItens());
 		return mv;
 	}
-	
-//	@GetMapping("/novo/pedido")
-//	public ModelAndView novoPedido(Pedido pedido) {
-//		ModelAndView mv = new ModelAndView("pedido/pedidoNovoPedido");
-//
-//		setUuid(pedido);
-//
-//		mv.addObject("turno", Turno.values());
-//		mv.addObject("setorMagalu", SetorMagalu.values());
-//		mv.addObject("itens", pedido.getItens());
-//		return mv;
-//	}
 
-	
 	@GetMapping
 	public ModelAndView pesquisar(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
@@ -100,8 +87,7 @@ public class PedidoController {
 		return mv;
 
 	}
-	
-	
+
 	@GetMapping("/{codigo}")
 	public ModelAndView editar(@PathVariable Long codigo) {
 		Pedido pedido = pedRepository.buscarComItens(codigo);
@@ -117,8 +103,7 @@ public class PedidoController {
 		mv.addObject(pedido);
 		return mv;
 	}
-	
-	
+
 	@GetMapping("/pedidosNovos")
 	public ModelAndView listaPedidosNovos(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
@@ -131,65 +116,61 @@ public class PedidoController {
 		return mv;
 
 	}
-	
-	
-	
+
 	@GetMapping("/pedidosPendentes")
 	public ModelAndView listaPedidosPendentes(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("pedido/listaPedidosPorStatus");
 		objetosPedidos(mv);
 
-		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosPendentes(pedidoFilter, pageable),
-				httpServletRequest);
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(
+				pedRepository.filtrarPedidosPendentes(pedidoFilter, pageable), httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}
 
-	
 	@GetMapping("/pedidosSeparacao")
 	public ModelAndView listaPedidosSeparacao(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("pedido/listaPedidosPorStatus");
 		objetosPedidos(mv);
 
-		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosSeparacao(pedidoFilter, pageable),
-				httpServletRequest);
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(
+				pedRepository.filtrarPedidosSeparacao(pedidoFilter, pageable), httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}
-	
+
 	@GetMapping("/pedidosCancelados")
 	public ModelAndView listaPedidosCancelados(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("pedido/listaPedidosPorStatus");
 		objetosPedidos(mv);
 
-		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosCancelados(pedidoFilter, pageable),
-				httpServletRequest);
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(
+				pedRepository.filtrarPedidosCancelados(pedidoFilter, pageable), httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}
-	
+
 	@GetMapping("/pedidosFinalizados")
 	public ModelAndView listaPedidosFinalizados(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("pedido/listaPedidosPorStatus");
 		objetosPedidos(mv);
 
-		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrarPedidosFinalizados(pedidoFilter, pageable),
-				httpServletRequest);
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(
+				pedRepository.filtrarPedidosFinalizados(pedidoFilter, pageable), httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}
-	
 
 	@GetMapping("/totalPorMes")
 	public @ResponseBody List<PedidosMes> listarTotalPedidoPorMes() {
 		return pedRepository.totalPorMes();
 	}
 
-	@PostMapping(value = "/novo" , params ="novo")
+	@PostMapping(value = "/novo", params = "novo")
 	public ModelAndView salvar(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
 
 		validarPedido(pedido, result);
@@ -211,75 +192,73 @@ public class PedidoController {
 
 		return new ModelAndView("redirect:/pedido/novo");
 	}
-	
-	@PostMapping(value = "/novo" , params ="pendente")
+
+	@PostMapping(value = "/novo", params = "pendente")
 	public ModelAndView pendentePedido(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
 		validarPedido(pedido, result);
-		
+
 		if (result.hasErrors()) {
 			return novo(pedido);
 		}
-		
+
 		pedService.pendente(pedido);
 		attributes.addFlashAttribute("mensagem",
 				String.format("Pedido nº %d alterando para: Pendete", pedido.getCodigo()));
 
 		return new ModelAndView("redirect:/pedido/novo");
 	}
-	
-	@PostMapping(value = "/novo" , params ="cancelado")
+
+	@PostMapping(value = "/novo", params = "cancelado")
 	public ModelAndView canceladoPedido(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
 		validarPedido(pedido, result);
-		
+
 		if (result.hasErrors()) {
 			return novo(pedido);
 		}
-		
+
 		pedService.cancelar(pedido);
 		attributes.addFlashAttribute("mensagem",
 				String.format("Pedido nº %d alterando para: Cancelado", pedido.getCodigo()));
 
 		return new ModelAndView("redirect:/pedido/novo");
 	}
-	
-	@PostMapping(value = "/novo" , params ="separacao")
+
+	@PostMapping(value = "/novo", params = "separacao")
 	public ModelAndView separacaoPedido(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
 		validarPedido(pedido, result);
-		
+
 		if (result.hasErrors()) {
 			return novo(pedido);
 		}
-		
+
 		pedService.emSeparacao(pedido);
 		attributes.addFlashAttribute("mensagem",
 				String.format("Pedido nº %d alterando para: Separação", pedido.getCodigo()));
 
 		return new ModelAndView("redirect:/pedido/novo");
 	}
-	
 
-	@PostMapping(value = "/novo" , params ="finalizar")
+	@PostMapping(value = "/novo", params = "finalizar")
 	public ModelAndView finlizarPedido(Pedido pedido, BindingResult result, RedirectAttributes attributes) {
 		validarPedido(pedido, result);
-		
+
 		if (result.hasErrors()) {
 			return novo(pedido);
 		}
-		
+
 		pedService.finalizar(pedido);
 		attributes.addFlashAttribute("mensagem",
 				String.format("Pedido nº %d Finalizado com sucesso! ", pedido.getCodigo()));
 
 		return new ModelAndView("redirect:/pedido/novo");
 	}
-	
+
 	@RequestMapping(value = "/item", method = RequestMethod.POST)
 	public ModelAndView adicionarItem(Long codigoProduto, String uuid) {
 		Produto produto = proRepository.findByCodigo(codigoProduto);
 		tabelaItens.adicionarItem(uuid, produto, 1);
 		return mvTabelaPedido(uuid);
 	}
-	
 
 	@PutMapping("/item/{codigoProduto}")
 	public ModelAndView alterarQuantidadeItem(@PathVariable("codigoProduto") Produto produto, Integer quantidade,
@@ -294,7 +273,7 @@ public class PedidoController {
 		return mvTabelaPedido(uuid);
 
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	private void setUuid(Pedido pedido) {
 		if (StringUtils.isEmpty(pedido.getUuid())) {
@@ -313,7 +292,6 @@ public class PedidoController {
 		pedidoValidator.validate(pedido, result);
 
 	}
-	
 
 	private void objetosPedidos(ModelAndView mv) {
 		mv.addObject("turno", Turno.values());

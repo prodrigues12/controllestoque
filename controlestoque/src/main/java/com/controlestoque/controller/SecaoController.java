@@ -63,16 +63,16 @@ public class SecaoController {
 		return new ModelAndView("redirect:/secao/novo");
 	}
 
-//	@RequestMapping(method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
-//	public @ResponseBody ResponseEntity<?> salvar(@RequestBody @Valid Secao secao, BindingResult result) {
-//		if (result.hasErrors()) {
-//			return ResponseEntity.badRequest().body(result.getFieldError("nome").getDefaultMessage());
-//		}
-//
-//		secao = secService.salvarSecao(secao);
-//
-//		return ResponseEntity.ok(secao);
-//	}
+	@RequestMapping(method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
+	public @ResponseBody ResponseEntity<?> salvar(@RequestBody @Valid Secao secao, BindingResult result) {
+		if (result.hasErrors()) {
+			return ResponseEntity.badRequest().body(result.getFieldError("nome").getDefaultMessage());
+		}
+
+		secao = secService.salvarSecao(secao);
+
+		return ResponseEntity.ok(secao);
+	}
 
 	@GetMapping
 	public ModelAndView pesquisarSecao(SecaoFilter secaoFilter, BindingResult result,

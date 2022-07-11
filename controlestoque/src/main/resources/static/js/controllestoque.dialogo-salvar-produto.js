@@ -8,10 +8,10 @@ alertList.forEach(function(alert) {
 		icon: "success",
 		text: "O que deseja fazer?",
 		buttons: {
-
+			defeat: { text: "Ajustar Estoque" },
 			cancel: "Voltar",
 			catch: {
-				text: "Nova Seção",
+				text: "Novo produto",
 				value: "catch",
 			},
 
@@ -20,6 +20,11 @@ alertList.forEach(function(alert) {
 	})
 		.then((value) => {
 			switch (value) {
+
+				case "defeat":
+					window.location.assign("http://localhost:8080/estoque")
+					break;
+
 				case "catch":
 					break;
 
@@ -31,3 +36,4 @@ alertList.forEach(function(alert) {
 			new bootstrap.Alert(alert)
 		});
 })
+
