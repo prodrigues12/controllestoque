@@ -181,7 +181,7 @@ public class PedidoController {
 		if (pedido.isPedidoNovo()) {
 			pedService.salvar(pedido);
 			attributes.addFlashAttribute("mensagem",
-					String.format("Pedido nº %d Salvo com sucesso!", pedido.getCodigo()));
+					String.format("Pedido nº %d salvo com sucesso!", pedido.getCodigo()));
 
 			return new ModelAndView("redirect:/pedido/novo");
 		}
@@ -205,7 +205,7 @@ public class PedidoController {
 		attributes.addFlashAttribute("mensagem",
 				String.format("Pedido nº %d alterando para: Pendete", pedido.getCodigo()));
 
-		return new ModelAndView("redirect:/pedido/novo");
+		return new ModelAndView("redirect:/pedido/"+pedido.getCodigo());
 	}
 
 	@PostMapping(value = "/novo", params = "cancelado")
@@ -220,7 +220,7 @@ public class PedidoController {
 		attributes.addFlashAttribute("mensagem",
 				String.format("Pedido nº %d alterando para: Cancelado", pedido.getCodigo()));
 
-		return new ModelAndView("redirect:/pedido/novo");
+		return new ModelAndView("redirect:/pedido/"+pedido.getCodigo());
 	}
 
 	@PostMapping(value = "/novo", params = "separacao")
@@ -235,7 +235,7 @@ public class PedidoController {
 		attributes.addFlashAttribute("mensagem",
 				String.format("Pedido nº %d alterando para: Separação", pedido.getCodigo()));
 
-		return new ModelAndView("redirect:/pedido/novo");
+		return new ModelAndView("redirect:/pedido/"+pedido.getCodigo());
 	}
 
 	@PostMapping(value = "/novo", params = "finalizar")
@@ -250,7 +250,7 @@ public class PedidoController {
 		attributes.addFlashAttribute("mensagem",
 				String.format("Pedido nº %d Finalizado com sucesso! ", pedido.getCodigo()));
 
-		return new ModelAndView("redirect:/pedido/novo");
+		return new ModelAndView("redirect:/pedido/"+pedido.getCodigo());
 	}
 
 	@RequestMapping(value = "/item", method = RequestMethod.POST)

@@ -28,6 +28,7 @@ public class PedidoService {
 
 		if (pedido.isPedidoNovo()) {
 			pedido.setDataCriacao(LocalDate.now());
+			pedido.setStatus(StatusPedido.NOVO);
 		} else {
 			Pedido pedidoExistente = pedRepository.getById(pedido.getCodigo());
 			pedido.setDataCriacao(pedidoExistente.getDataCriacao());
@@ -39,14 +40,18 @@ public class PedidoService {
 	
 	@Transactional
 	public void emSeparacao(Pedido pedido) {
-		pedido.setStatus(StatusPedido.SEPARACAO);
-		salvar(pedido);
+		Pedido pedidoExistente = pedRepository.getById(pedido.getCodigo());
+
+		pedidoExistente.setStatus(StatusPedido.SEPARACAO);
+		pedRepository.save(pedidoExistente);
 	}
 	
 	@Transactional
 	public void pendente(Pedido pedido) {
-		pedido.setStatus(StatusPedido.PENDENTE);
-		salvar(pedido);
+		Pedido pedidoExistente = pedRepository.getById(pedido.getCodigo());
+
+		pedidoExistente.setStatus(StatusPedido.PENDENTE);
+		pedRepository.save(pedidoExistente);
 	}
 
 	@Transactional

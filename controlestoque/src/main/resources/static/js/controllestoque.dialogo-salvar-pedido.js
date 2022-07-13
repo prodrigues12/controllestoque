@@ -7,12 +7,11 @@ alertList.forEach(function(alert) {
 		title: "Pedido realizado com sucesso!",
 		icon: "success",
 		button: true,
-
 		timer: 5000,
 	})
 		
 			
-//			new bootstrap.Alert(alert)
+			new bootstrap.Alert(alert)
 		
 });
 
