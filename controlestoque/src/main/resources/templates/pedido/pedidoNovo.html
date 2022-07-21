@@ -27,9 +27,9 @@
 		<div class="card-header">
 			<div class="row">
 				<div class=" col-md-10">
-					<h4 th:if="${pedido.pedidoNovo}">Novo Pedido</h4>
-					<h4 th:unless="${pedido.pedidoNovo}"
-						th:text="|Editando pedido: ${pedido.codigo}|"></h4>
+					<h5 th:if="${pedido.pedidoNovo}">Novo Pedido</h5>
+					<h5 th:unless="${pedido.pedidoNovo}"
+						th:text="|Editando pedido: ${pedido.codigo} -  ${pedido.status}|"></h5>
 				</div>
 				<div class="col-md-2">
 					<a th:href="@{/pedido}" class="btn btn-primary btn-sm">Pesquisar</a>
@@ -112,9 +112,8 @@
 
 				<p>
 				
-				<div class="form-row" th:if="${pedido.pedidoNovo}">
-					<button type="button" class="btn btn-danger offset-md-9">Cancelar</button>
-					&nbsp;
+				<div class="d-grid gap-1 d-md-flex justify-content-md-end" th:if="${pedido.pedidoNovo}">
+					<button type="button" class="btn btn-danger ">Cancelar</button>
 					<button type="submit" class="btn btn-success offset js-submit-btn"
 						data:acao="novo">Confirmar</button>
 				</div>
@@ -123,10 +122,10 @@
 
 
 					<div class="btn-group"
-						aria-label="Button group with nested dropdown"
-						th:unless=${pedido.pedidoFinalizado}>
-						<button class="btn btn-dark " disabled>Salvar como:</button>
-						<button class="btn btn-secondary dropdown-toggle   offset-md-9"
+						aria-label="Button group with nested dropdown d-grid gap-2 d-md-flex justify-content-md-end"
+						th:unless=${pedido.pedidoFinalizado} >
+						<button class="btn btn-dark" disabled>Salvar como:</button>
+						<button class="btn btn-secondary dropdown-toggle offset-md-9" 
 							data-bs-toggle="dropdown" aria-expanded="false"></button>
 						<ul class="dropdown-menu" aria-labelledby="btnStatus">
 							<li><a class="dropdown-item  js-submit-btn"
