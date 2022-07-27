@@ -14,7 +14,7 @@ public class SegurancaController {
 		if (user != null) {
 			return "redirect:/produto";
 		}
-		return "Login";
+		return "login";
 	}
 
 	@GetMapping("/403")

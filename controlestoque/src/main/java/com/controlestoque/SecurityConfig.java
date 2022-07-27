@@ -34,13 +34,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()		
-		.antMatchers("/pedido/novo").permitAll()
-		.antMatchers("/pedido/item/**").permitAll()
-		.antMatchers("/pedido/tabelaItensPedido").permitAll()
-		.antMatchers("/hbs/**").permitAll()
-		.antMatchers("/produto/autocomplete/").permitAll()
-		.antMatchers("/colaborador/list/").permitAll()
+		http.authorizeRequests().antMatchers("/pedido/novo").permitAll().antMatchers("/pedido/item/**").permitAll()
+				.antMatchers("/pedido/tabelaItensPedido").permitAll().antMatchers("/hbs/**").permitAll()
+				.antMatchers("/produto/autocomplete/").permitAll().antMatchers("/colaborador/list/").permitAll()
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/", true)
 				.permitAll().and().exceptionHandling().accessDeniedPage("/403").and().exceptionHandling().and()
 				.rememberMe().and().csrf().disable();

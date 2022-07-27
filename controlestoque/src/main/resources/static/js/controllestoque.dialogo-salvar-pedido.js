@@ -4,7 +4,7 @@ var alertList = document.querySelectorAll('.alert-success')
 alertList.forEach(function(alert) {
 
 	swal({
-		title: "Pedido realizado com sucesso!",
+		title: "Operação realizada com sucesso!",
 		icon: "success",
 		button: true,
 		timer: 5000,
