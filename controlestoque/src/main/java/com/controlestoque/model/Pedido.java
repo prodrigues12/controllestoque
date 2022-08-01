@@ -163,6 +163,18 @@ public class Pedido {
 		this.itens.forEach(i -> i.setPedido(this));
 
 	}
+	public String getBootstrapTableRowClassForStatus() {
+	    switch (status) {
+	        case FINALIZADO:
+	            return "finalizado";
+	        case CANCELADO:
+	            return "table-danger";
+	        case NOVO:
+	            return "novo";
+	        default:
+	            return "table-secondary";
+	    }
+	}
 
 	@Override
 	public int hashCode() {

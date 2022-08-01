@@ -1,5 +1,5 @@
 
-var status = $('.js-status-info');
+var status = $('.pedido-status');
 
 console.log(status);
 

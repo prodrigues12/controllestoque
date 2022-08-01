@@ -19,7 +19,8 @@ Controllestoque.BotaoSubmit = (function() {
 		var acao = botaoClicado.data('acao');
 		
 		console.log(acao);
-		var acaoInput = $('<input>');
+		var acaoInput = $('<input type="hidden">');
+		
 		acaoInput.attr('name', acao);
 		
 		this.formulario.append(acaoInput);
