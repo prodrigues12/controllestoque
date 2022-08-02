@@ -203,7 +203,7 @@ public class PedidoController {
 
 		pedService.pendente(pedido);
 		attributes.addFlashAttribute("mensagem",
-				String.format("Pedido nº %d alterando para: Pendete", pedido.getCodigo()));
+				String.format("Pedido nº %d alterando para: Pendente", pedido.getCodigo()));
 
 		return new ModelAndView("redirect:/pedido/"+pedido.getCodigo());
 	}

@@ -111,8 +111,8 @@
 				</div>
 
 				<p>
-				
-				<div class="d-grid gap-1 d-md-flex justify-content-md-end" th:if="${pedido.pedidoNovo}">
+				<div class="d-grid gap-1 d-md-flex justify-content-md-end"
+					th:if="${pedido.pedidoNovo}">
 					<button type="button" class="btn btn-danger ">Cancelar</button>
 					<button type="submit" class="btn btn-success offset js-submit-btn"
 						data:acao="novo">Confirmar</button>
@@ -121,27 +121,30 @@
 				<div class="form-row" th:unless="${pedido.pedidoNovo} ">
 
 
-					<div class="btn-group"
+					<div class="btn-group btn-group dropend"
 						aria-label="Button group with nested dropdown d-grid gap-2 d-md-flex justify-content-md-end"
-						th:unless=${pedido.pedidoFinalizado} >
+						th:unless=${pedido.pedidoFinalizado}>
 						<button class="btn btn-dark" disabled>Salvar como:</button>
-						<button class="btn btn-secondary dropdown-toggle offset-md-9" 
+
+
+						<button class="btn btn-secondary dropdown-toggle offset-md-9"
 							data-bs-toggle="dropdown" aria-expanded="false"></button>
-						<ul class="dropdown-menu" aria-labelledby="btnStatus">
-							<li><a class="dropdown-item  js-submit-btn"
-								data:acao="finalizar" href="#">Finalizado</a></li>
-							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item  js-submit-btn"
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="btnStatus">
+
+							<li><a class="dropdown-item js-submit-btn"
+								data:acao="finalizar" href="#">Finalizado</a> </li>
+
+							<li><a class="dropdown-item  js-submit-btn "
 								data:acao="pendente" href="#">Pendente</a></li>
-							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item  js-submit-btn"
-								data:acao="separacao" href="#">Em separação</a></li>
-							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item  js-submit-btn"
-								data:acao="cancelado" href="#">Cancelado</a></li>
-							<li><hr class="dropdown-divider"></li>
-							<li><a class="dropdown-item  js-submit-btn" data:acao="novo"
-								href="#">Novo</a></li>
+
+							<li><a class="dropdown-item  js-submit-btn "
+								data:acao="separacao" href="#"> Separação</a></li>
+
+							<li><a class="dropdown-item  js-submit-btn "
+								data:acao="cancelado" href="#"> Cancelado</a></li>
+
+							<li><a class="dropdown-item  js-submit-btn "
+								data:acao="novo" href="#"> Novo</a></li>
 						</ul>
 
 					</div>

@@ -163,12 +163,16 @@ public class Pedido {
 		this.itens.forEach(i -> i.setPedido(this));
 
 	}
-	public String getBootstrapTableRowClassForStatus() {
+	public String getBootstrapTabelaPedidoPesquisaStatus() {
 	    switch (status) {
 	        case FINALIZADO:
-	            return "finalizado";
+	            return "status-finalizado";
 	        case CANCELADO:
-	            return "table-danger";
+	            return "status-cancelado";
+	        case PENDENTE:
+	            return "status-pendente";
+	        case SEPARACAO:
+	            return "status-separacao";
 	        case NOVO:
 	            return "novo";
 	        default:

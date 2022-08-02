@@ -27,17 +27,6 @@ nav{
 	text-transform: uppercase;
 }
 
-.finalizado{
-	background: #ff0000!important;
-	color:#fff !important;
-}
-
-.novo{
-	background: #000080 !important;
-	color:#fff !important;
-}
-
-
 
 a{
 	cursor: pointer;
