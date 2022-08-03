@@ -18,7 +18,7 @@ Controllestoque.BotaoSubmit = (function() {
 		var botaoClicado = $(evento.target);
 		var acao = botaoClicado.data('acao');
 		
-		console.log(acao);
+//		console.log(acao);
 		var acaoInput = $('<input type="hidden">');
 		
 		acaoInput.attr('name', acao);

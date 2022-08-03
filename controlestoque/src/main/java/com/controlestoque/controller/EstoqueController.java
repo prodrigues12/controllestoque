@@ -42,7 +42,7 @@ public class EstoqueController {
 	
 	@GetMapping
 	public ModelAndView estoque(ProdutoFilter produtoFilter, BindingResult result,
-			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
+			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("estoque/estoque");
 		mv.addObject("uniMedida", UnidadeMedia.values());
 		mv.addObject("secao", sessaoRepository.findAll());

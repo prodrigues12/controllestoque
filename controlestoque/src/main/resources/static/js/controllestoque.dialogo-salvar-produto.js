@@ -19,17 +19,20 @@ alertList.forEach(function(alert) {
 		timer: 10000,
 	})
 		.then((value) => {
+			
+			var urlAtual = window.location.href;
+			
 			switch (value) {
 
 				case "defeat":
-					window.location.assign("http://localhost:8080/estoque")
+					window.location.assign("/estoque")
 					break;
 
 				case "catch":
 					break;
 
 				default:
-					var urlAtual = window.location.href;
+					
 					var urlNova = urlAtual.replace('/novo', '');
 					window.location.href = urlNova;
 			}

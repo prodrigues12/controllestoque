@@ -41,8 +41,8 @@
 /* ############# CARD ############# */
 .card {
 	width: auto;
-	left: inherit;
-	border-width: 4px;
+	left: auto;
+
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
 }
@@ -52,6 +52,7 @@
 	font-weight: bold;
 	color: #FAF2F2;
 }
+
 
 a {
 	cursor: pointer;
@@ -97,28 +98,28 @@ a {
 }
 
 /* #### Botões #### */
-/* .btn { */
-/* /* 	border-radius: 999px; */ */
-/* 	box-shadow: #5E5DF0 0 5px 10px -10px; */
-/* 	box-sizing: border-box; */
-/* 	cursor: pointer; */
-/* 	font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji", */
-/* 		NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji", */
-/* 		EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, */
-/* 		"Helvetica Neue", "Noto Sans", sans-serif; */
-/* 	font-size: 14px; */
-/* 	font-weight: 700; */
-/* 	line-height: 18px; */
-/* 	opacity: 1; */
-/* 	outline: 0 solid transparent; */
-/* 	padding: 8px 18px; */
-/* 	user-select: none; */
-/* 	-webkit-user-select: none; */
-/* 	touch-action: manipulation; */
-/* 	width: fit-content; */
-/* 	word-break: break-word; */
-/* 	border: 0; */
-/* } */
+.btn {
+	border-radius: 999px;
+	box-shadow: #5E5DF0 0 5px 10px -10px;
+	box-sizing: border-box;
+	cursor: pointer;
+	font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+		NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+		EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto,
+		"Helvetica Neue", "Noto Sans", sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 18px;
+	opacity: 1;
+	outline: 0 solid transparent;
+	padding: 8px 18px;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	width: fit-content;
+	word-break: break-word;
+	border: 0;
+}
 
 .btn:link, .btn:visited {
 	text-decoration: none;
@@ -143,64 +144,12 @@ a {
 	color: #777;
 }
 
-/* .btn::after { */
+.btn::after {
 /* 	content: ""; */
-/* 	display: inline-block; */
-/* 	height: 100%; */
-/* 	width: 100%; */
-/* 	border-radius: 100px; */
-/* 	position: absolute; */
-/* 	top: 0; */
-/* 	left: 0; */
-/* 	z-index: -1; */
-/* 	transition: all .4s; */
-/* 	color: #fff; */
-/* } */
-
-/* .btn-primary { */
-/* 	background-color: #3467bf; */
-/* 	border-radius: 100px; */
-/* 	display: inline-block; */
-/* 	cursor: pointer; */
-/* 	color: #ffffff; */
-/* 	font-size: 15px; */
-/* 	font-weight: bold; */
-/* } */
-
-/* .btn-primary:hover { */
-/* 	background-color: #1760ff; */
-/* 	color: #fff; */
-/* } */
-
-/* .btn-primary:active { */
-/* 	position: relative; */
-/* 	top: 1px; */
-/* } */
-
-/* .btn-info { */
-/* 	color: #fff; */
-/* 	background-color: #808080; */
-/* } */
-
-/* .btn-success { */
-/* 	color: #fff;  */
-/* 	background-color: #172340;  */
-/* 	border-radius: 100px; */
-/* 	display: inline-block; */
-/* 	cursor: pointer; */
-/* 	font-size: 15px; */
-/* 	font-weight: bold; */
-/* } */
-
-/* .btn-danger { */
-/* /* 	color: #425690; */ */
-/* 	background-color: #b0cfff; */
-/* 	border-radius: 100px; */
-/* 	display: inline-block; */
-/* 	cursor: pointer; */
-/* 	font-size: 15px; */
-/* 	font-weight: bold;  */
-/* } */
+	display: inline-block;
+	transition: all .4s;
+	color: #fff;
+}
 
 /* ############## */
 
@@ -241,6 +190,7 @@ a {
 
 .table {
 	text-align: center;
+/* 	background-color: #f3eae8; */
 }
 
 .thead-dark {
@@ -334,54 +284,46 @@ table tr td {
 }
 
 .status-finalizado {
-	background-color: #4F4F4F !important;
-	color: #fff !important;
-	font-style: normal;
-	font-weight: bold;
-	border-radius: 8px;
-	display: inline-flex;
-	margin-top: 5px;
-}
-
-.status-novo {
-	background: #008000 !important;
-	color: #fff !important;
-	font-style: normal;
-	font-weight: bold;
-	border-radius: 8px;
-	display: inline-flex;
-	margin-top: 5px;
-}
-
-.status-cancelado {
-	background: #FF0000 !important;
-	color: #000000 !important;
-	font-style: normal;
-	font-weight: bold;
-	border-radius: 8px;
-	display: inline-flex;
-	margin-top: 5px;
-}
-
-.status-separacao {
-	background: #FFFF00 !important;
 	color: #4F4F4F !important;
 	font-style: normal;
 	font-weight: bold;
-	border-radius: 8px;
-	display: inline-flex;
-	margin-top: 5px;
+}
+
+.status-novo {
+
+	color: #008000 !important;
+	font-style: normal;
+	font-weight: bold;
+
+}
+
+.status-cancelado {
+
+	color: #FF0000 !important;
+	font-style: normal;
+	font-weight: bold;
+
+}
+
+.status-separacao {
+
+	color: #d9e401!important;
+	font-style: normal;
+	font-weight: bold;
+
 }
 
 .status-pendente {
-	background: #00CED1 !important;
-	color: #fff !important;
+
+	color: #00CED1 !important;
 	font-style: normal;
 	font-weight: bold;
-	border-radius: 8px;
-	display: inline-flex;
-	margin-top: 5px;
-	position: relative;
+	
+}
+
+.valor-negativo{
+	color: red !important;
+	font-weight: bold;
 }
 
 /*

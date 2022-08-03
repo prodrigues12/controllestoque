@@ -124,7 +124,7 @@
 
 
 	<div class="table-responsive">
-		<table class="table table-sm " style="text-align: center">
+		<table class="table table-sm table-striped table-hover  " style="text-align: center">
 			<thead class="thead-dark" style="text-align: center">
 
 				<th class="col-auto"><th:block
@@ -146,7 +146,7 @@
 			</thead>
 
 			<tbody>
-				<tr th:each="pedido :${pagina.conteudo}">
+				<tr th:each="pedido :${pagina.conteudo}" th:href="@{/pedido/{codigo}(codigo=${pedido.codigo})}">
 					<td class="info-tabela" th:text="${pedido.codigo}"></td>
 					<td th:text="${#temporals.format(pedido.dataCriacao,'dd/MM/yyyy')}"></td>
 					<td th:text="${pedido.colaborador.nome}"></td>

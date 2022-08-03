@@ -67,7 +67,7 @@ public class Produto implements Serializable {
 
 	@OneToMany(mappedBy = "produto")
 	private List<Enderecar> enderecar;
-	
+
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -116,7 +116,6 @@ public class Produto implements Serializable {
 		this.secao = secao;
 	}
 
-
 	public UnidadeMedia getUniMedida() {
 		return uniMedida;
 	}
@@ -124,7 +123,6 @@ public class Produto implements Serializable {
 	public void setUniMedida(UnidadeMedia uniMedida) {
 		this.uniMedida = uniMedida;
 	}
-
 
 	public List<Enderecar> getEnderecar() {
 		return enderecar;
@@ -136,6 +134,15 @@ public class Produto implements Serializable {
 
 	public boolean isProdutoNovo() {
 		return this.codigo == null;
+	}
+
+	public String getEstoqueIgualMenorZero() {
+		if (getQtdEstoque().compareTo(BigDecimal.ZERO) == 0 || getQtdEstoque().compareTo(BigDecimal.ZERO) == -1) {
+			return "valor-negativo";
+		}
+		
+		return null;
+
 	}
 
 	@Override
@@ -162,8 +169,5 @@ public class Produto implements Serializable {
 			return false;
 		return true;
 	}
-	
-
-	
 
 }

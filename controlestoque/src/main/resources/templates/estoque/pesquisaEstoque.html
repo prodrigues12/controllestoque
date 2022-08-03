@@ -43,7 +43,7 @@
 			</form>
 
 			<table
-				class="table table-bordered table-houver table-striped table-sm"
+				class="table table-sm"
 				style="text-align: center;">
 				<thead class="thead-dark" style="text-align: center">
 					<th>ID</th>
@@ -54,11 +54,11 @@
 				</thead>
 
 				<tbody>
-					<tr th:each="produto : ${listProduto}">
+					<tr th:each="produto : ${listProduto}" >
 						<td class="col-2" th:text=${produto.idProduto}></td>
 						<td class="col-6" th:text=${produto.nome}></td>
 						<td class="col-2">
-						<td class="col-2" th:text=${produto.qtdEstoque}>
+						<td class="col-2" th:text="${produto.qtdEstoque}" >
 							<a class="btn btn-dark btn-sm" th:href="@{alterar-estoque/{idProduto}(idProduto=${produto.idProduto})}"  >
 						<i class="fas fa-edit"></i> Ajustar
 						</a>

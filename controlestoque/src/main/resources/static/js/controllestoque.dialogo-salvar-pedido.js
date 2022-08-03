@@ -1,12 +1,48 @@
 var Controllestoque = Controllestoque || {};
 
-var alertList = document.querySelectorAll('.alert-success')
+Controllestoque.Msg = (function() {
 
-var botao = $('.js-submit-btn')
+	function Msg() {
+	
+this.alertList = document.querySelectorAll('.alert-success')
+
+this.botao = $('.js-submit-btn')
+}
 
 
-var acao = botao.data('acao');
-	console.log(acao)
+	Msg.prototype.iniciar = function() {
+		this.botao.on('click', botao.bind(this));
+	}
+	
+	function botao(evento) {
+		evento.preventDefault();
+		
+		var botaoClicado = $(evento.target);
+		var acao = botaoClicado.data('acao');
+		
+		if(acao ==='cancelado'){
+			alertList.forEach(function(alert) {
+
+	swal({
+		title: "Operação realizada com sucesso!",
+		text:'Alterado para cancelado',
+		icon: "success",
+		button: true,
+		timer: 5000,
+	})
+
+	new bootstrap.Alert(alert)
+
+	//		console.log(botao);
+	
+});
+			
+		}
+		
+		console.log(acao);
+	
+		acaoInput.attr('name', acao);
+	}
 	
 	
 //alertList.forEach(function(alert) {
@@ -24,3 +60,12 @@ var acao = botao.data('acao');
 //	
 //});
 
+return Msg
+	
+}());
+
+$(function() {
+	
+	var msg = new Controllestoque.Msg();
+	msg.iniciar();
+});
