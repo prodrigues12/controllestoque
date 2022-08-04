@@ -174,7 +174,7 @@ public class Pedido {
 	        case SEPARACAO:
 	            return "status-separacao";
 	        case NOVO:
-	            return "novo";
+	            return "status-novo";
 	        default:
 	            return "table-secondary";
 	    }

@@ -166,12 +166,13 @@ a {
 }
 
 .form-control {
-	border-width: 2px;
-	border-color: #0A2463;
+	border-width: 2px !important;
+	border-color: #0A2463 !important;
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
 	font-weight: bold;
 	font-size: 14px;
+
 }
 
 .form-control-label {

@@ -2,7 +2,7 @@
 <!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_pedidosFinalizadosSem" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="My sql adapter"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
@@ -99,27 +99,27 @@ order by p.data_criacao asc]]>
 				<text><![CDATA[Controllestoque CD - 994]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="142" y="40" width="270" height="30" uuid="3406a641-c0a3-48f2-865e-7e5adc7954c7"/>
-				<textElement textAlignment="Center">
+				<reportElement positionType="Float" x="142" y="40" width="148" height="30" uuid="3406a641-c0a3-48f2-865e-7e5adc7954c7"/>
+				<textElement textAlignment="Left">
 					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Relatório de Pedidos - ]]></text>
 			</staticText>
 			<image>
-				<reportElement x="460" y="0" width="93" height="30" uuid="038424fe-655e-4103-a28b-400e5bd6e9e7">
+				<reportElement x="460" y="15" width="93" height="30" uuid="038424fe-655e-4103-a28b-400e5bd6e9e7">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<imageExpression><![CDATA["C:/Users/_paulino/Documents/DEV/Imagens -projetos/Controllestoque imagens/luizalabs-logo.png"]]></imageExpression>
 			</image>
 			<image>
-				<reportElement stretchType="RelativeToTallestObject" x="4" y="0" width="85" height="50" uuid="b600d8dd-ce07-4e4d-a5bd-fb0c4991a4ca">
+				<reportElement stretchType="RelativeToTallestObject" x="4" y="0" width="105" height="70" uuid="b600d8dd-ce07-4e4d-a5bd-fb0c4991a4ca">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<imageExpression><![CDATA["C:/Users/_paulino/Pictures/large_beneficio20191111012601.png"]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="412" y="40" width="100" height="30" uuid="3f9233e4-8c33-44d2-bf9f-5bcf95f56f6b"/>
+				<reportElement x="294" y="40" width="100" height="30" uuid="3f9233e4-8c33-44d2-bf9f-5bcf95f56f6b"/>
 				<textElement>
 					<font fontName="Arial" size="13" isBold="true"/>
 				</textElement>
@@ -128,14 +128,14 @@ order by p.data_criacao asc]]>
 		</band>
 	</title>
 	<columnHeader>
-		<band height="22">
+		<band height="24">
 			<staticText>
 				<reportElement x="220" y="-1" width="100" height="15" uuid="fd3dba15-68a5-4e82-9cb5-6f9fa194ad92">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fe6c8fad-b712-4d48-9da6-f09dd7a335c9"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font size="10"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Colaborador]]></text>
 			</staticText>
@@ -144,7 +144,7 @@ order by p.data_criacao asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="58f5708c-6522-46ab-a94c-06f6b9eba445"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font size="10"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Pedido]]></text>
 			</staticText>
@@ -153,10 +153,18 @@ order by p.data_criacao asc]]>
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0d408736-2489-4f72-b648-5b8913ccdec5"/>
 				</reportElement>
 				<textElement textAlignment="Center">
-					<font size="10"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Data]]></text>
 			</staticText>
+			<line>
+				<reportElement x="-1" y="19" width="555" height="1" uuid="e7a67109-c69d-426b-8329-78fe1a5e21c7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
@@ -190,4 +198,37 @@ order by p.data_criacao asc]]>
 			</textField>
 		</band>
 	</detail>
+	<pageFooter>
+		<band height="21">
+			<textField pattern="dd/MM/yyy HH:mm">
+				<reportElement x="10" y="10" width="100" height="11" uuid="406efe1b-2260-4ef3-893f-ad767ae898b5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="10" width="100" height="11" uuid="c5a704e8-c88f-4046-9c1c-08999f196330">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pág. " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="502" y="10" width="100" height="11" uuid="ddc52a11-e0b5-474b-82ae-c1f4d900f052">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
 </jasperReport>

@@ -5,8 +5,8 @@
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="My sql adapter"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT  produto.nome AS produto_nome, sum(item.quantidade) AS total FROM item_pedido item INNER JOIN produto produto  INNER JOIN pedido pedido
-ON item.codigo_produto = produto.codigo AND item.codigo_pedido = pedido.codigo AND pedido.data_criacao BETWEEN '2022-07-01' and '2022-07-30'
-AND pedido.status='FINALIZADO'GROUP BY  produto.nome ORDER BY COUNT(item.quantidade) DESC LIMIT 30;]]>
+ON item.codigo_produto = produto.codigo AND item.codigo_pedido = pedido.codigo AND pedido.data_criacao BETWEEN '2022-07-03' and '2022-07-04'
+AND pedido.status='FINALIZADO'GROUP BY  produto.nome ORDER BY produto_nome ASC;]]>
 	</queryString>
 	<field name="produto_nome" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nome"/>
@@ -21,22 +21,107 @@ AND pedido.status='FINALIZADO'GROUP BY  produto.nome ORDER BY COUNT(item.quantid
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="73" splitType="Stretch">
+			<image>
+				<reportElement x="460" y="0" width="93" height="30" uuid="f90021f5-acc5-47a5-b825-1372aebdb7d4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["C:/Users/_paulino/Documents/DEV/Imagens -projetos/Controllestoque imagens/luizalabs-logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="180" y="3" width="200" height="25" uuid="f4008941-cc92-4149-9367-f490c496632d">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Controllestoque CD - 994]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="142" y="40" width="270" height="30" uuid="eb6cf914-ccb8-4599-84c0-1e1db87f663b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Pedidos Finalizados]]></text>
+			</staticText>
+			<image>
+				<reportElement stretchType="RelativeToTallestObject" x="4" y="0" width="85" height="50" uuid="9d07adba-4e56-4e3a-a9b7-6efa51e16e94">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["C:/Users/_paulino/Pictures/large_beneficio20191111012601.png"]]></imageExpression>
+			</image>
+		</band>
 	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="1" width="100" height="20" uuid="a4ffd3e5-7e0a-4bad-ac4c-1ca585a3ad43">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="19459fbe-cf14-4e44-9617-7d7a973af742"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRODUTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="434" y="1" width="100" height="20" uuid="4f987329-1d8a-4a55-bf58-2863cd359381">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bb63c3fa-fa02-4208-811f-84782803a343"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-1" y="21" width="556" height="1" uuid="3cb5c028-a565-4c34-9c01-b43679892d9b">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+			</line>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="28" y="2" width="280" height="20" uuid="2332e350-06a5-4027-a3b6-08ffc8488424">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="19459fbe-cf14-4e44-9617-7d7a973af742"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{produto_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="1" width="100" height="20" uuid="89af7eb2-e220-4478-9f0f-a751e7292496">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bb63c3fa-fa02-4208-811f-84782803a343"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="402" y="0" width="100" height="11" uuid="6ef7593c-e049-48b6-ac56-f983471fe461">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pág. " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyy HH:mm">
+				<reportElement x="14" y="0" width="100" height="11" uuid="52590675-f7f7-4996-95e2-a295f44de584">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>

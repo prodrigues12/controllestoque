@@ -17,7 +17,7 @@ public interface Colaboradores extends JpaRepository<Colaborador, Long>, Colabor
 
 	public List<Colaborador> findByNomeStartingWithIgnoreCase(String nome);
 
-	@Query("select c from Colaborador c where c.cpfCnpjId = :nome")
+	@Query("select c from Colaborador c where c.cpfCnpjId like %:nome%")
 	public List<Colaborador> listpfCnpjId(String nome);
 	
 }

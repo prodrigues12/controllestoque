@@ -1,5 +1,7 @@
 package com.controlestoque.Repository.helper.colaborador;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -18,6 +20,7 @@ import org.springframework.util.StringUtils;
 
 import com.controlestoque.Repository.filter.ColaboradorFilter;
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
+import com.controlestoque.dto.ProdutoDTO;
 import com.controlestoque.model.Colaborador;
 
 public class ColaboradoresImpl implements ColaboradoresQueries {
@@ -60,10 +63,9 @@ public class ColaboradoresImpl implements ColaboradoresQueries {
 			
 			if (!StringUtils.isEmpty(filtro.getCpfCnpjId())) {
 				criteria.add(Restrictions.ilike("cpfCnpjId", filtro.getCpfCnpjId(), MatchMode.ANYWHERE));
-			}
-//			
+			}	
 		}
 	
 	}
-
+	
 }
