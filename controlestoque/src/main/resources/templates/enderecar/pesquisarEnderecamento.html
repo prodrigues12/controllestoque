@@ -30,12 +30,12 @@
 	<div class="card">
 		<div class="card-header">
 			<div class="row">
-				<div class=" col-md-10">
-					<h4>Pesquisa Endereco</h4>
+				<div class=" col-md-10 center">
+						<span>Pesquisa Endereço</span>
 				</div>
 				<div class="col-md-2">
 					<a class="btn btn-primary btn-sm" th:href="@{/enderecar/novo}">Novo
-						Endereco</a>
+						Endereço</a>
 				</div>
 			</div>
 		</div>
@@ -78,7 +78,7 @@
 	</div>
 
 	<div class="table-responsive">
-		<table class="table table-sm table-striped" style="text-align: center">
+		<table class="table table-sm table-striped table-hover table-striped" style="text-align: center">
 			<thead class="thead-dark" style="text-align: center">
 
 				<th class="col-1"><th:block
@@ -86,7 +86,7 @@
 
 				</th>
 				<th class="col-auto"><th:block
-						th:replace="fragmentos/ordenacao :: order (${pagina}, 'endereco' , 'Endereco')"></th:block>
+						th:replace="fragmentos/ordenacao :: order (${pagina}, 'endereco' , 'Endereço')"></th:block>
 				</th>
 				<th class="col-auto"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'produto' , 'Produto')"></th:block>
@@ -102,7 +102,7 @@
 					<td th:text="${enderecar.codigo}"></td>
 					<td th:text="${enderecar.endereco.nomeEndereco}"></td>
 					<td th:text="${enderecar.produto.nome}"></td>
-					<td th:text="${enderecar.quantidade}"></td>
+					<td th:text="${#numbers.formatDecimal(enderecar.quantidade,1,2)}"></td>
 					<td><a title='Editar'
 						th:href="@{/enderecar/{codigo}(codigo=${enderecar.codigo})}"><i
 							class=" bx bx-edit ce-icon"></i></a>

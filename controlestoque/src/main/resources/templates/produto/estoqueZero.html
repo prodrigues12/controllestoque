@@ -27,8 +27,8 @@
 	<div class="card">
 		<div class="card-header">
 			<div class="row">
-				<div class=" col-md-10">
-					<h4>Estoque Zero</h4>
+				<div class=" col-md-10 center">
+					<span>Estoque Zero</span>
 				</div>
 
 			</div>
@@ -81,7 +81,7 @@
 	</div>
 	<!-- 	</form> -->
 	<div class="table-responsive">
-		<table class="table table-bordered table-houver  table-sm"
+		<table class="table table-sm table-striped table-hover table-striped"
 			style="text-align: center">
 			<thead class="thead-dark" style="text-align: center">
 
@@ -107,9 +107,9 @@
 					<td th:text="${produto.secao.nome}">Limpeza</td>
 					<td th:text="${#numbers.formatDecimal(produto.qtdEstMin,1,2)}">4</td>
 					<td th:text="${#numbers.formatDecimal(produto.qtdEstoque,1,2)}">4</td>
-					<td><a title="Estoque" class="btn btn-primary"
+					<td><a title="Estoque"
 						th:href="@{/estoque/ajuste/{codigo}(codigo=${produto.codigo})}">
-							<i class="bx bx-coin-stack "></i>
+							<i class="bx bx-coin-stack ce-icon"></i>
 					</a>
 				</tr>
 				<tr th:if="${pagina.vazia}">
@@ -139,7 +139,7 @@
 
 
 
-	<div th:replace="fragmentos/fragmentos :: footer"></div>
+	
 	<div th:replace="secao/cadastroRapidoSecao :: modalSecao"></div>
 
 

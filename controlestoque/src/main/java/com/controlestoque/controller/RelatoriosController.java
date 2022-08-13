@@ -48,6 +48,27 @@ public class RelatoriosController {
 		return mv;
 
 	}
+	@GetMapping("/pedidosCompleto")
+	public ModelAndView reltoriosPedidos(PeriodoRelatorio periodoRelatorio) {
+		ModelAndView mv = new ModelAndView("relatorios/relatoriosPedidos");
+		mv.addObject("status", StatusPedido.values());
+		return mv;
+
+	}
+	
+	@GetMapping("/estoque")
+	public ModelAndView reltorioEstoque(PeriodoRelatorio periodoRelatorio) {
+		ModelAndView mv = new ModelAndView("relatorios/estoque");
+		return mv;
+	
+	}
+	
+	@GetMapping("/estoque_movimentacao")
+	public ModelAndView reltorioEstoqueMovimetacao(PeriodoRelatorio periodoRelatorio) {
+		ModelAndView mv = new ModelAndView("relatorios/estoqueMovimentacao");
+		return mv;
+	}
+	
 	
 	@PostMapping("/pedidosFinalizados")
 	public ResponseEntity<Object> pedidosStatusPeriodo(@RequestParam Map<String, Object> parametros,
@@ -75,14 +96,6 @@ public class RelatoriosController {
 
 	}
 	
-
-	@GetMapping("/pedidosCompleto")
-	public ModelAndView reltoriosPedidos(PeriodoRelatorio periodoRelatorio) {
-		ModelAndView mv = new ModelAndView("relatorios/relatoriosPedidos");
-		mv.addObject("status", StatusPedido.values());
-		return mv;
-
-	}
 
 	
 	@PostMapping("/pedidosCompleto")

@@ -106,7 +106,7 @@ public class Colaborador implements Serializable{
 	}
 
 	public String getEmail() {
-		return email;
+		return email.toUpperCase();
 	}
 
 	public void setEmail(String email) {

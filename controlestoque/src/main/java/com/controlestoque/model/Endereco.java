@@ -42,7 +42,7 @@ public class Endereco implements Serializable {
 	}
 
 	public void setNomeEndereco(String nomeEndereco) {
-		this.nomeEndereco = nomeEndereco;
+		this.nomeEndereco = nomeEndereco.toUpperCase();
 	}
 
 	public List<Enderecar> getEnderecar() {
