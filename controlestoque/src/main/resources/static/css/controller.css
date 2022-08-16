@@ -42,7 +42,6 @@
 .card {
 	width: auto;
 	left: auto;
-
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
 }
@@ -53,12 +52,17 @@
 	color: #FAF2F2;
 }
 
-
 a {
 	cursor: pointer;
 	font-weight: bold;
 	color: #fff;
 	font-size: 15px;
+}
+
+a#texto_pequeno  {
+	color: #0d6efd;
+	text-decoration: underline;
+	font-size: 11px;
 }
 
 .dropdown-item {
@@ -145,7 +149,7 @@ a {
 }
 
 .btn::after {
-/* 	content: ""; */
+	/* 	content: ""; */
 	display: inline-block;
 	transition: all .4s;
 	color: #fff;
@@ -172,7 +176,6 @@ a {
 	border-bottom-right-radius: .2rem !important;
 	font-weight: bold;
 	font-size: 14px;
-
 }
 
 .form-control-label {
@@ -191,7 +194,7 @@ a {
 
 .table {
 	text-align: center;
-/* 	background-color: #f3eae8; */
+	/* 	background-color: #f3eae8; */
 }
 
 .thead-dark {
@@ -291,38 +294,30 @@ table tr td {
 }
 
 .status-novo {
-
 	color: #008000 !important;
 	font-style: normal;
 	font-weight: bold;
-
 }
 
 .status-cancelado {
-
 	color: #FF0000 !important;
 	font-style: normal;
 	font-weight: bold;
-
 }
 
 .status-separacao {
-
-	color: #d9e401!important;
+	color: #d9e401 !important;
 	font-style: normal;
 	font-weight: bold;
-
 }
 
 .status-pendente {
-
 	color: #00CED1 !important;
 	font-style: normal;
 	font-weight: bold;
-	
 }
 
-.valor-negativo{
+.valor-negativo {
 	color: red !important;
 	font-weight: bold;
 }

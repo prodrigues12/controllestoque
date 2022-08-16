@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="/css/sindebar.css" />
 <link rel="stylesheet" href="/css/controller.css" />
 
-<link rel="stylesheet" href="/css/brewer.css" />
+<link rel="stylesheet" href="/css/magalu.css" />
 </head>
 <body id="body-pd">
 
@@ -27,15 +27,15 @@
 	<div class="card">
 		<div class="card-header">
 			<div class="row">
-				<div class=" col-md-10">
-					<h4>Pedidos</h4>
+				<div class=" col-md-10 center">
+					<span th:text="Pedidos"></span>
 				</div>
 				<div class="col-md-2">
-					<a class="btn btn-primary btn-sm" th:href="@{/pedido/novo}">Novo
-						Pedido</a>
+					<a class="btn btn-secondary btn-sm" th:href="@{/}">Voltar</a>
 				</div>
 			</div>
 		</div>
+		<div th:replace="fragmentos/fragmentos :: magalu"></div>
 		<div class="card-body">
 
 			<form action="" method="get" th:object="${pedidoFilter}">
@@ -84,7 +84,7 @@
 					</div>
 					<div class="col-auto">
 						<label for="secao" class="col-form-label-sm">Identificador:</label>
-						<input class="form-control form-control-sm" type="text"
+						<input class="form-control form-control-sm" type="number"
 							placeholder="ID ou CNPJ" th:field="*{cpfCnpjId}" />
 					</div>
 

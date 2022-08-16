@@ -14,6 +14,7 @@
 	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 <link rel="stylesheet" href="/css/sindebar.css" />
 <link rel="stylesheet" href="/css/controller.css" />
+<link rel="stylesheet" href="/css/magalu.css" />
 </head>
 
 <body id="body-pd">
@@ -24,8 +25,8 @@
 	<div class="card">
 		<div class="card-header">
 			<div class="row">
-				<div class=" col-md-10">
-					<h4>Pesquisa Usuario</h4>
+				<div class=" col-md-10 center">
+					<span>Pesquisa Usuario</span>
 				</div>
 				<div class="col-md-2">
 					<a class="btn btn-primary btn-sm" th:href="@{/usuario/novo}">Novo
@@ -33,6 +34,7 @@
 				</div>
 			</div>
 		</div>
+		<div th:replace="fragmentos/fragmentos :: magalu"></div>
 		<div class="card-body">
 
 			<form action="" method="get" th:object="${usuarioFilter}">
@@ -125,7 +127,7 @@
 	</div>
 
 
-	<div th:replace="fragmentos/fragmentos :: footer"></div>
+
 	<div th:replace="secao/cadastroRapidoSecao :: modalSecao"></div>
 
 

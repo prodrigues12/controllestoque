@@ -14,6 +14,7 @@
 	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 <link rel="stylesheet" href="/css/sindebar.css" />
 <link rel="stylesheet" href="/css/controller.css" />
+<link rel="stylesheet" href="/css/magalu.css" />
 </head>
 
 <body id="body-pd">
@@ -35,17 +36,19 @@
 			<div class="card">
 				<div class="card-header">
 					<div class="row">
-						<div class=" col-md-10">
-							<h4 th:if="${usuario.usuarioNovo}">Novo Usuario</h4>
-							<h4 th:unless="${usuario.usuarioNovo}"
-								th:text="|Editando usuario: ${usuario.nome}|"></h4>
+						<div class=" col-md-10 center">
+							<span th:if="${usuario.usuarioNovo}">Novo Usuario</span>
+							<span th:unless="${usuario.usuarioNovo}"
+								th:text="|Editando usuario: ${usuario.nome}|"></span>
 						</div>
 						<div class="col-md-2">
 							<a th:href="@{/usuario}" class="btn btn-primary btn-sm">Pesquisar</a>
 						</div>
 					</div>
 				</div>
+				<div th:replace="fragmentos/fragmentos :: magalu"></div>
 				<div class="card-body">
+				
 
 					<div class=""></div>
 

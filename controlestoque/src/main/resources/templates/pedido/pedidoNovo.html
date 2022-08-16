@@ -26,10 +26,10 @@
 	<div class="card">
 		<div class="card-header">
 			<div class="row">
-				<div class=" col-md-10">
-					<h5 th:if="${pedido.pedidoNovo}">Novo Pedido</h5>
-					<h5 th:unless="${pedido.pedidoNovo}"
-						th:text="|Editando pedido: ${pedido.codigo} -  ${pedido.status}|"></h5>
+				<div class=" col-md-10 center">
+					<span th:if="${pedido.pedidoNovo}">Novo Pedido</span>
+					<span th:unless="${pedido.pedidoNovo}"
+						th:text="|Editando pedido: ${pedido.codigo} -  ${pedido.status}|"></span>
 				</div>
 				<div class="col-md-2">
 					<a th:href="@{/pedido}" class="btn btn-primary btn-sm">Pesquisar</a>

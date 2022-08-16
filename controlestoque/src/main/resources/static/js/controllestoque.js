@@ -1,32 +1,23 @@
-var Controllestoque = Controllestoque || {};
 
 
-Controllestoque.MaskMoney = (function() {
-
-	function MaskMoney() {
-		this.decimal = $('.js-decimal');
-		this.plain = $('.js-plain');
-}
-
-	MaskMoney.prototype.enable = function() {
-		this.decimal.maskMoney({ decimal: ',', thousands: '.' });
-		this.plain.maskMoney({ precision: 0, thousands: '.' });
-		
-	}
+	function validarLogin() {
+    if ($('#username').val().length > 0 && $('#password').val().length > 0) {
 	
-	return MaskMoney;
 
-}());
-
-
-
-
-$(function() {
-
-	var maskMoney = new Controllestoque.MaskMoney();
-	maskMoney.enable();
-
-
+	
+        $('#kc-login').removeAttr('disabled')
+    } else {
+        $('#kc-login').attr('disabled', 'disabled')
+    }
 }
 
-)
+$('#username, #password').on('focusout', validarLogin)
+
+$('#username, #password').keyup(validarLogin)
+	
+	
+
+
+
+
+

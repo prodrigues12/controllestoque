@@ -51,6 +51,10 @@ public class Secao implements Serializable {
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
 	}
+	
+	public boolean isSecaoNovo() {
+		return this.codigo == null;
+	}
 
 	@Override
 	public int hashCode() {
