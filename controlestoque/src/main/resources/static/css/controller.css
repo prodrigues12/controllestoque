@@ -59,9 +59,13 @@ a {
 	font-size: 15px;
 }
 
+.select:hover {
+text-decoration: underline;
+}
+
+
 a#texto_pequeno  {
 	color: #0d6efd;
-	text-decoration: underline;
 	font-size: 11px;
 }
 

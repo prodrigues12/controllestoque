@@ -540,14 +540,14 @@ a.zocial {
     color: #8b8d8f !important;
 }
 
-.btn-primary {
-    margin-top: 0;
-    background-image: none !important;
-    background-color: #0086ff !important;
-    border-radius: 25px !important;
-    height: 46px !important;    
-    border: none !important;
-}
+/* .btn-primary { */
+/*     margin-top: 0; */
+/*     background-image: none !important; */
+/*     background-color: #0086ff !important; */
+/*     border-radius: 25px !important; */
+/*     height: 46px !important;     */
+/*     border: none !important; */
+/* } */
 
 .btn-register {
     width: 100%;

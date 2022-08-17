@@ -35,18 +35,20 @@ Controlestoque.GraficosPedidosMes = (function() {
 					label: 'Pedidos ',
 
 					backgroundColor: [
-						'#90EE90',
 						'#FF6347',
+						'#90EE90',
 						'#F0E68C',	
-						'#9370DB',
 						'#D3D3D3',
-						'#F4A460'
+						'#F4A460',
+						'#9370DB'
 					],
 					borderColor: '#000',
 					pointBorderColor: '#000',
 					pointBackgroundColor: "#000",
 				}]
 			},
+			
+			
 		});
 
 	}
@@ -92,7 +94,6 @@ Controlestoque.GraficosTopProdutos = (function() {
 						'#90EE90',
 						'#20B2AA',
 						'#FFA500',
-//						'#A020F0',
 						'#2F4F4F'
 					],
 					hoverOffset: 10
@@ -100,7 +101,7 @@ Controlestoque.GraficosTopProdutos = (function() {
 				
 			},
 			options:{
-				aspectRatio:2,
+				aspectRatio:3,
 				 plugins: {
             subtitle: {
                 display: true,
