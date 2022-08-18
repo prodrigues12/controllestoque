@@ -183,10 +183,10 @@ public class PedidosImpl implements PedidosQueries {
 		}
 	}
 
-	@SuppressWarnings("deprecation" )
+	@SuppressWarnings("deprecation")
 	private void filtroStatusNovo(PedidoFilter filtro, Criteria criteria) {
 		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.NOVO))
-		.addOrder(Order.desc("codigo"));
+				.addOrder(Order.desc("codigo"));
 
 		if (filtro != null) {
 
@@ -231,7 +231,7 @@ public class PedidosImpl implements PedidosQueries {
 	@SuppressWarnings("deprecation")
 	private void filtroStatusPendente(PedidoFilter filtro, Criteria criteria) {
 		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.PENDENTE))
-		.addOrder(Order.desc("codigo"));
+				.addOrder(Order.desc("codigo"));
 
 		if (filtro != null) {
 
@@ -275,7 +275,7 @@ public class PedidosImpl implements PedidosQueries {
 	@SuppressWarnings("deprecation")
 	private void filtroStatusSeparacao(PedidoFilter filtro, Criteria criteria) {
 		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.SEPARACAO))
-		.addOrder(Order.desc("codigo"));
+				.addOrder(Order.desc("codigo"));
 
 		if (filtro != null) {
 
@@ -413,9 +413,9 @@ public class PedidosImpl implements PedidosQueries {
 
 	@Override
 	public Long statusIgualFinalizado() {
-		Optional<Long> optional = Optional
-				.ofNullable(manager.createQuery("select count(*) from Pedido where status= :status and datediff(curdate(), dataModificacao)<90", Long.class)
-						.setParameter("status", StatusPedido.FINALIZADO).getSingleResult());
+		Optional<Long> optional = Optional.ofNullable(manager.createQuery(
+				"select count(*) from Pedido where status= :status and month(data_modificacao) = MONTH(CURRENT_DATE())",
+				Long.class).setParameter("status", StatusPedido.FINALIZADO).getSingleResult());
 
 		return optional.orElse(Long.valueOf(0));
 	}
@@ -453,8 +453,7 @@ public class PedidosImpl implements PedidosQueries {
 
 		String query = "SELECT DATE_FORMAT(data_criacao, '%Y/%m') mes, COUNT(*) "
 				+ "total FROM pedido WHERE data_criacao BETWEEN CURDATE() - INTERVAL 6 MONTH AND CURDATE()"
-				+ " GROUP BY  DATE_FORMAT(data_criacao, '%Y/%m')"
-				+ "ORDER BY DATE_FORMAT(data_criacao, '%Y/%m') DESC";
+				+ " GROUP BY  DATE_FORMAT(data_criacao, '%Y/%m')" + "ORDER BY DATE_FORMAT(data_criacao, '%Y/%m') DESC";
 
 		Query nativeQuery = manager.createNativeQuery(query, "mappingPedidos");
 		List<PedidosMes> lista = nativeQuery.getResultList();

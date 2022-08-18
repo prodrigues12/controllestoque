@@ -112,7 +112,7 @@ public class ColaboradorController {
 
 	private void validarTamanhoNome(String nome) {
 		
-		if (StringUtils.isEmpty(nome) || nome.length() < 0) {
+		if (StringUtils.isEmpty(nome) || nome.length() < 3) {
 			throw new IllegalArgumentException();
 		}
 

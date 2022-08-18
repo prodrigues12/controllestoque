@@ -196,6 +196,11 @@ a#texto_pequeno  {
 	font-size: 14px;
 }
 
+.form-row-pedido{
+	float: right;
+	width: 15%;
+}
+
 .table {
 	text-align: center;
 	/* 	background-color: #f3eae8; */
@@ -230,6 +235,35 @@ a#texto_pequeno  {
 
 .bx-error-circle:hover {
 	color: #3e92cc;
+}
+
+.dropdown_status_pedido{
+background-color:#FFFFF0;
+}
+
+.pedido-text-success:hover{
+	color: white !important;
+	background: green; 
+}
+
+.pedido-text-warning:hover{
+	color: black!important;
+	background: yellow; 
+}
+
+.pedido-text-primary:hover{
+	color: white !important;
+	background: #0080ff; 
+}
+
+.pedido-text-danger:hover{
+	color: white !important;
+	background: red; 
+} 
+
+.pedido-text-dark:hover{
+	color: white !important;
+	background: black; 
 }
 
 .field-action {

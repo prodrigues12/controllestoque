@@ -28,7 +28,7 @@ public class AppUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		Optional<Usuario> usuarioOptional = usuRepository.porEmailEAtivo(email);
 		Usuario usuario = usuarioOptional.orElseThrow(() -> new UsernameNotFoundException("ERRoooUU!!!!!"));
-		return new User(usuario.getEmail(), usuario.getSenha(), getPermissoes(usuario));
+		return new User(usuario.getEmail(), usuario.getSenha() ,getPermissoes(usuario));
 	}
 	
 private Collection<? extends GrantedAuthority> getPermissoes(Usuario usuario) {

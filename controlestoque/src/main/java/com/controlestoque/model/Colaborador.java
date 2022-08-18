@@ -49,14 +49,12 @@ public class Colaborador implements Serializable{
 	@Column(name = "tipo_pessoa")
 	private TipoIdentificacao tipoIdentificacao;;
 	
-	@NotBlank(message = "CPF / CNPJ/ID é obrigatório")
-	@CPF(groups = CpfGroup.class)
+	@NotBlank(message = "ID/CNPJ é obrigatório")
 	@CNPJ(groups = CnpjGroup.class)
 	@IdMagalu(groups = IdGroup.class)
 	private String cpfCnpjId;
 	
-	@Email(message = "E-mail inválido")
-	private String email;
+	
 	
 	@PrePersist
 	@PreUpdate
@@ -105,13 +103,7 @@ public class Colaborador implements Serializable{
 		this.cpfCnpjId = cpfCnpjId;
 	}
 
-	public String getEmail() {
-		return email.toUpperCase();
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 	
 	public boolean isColaboradorNovo() {
 		return codigo == null;

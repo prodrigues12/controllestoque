@@ -21,14 +21,15 @@
 <body id="">
 
 	<div th:replace="fragmentos/fragmentos :: header"></div>
-	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
+		<div th:replace="fragmentos/fragmentos :: sindebar"></div>
+	
 	<div class="card">
 		<div class="card-header">
 			<div class="row">
 				<div class=" col-md-10 center">
-					<span th:if="${pedido.pedidoNovo}">Novo Pedido</span>
-					<span th:unless="${pedido.pedidoNovo}"
+					<span th:if="${pedido.pedidoNovo}">Novo Pedido</span> <span
+						th:unless="${pedido.pedidoNovo}"
 						th:text="|Editando pedido: ${pedido.codigo} -  ${pedido.status}|"></span>
 				</div>
 				<div class="col-md-2">
@@ -97,8 +98,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<label for="produto" class="col-form-label-sm">Produto: </label> <input
-							type="text"
-							class="form-control form-control-sm js-produto-input"
+							type="text" class="form-control form-control-sm js-produto-input"
 							id="produto" placeholder="Código ou Nome do Produto"
 							data:url="@{/produto}">
 					</div>
@@ -118,37 +118,47 @@
 						data:acao="novo">Confirmar</button>
 				</div>
 
-				<div class="form-row" th:unless="${pedido.pedidoNovo} ">
+				<div class="form-row form-row-pedido"
+					th:unless="${pedido.pedidoNovo} ">
 
 
-					<div class="btn-group btn-group dropend"
-						aria-label="Button group with nested dropdown d-grid gap-2 d-md-flex justify-content-md-end"
+					<div class="btn-group dropdown"
 						th:unless=${pedido.pedidoFinalizado}>
-						<button class="btn btn-dark" disabled>Salvar como:</button>
+						<button type="button" class="btn btn-secondary dropdown-toggle"
+							data-bs-toggle="dropdown" aria-expanded="false">Salvar
+							como</button>
+
+						<ul class="dropdown-menu dropdown_status_pedido">
 
 
-						<button class="btn btn-secondary dropdown-toggle offset-md-9"
-							data-bs-toggle="dropdown" aria-expanded="false"></button>
-						<ul class="dropdown-menu dropdown-menu-end"
-							aria-labelledby="btnStatus">
+							<li><a
+								class="dropdown-item  js-submit-btn text-success pedido-text-success"
+								data:acao="novo" href="#"><i class="bx bxs-right-arrow"></i>&nbsp;&nbsp;
+									Novo</a></li>
+
+							<li><a
+								class="dropdown-item  js-submit-btn text-warning pedido-text-warning"
+								data:acao="separacao" href="#"><i class="bx bxs-right-arrow"></i>&nbsp;&nbsp;
+									Separação</a></li>
+
+							<li><a
+								class="dropdown-item  js-submit-btn text-danger pedido-text-primary"
+								data:acao="cancelado" href="#"><i class="bx bxs-right-arrow"></i>&nbsp;&nbsp;
+									Cancelado</a></li>
 
 
-							<li><a class="dropdown-item  js-submit-btn "
-								data:acao="novo" href="#"> Novo</a></li>
-
-							<li><a class="dropdown-item  js-submit-btn "
-								data:acao="separacao" href="#"> Separação</a></li>
-
-							<li><a class="dropdown-item  js-submit-btn "
-								data:acao="cancelado" href="#"> Cancelado</a></li>
+							<li><a
+								class="dropdown-item  js-submit-btn text-primary pedido-text-primary"
+								data:acao="pendente" href="#"> <i class="bx bxs-right-arrow"></i>&nbsp;&nbsp;
+									Pendente
+							</a></li>
 
 
-							<li><a class="dropdown-item  js-submit-btn "
-								data:acao="pendente" href="#">Pendente</a></li>
-
-
-							<li><a class="dropdown-item js-submit-btn"
-								data:acao="finalizar" href="#">Finalizado</a></li>
+							<li><a
+								class="dropdown-item js-submit-btn text-dark pedido-text-dark"
+								data:acao="finalizar" href="#"> <i
+									class="bx bxs-right-arrow"> </i> &nbsp;&nbsp; Finalizado
+							</a></li>
 
 
 						</ul>
@@ -160,8 +170,8 @@
 		</div>
 
 	</div>
-
-	<div th:replace="fragmentos/fragmentos :: footer"></div>
+	<br />
+	<a type="button" class="btn btn-dark" href="javascript:history.back()">Voltar</a>
 
 	<th:block
 		th:replace="colaborador/pesquisaRapidaColaborador :: modalColaborador"></th:block>
@@ -171,8 +181,6 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 	<script src="https://cdnout.com/sweetalert"></script>
 	<script src="/js/vendors/handlebars.min.js"></script>
 	<script src="/js/vendors/jquery.easy-autocomplete.min.js"></script>
