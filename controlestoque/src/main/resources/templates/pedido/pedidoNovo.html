@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:data="http://www.thymeleaf.org/extras/data">
+	xmlns:data="http://www.thymeleaf.org/extras/data"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
@@ -18,13 +19,13 @@
 <link rel="stylesheet" href="/css/magalu.css" />
 </head>
 
-<body id="">
+<body id="body-pd">
 
 	<div th:replace="fragmentos/fragmentos :: header"></div>
-
+<div sec:authorize="isAuthenticated()">
 		<div th:replace="fragmentos/fragmentos :: sindebar"></div>
-	
-	<div class="card">
+	</div>
+	<div class="card card-pedido border-left-success shadow h-50 w-100">
 		<div class="card-header">
 			<div class="row">
 				<div class=" col-md-10 center">
@@ -171,7 +172,7 @@
 
 	</div>
 	<br />
-	<a type="button" class="btn btn-dark" href="javascript:history.back()">Voltar</a>
+	<a sec:authorize="isAuthenticated()" type="button" class="btn btn-dark" href="javascript:history.back()">Voltar</a>
 
 	<th:block
 		th:replace="colaborador/pesquisaRapidaColaborador :: modalColaborador"></th:block>

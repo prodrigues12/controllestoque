@@ -73,7 +73,7 @@ public class ProdutoController {
 
 	@GetMapping
 	public ModelAndView pesquisar(ProdutoFilter produtoFilter, BindingResult result,
-			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
+			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("produto/pesquisarProduto");
 		mv.addObject("secao", sessaoRepository.findAll());
 
@@ -88,6 +88,12 @@ public class ProdutoController {
 	public @ResponseBody List<ProdutoDTO> pesquisar(String codigoOuNome) {
 		return proRepository.codigoOuNome(codigoOuNome);
 	}
+	
+	//autocomplete 
+		@RequestMapping(value = "/autocomplete/enderecar",consumes = MediaType.APPLICATION_JSON_VALUE)
+		public @ResponseBody List<ProdutoDTO> pesquisarProduto(String codigoOuNome) {
+			return proRepository.codigoOuNome(codigoOuNome);
+		}
 
 	@DeleteMapping("/{codigo}")
 	public @ResponseBody ResponseEntity<?> excluir(@PathVariable("codigo") Produto produto) {

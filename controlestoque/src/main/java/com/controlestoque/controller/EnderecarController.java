@@ -46,21 +46,17 @@ public class EnderecarController {
 
 	@Autowired
 	private Enderecos endRepository;
-	
-	
 
 	@RequestMapping("/novo")
 	public ModelAndView novo(Enderecar enderecar) {
 		ModelAndView mv = new ModelAndView("enderecar/novoEnderecar");
-		mv.addObject("produto", proRepository.findAll());
 		mv.addObject("endereco", endRepository.findAll());
 		return mv;
 	}
 
-
-
 	@RequestMapping(value = { "/novo", "{\\d+}" }, method = RequestMethod.POST)
-	public ModelAndView salvarEnderecamento(@Valid Enderecar enderecar, BindingResult result, RedirectAttributes attributes) {
+	public ModelAndView salvarEnderecamento(@Valid Enderecar enderecar, BindingResult result,
+			RedirectAttributes attributes) {
 
 		if (result.hasErrors()) {
 			return novo(enderecar);
@@ -81,7 +77,7 @@ public class EnderecarController {
 
 	@GetMapping
 	public ModelAndView pesquisar(Enderecar enderecar, BindingResult result,
-			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
+			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("enderecar/pesquisarEnderecamento");
 		mv.addObject("produto", proRepository.findAll());
 
@@ -98,6 +94,7 @@ public class EnderecarController {
 		return mv;
 
 	}
+
 	@DeleteMapping("/{codigo}")
 	public @ResponseBody ResponseEntity<?> excluir(@PathVariable("codigo") Enderecar enderecar) {
 		try {
@@ -108,6 +105,5 @@ public class EnderecarController {
 
 		return ResponseEntity.ok().build();
 	}
-	
 
 }

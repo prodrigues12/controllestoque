@@ -24,6 +24,7 @@ public class EnderecarService {
 	public Enderecar salvandoEndereco(Enderecar enderecar) {
 		System.out.println(enderecar.getCodigo());
 
+
 		Optional<Enderecar> enderecarOpt = enderecamentoRepository.findByCodigo(enderecar.getCodigo());
 
 		if (enderecarOpt.isPresent() == false) {

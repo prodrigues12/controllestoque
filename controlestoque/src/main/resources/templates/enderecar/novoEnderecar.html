@@ -35,7 +35,7 @@
 		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
 
-		<div class="card">
+		<div class="card border-left-success shadow h-50 ">
 			<div class="card-header">
 			
 			<div class="row">
@@ -79,17 +79,11 @@
 					</div>
 					
 					<div class=" col-md-5">
-						<label class=" col-form-label-sm">Produto:</label>
-						<div class="input-group">
-							<select id="produto_endereco"
-								class=" form-control form-select form-select-sm"
-								th:field="*{produto}">
-								<option value="">Selecione uma Seção</option>
-								<option class="form-control-label form-control-sm"
-									th:each="produto : ${produto}" th:value="${produto.codigo}"
-									th:text="${produto.nome}"></option>
-							</select> 
-						</div>
+						<label class=" col-form-label-sm">Produto:</label><input
+							type="text" class="form-control form-control-sm js-produto-input"
+							id="produto" placeholder="Código ou Nome do Produto"
+							data:url="@{/produto}" th:field="*{produto}">
+						
 						
 					</div>
 					

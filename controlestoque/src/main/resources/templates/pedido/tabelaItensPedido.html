@@ -2,7 +2,9 @@
 <html lang="pt-br" xmlns:th="http://thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:data="http://www.thymeleaf.org/extras/data">
-
+<head>
+<meta charset="UTF-8"/>
+</head>
 <div class="tabela-item  js-tabela-item" th:each="item : ${itens}">
 	<div class="tabela-item__coluna  tabela-item__coluna--foto">
 
@@ -15,7 +17,7 @@
 	<div class="tabela-item__coluna  tabela-item__coluna--detalhes">
 		<span class="tabela-produto-nome" th:text="${item.produto.nome}">
 		</span>
-		SECAO:
+		SEÇÃO:
 		 <span class="label label-default"
 			th:text="${item.produto.secao.nome}"></span>
 	</div>

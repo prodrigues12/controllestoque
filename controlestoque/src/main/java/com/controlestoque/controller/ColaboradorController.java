@@ -68,7 +68,7 @@ public class ColaboradorController {
 
 	@GetMapping
 	public ModelAndView pesquisar(ColaboradorFilter colaboradorFilter, BindingResult result,
-			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
+			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("colaborador/pesquisaColaborador");
 		mv.addObject("tipoIdentificacao", TipoIdentificacao.values());
 

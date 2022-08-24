@@ -12,10 +12,10 @@ Controllestoque.Autocomplete = (function() {
 	}
 
 	Autocomplete.prototype.iniciar = function() {
-		
+
 		var options = {
 			url: function(codigoOuNome) {
-				return this.codigoOuNomeInput.data('url') + '?codigoOuNome=' + codigoOuNome;
+				return this.codigoOuNomeInput.data('url') + '/autocomplete/enderecar' + '?codigoOuNome=' + codigoOuNome;
 			}.bind(this),
 			getValue: 'nome',
 			requestDelay: 400,
@@ -25,18 +25,18 @@ Controllestoque.Autocomplete = (function() {
 
 			list: {
 				match: {
-			enabled: true
-		},
-		maxNumberOfElements: 6,
+					enabled: true
+				},
+				maxNumberOfElements: 6,
 
-		showAnimation: {
-			type: "slide",
-			time: 400
-		},
-		hideAnimation: {
-			type: "slide",
-			time: 400
-		},
+				showAnimation: {
+					type: "slide",
+					time: 400
+				},
+				hideAnimation: {
+					type: "slide",
+					time: 400
+				},
 				onChooseEvent: onItemSelecionado.bind(this)
 			}
 
@@ -47,9 +47,10 @@ Controllestoque.Autocomplete = (function() {
 
 	function onItemSelecionado() {
 
-		this.emitter.trigger('item-selecionado', this.codigoOuNomeInput.getSelectedItemData());
-		this.codigoOuNomeInput.val();
-		console.log('chegou aqui: ',this.codigoOuNomeInput.val());
+		this.emitter.trigger('item-selecionado', this.codigoOuNomeInput.getSelectedItemData().codigo);
+		this.codigoOuNomeInput =  this.codigoOuNomeInput.getSelectedItemData().codigo
+		console.log(this.codigoOuNomeInput.val());
+		console.log('chegou aqui: ', this.codigoOuNomeInput.getSelectedItemData().codigo);
 		this.codigoOuNomeInput.focus();
 
 	}

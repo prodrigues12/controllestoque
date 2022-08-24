@@ -101,7 +101,7 @@ Controlestoque.GraficosTopProdutos = (function() {
 				
 			},
 			options:{
-				aspectRatio:3,
+				aspectRatio:2,
 				 plugins: {
             subtitle: {
                 display: true,

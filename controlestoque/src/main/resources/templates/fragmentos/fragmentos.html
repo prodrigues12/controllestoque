@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:data="http://www.thymeleaf.org/extras/data">
+	xmlns:data="http://www.thymeleaf.org/extras/data"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8>
@@ -20,31 +22,44 @@
 <body id="body-pd">
 
 	<header class="header" id="header" th:fragment=header>
-		<div class="header_toggle">
-			<i class='bx bx-chevron-right' id="header-toggle"></i>
+		<div class="header_toggle" >
+			<i class='bx bx-chevron-right' id="header-toggle" sec:authorize="isAuthenticated()"></i>
 		</div>
 
 
 		<div>Sistema de Gerenciamento do Suprimentos CD-994</div>
 		<div>
 
-			<div class="btn-group btn-group-sm" role="group"
-				aria-label="Button group with nested dropdown">
-				<div class="btn-group" role="group">
-					<a id="userLogado" th:text="${#authentication.name}"
-						class="nomeUser" data-bs-toggle="dropdown" aria-expanded="false">
-					</a>
-					<ul class="dropdown-menu" aria-labelledby="userLogado">
-						<li><a class="dropdown-item" th:href="@{/sobre}">Sobre</a></li>
-						<li><a class="dropdown-item" href="#">Feedback</a></li>
-						<li><a class="dropdown-item" href="#">Central de ajuda e
-								suporte</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" th:href="@{/logout}"><i
-								class='bx bx-log-out'></i> <span class="nav_name navbar-text">Sair</span></a></li>
-					</ul>
+
+
+			<div sec:authorize="isAuthenticated()">
+				<div class="btn-group btn-group-sm" role="group"
+					aria-label="Button group with nested dropdown">
+					<div class="btn-group" role="group">
+						<a id="userLogado" th:text="${#authentication.name}"
+							class="nomeUser" data-bs-toggle="dropdown" aria-expanded="false">
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="userLogado">
+							<li><a class="dropdown-item" th:href="@{/sobre}">Sobre</a></li>
+							<li><a class="dropdown-item" href="#">Feedback</a></li>
+							<li><a class="dropdown-item" href="#">Central de ajuda e
+									suporte</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" th:href="@{/logout}"><i
+									class='bx bx-log-out'></i> <span class="nav_name navbar-text">Sair</span></a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
+
+			<div sec:authorize="!isAuthenticated()">
+				<div class="btn-group btn-group-sm">
+					<a  class="text-primary" th:href="@{/login}"> <i class='bx bx-log-in'></i> Login
+					</a>
+				</div>
+
+			</div>
+
 		</div>
 
 	</header>
@@ -67,7 +82,7 @@
 
 				<div class="nav_list">
 					<div class="nav_list">
-						<a th:href="@{/}" class="nav_link active" title="Dashboard"> <img
+						<a th:href="@{/}" class="nav_link " title="Dashboard"> <img
 							src="/img/botoes/grafico_pizza.svg" height="30" width="30" /> <span
 							class="nav_name">Dashboard</span>
 

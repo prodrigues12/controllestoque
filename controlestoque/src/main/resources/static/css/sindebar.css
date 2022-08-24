@@ -152,15 +152,13 @@ a {
     color:#87CEFA
 }
 
-/* .show { */
-/*  	modal */ 
-/*     left: 5cm; */
-/* } */
 
-.body-pd {
-    padding-left: calc(var(--nav-width) + 1rem);
+/* .body-pd { */
+/*     padding-left: calc(var(--nav-width) + 1rem); */
   
-}
+/* }
+20/08/22
+*/
 
 .active {
     color: var(--white-color)

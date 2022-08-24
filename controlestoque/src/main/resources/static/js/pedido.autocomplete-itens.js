@@ -5,7 +5,7 @@ Controllestoque.Autocomplete = (function() {
 	function Autocomplete() {
 		this.nomeInput = $('.js-produto-input');
 		var htmlTemplateAutocomplete = $('#template-autocomplete-produto').html();
-		this.template = Handlebars.compile(htmlTemplateAutocomplete);
+//		this.template = Handlebars.compile(htmlTemplateAutocomplete);
 		this.emitter = $({});
 		this.on = this.emitter.on.bind(this.emitter);
 

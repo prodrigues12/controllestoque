@@ -69,7 +69,7 @@ public class EnderecoController {
 
 	@GetMapping
 	public ModelAndView pesquisar(EnderecoFilter EnderecoFilter, BindingResult result,
-			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
+			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("endereco/pesquisarEndereco");
 		mv.addObject("produto", proRepository.findAll());
 

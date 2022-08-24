@@ -12,8 +12,6 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.css" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
-<!-- <link rel="stylesheet" href="/css/vendors/easy-autocomplete.min.css"> -->
-<!-- <link rel="stylesheet" href="/css/vendors//easy-autocomplete.themes.css"> -->
 <link rel="stylesheet" href="/css/sindebar.css" />
 <link rel="stylesheet" href="/css/controller.css" />
 <link rel="stylesheet" href="/css/magalu.css" />
@@ -27,7 +25,7 @@
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
 
-	<div class="card">
+	<div class="card border-left-success shadow h-50 ">
 		<div class="card-header">
 			<div class="row">
 				<div class=" col-md-10 center">
@@ -83,7 +81,7 @@
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'endereco' , 'Endereço')"></th:block>
 
 				
-				<th class="col-2">Ação</th>
+				<th class="col-1">Ação</th>
 
 
 			</thead>

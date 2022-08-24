@@ -52,6 +52,14 @@
 	color: #FAF2F2;
 }
 
+.card-pedido{
+	width: 93% !important;
+/* 	height: 70% !important; */
+	
+	
+	
+}
+
 a {
 	cursor: pointer;
 	font-weight: bold;
@@ -98,6 +106,10 @@ a#texto_pequeno  {
 
 .pagina {
 	position: relative;
+}
+
+.pagination {
+    display: inline-flex;
 }
 
 .table .thead-dark th {
@@ -462,6 +474,8 @@ table tr td {
 /* Easy Autocomplete */
 .easy-autocomplete input {
 	border-radius: 2px !important;
+	display: flex !important;
+	flex: auto !important;
 }
 
 .easy-autocomplete-container ul li {

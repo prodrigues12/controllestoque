@@ -27,11 +27,11 @@
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
 
-	<div class="card">
+	<div class="card border-left-success shadow h-50 ">
 		<div class="card-header">
 			<div class="row">
 				<div class=" col-md-10 center">
-						<span>Pesquisa Endereço</span>
+					<span>Pesquisa Endereço</span>
 				</div>
 				<div class="col-md-2">
 					<a class="btn btn-primary btn-sm" th:href="@{/enderecar/novo}">Novo
@@ -58,14 +58,14 @@
 							class="form-control form-control-sm js-maskEndereco" type="text"
 							th:field="*{endereco}" placeholder="00.000.000.000" />
 					</div>
-					
-						<div class=" col-md-5">
+
+					<div class=" col-md-5">
 						<label class=" col-form-label-sm">Produto:</label> <input
 							class="form-control form-control-sm js-maskEndereco" type="text"
-							th:field="*{Produto}"  />
+							th:field="*{Produto}" />
 					</div>
 
-				
+
 				</div>
 
 				<div class="form-row">
@@ -78,7 +78,8 @@
 	</div>
 
 	<div class="table-responsive">
-		<table class="table table-sm table-striped table-hover table-striped" style="text-align: center">
+		<table class="table table-sm table-striped table-hover table-striped"
+			style="text-align: center">
 			<thead class="thead-dark" style="text-align: center">
 
 				<th class="col-1"><th:block
@@ -91,8 +92,8 @@
 				<th class="col-auto"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'produto' , 'Produto')"></th:block>
 				</th>
-					<th class="col-2">Quantidade</th>
-				<th class="col-2">Ação</th>
+				<th class="col-auto">Quantidade</th>
+				<th class="col-1">Ação</th>
 
 
 			</thead>
@@ -101,15 +102,15 @@
 				<tr th:each="enderecar :${pagina.conteudo}">
 					<td th:text="${enderecar.codigo}"></td>
 					<td th:text="${enderecar.endereco.nomeEndereco}"></td>
-					<td th:text="${enderecar.produto.nome}"></td>
+					<td align="left" th:text="${enderecar.produto.nome}"></td>
 					<td th:text="${#numbers.formatDecimal(enderecar.quantidade,1,2)}"></td>
 					<td><a title='Editar'
 						th:href="@{/enderecar/{codigo}(codigo=${enderecar.codigo})}"><i
-							class=" bx bx-edit ce-icon"></i></a>
-							<a
-						class=" js-exclusao-btn" title="Excluir" href="#"
+							class=" bx bx-edit ce-icon"></i></a> <a class=" js-exclusao-btn"
+						title="Excluir" href="#"
 						data:url="@{/enderecar/{codigo}(codigo=${enderecar.codigo})}"
-						data:objeto="${enderecar.produto.nome}"> <i class="bx bx-trash ce-icon"></i>
+						data:objeto="${enderecar.produto.nome}"> <i
+							class="bx bx-trash ce-icon"></i>
 					</a></td>
 				</tr>
 				<tr th:if="${pagina.vazia}">

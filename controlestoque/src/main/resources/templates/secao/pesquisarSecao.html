@@ -22,7 +22,7 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
-	<div class="card">
+	<div class="card border-left-success shadow h-50 ">
 		<div class="card-header">
 			<div class="row">
 				<div class=" col-md-10 center">
@@ -74,18 +74,18 @@
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
 
 				</th>
-				<th class="col-4"><th:block
+				<th class="col-auto"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Nome')"></th:block>
 				</th>
 
-				<th class="col-2">Ação</th>
+				<th class="col-1">Ação</th>
 
 			</thead>
 
 			<tbody>
 				<tr th:each="secao :${pagina.conteudo}">
 					<td th:text="${secao.codigo}">1</td>
-					<td th:text="${secao.nome}">Produto Teste</td>
+					<td align="left" th:text="${secao.nome}">Produto Teste</td>
 					<td><a th:href="@{/secao/{codigo}(codigo=${secao.codigo})}"><i
 							class=" bx bx-edit ce-icon"></i> </a> &nbsp; <a
 						class=" js-exclusao-btn" title="Excluir" href="#"

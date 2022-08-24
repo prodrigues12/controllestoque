@@ -22,7 +22,7 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
-	<div class="card">
+	<div class="card border-left-success shadow h-50 ">
 		<div class="card-header">
 			<div class="row">
 				<div class=" col-md-10 center">
@@ -78,21 +78,21 @@
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'codigo' , 'Codigo')"></th:block>
 				</th>
 
-				<th class="col-4"><th:block
+				<th class="col-auto"><th:block
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'nome' , 'Usuário')"></th:block>
 
 				</th>
-				<th class="col-4">Email</th>
+				<th class="col-auto">Email</th>
 
 
-				<th class="col-2">Ação</th>
+				<th class="col-1">Ação</th>
 			</thead>
 
 
 			<tbody>
 				<tr th:each="usuario :${pagina.conteudo}">
 					<td th:text="${usuario.codigo}">1</td>
-					<td th:text="${usuario.nome}">1</td>
+					<td align="left" th:text="${usuario.nome}">1</td>
 					<td th:text="${usuario.email}">1</td>
 					<td><a title="Editar"
 						th:href="@{/usuario/{codigo}(codigo=${usuario.codigo})}"><i
