@@ -39,8 +39,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/pedido/tabelaItensPedido").permitAll().antMatchers("/hbs/**").permitAll()
 				.antMatchers("/produto/autocomplete/").permitAll().antMatchers("/colaborador/list/").permitAll()
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/", true)
-				.permitAll().and().exceptionHandling().accessDeniedPage("/403").and().exceptionHandling().and()
-				.rememberMe().and().csrf().disable();
+				.permitAll()
+//				.and().exceptionHandling().accessDeniedPage("/403").and().exceptionHandling().and()
+//				.rememberMe()
+				.and().csrf().disable();
 	}
 
 	@Bean

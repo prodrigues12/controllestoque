@@ -28,8 +28,7 @@
 
 
 		<div>Sistema de Gerenciamento do Suprimentos CD-994</div>
-		<div sec:authentication="principal.username"></div>
-		<div>
+	
 
 
 
@@ -37,7 +36,7 @@
 				<div class="btn-group btn-group-sm" role="group"
 					aria-label="Button group with nested dropdown">
 					<div class="btn-group" role="group">
-						<a id="userLogado" th:text="${#authentication.name}"
+						<a id="userLogado"  th:text="|Olá ${#authentication.getPrincipal().getNome()}|"
 							class="nomeUser" data-bs-toggle="dropdown" aria-expanded="false">
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="userLogado">
