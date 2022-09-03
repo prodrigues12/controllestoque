@@ -25,6 +25,7 @@ import com.controlestoque.Repository.filter.EnderecoFilter;
 import com.controlestoque.controller.page.PageWrapper;
 import com.controlestoque.model.Enderecar;
 import com.controlestoque.model.Endereco;
+import com.controlestoque.model.Produto;
 import com.controlestoque.model.Secao;
 import com.controlestoque.service.EnderecarService;
 import com.controlestoque.service.EnderecoService;
@@ -51,6 +52,7 @@ public class EnderecarController {
 	public ModelAndView novo(Enderecar enderecar) {
 		ModelAndView mv = new ModelAndView("enderecar/novoEnderecar");
 		mv.addObject("endereco", endRepository.findAll());
+		mv.addObject("produto", proRepository.findAll());
 		return mv;
 	}
 

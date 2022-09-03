@@ -41,7 +41,7 @@ public class UsuariosImpl implements UsuariosQueries {
 
 	@Override
 	public List<String> permissoes(Usuario usuario) {
-		// TODO Auto-generated method stub
+
 		return manager.createQuery(
 				"select distinct p.nome from Usuario u inner join u.grupoUser g inner join g.permissoes p where u = :usuario",
 				String.class).setParameter("usuario", usuario).getResultList();
@@ -81,7 +81,7 @@ public class UsuariosImpl implements UsuariosQueries {
 			if (!StringUtils.isEmpty(filtro.getCodigo())) {
 				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
 			}
-			
+
 			if (!StringUtils.isEmpty(filtro.getNome())) {
 				criteria.add(Restrictions.ilike("nome", filtro.getNome(), MatchMode.ANYWHERE));
 			}

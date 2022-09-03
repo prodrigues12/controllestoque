@@ -8,13 +8,13 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 public class WebConfig {
 	
-	
-	@Bean
-	public DataSource dataSource() {
-	    return new EmbeddedDatabaseBuilder()
-	      .setType(EmbeddedDatabaseType.HSQL)
-//	      .addScript("classpath:employee-schema.sql")
-	      .build();
-	}
+//	
+//	@Bean
+//	public DataSource dataSource() {
+//	    return new EmbeddedDatabaseBuilder()
+//	      .setType(EmbeddedDatabaseType.HSQL)
+////	      .addScript("classpath:employee-schema.sql")
+//	      .build();
+//	}
 
 }

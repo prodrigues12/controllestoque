@@ -22,9 +22,7 @@ public class EnderecarService {
 
 	@Transactional
 	public Enderecar salvandoEndereco(Enderecar enderecar) {
-		System.out.println(enderecar.getCodigo());
-
-
+	
 		Optional<Enderecar> enderecarOpt = enderecamentoRepository.findByCodigo(enderecar.getCodigo());
 
 		if (enderecarOpt.isPresent() == false) {

@@ -35,12 +35,14 @@ Controlestoque.GraficosPedidosMes = (function() {
 					label: 'Pedidos ',
 
 					backgroundColor: [
+					'#90EE90',
 						'#FF6347',
 						'#90EE90',
 						'#F0E68C',	
+						'#9370DB',
 						'#D3D3D3',
-						'#F4A460',
-						'#9370DB'
+						'#F4A460'
+						
 					],
 					borderColor: '#000',
 					pointBorderColor: '#000',

@@ -24,10 +24,10 @@ public interface ProdutosQueries {
 	public Long estoqueBaixo();
 
 	public Long estoqueZero();
-	
+
 	public Page<Produto> estoqueMinimo(ProdutoFilter filtro, Pageable pageable);
 
 	public Page<Produto> estoqueZerado(ProdutoFilter filtro, Pageable pageable);
-	
+
 	public List<ProdutosTopFive> topFiveProdutos();
 }

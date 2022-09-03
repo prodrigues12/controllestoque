@@ -17,8 +17,13 @@ Controllestoque.Autocomplete = (function() {
 			url: function(codigoOuNome) {
 				return this.codigoOuNomeInput.data('url') + '/autocomplete/enderecar' + '?codigoOuNome=' + codigoOuNome;
 			}.bind(this),
-			getValue: 'nome',
+
+			getValue: function(element) {
+				return element.nome;
+			},
+
 			requestDelay: 400,
+
 			ajaxSettings: {
 				contentType: 'application/json'
 			},
@@ -37,23 +42,32 @@ Controllestoque.Autocomplete = (function() {
 					type: "slide",
 					time: 400
 				},
+
 				onChooseEvent: onItemSelecionado.bind(this)
-			}
+			},
+			theme: "square"
 
 		};
 
-		this.codigoOuNomeInput.easyAutocomplete(options);
-	}
 
-	function onItemSelecionado() {
+		this.codigoOuNomeInput.easyAutocomplete(options);
+
+	}
+	function onItemSelecionado(evento) {
+
+		console.log('Chegou no itemSelecionado, item:', this.codigoOuNomeInput.getSelectedItemData());
 
 		this.emitter.trigger('item-selecionado', this.codigoOuNomeInput.getSelectedItemData().codigo);
-		this.codigoOuNomeInput =  this.codigoOuNomeInput.getSelectedItemData().codigo
-		console.log(this.codigoOuNomeInput.val());
-		console.log('chegou aqui: ', this.codigoOuNomeInput.getSelectedItemData().codigo);
-		this.codigoOuNomeInput.focus();
 
+		var id = parseInt(this.codigoOuNomeInput.getSelectedItemData().codigo);
+		console.log(id);
+
+		//		$('#produto').val(id);
+		$(this.codigoOunomeInput).attr('id')
+			;
 	}
+
+
 
 	return Autocomplete;
 
@@ -67,5 +81,4 @@ $(function() {
 
 
 })
-
 

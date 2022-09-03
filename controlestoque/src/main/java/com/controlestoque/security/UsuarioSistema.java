@@ -9,7 +9,7 @@ import com.controlestoque.model.Usuario;
 
 
 
-public class UsuarioSistema extends User{
+public class UsuarioSistema extends User {
 	
 	private static final long serialVersionUID = 1L;
 

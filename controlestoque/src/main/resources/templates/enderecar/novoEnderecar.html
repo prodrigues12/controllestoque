@@ -12,11 +12,11 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.css" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+<link rel="stylesheet" href="/css/vendors/easy-autocomplete.css">
 <link rel="stylesheet" href="/css/vendors/easy-autocomplete.min.css">
-<!-- <link rel="stylesheet" href="/css/vendors//easy-autocomplete.themes.css"> -->
 <link rel="stylesheet" href="/css/sindebar.css" />
 <link rel="stylesheet" href="/css/controller.css" />
-<link rel="stylesheet" href="/css/magalu.css" />
+<!-- <link rel="stylesheet" href="/css/magalu.css" /> -->
 </head>
 
 
@@ -37,11 +37,11 @@
 
 		<div class="card border-left-success shadow h-50 ">
 			<div class="card-header">
-			
-			<div class="row">
+
+				<div class="row">
 					<div class=" col-md-10 center">
-						<span th:if="${enderecar.enderecamentoNovo}">Novo Endereçamento</span>
-						<span th:unless="${enderecar.enderecamentoNovo}"
+						<span th:if="${enderecar.enderecamentoNovo}">Novo
+							Endereçamento</span> <span th:unless="${enderecar.enderecamentoNovo}"
 							th:text="|Editando endereçamento|"></span>
 					</div>
 					<div class="col-md-2 center">
@@ -52,18 +52,18 @@
 			<div th:replace="fragmentos/fragmentos :: magalu"></div>
 
 			<div class="card-body">
-			
-			<div class="row mb-3">
-				<div class=" col-md-1">
+
+				<div class="row mb-3">
+					<div class=" col-md-1">
 						<label class=" col-form-label-sm">Codigo:</label> <input
 							class="form-control form-control-sm " type="text"
 							th:field="*{codigo}" disabled="disabled" />
 					</div>
-				
 
-		
-			
-				<div class=" col-md-auto">
+
+
+
+					<div class=" col-md-auto">
 						<label class=" col-form-label-sm">Endereço:</label>
 						<div class="input-group">
 							<select id="endereco"
@@ -73,26 +73,30 @@
 								<option class="form-control-label form-control-sm"
 									th:each="endereco : ${endereco}" th:value="${endereco.codigo}"
 									th:text="${endereco.nomeEndereco}"></option>
-							</select> 
+							</select>
 						</div>
-						
+
 					</div>
-					
-					<div class=" col-md-5">
-						<label class=" col-form-label-sm">Produto:</label><input
-							type="text" class="form-control form-control-sm js-produto-input"
-							id="produto" placeholder="Código ou Nome do Produto"
-							data:url="@{/produto}" th:field="*{produto}">
-						
-						
+
+					<div class=" col-md-auto">
+						<label class=" col-form-label-sm">Produto:</label>
+						<div class="input-group">
+							<select id="js-produto-input"
+								class=" form-control form-select form-select-sm "
+								th:field="*{produto}">
+								<option value="">Selecione um Produto</option>
+								<option class="form-control-label form-control-sm"
+									th:each="produto : ${produto}" th:value="${produto.codigo}"
+									th:text="${produto.nome}"></option>
+							</select>
+						</div>
 					</div>
-					
 					<div class=" col-md-2">
 						<label class=" col-form-label-sm">Quantidade:</label> <input
 							class="form-control form-control-sm " type="text"
 							th:field="*{quantidade}" />
 					</div>
-				
+
 				</div>
 
 				<p>

@@ -18,6 +18,7 @@ import com.controlestoque.security.AppUserDetailsService;
 @EnableWebSecurity
 @ComponentScan(basePackageClasses = AppUserDetailsService.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
 
 	@Autowired
 	private UserDetailsService userDetailsService;
