@@ -9,20 +9,14 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.controlestoque.Repository.Usuarios;
 import com.controlestoque.model.GrupoUser;
 import com.controlestoque.model.Usuario;
-
 
 public class UsuarioSistema implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
-
-	@Autowired
-	private Usuarios usuRepository;
 
 	private Usuario usuario;
 
@@ -31,21 +25,12 @@ public class UsuarioSistema implements UserDetails {
 		this.usuario = usuario;
 	}
 
-	public UsuarioSistema(Usuarios usuRepository) {
-		super();
-		this.usuRepository = usuRepository;
-	}
-
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-		List<GrupoUser>grupoUser = this.usuario.getGrupoUser();
-		System.out.println(grupoUser);
-		
-		
-		grupoUser.forEach(p -> authorities.add(new SimpleGrantedAuthority("ROLE_" + p)));
+		List<GrupoUser> grupoUser = this.usuario.getGrupoUser();
+		grupoUser.forEach(p -> authorities.add(new SimpleGrantedAuthority("ROLE_" + p.getNome())));
 
-//		authorities.add(new SimpleGrantedAuthority("ROLE_ADMINISTRADOR"));
 		return authorities;
 
 	}
@@ -87,7 +72,7 @@ public class UsuarioSistema implements UserDetails {
 	}
 
 	public String getNome() {
-		return usuario.getNome().toUpperCase();
+		return usuario.getApelido();
 	}
 
 }

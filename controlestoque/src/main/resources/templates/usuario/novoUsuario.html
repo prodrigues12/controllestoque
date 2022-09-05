@@ -57,17 +57,24 @@
 						<div class="col-md-12">
 							<label for="name" class=" col-form-label-sm">Nome:</label> <input
 								id="nome" class="form-control form-control-sm" type="text"
-								th:field="*{nome}">
+								th:field="*{nome}" placeholder="Nome completo do colaborador">
 						</div>
 					</div>
 
 
 					<div class="row mb-3">
 						<!-- 				Email -->
+						
+						<div class="col-md-6">
+							<label for="email" class=" col-form-label-sm">Apelido:</label> <input
+								id="email" class="form-control form-control-sm" placeholder="Como deseja ser chamado"
+								th:field="*{apelido}">
+
+						</div>
 						<div class="col-md-6">
 							<label for="email" class=" col-form-label-sm">Email:</label> <input
 								id="email" class="form-control form-control-sm"
-								th:field="*{email}">
+								th:field="*{email}" placeholder="Digite o email">
 
 						</div>
 
@@ -80,7 +87,7 @@
 						<div class="col-md-6">
 							<label for="senha" class=" col-form-label-sm">Senha:</label> <input
 								id="senha" class="form-control form-control-sm" type="password"
-								th:field="*{senha}"></input>
+								th:field="*{senha}"placeholder="Digite sua senha"></input>
 						</div>
 
 						<!-- 			confirmar senha -->
@@ -88,7 +95,7 @@
 							<label for="confirmarSenha" class=" col-form-label-sm">Confirmar
 								Senha:</label> <input id="confirmarSenha"
 								class="form-control form-control-sm" type="password"
-								th:field="*{confirmacaoSenha}"></input>
+								th:field="*{confirmacaoSenha}" placeholder="Digite novamente a senha"></input>
 						</div>
 
 					</div>

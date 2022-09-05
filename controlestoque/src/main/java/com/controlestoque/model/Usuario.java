@@ -45,6 +45,8 @@ public class Usuario implements Serializable {
 	@Email
 	private String email;
 
+	@Size(min = 5, max = 30, message = "Apleido deve conter de 5 à 30 caracteres")
+	private String apelido;
 	
 	private String senha;
 
@@ -55,7 +57,7 @@ public class Usuario implements Serializable {
 
 
 	@Size(min = 1, message = "Campo 'Perfil de usuário' deve conter uma seleção")
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinTable(name = "usuario_grupo_user", joinColumns = @JoinColumn(name = "codigo_usuario"), inverseJoinColumns = @JoinColumn(name = "codigo_grupo_user"))
 	private List<GrupoUser> grupoUser;
@@ -87,6 +89,16 @@ public class Usuario implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	
+
+	public String getApelido() {
+		return apelido;
+	}
+
+	public void setApelido(String apelido) {
+		this.apelido = apelido;
 	}
 
 	public String getSenha() {
