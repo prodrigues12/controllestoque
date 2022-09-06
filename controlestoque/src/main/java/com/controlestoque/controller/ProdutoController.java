@@ -42,7 +42,7 @@ public class ProdutoController {
 	private Produtos proRepository;
 
 	@Autowired
-	private Secoes sessaoRepository;
+	private Secoes secaoRepository;
 
 
 
@@ -52,7 +52,7 @@ public class ProdutoController {
 	@RequestMapping("/novo")
 	public ModelAndView novo(Produto produto) {
 		ModelAndView mv = new ModelAndView("produto/novoProduto");
-		mv.addObject("secao", sessaoRepository.findAll());
+		mv.addObject("secao", secaoRepository.findAll());
 		mv.addObject("uniMedida", UnidadeMedia.values());
 
 		return mv;
@@ -75,7 +75,7 @@ public class ProdutoController {
 	public ModelAndView pesquisar(ProdutoFilter produtoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("produto/pesquisarProduto");
-		mv.addObject("secao", sessaoRepository.findAll());
+		mv.addObject("secao", secaoRepository.findAll());
 
 		PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.filtrar(produtoFilter, pageable),
 				httpServletRequest);
@@ -116,7 +116,7 @@ public class ProdutoController {
 	public ModelAndView estoqueBaixo(ProdutoFilter produtoFilter, BindingResult result,
 			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("produto/estoqueMinimo");
-		mv.addObject("secao", sessaoRepository.findAll());
+		mv.addObject("secao", secaoRepository.findAll());
 
 		PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.estoqueMinimo(produtoFilter, pageable),
 				httpServletRequest);
@@ -128,7 +128,7 @@ public class ProdutoController {
 	public ModelAndView estoqueZero(ProdutoFilter produtoFilter, BindingResult result,
 			@PageableDefault(size = 10) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("produto/estoqueZero");
-		mv.addObject("secao", sessaoRepository.findAll());
+		mv.addObject("secao", secaoRepository.findAll());
 
 		PageWrapper<Produto> paginaWrapper = new PageWrapper<>(proRepository.estoqueZerado(produtoFilter, pageable),
 				httpServletRequest);

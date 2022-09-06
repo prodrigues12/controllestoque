@@ -22,73 +22,42 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
-
 	<div class="card">
-		<div class="card-header">
-			<div class="row">
-				<div class=" col-md-12 center">
-					<span>Relatórios</span>
-				</div>
-			</div>
+		<div class="card-header center">
+			<span>Inventário</span>
 		</div>
 
 		<div th:replace="fragmentos/fragmentos :: magalu"></div>
 
 		<div class="card-body">
+			<div class="container-fluid">
+				<form method="POST" th:object="${secao}"
+					th:action="@{/relatorios/inventario}">
 
-			<div class="row mb-3 ">
+					<div class="row mb-3">
 
-				<div class=" col-md-3 ">
+						<div class="col-md-4">
+							<label for="secao" class="col-form-label-sm">Seção:</label>
+							<div class="input-group">
+								<select id="secao"
+									class="form-control form-select form-select-sm"
+									>
+									<option value="">Selecione uma Seção</option>
+									<option class="form-control-label form-control-sm"
+										th:each="secao : ${secao}" th:value="${secao.codigo}"
+										th:text="${secao.nome}"></option>
+								</select>
 
-					<div class="row">
-
-						<a class=" center" th:href="@{/relatorios/pedidosFinalizados}"> <img
-							class="btn" src="/img/botoes/relatorio_1.svg" height="80"
-							width="80" />
-						</a> <label class=" col-form-label-sm center">
-							Pedidos por Status </label>
+							</div>
+						</div>
 					</div>
 
-				</div>
-
-				<div class=" col-md-3">
-					<div class="row">
-
-						<a class="center" th:href="@{/relatorios/pedidosCompleto}"> <img
-							class="btn" src="/img/botoes/relatorio_2.svg" height="80"
-							width="80" />
-						</a> <label class=" col-form-label-sm center">Relatório
-							pedidos</label>
-					</div>
-				</div>
-
-				<div class=" col-md-3">
-					<div class="row">
-
-						<a class="center" type="button"
-							th:href="@{/relatorios/pedidosCompleto}"> <img class="btn"
-							src="/img/botoes/cesta_accept.svg" height="80" width="80" />
-						</a> <label class=" col-form-label-sm center">
-							Pedidos finalizados</label>
-					</div>
-				</div>
-				
-						<div class=" col-md-3">
-					<div class="row">
-
-						<a class="center" type="button"
-							th:href="@{/relatorios/inventario}"> <img class="btn"
-							src="/img/botoes/note_accept.svg" height="80" width="80" />
-						</a> <label class=" col-form-label-sm center">
-							Inventário</label>
-					</div>
-				</div>
-				
-
+					<button type="submit" class="btn  btn-primary">Emitir</button>
+				</form>
 			</div>
-
 		</div>
 	</div>
+
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script
