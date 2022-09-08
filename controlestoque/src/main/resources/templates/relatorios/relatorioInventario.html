@@ -22,37 +22,55 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
-	<div class="card">
-		<div class="card-header center">
-			<span>Inventário</span>
+	<div class="card border-left-success shadow h-50 ">
+		<div class="card-header">
+			<div class="row">
+				<div class=" col-md-10 center">
+					<span>Inventário</span>
+				</div>
+				<div class="col-md-2 center">
+					<a th:href="@{/relatorios}" class="btn btn-primary btn-sm">Relatórios</a>
+				</div>
+			</div>
 		</div>
 
 		<div th:replace="fragmentos/fragmentos :: magalu"></div>
 
 		<div class="card-body">
 			<div class="container-fluid">
-				<form method="POST" th:object="${secao}"
+				<form method="POST" th:object="${secaoDTO}"
 					th:action="@{/relatorios/inventario}">
 
 					<div class="row mb-3">
 
-						<div class="col-md-4">
+						<div class="col-auto">
 							<label for="secao" class="col-form-label-sm">Seção:</label>
+						</div>
+						<div class="col-4">
 							<div class="input-group">
 								<select id="secao"
 									class="form-control form-select form-select-sm"
-									>
+									th:field="*{id}">
 									<option value="">Selecione uma Seção</option>
 									<option class="form-control-label form-control-sm"
 										th:each="secao : ${secao}" th:value="${secao.codigo}"
 										th:text="${secao.nome}"></option>
 								</select>
-
 							</div>
+						</div>
+						<div class="col-auto">
+							<span class="form-text">Em caso de não selecionar seção,
+								todas serão marcadas.</span>
 						</div>
 					</div>
 
-					<button type="submit" class="btn  btn-primary">Emitir</button>
+					<div class="row mb-3">
+						<!-- 				Botões -->
+						<div class="d-grid gap-1 d-md-flex justify-content-md-end">
+							<button type="submit" class="btn btn-primary">Emitir</button>
+						</div>
+					</div>
+
 				</form>
 			</div>
 		</div>

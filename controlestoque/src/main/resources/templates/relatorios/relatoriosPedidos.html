@@ -22,11 +22,18 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
-	<div class="card">
-		<div class="card-header center">
-			<span>Relatório de Pedidos</span>
+	<div class="card border-left-success shadow h-50 ">
+		<div class="card-header">
+			<div class="row">
+				<div class=" col-md-10 center">
+					<span>Relátorio de pedidos</span>
+				</div>
+				<div class="col-md-2 center">
+					<a th:href="@{/relatorios}" class="btn btn-primary btn-sm">Relatórios</a>
+				</div>
+			</div>
 		</div>
-		
+
 		<div th:replace="fragmentos/fragmentos :: magalu"></div>
 		
 		<div class="card-body">
@@ -39,7 +46,7 @@
 						<div class="col-md-9">
 							<label for="dataInicio" class="col-form-label-sm">Data de
 								criação:</label>
-								
+
 							<div class="row mb-4">
 								<label for="dataInicio" class="col-sm-auto col-form-label">De:</label>
 								<div class="col-sm-4">
