@@ -24,11 +24,20 @@
 
 
 
-	<div class="card">
-		<div class="card-header center">
-			<span>Relatório de Pedidos por Status</span>
+<div class="card border-left-success shadow h-50 ">
+		<div class="card-header">
+			<div class="row">
+				<div class=" col-md-10 center">
+					<span>Relatório Pedidos - Status</span>
+				</div>
+				<div class="col-md-2 center">
+					<a th:href="@{/relatorios}" class="btn btn-primary btn-sm">Relatórios</a>
+				</div>
+			</div>
 		</div>
+
 		<div th:replace="fragmentos/fragmentos :: magalu"></div>
+
 		<div class="card-body">
 
 
@@ -73,7 +82,9 @@
 			</div>
 		</div>
 	</div>
-	
+
+
+
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script

@@ -41,9 +41,17 @@ public class RelatoriosController {
 	private Secoes secaoRepository;;
 
 	@GetMapping()
-	public ModelAndView relatorio(PeriodoRelatorio periodoRelatorio) {
+	public ModelAndView relatorio( ) {
 		ModelAndView mv = new ModelAndView("relatorios/relatorios");
 		return mv;
+	}
+	
+	@GetMapping("/pedidosCompleto")
+	public ModelAndView reltoriosPedidos(PeriodoRelatorio periodoRelatorio) {
+		ModelAndView mv = new ModelAndView("relatorios/relatoriosPedidos");
+		mv.addObject("status", StatusPedido.values());
+		return mv;
+
 	}
 
 	@GetMapping("/pedidosFinalizados")
@@ -54,13 +62,6 @@ public class RelatoriosController {
 
 	}
 
-	@GetMapping("/pedidosCompleto")
-	public ModelAndView reltoriosPedidos(PeriodoRelatorio periodoRelatorio) {
-		ModelAndView mv = new ModelAndView("relatorios/relatoriosPedidos");
-		mv.addObject("status", StatusPedido.values());
-		return mv;
-
-	}
 
 	@GetMapping("/estoque")
 	public ModelAndView reltorioEstoque(PeriodoRelatorio periodoRelatorio) {
@@ -80,6 +81,31 @@ public class RelatoriosController {
 		ModelAndView mv = new ModelAndView("relatorios/relatorioInventario");
 		mv.addObject("secao", secaoRepository.findAll());
 		return mv;
+
+	}
+	
+//	# POST's #
+	
+	@PostMapping("/pedidosCompleto")
+	public ResponseEntity<Object> pedidosCompleto(@RequestParam Map<String, Object> parametros,
+			HttpServletResponse response, PeriodoRelatorio periodoRelatorio) throws Exception {
+
+		parametros = parametros == null ? parametros = new HashMap<>() : parametros;
+
+		parametros.put("data_inicio", periodoRelatorio.getDataInicial());
+		parametros.put("data_fim", periodoRelatorio.getDataFim());
+
+		JasperPrint empReport = JasperFillManager.fillReport(
+				JasperCompileManager.compileReport(ResourceUtils
+						.getFile("classpath:relatorios/relatorio_pedidoFinalizado.jrxml").getAbsolutePath()),
+				parametros, dataSource.getConnection());
+
+		HttpHeaders headers = new HttpHeaders();
+
+		headers.setContentType(MediaType.APPLICATION_PDF);
+		headers.setContentDispositionFormData("filename", "relatorio_pedidoFinalizado.pdf");
+
+		return new ResponseEntity<Object>(JasperExportManager.exportReportToPdf(empReport), headers, HttpStatus.OK);
 
 	}
 
@@ -107,28 +133,7 @@ public class RelatoriosController {
 
 	}
 
-	@PostMapping("/pedidosCompleto")
-	public ResponseEntity<Object> pedidosCompleto(@RequestParam Map<String, Object> parametros,
-			HttpServletResponse response, PeriodoRelatorio periodoRelatorio) throws Exception {
 
-		parametros = parametros == null ? parametros = new HashMap<>() : parametros;
-
-		parametros.put("data_inicio", periodoRelatorio.getDataInicial());
-		parametros.put("data_fim", periodoRelatorio.getDataFim());
-
-		JasperPrint empReport = JasperFillManager.fillReport(
-				JasperCompileManager.compileReport(ResourceUtils
-						.getFile("classpath:relatorios/relatorio_pedidoFinalizado.jrxml").getAbsolutePath()),
-				parametros, dataSource.getConnection());
-
-		HttpHeaders headers = new HttpHeaders();
-
-		headers.setContentType(MediaType.APPLICATION_PDF);
-		headers.setContentDispositionFormData("filename", "relatorio_pedidoFinalizado.pdf");
-
-		return new ResponseEntity<Object>(JasperExportManager.exportReportToPdf(empReport), headers, HttpStatus.OK);
-
-	}
 
 	@PostMapping("/inventario")
 	public ResponseEntity<Object> relatorioInventario(@RequestParam Map<String, Object> parametros,

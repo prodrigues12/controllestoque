@@ -35,11 +35,12 @@
 		</div>
 
 		<div th:replace="fragmentos/fragmentos :: magalu"></div>
-		
+
 		<div class="card-body">
 			<div class="container-fluid">
 				<form method="POST" th:object="${periodoRelatorio}"
-					th:action="@{/relatorios/pedidosCompleto}">
+					th:action="@{/relatorios/pedidosCompleto}" class="needs-validation"
+					novalidate>
 
 					<div class="row">
 
@@ -51,16 +52,20 @@
 								<label for="dataInicio" class="col-sm-auto col-form-label">De:</label>
 								<div class="col-sm-4">
 									<input type="date" class="form-control form-control-sm"
-										id="dataInicio" th:field="*{dataInicial}" autocomplete="off" />
+										id="dataInicio" th:field="*{dataInicial}" autocomplete="off"
+										required />
+									<div class="invalid-feedback">Informar data inicial.</div>
 								</div>
 								<label for="dataFim" class="col-sm-auto col-form-label">até:</label>
 								<div class="col-sm-4">
-									<input type="date" class="form-control form-control-sm"
-										id="dataFim" th:field="*{dataFim}" autocomplete="off" />
+									<input type="date" class="form-control form-control-sm  has-validationc"
+										id="dataFim" th:field="*{dataFim}" autocomplete="off" required />
+									<div class="invalid-feedback">Informar data final.</div>
 								</div>
 
 							</div>
 						</div>
+						
 					</div>
 
 
@@ -80,8 +85,7 @@
 	<script src="/js/vendors/handlebars.min.js"></script>
 	<script src="/js/vendors/jquery.easy-autocomplete.min.js"></script>
 	<script src="/js/sindebar.js"></script>
-	<script src="/js/colaborador.pesquisa-rapida.js"></script>
-	<script src="/js/pedido.autocomplete-itens.js"></script>
-	<script src="/js/pedido.tabela-itens.js"></script>
+	<script src="/js/validation.js"></script>
+
 </body>
 </html>

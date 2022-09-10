@@ -15,7 +15,7 @@
 	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
 <link rel="stylesheet" href="/css/sindebar.css" />
 <link rel="stylesheet" href="/css/controller.css" />
-<link rel="stylesheet" href="/css/brewer.css" />
+<link rel="stylesheet" href="/css/magalu.css" />
 </head>
 <body id="body-pd">
 
@@ -23,57 +23,56 @@
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
 
-	<div class="card">
+	<div class="card border-left-success shadow h-50 ">
 		<div class="card-header">
 			<div class="row">
-				<div class=" col-md-10">
-					<h4>Relatórios</h4>
+				<div class=" col-md-10 center">
+					<span>Relátorio Estoque</span>
+				</div>
+				<div class="col-md-2 center">
+					<a th:href="@{/relatorios}" class="btn btn-primary btn-sm">Relatórios</a>
 				</div>
 			</div>
 		</div>
 
 		<div th:replace="fragmentos/fragmentos :: magalu"></div>
 
+
 		<div class="card-body">
 
-			<div class="row mb-3 ">
+			<div class="container-fluid">
+				<form>
+					<!-- 				method="POST" th:object="${periodoRelatorio}" -->
+					<!-- 					th:action="@{/relatorios/pedidosCompleto}"> -->
 
-				<div class=" col-md-4 ">
+					<div class="row mb-3">
+						<div class="col-md-2">
+							<label for="turno" class="col-form-label-sm">Estoque:</label> <select
+								class=" form-control form-select form-select-sm">
+								<option value="">Tipo de Estoque</option>
+								<option class="form-control">Crítico</option>
+								<option class="form-control">Baixo</option>
+								<option class="form-control">Regular</option>
+							</select>
+						</div>
 
-					<div class="row">
+						<div class="col-md-3">
+							<label for="turno" class="col-form-label-sm">Estoque:</label> <select
+								id="turno" class=" form-control form-select form-select-sm">
 
-						<a class=" center" th:href="@{/relatorios/pedidosFinalizados}"> 
-						</a> <label class=" col-form-label-sm center">
-							Estoque</label>
-					</div>
+								<option value="">Tipo de Estoque</option>
+								<option class="form-control">Maior que</option>
+								<option class="form-control">Maior igual</option>
+								<option class="form-control">Menor que</option>
+								<option class="form-control">Menor igual</option>
+							</select>
+						</div>
 
-				</div>
+					</div>	
 
-				<div class=" col-md-4">
-					<div class="row">
-
-						<a class="center" th:href="@{/relatorios/pedidosCompleto}"> <img
-							class="btn" src="/img/botoes/relatorio_2.svg" height="100"
-							width="100" />
-						</a> <label class=" col-form-label-sm center">Relatório
-							pedidos</label>
-					</div>
-				</div>
-
-				<div class=" col-md-4">
-					<div class="row">
-
-						<a class="center" type="button"
-							th:href="@{/relatorios/pedidosCompleto}"> <img class="btn"
-							src="/img/botoes/note_accept.svg" height="100" width="100" />
-						</a> <label class=" col-form-label-sm center">
-							Pedidos finalizados</label>
-					</div>
-				</div>
-
-
+					<button type="submit" class="btn btn-primary btn-sm">Emitir</button>
+				</form>
 			</div>
-
 		</div>
 	</div>
 
