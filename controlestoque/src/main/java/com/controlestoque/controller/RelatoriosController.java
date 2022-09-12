@@ -12,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.ResourceUtils;
+import org.springframework.util.ResourceUtils;import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.controlestoque.Enums.StatusPedido;
+import com.controlestoque.Exception.DataInicioMaiorQueDataFimException;
 import com.controlestoque.Repository.Secoes;
 import com.controlestoque.dto.PeriodoRelatorio;
 import com.controlestoque.dto.SecaoDTO;
-import com.controlestoque.model.Secao;
+
 
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -38,7 +39,8 @@ public class RelatoriosController {
 	private DataSource dataSource;
 
 	@Autowired
-	private Secoes secaoRepository;;
+	private Secoes secaoRepository;
+
 
 	@GetMapping()
 	public ModelAndView relatorio( ) {
@@ -89,9 +91,14 @@ public class RelatoriosController {
 	@PostMapping("/pedidosCompleto")
 	public ResponseEntity<Object> pedidosCompleto(@RequestParam Map<String, Object> parametros,
 			HttpServletResponse response, PeriodoRelatorio periodoRelatorio) throws Exception {
+		
+	if (periodoRelatorio.getDataInicial().after(periodoRelatorio.getDataFim()) ) {
+		
+		
+	}
 
+		
 		parametros = parametros == null ? parametros = new HashMap<>() : parametros;
-
 		parametros.put("data_inicio", periodoRelatorio.getDataInicial());
 		parametros.put("data_fim", periodoRelatorio.getDataFim());
 
@@ -106,7 +113,7 @@ public class RelatoriosController {
 		headers.setContentDispositionFormData("filename", "relatorio_pedidoFinalizado.pdf");
 
 		return new ResponseEntity<Object>(JasperExportManager.exportReportToPdf(empReport), headers, HttpStatus.OK);
-
+		
 	}
 
 	@PostMapping("/pedidosFinalizados")

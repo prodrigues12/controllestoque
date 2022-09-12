@@ -3,8 +3,8 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorio_pedidoCompleto_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5d97628d-5177-43bd-ba5d-a5b29f4f6590">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql - adapter"/>
-	<parameter name="data_inicio" class="java.lang.String"/>
-	<parameter name="data_fim" class="java.lang.String"/>
+	<parameter name="data_inicio" class="java.sql.Date"/>
+	<parameter name="data_fim" class="java.util.Date"/>
 	<queryString language="SQL">
 		<![CDATA[select pedido.codigo as codigo_pedido, colaborador.nome as colaborador_nome, produto.codigo as codigo_Produto,  
 produto.nome as nome_produto, pedido.status as pedido_status, item.quantidade as item_quantidade,
@@ -12,9 +12,7 @@ pedido.data_criacao as pedido_data_criacao
 from item_pedido item  inner join produto produto inner join pedido pedido inner join colaborador colaborador
 on item.codigo_produto = produto.codigo where pedido.data_criacao between   $P{data_inicio}  and   $P{data_fim} 
  and item.codigo_pedido = pedido.codigo and pedido.codigo_colaborador = colaborador.codigo
-order by pedido.codigo;
-
-]]>
+order by pedido.codigo;]]>
 	</queryString>
 	<field name="codigo_pedido" class="java.lang.Long">
 		<property name="com.jaspersoft.studio.field.name" value="codigo"/>
@@ -155,7 +153,7 @@ order by pedido.codigo;
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="85" splitType="Stretch">
+		<band height="103" splitType="Stretch">
 			<staticText>
 				<reportElement x="180" y="9" width="200" height="25" uuid="b9cd69d5-956c-4705-abd6-ddf9e837e79c">
 					<property name="local_mesure_unitheight" value="pixel"/>
@@ -167,25 +165,12 @@ order by pedido.codigo;
 				<text><![CDATA[Controllestoque CD - 994]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="142" y="56" width="270" height="27" uuid="bbeae0e4-bc1b-4760-99df-63cc338891eb"/>
+				<reportElement positionType="Float" x="142" y="57" width="270" height="27" uuid="bbeae0e4-bc1b-4760-99df-63cc338891eb"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Relatório de Pedidos - Finalizados]]></text>
 			</staticText>
-			<image>
-				<reportElement x="460" y="0" width="93" height="30" uuid="098f621f-d2cb-49df-b255-1b7e00f80a77">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<imageExpression><![CDATA["C:/Users/_paulino/Documents/DEV/Imagens -projetos/Controllestoque imagens/luizalabs-logo.png"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement stretchType="RelativeToTallestObject" x="4" y="-8" width="96" height="60" uuid="914a6d1d-ecf9-4e56-b7eb-cbfb73195b40">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<imageExpression><![CDATA["C:/Users/_paulino/Pictures/large_beneficio20191111012601.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
