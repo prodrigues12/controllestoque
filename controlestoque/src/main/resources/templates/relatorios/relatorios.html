@@ -56,14 +56,14 @@
 								<a class="center" th:href="@{/relatorios/pedidosCompleto}">
 									<img class="btn" src="/img/botoes/relatorio_2.svg" height="80"
 									width="80" />
-								</a> <label class=" col-form-label-sm center">Relatório
-									pedidos</label>
+								</a> <label class=" col-form-label-sm center">
+									Pedido completo</label>
 							</div>
 						</div>
 
 						<div class=" col-md-auto ">
 							<div class="row">
-								<a class=" center" th:href="@{/relatorios/pedidosFinalizados}">
+								<a class=" center" th:href="@{/relatorios/pedidoStatus}">
 									<img class="btn" src="/img/botoes/relatorio_1.svg" height="80"
 									width="80" />
 								</a> <label class=" col-form-label-sm center"> Pedidos por
@@ -104,7 +104,7 @@
 
 			<div class="row mb-3 ">
 
-				<div class=" col-md-3 ">
+				<div class=" col-md-auto ">
 					<div class="row">
 						<a class=" center" th:href="@{/relatorios/estoque}">
 							<img class="btn" src="/img/botoes/database.svg" height="80"
@@ -114,26 +114,26 @@
 					</div>
 				</div>
 
-				<div class=" col-md-3">
+				<div class=" col-md-auto">
 					<div class="row">
 						<a class="center" th:href="@{/relatorios/pedidosCompleto}"> <img
-							class="btn" src="/img/botoes/relatorio_2.svg" height="80"
+							class="btn" src="/img/botoes/download_database.svg" height="80"
 							width="80" />
 						</a> <label class=" col-form-label-sm center">Estoque baixo</label>
 					</div>
 				</div>
 
-				<div class=" col-md-3">
+				<div class=" col-md-auto">
 					<div class="row">
 						<a class="center" type="button"
 							th:href="@{/relatorios/pedidosCompleto}"> <img class="btn"
-							src="/img/botoes/cesta_accept.svg" height="80" width="80" />
+							src="/img/botoes/remove_from_database.svg" height="80" width="80" />
 						</a> <label class=" col-form-label-sm center"> 
 							Estoque Crítico</label>
 					</div>
 				</div>
 
-				<div class=" col-md-3">
+				<div class=" col-md-auto">
 					<div class="row">
 						<a class="center" type="button"
 							th:href="@{/relatorios/inventario}"> <img class="btn"
@@ -152,10 +152,6 @@
 		</div>
 
 	</div>
-
-	<!-- 	//////////////////////////////////// -->
-
-
 
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script

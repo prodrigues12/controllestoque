@@ -35,4 +35,11 @@ public class PeriodoRelatorio {
 	public void setStatus(StatusPedido status) {
 		this.status = status;
 	}
+	
+	public boolean inicialMaior() {
+		if(getDataInicial().before(getDataFim())){
+			return false;
+		}
+		return true;
+	}
 }

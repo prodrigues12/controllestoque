@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -56,9 +57,9 @@ public class RelatoriosController {
 
 	}
 
-	@GetMapping("/pedidosFinalizados")
+	@GetMapping("/pedidoStatus")
 	public ModelAndView reltoriosPedidosFinalizados(PeriodoRelatorio periodoRelatorio) {
-		ModelAndView mv = new ModelAndView("relatorios/relatoriosPedidosFinalizados");
+		ModelAndView mv = new ModelAndView("relatorios/relatoriosPedidoStatus");
 		mv.addObject("status", StatusPedido.values());
 		return mv;
 
@@ -92,11 +93,7 @@ public class RelatoriosController {
 	public ResponseEntity<Object> pedidosCompleto(@RequestParam Map<String, Object> parametros,
 			HttpServletResponse response, PeriodoRelatorio periodoRelatorio) throws Exception {
 		
-	if (periodoRelatorio.getDataInicial().after(periodoRelatorio.getDataFim()) ) {
-		
-		
-	}
-
+	if (periodoRelatorio.getDataInicial().before(periodoRelatorio.getDataFim()) ) {
 		
 		parametros = parametros == null ? parametros = new HashMap<>() : parametros;
 		parametros.put("data_inicio", periodoRelatorio.getDataInicial());
@@ -104,19 +101,22 @@ public class RelatoriosController {
 
 		JasperPrint empReport = JasperFillManager.fillReport(
 				JasperCompileManager.compileReport(ResourceUtils
-						.getFile("classpath:relatorios/relatorio_pedidoFinalizado.jrxml").getAbsolutePath()),
+						.getFile("classpath:relatorios/relatorio_pedidoCompleto.jrxml").getAbsolutePath()),
 				parametros, dataSource.getConnection());
 
 		HttpHeaders headers = new HttpHeaders();
 
 		headers.setContentType(MediaType.APPLICATION_PDF);
-		headers.setContentDispositionFormData("filename", "relatorio_pedidoFinalizado.pdf");
+		headers.setContentDispositionFormData("filename", "relatorio_pedidoCompleto.pdf");
 
 		return new ResponseEntity<Object>(JasperExportManager.exportReportToPdf(empReport), headers, HttpStatus.OK);
 		
 	}
+	 return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+	
+	}
 
-	@PostMapping("/pedidosFinalizados")
+	@PostMapping("/pedidoStatus")
 	public ResponseEntity<Object> pedidosStatusPeriodo(@RequestParam Map<String, Object> parametros,
 			HttpServletResponse response, PeriodoRelatorio periodoRelatorio) throws Exception {
 

@@ -4,7 +4,7 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MySql - adapter"/>
 	<parameter name="data_inicio" class="java.sql.Date"/>
-	<parameter name="data_fim" class="java.util.Date"/>
+	<parameter name="data_fim" class="java.sql.Date"/>
 	<queryString language="SQL">
 		<![CDATA[select pedido.codigo as codigo_pedido, colaborador.nome as colaborador_nome, produto.codigo as codigo_Produto,  
 produto.nome as nome_produto, pedido.status as pedido_status, item.quantidade as item_quantidade,
@@ -49,6 +49,9 @@ order by pedido.codigo;]]>
 		<property name="com.jaspersoft.studio.field.label" value="pedido_data_criacao"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pedido"/>
 	</field>
+	<variable name="codigo_pedido1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{codigo_pedido}]]></variableExpression>
+	</variable>
 	<group name="GrupoPedido">
 		<groupExpression><![CDATA[$F{codigo_pedido}]]></groupExpression>
 		<groupHeader>
@@ -165,11 +168,11 @@ order by pedido.codigo;]]>
 				<text><![CDATA[Controllestoque CD - 994]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="142" y="57" width="270" height="27" uuid="bbeae0e4-bc1b-4760-99df-63cc338891eb"/>
+				<reportElement positionType="Float" x="142" y="40" width="270" height="27" uuid="bbeae0e4-bc1b-4760-99df-63cc338891eb"/>
 				<textElement textAlignment="Center">
 					<font fontName="Arial" size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Relatório de Pedidos - Finalizados]]></text>
+				<text><![CDATA[Relatório de Pedidos]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -235,6 +238,30 @@ order by pedido.codigo;]]>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="25" splitType="Stretch"/>
+		<band height="67" splitType="Stretch">
+			<textField>
+				<reportElement x="519" y="21" width="37" height="22" uuid="5dc93cc8-e876-468f-8738-f39ee3d72e9e"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{codigo_pedido1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="473" y="21" width="46" height="22" uuid="13686fdf-ca8f-4ba4-81d4-86db0a665a79"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="18" width="556" height="1" uuid="3006033e-55f6-4883-b27d-513fd33d4cc2">
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="3.0"/>
+				</graphicElement>
+			</line>
+		</band>
 	</summary>
 </jasperReport>

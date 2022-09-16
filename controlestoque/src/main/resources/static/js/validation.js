@@ -1,19 +1,67 @@
-(function () {
-//  'use strict'
+(function() {
+	//  'use strict'
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
+	// Fetch all the forms we want to apply custom Bootstrap validation styles to
+	var forms = document.querySelectorAll('.needs-validation')
 
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
 
-        form.classList.add('was-validated')
-      }, false)
-    })
+	// Loop over them and prevent submission
+	Array.prototype.slice.call(forms)
+		.forEach(function(form) {
+			form.addEventListener('submit', function(event) {
+				if (!form.checkValidity()) {
+					event.preventDefault()
+					event.stopPropagation()
+				}
+
+				form.classList.add('was-validated')
+			}, false)
+		})
 })()
+
+function validarPerido(data, id) {
+
+	$(function() {
+		var dataInicio = getDate(data)
+
+		var month = dataInicio.getMonth() + 1;
+		var day = dataInicio.getDate();
+		var year = dataInicio.getFullYear();
+		if (month < 10)
+			month = '0' + month.toString();
+		if (day < 10)
+			day = '0' + day.toString();
+
+		var maxDate = year + '-' + month + '-' + day;
+
+		$('#' + id).attr('min', maxDate);
+	});
+
+}
+
+function getDate(value) {
+	if (!value) { return new Date(); }
+	if (value.lenght < 10) { return new Date(); }
+	try {
+		const dataParts = value.split('-');
+		const ano = dataParts[0]; const mes = dataParts[1]; const dia = dataParts[2];
+		return new Date(ano, mes - 1, dia);
+	} catch (e) { return new Date(); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

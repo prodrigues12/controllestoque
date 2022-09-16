@@ -24,7 +24,7 @@
 
 
 
-<div class="card border-left-success shadow h-50 ">
+	<div class="card border-left-success shadow h-50 ">
 		<div class="card-header">
 			<div class="row">
 				<div class=" col-md-10 center">
@@ -43,8 +43,9 @@
 
 			<div class="container-fluid">
 				<form method="POST" th:object="${periodoRelatorio}"
-					th:action="@{/relatorios/pedidosFinalizados}">
-					<!-- 			<th:block th:include="fragments/MensagensErroValidacao"></th:block> -->
+					th:action="@{/relatorios/pedidoStatus}" class="needs-validation"
+					novalidate>
+
 
 					<div class="row mb-3">
 						<div class="col-md-3">
@@ -57,20 +58,27 @@
 									th:value="${status}" th:text="${status.descricao}">a</option>
 							</select>
 						</div>
-
 						<div class="col-md-9">
 							<label for="dataInicio" class="col-form-label-sm">Data de
 								criação:</label>
+
 							<div class="row mb-4">
-								<label for="dataInicio" class="col-sm-auto col-form-label">De:</label>
+								<label for="dataInicio" class="col-sm-auto col-form-label">Data
+									inicial:</label>
 								<div class="col-sm-4">
 									<input type="date" class="form-control form-control-sm"
-										id="dataInicio" th:field="*{dataInicial}" autocomplete="off" />
+										id="dataInicio" th:field="*{dataInicial}" autocomplete="off"
+										required onchange="validarPerido(this.value,'dataFim')" />
+									<div class="invalid-feedback">Informar data inicial.</div>
 								</div>
-								<label for="dataFim" class="col-sm-auto col-form-label">até:</label>
+								<label for="dataFim" class="col-sm-auto col-form-label">Data
+									Final:</label>
 								<div class="col-sm-4">
-									<input type="date" class="form-control form-control-sm"
-										id="dataFim" th:field="*{dataFim}" autocomplete="off" />
+									<input type="date"
+										class="form-control form-control-sm  has-validationc"
+										id="dataFim" th:field="*{dataFim}" autocomplete="off" required />
+									<div class="invalid-feedback">Informar data final
+										posteior a data inicial.</div>
 								</div>
 
 							</div>
@@ -85,7 +93,7 @@
 
 
 
-	
+
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -97,5 +105,6 @@
 	<script src="/js/colaborador.pesquisa-rapida.js"></script>
 	<script src="/js/pedido.autocomplete-itens.js"></script>
 	<script src="/js/pedido.tabela-itens.js"></script>
+	<script src="/js/validation.js"></script>
 </body>
 </html>
