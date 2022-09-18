@@ -50,7 +50,23 @@ function getDate(value) {
 }
 
 
+function validarForm() {
+	
+    if ($('#dataInicio').val().length > 0 ) {
+        $('#dataFim').removeAttr('disabled')
+    } 
+      if ($('#dataFim').val().length > 0 ) {
+	
+        $('#btn-salvar').removeAttr('disabled')
+    } else {
+        $('#btn-salvar').attr('disabled', 'disabled')
+    }
+}
 
+$('#dataInicio, #dataFim').on('focusout', validarForm)
+
+$('#dataInicio, #dataFim').keyup(validarForm)
+	
 
 
 

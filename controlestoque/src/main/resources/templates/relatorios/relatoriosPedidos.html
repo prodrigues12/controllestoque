@@ -61,7 +61,7 @@
 								<label for="dataFim" class="col-sm-auto col-form-label">Data Final:</label>
 								<div class="col-sm-4">
 									<input type="date" class="form-control form-control-sm  has-validationc"
-										id="dataFim" th:field="*{dataFim}" autocomplete="off" required />
+										id="dataFim" th:field="*{dataFim}" autocomplete="off" disabled="disabled"required />
 									<div class="invalid-feedback">Informar data final posteior a data inicial.</div>
 								</div>
 
@@ -70,7 +70,7 @@
 						
 					</div>
 
-					<button type="submit" class="btn  btn-primary" >Emitir</button>
+					<button type="submit" class="btn btn-primary" disabled="disabled" id="btn-salvar">Emitir</button>
 				</form>
 			</div>
 		</div>

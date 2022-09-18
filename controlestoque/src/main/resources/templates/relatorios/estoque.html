@@ -47,17 +47,19 @@
 
 					<div class="row mb-3">
 						<div class="col-md-2">
-							<label for="turno" class="col-form-label-sm">Estoque:</label> <select
+							<label for="turno" class="col-form-label-sm">Status
+								Estoque:</label> <select
 								class=" form-control form-select form-select-sm">
 								<option value="">Tipo de Estoque</option>
+								<option class="form-control">Confiável</option>
 								<option class="form-control">Crítico</option>
 								<option class="form-control">Baixo</option>
-								<option class="form-control">Regular</option>
+
 							</select>
 						</div>
 
 						<div class="col-md-3">
-							<label for="turno" class="col-form-label-sm">Estoque:</label> <select
+							<label for="turno" class="col-form-label-sm">Condição:</label> <select
 								id="turno" class=" form-control form-select form-select-sm">
 
 								<option value="">Tipo de Estoque</option>
@@ -68,7 +70,13 @@
 							</select>
 						</div>
 
-					</div>	
+						<div class="col-md-auto">
+							<label for="turno" class="col-form-label-sm">Quantidade:</label> <input
+								class="form-control form-control-sm" type="number">
+						</div>
+
+
+					</div>
 
 					<button type="submit" class="btn btn-primary btn-sm">Emitir</button>
 				</form>

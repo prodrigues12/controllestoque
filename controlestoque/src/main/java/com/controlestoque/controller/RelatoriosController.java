@@ -140,8 +140,6 @@ public class RelatoriosController {
 
 	}
 
-
-
 	@PostMapping("/inventario")
 	public ResponseEntity<Object> relatorioInventario(@RequestParam Map<String, Object> parametros,
 			HttpServletResponse response, SecaoDTO secao) throws Exception {
@@ -162,6 +160,33 @@ public class RelatoriosController {
 
 		return new ResponseEntity<Object>(JasperExportManager.exportReportToPdf(empReport), headers, HttpStatus.OK);
 
+	}
+	
+	@PostMapping("/estoque")
+	public ResponseEntity<Object> gerarRelatorioEstoque(@RequestParam Map<String, Object> parametros,
+			HttpServletResponse response, PeriodoRelatorio periodoRelatorio) throws Exception {
+		
+	if (periodoRelatorio.getDataInicial().before(periodoRelatorio.getDataFim()) ) {
+		
+		parametros = parametros == null ? parametros = new HashMap<>() : parametros;
+		parametros.put("data_inicio", periodoRelatorio.getDataInicial());
+		parametros.put("data_fim", periodoRelatorio.getDataFim());
+
+		JasperPrint empReport = JasperFillManager.fillReport(
+				JasperCompileManager.compileReport(ResourceUtils
+						.getFile("classpath:relatorios/relatorio_pedidoCompleto.jrxml").getAbsolutePath()),
+				parametros, dataSource.getConnection());
+
+		HttpHeaders headers = new HttpHeaders();
+
+		headers.setContentType(MediaType.APPLICATION_PDF);
+		headers.setContentDispositionFormData("filename", "relatorio_pedidoCompleto.pdf");
+
+		return new ResponseEntity<Object>(JasperExportManager.exportReportToPdf(empReport), headers, HttpStatus.OK);
+		
+	}
+	 return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+	
 	}
 
 }
