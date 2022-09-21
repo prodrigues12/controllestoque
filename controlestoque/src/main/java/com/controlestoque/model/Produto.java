@@ -44,7 +44,7 @@ public class Produto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	@Size(min = 7, max = 80, message = "O campo ''Nome'' deve contar de 7 à 80 caracteries")
+	@Size(min = 7, max = 100, message = "O campo ''Nome'' deve contar de 7 à 100 caracteries")
 	@NotBlank
 	private String nome;
 

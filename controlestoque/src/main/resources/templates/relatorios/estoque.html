@@ -41,40 +41,22 @@
 		<div class="card-body">
 
 			<div class="container-fluid">
-				<form>
-					<!-- 				method="POST" th:object="${periodoRelatorio}" -->
-					<!-- 					th:action="@{/relatorios/pedidosCompleto}"> -->
+				<form method="POST" th:object="${estoqueRelatorioDTO}"
+					th:action="@{/relatorios/estoque}">
 
 					<div class="row mb-3">
 						<div class="col-md-2">
 							<label for="turno" class="col-form-label-sm">Status
 								Estoque:</label> <select
-								class=" form-control form-select form-select-sm">
+								class=" form-control form-select form-select-sm"
+								th:field="*{status}">
 								<option value="">Tipo de Estoque</option>
-								<option class="form-control">Confiável</option>
-								<option class="form-control">Crítico</option>
-								<option class="form-control">Baixo</option>
+								<option class="form-control" th:value="bom">Bom</option>
+								<option class="form-control" th:value="zero">Zero</option>
+								<option class="form-control" th:value="baixo">Baixo</option>
 
 							</select>
 						</div>
-
-						<div class="col-md-3">
-							<label for="turno" class="col-form-label-sm">Condição:</label> <select
-								id="turno" class=" form-control form-select form-select-sm">
-
-								<option value="">Tipo de Estoque</option>
-								<option class="form-control">Maior que</option>
-								<option class="form-control">Maior igual</option>
-								<option class="form-control">Menor que</option>
-								<option class="form-control">Menor igual</option>
-							</select>
-						</div>
-
-						<div class="col-md-auto">
-							<label for="turno" class="col-form-label-sm">Quantidade:</label> <input
-								class="form-control form-control-sm" type="number">
-						</div>
-
 
 					</div>
 

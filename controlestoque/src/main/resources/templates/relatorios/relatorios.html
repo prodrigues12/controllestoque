@@ -45,26 +45,24 @@
 					</div>
 				</div>
 
-			
-
 				<div class="card-body">
 
 					<div class="row mb-3 ">
-					
-					<div class=" col-md-auto">
+
+						<div class=" col-md-auto">
 							<div class="row">
 								<a class="center" th:href="@{/relatorios/pedidosCompleto}">
 									<img class="btn" src="/img/botoes/relatorio_2.svg" height="80"
 									width="80" />
-								</a> <label class=" col-form-label-sm center">
-									Pedido completo</label>
+								</a> <label class=" col-form-label-sm center"> Pedido
+									completo</label>
 							</div>
 						</div>
 
 						<div class=" col-md-auto ">
 							<div class="row">
-								<a class=" center" th:href="@{/relatorios/pedidoStatus}">
-									<img class="btn" src="/img/botoes/relatorio_1.svg" height="80"
+								<a class=" center" th:href="@{/relatorios/pedidoStatus}"> <img
+									class="btn" src="/img/botoes/relatorio_1.svg" height="80"
 									width="80" />
 								</a> <label class=" col-form-label-sm center"> Pedidos por
 									Status </label>
@@ -88,67 +86,44 @@
 				</div>
 
 			</div>
-			
+
 			<br>
-			
+
 			<div class="card border-left-success shadow h-50 ">
-		<div class="card-header card_relatorio">
-			<div class="row">
-				<div class=" col-md-1 center">
-					<span>Estoque</span>
+				<div class="card-header card_relatorio">
+					<div class="row">
+						<div class=" col-md-1 center">
+							<span>Estoque</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="card-body">
+
+					<div class="row mb-3 ">
+
+						<div class=" col-md-auto ">
+							<div class="row">
+								<a class=" center" th:href="@{/relatorios/estoque}"> <img
+									class="btn" src="/img/botoes/database.svg" height="80"
+									width="80" />
+								</a> <label class=" col-form-label-sm center"> Estoque </label>
+							</div>
+						</div>
+
+						<div class=" col-md-auto">
+							<div class="row">
+								<a class="center" type="button"
+									th:href="@{/relatorios/inventario}"> <img class="btn"
+									src="/img/botoes/note_accept.svg" height="80" width="80" />
+								</a> <label class=" col-form-label-sm center"> Inventário</label>
+							</div>
+						</div>
+
+					</div>
+
 				</div>
 			</div>
-		</div>
-
-		<div class="card-body">
-
-			<div class="row mb-3 ">
-
-				<div class=" col-md-auto ">
-					<div class="row">
-						<a class=" center" th:href="@{/relatorios/estoque}">
-							<img class="btn" src="/img/botoes/database.svg" height="80"
-							width="80" />
-						</a> <label class=" col-form-label-sm center"> 
-							Estoque </label>
-					</div>
-				</div>
-
-				<div class=" col-md-auto">
-					<div class="row">
-						<a class="center" th:href="@{/relatorios/pedidosCompleto}"> <img
-							class="btn" src="/img/botoes/download_database.svg" height="80"
-							width="80" />
-						</a> <label class=" col-form-label-sm center">Estoque baixo</label>
-					</div>
-				</div>
-
-				<div class=" col-md-auto">
-					<div class="row">
-						<a class="center" type="button"
-							th:href="@{/relatorios/pedidosCompleto}"> <img class="btn"
-							src="/img/botoes/remove_from_database.svg" height="80" width="80" />
-						</a> <label class=" col-form-label-sm center"> 
-							Estoque Crítico</label>
-					</div>
-				</div>
-
-				<div class=" col-md-auto">
-					<div class="row">
-						<a class="center" type="button"
-							th:href="@{/relatorios/inventario}"> <img class="btn"
-							src="/img/botoes/note_accept.svg" height="80" width="80" />
-						</a> <label class=" col-form-label-sm center"> Inventário</label>
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-
-	</div>
-			
-
 		</div>
 
 	</div>
