@@ -43,8 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().authenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/", true)
 				.permitAll()
 				.and().exceptionHandling().accessDeniedPage("/403").and().exceptionHandling().and()
-				.rememberMe()
-				.and().csrf().disable();
+				.rememberMe().and().csrf().disable();
 	}
 
 	@Bean

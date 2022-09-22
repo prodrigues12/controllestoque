@@ -56,7 +56,7 @@ public class UsuarioController {
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo(Usuario usuario) {
-		ModelAndView mv = new ModelAndView("usuario/novoUsuario");
+		ModelAndView mv = new ModelAndView("/usuario/novoUsuario");
 		mv.addObject("grupoUser", gruUserRepository.findAll());
 		return mv;
 	}
