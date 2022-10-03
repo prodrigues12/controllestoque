@@ -87,6 +87,19 @@ public class PedidoController {
 		return mv;
 
 	}
+	
+	@GetMapping("/buscarPedido")
+	public ModelAndView buscarPedido(PedidoFilter pedidoFilter, BindingResult result,
+			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
+		ModelAndView mv = new ModelAndView("pedido/buscarPedido");
+		objetosPedidos(mv);
+
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrar(pedidoFilter, pageable),
+				httpServletRequest);
+		mv.addObject("pagina", paginaWrapper);
+		return mv;
+
+	}
 
 	@GetMapping("/{codigo}")
 	public ModelAndView editar(@PathVariable Long codigo) {
