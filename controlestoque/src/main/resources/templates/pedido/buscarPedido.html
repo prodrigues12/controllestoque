@@ -22,11 +22,11 @@
 <body id="body-pd">
 
 	<div th:replace="fragmentos/fragmentos :: header"></div>
-	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
+	<!-- 	<div th:replace="fragmentos/fragmentos :: sindebar"></div> -->
 
 
 	<div class="card border-left-success shadow h-50 ">
-		<div class="card-header">
+		<div class="card-header ">
 			<div class="row">
 				<div class=" col-md-10 center">
 					<span>Pesquisa Pedido</span>
@@ -44,30 +44,31 @@
 			<form action="" method="get" th:object="${pedidoFilter}">
 
 				<div class="row">
-
-					<!-- 				Codigo -->
-					<div class=" col-md-1">
-						<label class=" col-form-label-sm">Codigo:</label> <input
-							class="form-control form-control-sm" type="number"
-							th:field="*{codigo}">
-					</div>
-
-
-
+	
 					<!-- Identificação -->
 					<div class="col-md-4">
 						<label for="secao" class="col-form-label-sm">Identificação:</label>
-						<input class="form-control form-control-sm" type="number"
+						<input class="form-control form-control-sm" type="text"
 							th:field="*{cpfCnpjId}" />
 					</div>
+
+					<!-- Data -->
+					<div class="col-md-auto">
+						<label for="dataInicio" class="col-form-label-sm">Data do pedido:</label>
+							
+								<input type="date" class="form-control form-control-sm"
+									id="desde" th:field="*{desde}" autocomplete="off">
+							
+						
+					</div>					
 				</div>
 
 				<br>
 				<div class="form-row">
-					<button id="pedidoBuscar" type="button"
+					<button id="pedidoBuscar" type="submit"
 						class="btn btn-primary btn-sm ">Pesquisar</button>
 					<a type="submit" class="btn btn-outline-warning btn-sm"
-						th:href="@{/pedido/}">Limpar filtro</a>
+						th:href="@{/pedido/buscarPedido}">Limpar filtro</a>
 				</div>
 			</form>
 		</div>
@@ -95,22 +96,21 @@
 						th:replace="fragmentos/ordenacao :: order (${pagina}, 'dataModificacao' , 'Última alter.')"></th:block>
 			</thead>
 
-			<tbody>
-				<tr th:each="pedido :${pagina.conteudo}"
-					th:href="@{/pedido/{codigo}(codigo=${pedido.codigo})}">
-					<td class="info-tabela" th:text="${pedido.codigo}"></td>
-					<td th:text="${#temporals.format(pedido.dataCriacao,'dd/MM/yyyy')}"></td>
-					<td align="left" th:text="${pedido.colaborador.nome}"></td>
-					<td th:text="${pedido.setorMagalu}"></td>
-					<td th:text="${pedido.turno}"></td>
-					<td th:text="${pedido.status}"
-						th:class="${pedido.bootstrapTabelaPedidoPesquisaStatus}"></td>
-					<td
-						th:text="${#temporals.format(pedido.dataModificacao, 'dd/MM/yyyy')}"></td>
-				<tr th:if="${pagina.vazia}">
-					<td colspan="7">Nenhum registro encontrado</td>
-				</tr>
-
+			<!-- 			<tbody> -->
+			<tr th:each="pedido :${pagina.conteudo}"
+				th:href="@{/pedido/{codigo}(codigo=${pedido.codigo})}">
+				<td class="info-tabela" th:text="${pedido.codigo}"></td>
+				<td th:text="${#temporals.format(pedido.dataCriacao,'dd/MM/yyyy')}"></td>
+				<td align="left" th:text="${pedido.colaborador.nome}"></td>
+				<td th:text="${pedido.setorMagalu}"></td>
+				<td th:text="${pedido.turno}"></td>
+				<td th:text="${pedido.status}"
+					th:class="${pedido.bootstrapTabelaPedidoPesquisaStatus}"></td>
+				<td
+					th:text="${#temporals.format(pedido.dataModificacao, 'dd/MM/yyyy')}"></td>
+			<tr th:if="${pagina.vazia}">
+				<td colspan="7">Nenhum registro encontrado</td>
+			</tr>
 			</tbody>
 		</table>
 	</div>
@@ -124,9 +124,7 @@
 					th:with="numeroPagina=${p - 1}">
 					<li th:class="${paginaAtual == numeroPagina} ? active"><a
 						class="page-link" th:href="${pagina.urlParaPagina(numeroPagina)}">[[${p}]]</a></li>
-
 				</th:block>
-
 
 			</ul>
 		</nav>

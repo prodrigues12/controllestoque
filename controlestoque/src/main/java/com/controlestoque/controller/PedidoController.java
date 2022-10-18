@@ -87,16 +87,15 @@ public class PedidoController {
 		return mv;
 
 	}
-	
+
 	@GetMapping("/buscarPedido")
 	public ModelAndView buscarPedido(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
 		ModelAndView mv = new ModelAndView("pedido/buscarPedido");
-		objetosPedidos(mv);
-
-		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.filtrar(pedidoFilter, pageable),
+		PageWrapper<Pedido> paginaWrapper = new PageWrapper<>(pedRepository.buscarPedidos(pedidoFilter, pageable),
 				httpServletRequest);
 		mv.addObject("pagina", paginaWrapper);
+		mv.addObject("status", StatusPedido.values());
 		return mv;
 
 	}
@@ -218,7 +217,7 @@ public class PedidoController {
 		attributes.addFlashAttribute("mensagem",
 				String.format("Pedido nº %d alterando para: Pendente", pedido.getCodigo()));
 
-		return new ModelAndView("redirect:/pedido/"+pedido.getCodigo());
+		return new ModelAndView("redirect:/pedido/" + pedido.getCodigo());
 	}
 
 	@PostMapping(value = "/novo", params = "cancelado")
@@ -233,7 +232,7 @@ public class PedidoController {
 		attributes.addFlashAttribute("mensagem",
 				String.format("Pedido nº %d alterando para: Cancelado", pedido.getCodigo()));
 
-		return new ModelAndView("redirect:/pedido/"+pedido.getCodigo());
+		return new ModelAndView("redirect:/pedido/" + pedido.getCodigo());
 	}
 
 	@PostMapping(value = "/novo", params = "separacao")
@@ -248,7 +247,7 @@ public class PedidoController {
 		attributes.addFlashAttribute("mensagem",
 				String.format("Pedido nº %d alterando para: Separação", pedido.getCodigo()));
 
-		return new ModelAndView("redirect:/pedido/"+pedido.getCodigo());
+		return new ModelAndView("redirect:/pedido/" + pedido.getCodigo());
 	}
 
 	@PostMapping(value = "/novo", params = "finalizar")
@@ -263,7 +262,7 @@ public class PedidoController {
 		attributes.addFlashAttribute("mensagem",
 				String.format("Pedido nº %d Finalizado com sucesso! ", pedido.getCodigo()));
 
-		return new ModelAndView("redirect:/pedido/"+pedido.getCodigo());
+		return new ModelAndView("redirect:/pedido/" + pedido.getCodigo());
 	}
 
 	@RequestMapping(value = "/item", method = RequestMethod.POST)
@@ -310,6 +309,5 @@ public class PedidoController {
 		mv.addObject("turno", Turno.values());
 		mv.addObject("status", StatusPedido.values());
 	}
-	
-	
+
 }

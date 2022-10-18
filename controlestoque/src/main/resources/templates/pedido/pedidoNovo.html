@@ -34,7 +34,9 @@
 						th:text="|Editando pedido: ${pedido.codigo} -  ${pedido.status}|"></span>
 				</div>
 				<div class="col-md-2">
-					<a th:href="@{/pedido}" class="btn btn-primary btn-sm">Pesquisar</a>
+					<a sec:authorize="isAuthenticated()" th:href="@{/pedido}" class="btn btn-primary btn-sm">Pesquisar</a>
+					<a sec:authorize="!isAuthenticated()" th:href="@{/pedido/buscarPedido}" class="btn btn-primary btn-sm">Pesquisar</a>
+					
 				</div>
 			</div>
 		</div>

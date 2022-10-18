@@ -14,7 +14,6 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
-
 import org.hibernate.sql.JoinType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -467,6 +466,28 @@ public class PedidosImpl implements PedidosQueries {
 		adicionarFiltro(filtro, criteria);
 		criteria.setProjection(Projections.rowCount());
 		return (Long) criteria.uniqueResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Page<Pedido> buscarPedidos(PedidoFilter filter, Pageable pageable) {
+
+		@SuppressWarnings("deprecation")
+		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
+
+		paginacaoUltil.preparar(criteria, pageable);
+
+		if (filter.getCpfCnpjId() == null && filter.getDesde() == null) {
+			criteria.createAlias("colaborador", "c").addOrder(Order.desc("codigo"))
+					.add(Restrictions.eq("codigo", (long) 0));
+
+		} else {
+
+			adicionarFiltro(filter, criteria);
+		}
+
+		return new PageImpl<>(criteria.list(), pageable, total(filter));
+
 	}
 
 }

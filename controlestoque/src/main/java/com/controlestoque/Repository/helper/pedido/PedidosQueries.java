@@ -36,5 +36,7 @@ public interface PedidosQueries {
 	public Page<Pedido> filtrarPedidosCancelados(PedidoFilter filter, Pageable pageable);
 
 	public Page<Pedido> filtrarPedidosFinalizados(PedidoFilter filter, Pageable pageable);
+	
+	public Page<Pedido> buscarPedidos(PedidoFilter filter, Pageable pageable);
 
 }
