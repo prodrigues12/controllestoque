@@ -87,6 +87,7 @@ public class PedidoController {
 		return mv;
 
 	}
+<<<<<<< HEAD
 
 	@GetMapping("/buscarPedido")
 	public ModelAndView buscarPedido(PedidoFilter pedidoFilter, BindingResult result,
@@ -99,6 +100,8 @@ public class PedidoController {
 		return mv;
 
 	}
+=======
+>>>>>>> parent of fdeec34 (informações sobre o pedido)
 
 	@GetMapping("/{codigo}")
 	public ModelAndView editar(@PathVariable Long codigo) {
