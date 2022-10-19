@@ -47,17 +47,16 @@
 	
 					<!-- Identificação -->
 					<div class="col-md-4">
-						<label for="secao" class="col-form-label-sm">Identificação:</label>
-						<input class="form-control form-control-sm" type="text"
+						<label for="value_1" class="col-form-label-sm">Identificação:</label>
+						<input id = "value_1" class="form-control form-control-sm" type="text"
 							th:field="*{cpfCnpjId}" />
 					</div>
 
 					<!-- Data -->
 					<div class="col-md-auto">
-						<label for="dataInicio" class="col-form-label-sm">Data do pedido:</label>
-							
+						<label for="value_2" class="col-form-label-sm">Data do pedido:</label>
 								<input type="date" class="form-control form-control-sm"
-									id="desde" th:field="*{desde}" autocomplete="off">
+									id="value_2" th:field="*{desde}" autocomplete="off" disabled="disabled">
 							
 						
 					</div>					
@@ -66,7 +65,7 @@
 				<br>
 				<div class="form-row">
 					<button id="pedidoBuscar" type="submit"
-						class="btn btn-primary btn-sm ">Pesquisar</button>
+						class="btn btn-primary btn-sm " disabled="disabled">Pesquisar</button>
 					<a type="submit" class="btn btn-outline-warning btn-sm"
 						th:href="@{/pedido/buscarPedido}">Limpar filtro</a>
 				</div>

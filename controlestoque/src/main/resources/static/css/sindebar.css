@@ -71,6 +71,7 @@ a {
     width: 40px
 }
 
+/* deixar barra lateral */
 .l-navbar {
     position: fixed;
     top: 0;
@@ -78,8 +79,8 @@ a {
     width: var(--nav-width);
     height: 100vh;
     background-color: var(--first-color);
-    padding: .5rem 1rem 0 0;
-    transition: .5s;
+    padding: 10rem 10rem 0 0;
+    transition: .4s;
     z-index: var(--z-fixed)
     
 }
@@ -90,9 +91,7 @@ a {
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
-     margin: 0 auto !important;
-     
-    
+     margin: 1 auto !important; 
 }
 
 .nav_logo,
@@ -148,17 +147,9 @@ a {
 
 .nav_sub-icon_mini {
     font-size: 0,8 rem;
-/*     padding-left: 1cm; */
+    padding-left: 1cm;
     color:#87CEFA
 }
-
-
-/* .body-pd { */
-/*     padding-left: calc(var(--nav-width) + 1rem); */
-  
-/* }
-20/08/22
-*/
 
 .active {
     color: var(--white-color)
@@ -188,14 +179,14 @@ a {
         padding: 0 2rem 0 calc(var(--nav-width) + 2rem)
     }
 
-    .header_img {
-        width: 40px;
-        height: 40px
-    }
+/*     .header_img { */
+/*         width: 40px; */
+/*         height: 40px */
+/*     } */
 
-    .header_img img {
-        width: 45px
-    }
+/*     .header_img img { */
+/*         width: 45px */
+/*     } */
 
     .l-navbar {
         left: 0;
@@ -205,10 +196,10 @@ a {
 
     
     .show-barra {
-        width: calc(var(--nav-width) + 156px)
+        width: calc(var(--nav-width) + 130px)
     }
 
     .body-pd {
-        padding-left: calc(var(--nav-width) + 188px)
+        padding-left: calc(var(--nav-width) + 150px)
     }
 }
