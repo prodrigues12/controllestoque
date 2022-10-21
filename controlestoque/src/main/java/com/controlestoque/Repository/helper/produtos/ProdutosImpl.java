@@ -1,6 +1,8 @@
 package com.controlestoque.Repository.helper.produtos;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.apache.commons.collections.bidimap.AbstractSortedBidiMapDecorator;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
@@ -37,7 +40,6 @@ public class ProdutosImpl implements ProdutosQueries {
 	@Autowired
 	private PaginacaoUtil paginacaoUltil;
 
-	//Produto - Filtrar busca dos produtos
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public Page<Produto> filtrar(ProdutoFilter filtro, Pageable pageable) {
@@ -53,13 +55,12 @@ public class ProdutosImpl implements ProdutosQueries {
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public Page<Produto> estoqueMinimo(ProdutoFilter filtro, Pageable pageable) {
-		
+
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Produto.class);
-		filtroEstoqueMinimo(filtro, criteria);
+		criteria.add(Restrictions.sqlRestriction("qtd_estoque <= qtd_est_min"));
 
 		paginacaoUltil.preparar(criteria, pageable);
-
-		
+		adicionarFiltro(filtro, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filtro));
 	}
@@ -67,12 +68,13 @@ public class ProdutosImpl implements ProdutosQueries {
 	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public Page<Produto> estoqueZerado(ProdutoFilter filtro, Pageable pageable) {
-		
+
 		@SuppressWarnings("deprecation")
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Produto.class);
-		filtroEstoqueZerado(filtro, criteria);
+		criteria.add(Restrictions.eq("qtdEstoque", BigDecimal.ZERO));
 
 		paginacaoUltil.preparar(criteria, pageable);
+		adicionarFiltro(filtro, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filtro));
 	}
@@ -87,63 +89,7 @@ public class ProdutosImpl implements ProdutosQueries {
 
 	@SuppressWarnings("deprecation")
 	private void adicionarFiltro(ProdutoFilter filtro, Criteria criteria) {
-		
-		if (filtro != null) {
-			if (!StringUtils.isEmpty(filtro.getCodigo())) {
-				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
-			}
 
-			if (!StringUtils.isEmpty(filtro.getNome())) {
-				criteria.add(Restrictions.ilike("nome", filtro.getNome(), MatchMode.ANYWHERE));
-			}
-
-			if (filtro.getUniMedida() != null) {
-				criteria.add(Restrictions.eq("uniMedida", filtro.getUniMedida()));
-			}
-
-			if (isSecaoPresente(filtro)) {
-				criteria.add(Restrictions.eq("secao", filtro.getSecao()));
-			}
-
-			if (filtro.getQtdEstoque() != null) {
-				criteria.add(Restrictions.eq("qtdEstoque", filtro.getQtdEstoque()));
-			}
-
-		}
-	}
-
-	@SuppressWarnings("deprecation")
-	private void filtroEstoqueMinimo(ProdutoFilter filtro, Criteria criteria) {
-
-		criteria.add(Restrictions.sqlRestriction("qtd_estoque <= qtd_est_min"));
-		
-		if (filtro != null) {
-			if (!StringUtils.isEmpty(filtro.getCodigo())) {
-				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
-			}
-
-			if (!StringUtils.isEmpty(filtro.getNome())) {
-				criteria.add(Restrictions.ilike("nome", filtro.getNome(), MatchMode.ANYWHERE));
-			}
-
-			if (filtro.getUniMedida() != null) {
-				criteria.add(Restrictions.eq("uniMedida", filtro.getUniMedida()));
-			}
-
-			if (isSecaoPresente(filtro)) {
-				criteria.add(Restrictions.eq("secao", filtro.getSecao()));
-			}
-
-			if (filtro.getQtdEstoque() != null) {
-				criteria.add(Restrictions.eq("qtdEstoque", filtro.getQtdEstoque()));
-			}
-
-		}
-	}
-
-	private void filtroEstoqueZerado(ProdutoFilter filtro, Criteria criteria) {
-		criteria.add(Restrictions.eq("qtdEstoque", BigDecimal.ZERO));
-		
 		if (filtro != null) {
 			if (!StringUtils.isEmpty(filtro.getCodigo())) {
 				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
@@ -192,21 +138,22 @@ public class ProdutosImpl implements ProdutosQueries {
 		return (Produto) criteria.uniqueResult();
 	}
 
-	//Dashboard - total de produtos
+	// Dashboard - total de produtos
 	public BigDecimal totalItensEstoque() {
-		return manager.createQuery("select sum(qtdEstoque) from Produto", BigDecimal.class).getSingleResult();
+		BigDecimal soma = manager.createQuery("select sum(qtdEstoque) from Produto", BigDecimal.class).getSingleResult();
+		 return  soma.setScale(0);
 	}
-	
-	//Dashboard - produtos estoque baixo
+
+	// Dashboard - produtos estoque baixo
 	public Long estoqueBaixo() {
-		Optional<Long> optional = Optional
-				.ofNullable(manager.createQuery("select count(*) from Produto where qtdEstMin >= qtdEstoque", Long.class)
+		Optional<Long> optional = Optional.ofNullable(
+				manager.createQuery("select count(*) from Produto where qtdEstMin >= qtdEstoque", Long.class)
 						.getSingleResult());
 
 		return optional.orElse(Long.valueOf(0));
 	}
 
-	//Dashboard - produtos estoque Zero
+	// Dashboard - produtos estoque Zero
 	public Long estoqueZero() {
 		Optional<Long> optional = Optional.ofNullable(manager
 				.createQuery("select count(*) from Produto where qtdEstoque <= 0", Long.class).getSingleResult());
@@ -217,20 +164,18 @@ public class ProdutosImpl implements ProdutosQueries {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ProdutosTopFive> topFiveProdutos() {
-		
+
 		String query = "SELECT  produto.nome AS nome, count(item.quantidade) AS quantidade "
 				+ "FROM item_pedido item INNER JOIN produto produto  INNER JOIN pedido pedido "
 				+ "ON item.codigo_produto = produto.codigo AND item.codigo_pedido = pedido.codigo "
 				+ "AND pedido.data_criacao BETWEEN CURDATE() - INTERVAL 6 MONTH AND CURDATE() "
 				+ "AND pedido.status='FINALIZADO'"
 				+ "GROUP BY produto.nome ORDER BY COUNT(item.quantidade) DESC LIMIT 5";
-				
-		
+
 		Query nativeQuery = manager.createNativeQuery(query, "mappingProtutosFive");
 		List<ProdutosTopFive> lista = nativeQuery.getResultList();
 
 		return lista;
-		
 	}
 
 }

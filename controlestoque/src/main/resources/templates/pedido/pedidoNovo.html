@@ -22,10 +22,10 @@
 <body id="body-pd">
 
 	<div th:replace="fragmentos/fragmentos :: header"></div>
-<div sec:authorize="isAuthenticated()">
-		<div th:replace="fragmentos/fragmentos :: sindebar"></div>
-	</div>
-	<div class="card card-pedido border-left-success shadow h-50 w-100">
+
+	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
+
+	<div class="card border-left-success shadow h-50 w-100">
 		<div class="card-header">
 			<div class="row">
 				<div class=" col-md-10 center">
@@ -34,9 +34,11 @@
 						th:text="|Editando pedido: ${pedido.codigo} -  ${pedido.status}|"></span>
 				</div>
 				<div class="col-md-2">
-					<a sec:authorize="isAuthenticated()" th:href="@{/pedido}" class="btn btn-primary btn-sm">Pesquisar</a>
-					<a sec:authorize="!isAuthenticated()" th:href="@{/pedido/buscarPedido}" class="btn btn-primary btn-sm">Pesquisar</a>
-					
+					<a sec:authorize="isAuthenticated()" th:href="@{/pedido}"
+						class="btn btn-primary btn-sm">Pesquisar</a> <a
+						sec:authorize="!isAuthenticated()"
+						th:href="@{/pedido/buscarPedido}" class="btn btn-primary btn-sm">Pesquisar</a>
+
 				</div>
 			</div>
 		</div>
@@ -102,7 +104,7 @@
 					<div class="col-md-12">
 						<label for="produto" class="col-form-label-sm">Produto: </label> <input
 							type="text" class="form-control form-control-sm js-produto-input"
-							id="produto" placeholder="Código ou Nome do Produto"
+							id="produto" placeholder="Nome do Produto"
 							data:url="@{/produto}">
 					</div>
 				</div>
@@ -174,7 +176,8 @@
 
 	</div>
 	<br />
-	<a sec:authorize="isAuthenticated()" type="button" class="btn btn-dark" href="javascript:history.back()">Voltar</a>
+	<a sec:authorize="isAuthenticated()" type="button" class="btn btn-dark"
+		href="javascript:history.back()">Voltar</a>
 
 	<th:block
 		th:replace="colaborador/pesquisaRapidaColaborador :: modalColaborador"></th:block>

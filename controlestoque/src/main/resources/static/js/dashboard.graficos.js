@@ -35,22 +35,22 @@ Controlestoque.GraficosPedidosMes = (function() {
 					label: 'Pedidos ',
 
 					backgroundColor: [
-					'#90EE90',
-						'#FF6347',
+						'#DDA0DD',
+						'#87CEFA',
 						'#90EE90',
-						'#F0E68C',	
-						'#9370DB',
-						'#D3D3D3',
-						'#F4A460'
-						
+						'#FFB6C1',
+						'#F0E68C',
+						'#FA8072',
+						'#708090'
+
 					],
 					borderColor: '#000',
 					pointBorderColor: '#000',
 					pointBackgroundColor: "#000",
 				}]
 			},
-			
-			
+
+
 		});
 
 	}
@@ -88,7 +88,7 @@ Controlestoque.GraficosTopProdutos = (function() {
 			type: 'doughnut',
 			data: {
 				labels: nomes,
-				
+
 				datasets: [{
 					data: quantidades,
 					backgroundColor: [
@@ -100,20 +100,20 @@ Controlestoque.GraficosTopProdutos = (function() {
 					],
 					hoverOffset: 10
 				}],
-				
+
 			},
-			options:{
-				aspectRatio:2,
-				 plugins: {
-            subtitle: {
-                display: true,
-                text: 'Nos últimos 6 meses'
-            },
-            legend:{
-	position:'right'
-}
-        }
-				
+			options: {
+				aspectRatio: 2,
+				plugins: {
+					subtitle: {
+						display: true,
+						text: 'Nos últimos 6 meses'
+					},
+					legend: {
+						position: 'right'
+					}
+				}
+
 			}
 
 		});

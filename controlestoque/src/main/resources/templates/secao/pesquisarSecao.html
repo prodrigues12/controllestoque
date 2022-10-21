@@ -109,10 +109,8 @@
 					th:with="numeroPagina=${p - 1}">
 					<li th:class="${paginaAtual == numeroPagina} ? active"><a
 						class="page-link" th:href="${pagina.urlParaPagina(numeroPagina)}">[[${p}]]</a></li>
-
 				</th:block>
-
-
+				
 			</ul>
 		</nav>
 	</div>

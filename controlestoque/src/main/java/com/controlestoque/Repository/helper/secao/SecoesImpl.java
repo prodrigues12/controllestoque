@@ -29,8 +29,10 @@ public class SecoesImpl implements SecoesQueries {
 	@Autowired
 	private PaginacaoUtil paginacaoUtil;
 
+	@SuppressWarnings("unchecked")
 	@Transactional(readOnly = true)
 	public Page<Secao> filtrar(SecaoFilter filtro, Pageable pageable) {
+		
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Secao.class);
 
 		paginacaoUtil.preparar(criteria, pageable);
