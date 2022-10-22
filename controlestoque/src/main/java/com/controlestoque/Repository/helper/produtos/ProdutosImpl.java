@@ -46,7 +46,6 @@ public class ProdutosImpl implements ProdutosQueries {
 
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Produto.class);
 		paginacaoUltil.preparar(criteria, pageable);
-
 		adicionarFiltro(filtro, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filtro));
@@ -58,7 +57,6 @@ public class ProdutosImpl implements ProdutosQueries {
 
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Produto.class);
 		criteria.add(Restrictions.sqlRestriction("qtd_estoque <= qtd_est_min"));
-
 		paginacaoUltil.preparar(criteria, pageable);
 		adicionarFiltro(filtro, criteria);
 
@@ -72,7 +70,6 @@ public class ProdutosImpl implements ProdutosQueries {
 		@SuppressWarnings("deprecation")
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Produto.class);
 		criteria.add(Restrictions.eq("qtdEstoque", BigDecimal.ZERO));
-
 		paginacaoUltil.preparar(criteria, pageable);
 		adicionarFiltro(filtro, criteria);
 
@@ -140,8 +137,9 @@ public class ProdutosImpl implements ProdutosQueries {
 
 	// Dashboard - total de produtos
 	public BigDecimal totalItensEstoque() {
-		BigDecimal soma = manager.createQuery("select sum(qtdEstoque) from Produto", BigDecimal.class).getSingleResult();
-		 return  soma.setScale(0);
+		BigDecimal soma = manager.createQuery("select sum(qtdEstoque) from Produto", BigDecimal.class)
+				.getSingleResult();
+		return soma.setScale(0);
 	}
 
 	// Dashboard - produtos estoque baixo

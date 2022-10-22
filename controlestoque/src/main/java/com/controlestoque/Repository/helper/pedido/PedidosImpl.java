@@ -44,7 +44,7 @@ public class PedidosImpl implements PedidosQueries {
 
 		@SuppressWarnings("deprecation")
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
-
+		criteria.createAlias("colaborador", "c").addOrder(Order.desc("codigo"));
 		paginacaoUltil.preparar(criteria, pageable);
 
 		adicionarFiltro(filter, criteria);
@@ -59,10 +59,10 @@ public class PedidosImpl implements PedidosQueries {
 
 		@SuppressWarnings("deprecation")
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
-
+		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.NOVO))
+				.addOrder(Order.desc("codigo"));
 		paginacaoUltil.preparar(criteria, pageable);
-
-		filtroStatusNovo(filter, criteria);
+		adicionarFiltro(filter, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filter));
 	}
@@ -74,9 +74,10 @@ public class PedidosImpl implements PedidosQueries {
 
 		@SuppressWarnings("deprecation")
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
-
+		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.PENDENTE))
+				.addOrder(Order.desc("codigo"));
 		paginacaoUltil.preparar(criteria, pageable);
-		filtroStatusPendente(filter, criteria);
+		adicionarFiltro(filter, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filter));
 	}
@@ -88,9 +89,10 @@ public class PedidosImpl implements PedidosQueries {
 
 		@SuppressWarnings("deprecation")
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
-
+		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.SEPARACAO))
+				.addOrder(Order.desc("codigo"));
 		paginacaoUltil.preparar(criteria, pageable);
-		filtroStatusSeparacao(filter, criteria);
+		adicionarFiltro(filter, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filter));
 	}
@@ -102,9 +104,9 @@ public class PedidosImpl implements PedidosQueries {
 
 		@SuppressWarnings("deprecation")
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
-
+		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.CANCELADO));
 		paginacaoUltil.preparar(criteria, pageable);
-		filtroStatusCancelado(filter, criteria);
+		adicionarFiltro(filter, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filter));
 	}
@@ -116,9 +118,9 @@ public class PedidosImpl implements PedidosQueries {
 
 		@SuppressWarnings("deprecation")
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
-
+		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.FINALIZADO));
 		paginacaoUltil.preparar(criteria, pageable);
-		filtroStatusFinalizado(filter, criteria);
+		adicionarFiltro(filter, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filter));
 	}
@@ -137,7 +139,6 @@ public class PedidosImpl implements PedidosQueries {
 
 	@SuppressWarnings("deprecation")
 	private void adicionarFiltro(PedidoFilter filtro, Criteria criteria) {
-		criteria.createAlias("colaborador", "c").addOrder(Order.desc("codigo"));
 
 		if (filtro != null) {
 			if (!StringUtils.isEmpty(filtro.getCodigo())) {
@@ -182,225 +183,6 @@ public class PedidosImpl implements PedidosQueries {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
-	private void filtroStatusNovo(PedidoFilter filtro, Criteria criteria) {
-		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.NOVO))
-				.addOrder(Order.desc("codigo"));
-
-		if (filtro != null) {
-
-			if (!StringUtils.isEmpty(filtro.getCodigo())) {
-				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
-			}
-
-			if (filtro.getDesde() != null) {
-				if (filtro.getDesde().isBlank()) {
-					filtro.setDesde(null);
-				} else {
-					LocalDate localDate = LocalDate.parse(filtro.getDesde());
-					criteria.add(Restrictions.ge("dataCriacao", localDate));
-				}
-			}
-
-			if (filtro.getAte() != null) {
-				if (filtro.getAte().isBlank()) {
-					filtro.setAte(LocalDate.now().toString());
-				} else {
-					LocalDate localDate = LocalDate.parse(filtro.getAte());
-					criteria.add(Restrictions.le("dataCriacao", localDate));
-				}
-			}
-
-			if (filtro.getTurno() != null) {
-				criteria.add(Restrictions.eq("turno", filtro.getTurno()));
-			}
-
-			if (!StringUtils.isEmpty(filtro.getNomeColaborador())) {
-				criteria.add(Restrictions.ilike("c.nome", filtro.getNomeColaborador(), MatchMode.ANYWHERE));
-			}
-
-			if (!StringUtils.isEmpty(filtro.getCpfCnpjId())) {
-				criteria.add(
-						Restrictions.eq("c.cpfCnpjId", TipoIdentificacao.removerFormatacao(filtro.getCpfCnpjId())));
-			}
-
-		}
-	}
-
-	@SuppressWarnings("deprecation")
-	private void filtroStatusPendente(PedidoFilter filtro, Criteria criteria) {
-		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.PENDENTE))
-				.addOrder(Order.desc("codigo"));
-
-		if (filtro != null) {
-
-			if (!StringUtils.isEmpty(filtro.getCodigo())) {
-				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
-			}
-
-			if (filtro.getDesde() != null) {
-				if (filtro.getDesde().isBlank()) {
-					filtro.setDesde(null);
-				} else {
-					LocalDate localDate = LocalDate.parse(filtro.getDesde());
-					criteria.add(Restrictions.ge("dataCriacao", localDate));
-				}
-			}
-
-			if (filtro.getAte() != null) {
-				if (filtro.getAte().isBlank()) {
-					filtro.setAte(LocalDate.now().toString());
-				} else {
-					LocalDate localDate = LocalDate.parse(filtro.getAte());
-					criteria.add(Restrictions.le("dataCriacao", localDate));
-				}
-			}
-
-			if (filtro.getTurno() != null) {
-				criteria.add(Restrictions.eq("turno", filtro.getTurno()));
-			}
-
-			if (!StringUtils.isEmpty(filtro.getNomeColaborador())) {
-				criteria.add(Restrictions.ilike("c.nome", filtro.getNomeColaborador(), MatchMode.ANYWHERE));
-			}
-
-			if (!StringUtils.isEmpty(filtro.getCpfCnpjId())) {
-				criteria.add(
-						Restrictions.eq("c.cpfCnpjId", TipoIdentificacao.removerFormatacao(filtro.getCpfCnpjId())));
-			}
-		}
-	}
-
-	@SuppressWarnings("deprecation")
-	private void filtroStatusSeparacao(PedidoFilter filtro, Criteria criteria) {
-		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.SEPARACAO))
-				.addOrder(Order.desc("codigo"));
-
-		if (filtro != null) {
-
-			if (!StringUtils.isEmpty(filtro.getCodigo())) {
-				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
-			}
-
-			if (filtro.getDesde() != null) {
-				if (filtro.getDesde().isBlank()) {
-					filtro.setDesde(null);
-				} else {
-					LocalDate localDate = LocalDate.parse(filtro.getDesde());
-					criteria.add(Restrictions.ge("dataCriacao", localDate));
-				}
-			}
-
-			if (filtro.getAte() != null) {
-				if (filtro.getAte().isBlank()) {
-					filtro.setAte(LocalDate.now().toString());
-				} else {
-					LocalDate localDate = LocalDate.parse(filtro.getAte());
-					criteria.add(Restrictions.le("dataCriacao", localDate));
-				}
-			}
-
-			if (filtro.getTurno() != null) {
-				criteria.add(Restrictions.eq("turno", filtro.getTurno()));
-			}
-
-			if (!StringUtils.isEmpty(filtro.getNomeColaborador())) {
-				criteria.add(Restrictions.ilike("c.nome", filtro.getNomeColaborador(), MatchMode.ANYWHERE));
-			}
-
-			if (!StringUtils.isEmpty(filtro.getCpfCnpjId())) {
-				criteria.add(
-						Restrictions.eq("c.cpfCnpjId", TipoIdentificacao.removerFormatacao(filtro.getCpfCnpjId())));
-			}
-		}
-	}
-
-	@SuppressWarnings("deprecation")
-	private void filtroStatusCancelado(PedidoFilter filtro, Criteria criteria) {
-		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.CANCELADO));
-
-		if (filtro != null) {
-
-			if (!StringUtils.isEmpty(filtro.getCodigo())) {
-				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
-			}
-
-			if (filtro.getDesde() != null) {
-				if (filtro.getDesde().isBlank()) {
-					filtro.setDesde(null);
-				} else {
-					LocalDate localDate = LocalDate.parse(filtro.getDesde());
-					criteria.add(Restrictions.ge("dataCriacao", localDate));
-				}
-			}
-
-			if (filtro.getAte() != null) {
-				if (filtro.getAte().isBlank()) {
-					filtro.setAte(LocalDate.now().toString());
-				} else {
-					LocalDate localDate = LocalDate.parse(filtro.getAte());
-					criteria.add(Restrictions.le("dataCriacao", localDate));
-				}
-			}
-
-			if (filtro.getTurno() != null) {
-				criteria.add(Restrictions.eq("turno", filtro.getTurno()));
-			}
-
-			if (!StringUtils.isEmpty(filtro.getNomeColaborador())) {
-				criteria.add(Restrictions.ilike("c.nome", filtro.getNomeColaborador(), MatchMode.ANYWHERE));
-			}
-
-			if (!StringUtils.isEmpty(filtro.getCpfCnpjId())) {
-				criteria.add(
-						Restrictions.eq("c.cpfCnpjId", TipoIdentificacao.removerFormatacao(filtro.getCpfCnpjId())));
-			}
-		}
-	}
-
-	@SuppressWarnings("deprecation")
-	private void filtroStatusFinalizado(PedidoFilter filtro, Criteria criteria) {
-		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.FINALIZADO));
-
-		if (filtro != null) {
-
-			if (!StringUtils.isEmpty(filtro.getCodigo())) {
-				criteria.add(Restrictions.eq("codigo", filtro.getCodigo()));
-			}
-
-			if (filtro.getDesde() != null) {
-				if (filtro.getDesde().isBlank()) {
-					filtro.setDesde(null);
-				} else {
-					LocalDate localDate = LocalDate.parse(filtro.getDesde());
-					criteria.add(Restrictions.ge("dataCriacao", localDate));
-				}
-			}
-
-			if (filtro.getAte() != null) {
-				if (filtro.getAte().isBlank()) {
-					filtro.setAte(LocalDate.now().toString());
-				} else {
-					LocalDate localDate = LocalDate.parse(filtro.getAte());
-					criteria.add(Restrictions.le("dataCriacao", localDate));
-				}
-			}
-
-			if (filtro.getTurno() != null) {
-				criteria.add(Restrictions.eq("turno", filtro.getTurno()));
-			}
-
-			if (!StringUtils.isEmpty(filtro.getNomeColaborador())) {
-				criteria.add(Restrictions.ilike("c.nome", filtro.getNomeColaborador(), MatchMode.ANYWHERE));
-			}
-
-			if (!StringUtils.isEmpty(filtro.getCpfCnpjId())) {
-				criteria.add(
-						Restrictions.eq("c.cpfCnpjId", TipoIdentificacao.removerFormatacao(filtro.getCpfCnpjId())));
-			}
-		}
-	}
-
 	@Override
 	public Long statusIgualNovo() {
 		Optional<Long> optional = Optional
@@ -413,8 +195,9 @@ public class PedidosImpl implements PedidosQueries {
 	@Override
 	public Long statusIgualFinalizado() {
 		Optional<Long> optional = Optional.ofNullable(manager.createQuery(
-				"select count(*) from Pedido where status= :status and month(data_modificacao) = MONTH(CURRENT_DATE())",
+				"select count(*) from Pedido where status= :status and month(data_criacao) = MONTH(CURRENT_DATE())",
 				Long.class).setParameter("status", StatusPedido.FINALIZADO).getSingleResult());
+//		select COUNT(*) from Pedido where status= 'FINALIZADO' and data_criacao > date_sub( current_date(), interval 1 month)
 
 		return optional.orElse(Long.valueOf(0));
 	}
