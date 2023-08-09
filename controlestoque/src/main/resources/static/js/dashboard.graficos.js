@@ -124,6 +124,64 @@ Controlestoque.GraficosTopProdutos = (function() {
 }());
 
 
+function GraficoValorMes() {
+		this.ctx = $('#graficoValorMes');
+
+	}
+
+	GraficoPedidoMes.prototype.iniciar = function() {
+
+		$.ajax({
+			url: 'produto/valorMes',
+			method: 'GET',
+			success: onDadosRecebidos.bind(this)
+		});
+	}
+
+	function onDadosRecebidos(pedidoMes) {
+
+		var meses = [];
+		var valor = [];
+
+		pedidoMes.forEach(function(obj) {
+			meses.unshift(obj.mes);
+			valor.unshift(obj.total)
+		});
+
+		var grafico = new Chart(this.ctx, {
+			type: 'bar',
+			data: {
+				labels: meses,
+				datasets: [{
+					data: valor,
+					label: 'Pedidos ',
+
+					backgroundColor: [
+						'#DDA0DD',
+						'#87CEFA',
+						'#90EE90',
+						'#FFB6C1',
+						'#F0E68C',
+						'#FA8072',
+						'#708090'
+
+					],
+					borderColor: '#000',
+					pointBorderColor: '#000',
+					pointBackgroundColor: "#000",
+				}]
+			},
+
+
+		});
+
+	}
+
+	return GraficoPedidoMes;
+
+}());
+
+
 
 
 $(function() {

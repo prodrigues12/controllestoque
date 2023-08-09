@@ -30,6 +30,7 @@ import com.controlestoque.Repository.filter.ProdutoFilter;
 import com.controlestoque.controller.page.PageWrapper;
 import com.controlestoque.dto.ProdutoDTO;
 import com.controlestoque.dto.ProdutosTopFive;
+import com.controlestoque.dto.ValorMes;
 import com.controlestoque.model.Produto;
 import com.controlestoque.service.ProdutoService;
 import com.controlestoque.service.exception.ImpossivelExcluirEntidadeException;
@@ -142,5 +143,10 @@ public class ProdutoController {
 		
 	}
 	
+	@GetMapping("/valorMes")
+	public @ResponseBody List<ValorMes> listaValorMes(){
+		return proRepository.valorMes();
+		
+	}
 
 }
