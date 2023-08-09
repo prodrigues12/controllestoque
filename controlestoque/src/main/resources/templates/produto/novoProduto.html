@@ -102,7 +102,7 @@
 
 
 					<!-- 				Unidade de Media -->
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<label for="uniMedida" class="col-form-label-sm">Unid. de
 							medida:</label> <select id="uniMedida"
 							class=" form-control form-select form-select-sm"
@@ -114,19 +114,19 @@
 					</div>
 
 					<!-- 				Estoque minimo -->
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<label for="estoqueMin" class="col-form-label-sm">Estoque
 							minimo:</label> <input id="estoqueMin" type="text"
-							th:field="*{qtdEstMin}" class="form-control form-control-sm"
+							th:field="*{qtdEstMin}" class="form-control form-control-sm number"
 							placeholder="Ex: 10,00">
 					</div>
 
 					<!-- 				Estoque -->
-					<div class=" col-md-3" th:unless="${produto.produtoNovo}">
+					<div class=" col-md-2" th:unless="${produto.produtoNovo}">
 						<label for="estoque" class="col-form-label-sm">Estoque:</label>
 						<div class="input-group">
 							<input id="estoque" type="text" th:field="*{qtdEstoque}"
-								class="form-control form-control-sm " readonly> &nbsp;
+								class="form-control form-control-sm number" readonly> &nbsp;
 							<div class="input-group-btn">
 								<a class="btn btn-primary"
 									th:href="@{/estoque/ajuste/{codigo}(codigo=${produto.codigo})}">
@@ -134,6 +134,13 @@
 								</a>
 							</div>
 						</div>
+					</div>
+					
+					<!-- valor unitario -->
+					<div class="col-md-2">
+						<label for="estoqueMin" class="col-form-label-sm">Valor unitário R$:</label> <input id="estoqueMin" type="text"
+						th:field="*{valorUnitario}"	class="form-control form-control-sm number"
+							placeholder="Ex: 10,00">
 					</div>
 
 				</div>

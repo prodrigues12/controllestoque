@@ -119,7 +119,7 @@ public class PedidosImpl implements PedidosQueries {
 		@SuppressWarnings("deprecation")
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
 		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.FINALIZADO));
-		paginacaoUltil.preparar(criteria, pageable);
+		
 		adicionarFiltro(filter, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filter));
@@ -195,7 +195,8 @@ public class PedidosImpl implements PedidosQueries {
 	@Override
 	public Long statusIgualFinalizado() {
 		Optional<Long> optional = Optional.ofNullable(manager.createQuery(
-				"select count(*) from Pedido where status= :status and month(data_criacao) = MONTH(CURRENT_DATE())",
+				"select count(*) from Pedido where status= :status and month(data_modificacao) = MONTH(CURRENT_DATE())"
+				+ " and year(data_modificacao) = year(current_date())",
 				Long.class).setParameter("status", StatusPedido.FINALIZADO).getSingleResult());
 //		select COUNT(*) from Pedido where status= 'FINALIZADO' and data_criacao > date_sub( current_date(), interval 1 month)
 

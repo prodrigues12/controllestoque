@@ -55,6 +55,10 @@ public class Produto implements Serializable {
 
 	@DecimalMin(value = "1.0", message = "Estoque deve ser no mínimo 1")
 	private BigDecimal qtdEstMin;
+	
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal valorUnitario;
+
 
 	@NotNull(message = "Campo 'Seção' é obrigatório")
 	@ManyToOne
@@ -65,8 +69,6 @@ public class Produto implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private UnidadeMedia uniMedida;
 
-	@OneToMany(mappedBy = "produto")
-	private List<Enderecar> enderecar;
 
 	public Long getCodigo() {
 		return codigo;
@@ -115,6 +117,14 @@ public class Produto implements Serializable {
 	public void setSecao(Secao secao) {
 		this.secao = secao;
 	}
+	
+	public BigDecimal getValorUnitario() {
+		return valorUnitario;
+	}
+
+	public void setValorUnitario(BigDecimal valorUnitario) {
+		this.valorUnitario = valorUnitario;
+	}
 
 	public UnidadeMedia getUniMedida() {
 		return uniMedida;
@@ -124,13 +134,6 @@ public class Produto implements Serializable {
 		this.uniMedida = uniMedida;
 	}
 
-	public List<Enderecar> getEnderecar() {
-		return enderecar;
-	}
-
-	public void setEnderecar(List<Enderecar> enderecar) {
-		this.enderecar = enderecar;
-	}
 
 	public boolean isProdutoNovo() {
 		return this.codigo == null;

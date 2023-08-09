@@ -119,6 +119,7 @@
 			</thead>
 
 			<tbody>
+			
 				<tr th:each="pedido :${pagina.conteudo}">
 					<td th:text="${pedido.codigo}"></td>
 					<td th:text="${#temporals.format(pedido.dataCriacao,'dd/MM/yyyy')}"></td>
@@ -133,6 +134,7 @@
 				</tr>
 				<tr th:if="${pagina.vazia}">
 					<td colspan="7">Nenhum registro encontrado</td>
+				
 				</tr>
 
 			</tbody>

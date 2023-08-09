@@ -97,6 +97,7 @@
 				<th class="col-auto">Seção</th>
 		
 				<th class="col-auto">Estoque</th>
+					<th class="col-auto">Valor uni.</th>
 				<th class="col-auto">Ação</th>
 
 
@@ -108,14 +109,15 @@
 					<td  align="left" th:text="${produto.nome}">Produto Teste</td>
 					<td th:text="${produto.secao.nome}">Limpeza</td>
 					
-					<td th:text="${#numbers.formatDecimal(produto.qtdEstoque,1,2)}"th:class="${produto.estoqueIgualMenorZero}">4</td>
+					<td th:text="${#numbers.formatDecimal(produto.qtdEstoque,1,0)}"th:class="${produto.estoqueIgualMenorZero}">4</td>
+					<td th:text="|R$ ${#numbers.formatDecimal(produto.valorUnitario,1,2)}|"></td>
 					<td><a title="Editar"
 						th:href="@{/produto/{codigo}(codigo=${produto.codigo})}"><i
 							class=" bx bx-edit ce-icon"></i> </a> &nbsp; <a
 						class=" js-exclusao-btn" title="Excluir" href="#"
 						data:url="@{/produto/{codigo}(codigo=${produto.codigo})}"
 						data:objeto="${produto.nome}"> <i class="bx bx-trash ce-icon"></i>
-					</a>&nbsp;<a><i class="bx bx-error-circle ce-icon"></i></a></td>
+					</a></td>
 				</tr>
 				<tr th:if="${pagina.vazia}">
 					<td colspan="7">Nenhum registro encontrado</td>
