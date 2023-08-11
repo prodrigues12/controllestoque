@@ -42,7 +42,6 @@ public class Colaborador implements Serializable{
 	@Size(min = 5 , max = 50, message = "Campo Nome deve conter de 5 à 50 caracteries")
 	
 	private String nome;
-	
 
 	@NotNull(message = "Tipo de identicicação é obrigatório")
 	@Enumerated(EnumType.STRING)
@@ -53,8 +52,6 @@ public class Colaborador implements Serializable{
 	@CNPJ(groups = CnpjGroup.class)
 	@IdMagalu(groups = IdGroup.class)
 	private String cpfCnpjId;
-	
-	
 	
 	@PrePersist
 	@PreUpdate

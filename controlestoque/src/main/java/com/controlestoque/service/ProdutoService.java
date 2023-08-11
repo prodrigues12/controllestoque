@@ -20,9 +20,6 @@ public class ProdutoService {
 	@Autowired
 	private Produtos prodRepository;
 
-//	@Autowired
-//	private ApplicationEventPublisher publish;
-
 	@Transactional
 	public Produto salvar(Produto produto) {
 
@@ -53,6 +50,7 @@ public class ProdutoService {
 		Produto pro = prodRepository.findByCodigo(codigos);
 		pro.setQtdEstoque(estoque);
 		prodRepository.save(pro);
+		
 		
 	}
 

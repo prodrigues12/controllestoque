@@ -30,7 +30,7 @@
 			<div class="card-header">
 				<div class="row">
 					<div class=" col-md-10 center">
-						<span >Ajuste Estoque</span>	
+						<span>Ajuste Estoque</span>
 					</div>
 				</div>
 			</div>
@@ -40,7 +40,7 @@
 
 					<div class="col-md-1">
 						<label class="col-form-label-sm">Código:</label> <input
-							class="form-control form-control-sm" th:field=*{codigo}
+							class="form-control form-control-sm number" th:field=*{codigo}
 							type="text" readonly>
 					</div>
 					<div class="col-md-11">
@@ -52,27 +52,45 @@
 
 					<div class="row mb-3">
 
-						<div class=" col-md-2">
+						<div class=" col-md-auto">
 							<label for="uniMedida" class="col-form-label-sm">Unid. de
 								medida:</label> <input class="form-control form-control-sm"
 								th:field="*{uniMedida}" readonly>
 						</div>
 
 
-						<div class="col-md-2">
+						<div class="col-md-auto">
+							<label class="col-form-label-sm">Estoque atual:</label> <input
+								class="form-control form-control-sm number" th:value="${produto.qtdEstoque}"
+								readonly
+							
+								>
+						</div>
+
+						<div class="col-md-auto">
+							<label for="turno" class="col-form-label-sm">Tipo de ajuste:</label> <select
+								id="turno" class=" form-control form-select form-select-sm">
+								<option value="">Selecione o tipo</option>
+								<option class="form-control"
+									th:each="tipoAjuste : ${tipoAjuste}" th:value="${tipoAjuste}"
+									th:text="${tipoAjuste.descricao}">a</option>
+							</select>
+						</div>
+						
+						<div class="col-md-auto">
 							<label class="col-form-label-sm">Novo estoque:</label> <input
-								class="form-control form-control-sm " placeholder="0,00"
-								th:field="*{qtdEstoque}">
+								class="form-control form-control-sm number" th:field="*{qtdEstoque}"placeholder="0,00"
+								>
 						</div>
 
 					</div>
+				
 
 					<p>
 					<div class="form-row">
 						<a type="button" class="btn btn-danger offset-9"
 							th:href="@{/estoque}">Cancelar</a>&nbsp;
-						<button type="submit" class="btn btn-success ">
-							Salvar</button>
+						<button type="submit" class="btn btn-success ">Salvar</button>
 					</div>
 				</div>
 

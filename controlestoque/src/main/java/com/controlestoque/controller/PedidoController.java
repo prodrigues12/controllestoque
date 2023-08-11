@@ -88,7 +88,6 @@ public class PedidoController {
 
 	}
 
-
 	@GetMapping("/buscarPedido")
 	public ModelAndView buscarPedido(PedidoFilter pedidoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
@@ -100,7 +99,6 @@ public class PedidoController {
 		return mv;
 
 	}
-
 
 	@GetMapping("/{codigo}")
 	public ModelAndView editar(@PathVariable Long codigo) {

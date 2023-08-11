@@ -124,7 +124,7 @@ Controlestoque.GraficosTopProdutos = (function() {
 }());
 
 
-function GraficoValorMes() {
+/*function GraficoValorMes() {
 		this.ctx = $('#graficoValorMes');
 
 	}
@@ -181,7 +181,7 @@ function GraficoValorMes() {
 
 }());
 
-
+*/
 
 
 $(function() {

@@ -178,17 +178,18 @@ public class ProdutosImpl implements ProdutosQueries {
 		return lista;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
 	public List<ValorMes> valorMes(){
 		
 		String query = "SELECT  produto.nome AS produto_nome, produto.valor_unitario as valor_unitario,"
-				+ "sum(item.quantidade) as quantidade , ((sum(item.quantidade) * produto.valor_unitario)) as valor"
+				+ "sum(item.quantidade) as quantidade, ((sum(item.quantidade) * produto.valor_unitario)) as valor"
 				+ "FROM item_pedido item INNER JOIN produto produto  INNER JOIN pedido pedido"
 				+ "ON item.codigo_produto = produto.codigo AND item.codigo_pedido = pedido.codigo AND month(pedido.data_criacao) = month(now())"
 				+ "AND pedido.status='FINALIZADO' group by item.codigo_produto ORDER BY produto.nome ASC";
 		
 		Query nativeQuery = manager.createNativeQuery(query,"mappingValorMes");
 		List<ValorMes> lista = nativeQuery.getResultList();
-		
 		
 		return lista;
 		
