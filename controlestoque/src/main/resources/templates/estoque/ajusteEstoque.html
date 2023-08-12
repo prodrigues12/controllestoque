@@ -23,8 +23,8 @@
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
 	<form method="post"
-		th:action=" @{/estoque/ajuste/{codigo}(codigo=${produto.codigo})}"
-		th:object="${produto}">
+		th:action=" @{/estoque/ajuste/{codigo}(codigo=${estoque.codigo})}"
+		th:object="${estoque}">
 
 		<div class="card border-left-success shadow h-50 ">
 			<div class="card-header">
@@ -42,34 +42,30 @@
 						<label class="col-form-label-sm">Código:</label> <input
 							class="form-control form-control-sm number" th:field=*{codigo}
 							type="text" readonly>
-					</div>
-					<div class="col-md-11">
-						<label class="col-form-label-sm">Nome:</label> <input
-							class="form-control form-control-sm"
-							placeholder="Ex: Caneta vermelha" th:field="*{nome}" readonly>
-
-					</div>
-
-					<div class="row mb-3">
-
-						<div class=" col-md-auto">
-							<label for="uniMedida" class="col-form-label-sm">Unid. de
-								medida:</label> <input class="form-control form-control-sm"
-								th:field="*{uniMedida}" readonly>
-						</div>
-
-
-						<div class="col-md-auto">
-							<label class="col-form-label-sm">Estoque atual:</label> <input
-								class="form-control form-control-sm number" th:value="${produto.qtdEstoque}"
-								readonly
 							
+					</div>
+					
+						<div class="col-md-7">
+							<label class="col-form-label-sm">produto:</label> <input
+								class="form-control form-control-sm " th:value="${produto}"
 								>
 						</div>
+						
+						<div class="col-md-7">
+							<label class="col-form-label-sm">produto:</label> <input
+								class="form-control form-control-sm " th:value="${produto}"
+								>
+						</div>
+						
+			
+					<div class="row mb-3">
+					
+		
 
 						<div class="col-md-auto">
 							<label for="turno" class="col-form-label-sm">Tipo de ajuste:</label> <select
-								id="turno" class=" form-control form-select form-select-sm">
+								id="turno" class=" form-control form-select form-select-sm" 
+								th:field="*{tipoAjuste}">
 								<option value="">Selecione o tipo</option>
 								<option class="form-control"
 									th:each="tipoAjuste : ${tipoAjuste}" th:value="${tipoAjuste}"
@@ -77,10 +73,10 @@
 							</select>
 						</div>
 						
-						<div class="col-md-auto">
-							<label class="col-form-label-sm">Novo estoque:</label> <input
-								class="form-control form-control-sm number" th:field="*{qtdEstoque}"placeholder="0,00"
-								>
+						<div class=" col-md-auto">
+							<label for="uniMedida" class="col-form-label-sm">
+								QTD</label> <input class="form-control form-control-sm"
+								th:value="*{quantidade}" readonly>
 						</div>
 
 					</div>
@@ -92,12 +88,12 @@
 							th:href="@{/estoque}">Cancelar</a>&nbsp;
 						<button type="submit" class="btn btn-success ">Salvar</button>
 					</div>
+					
+					 -->
+					</div>
 				</div>
-
 			</div>
-
 		</div>
-
 	</form>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script

@@ -55,6 +55,20 @@ public class EstoqueController {
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}
+	
+	
+	@GetMapping("/ajuste")
+	public ModelAndView editarEstoque(Estoque estoque) {
+		ModelAndView mv = new ModelAndView("estoque/ajusteEstoque");
+		
+		mv.addObject(mv);
+		mv.addObject("produto", proRepository.findBynome((long) 1));
+		mv.addObject("uniMedida", UnidadeMedia.values());
+		mv.addObject("tipoAjuste", TipoAjusteEstoque.values());
+		return mv;
+	}
+	
+	/*
 
 	@GetMapping("/ajuste/{codigo}")
 	public ModelAndView editarEstoque(@PathVariable("codigo") Produto produto) {
@@ -78,6 +92,8 @@ public class EstoqueController {
 		
 		return new ModelAndView("redirect:/estoque");
 	}
+	
+	*/
 
 	
 
