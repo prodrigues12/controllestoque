@@ -139,7 +139,7 @@ public class ProdutosImpl implements ProdutosQueries {
 
 	// Dashboard - total de produtos
 	public BigDecimal totalItensEstoque() {
-		BigDecimal soma = manager.createQuery("select sum(qtdEstoque) from Produto", BigDecimal.class)
+		BigDecimal soma = manager.createQuery("select coalesce(sum(qtdEstoque),0) from Produto", BigDecimal.class)
 				.getSingleResult();
 		return soma.setScale(0);
 	}

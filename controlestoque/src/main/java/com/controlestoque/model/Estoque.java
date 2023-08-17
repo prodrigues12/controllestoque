@@ -39,9 +39,10 @@ public class Estoque  implements Serializable{
 	@JoinColumn(name = "codigo_produto")
 	private Produto produto;
 	
+	@NotNull(message = "Informar quantidade")
 	private BigDecimal quantidade;
 
-	@NotNull(message = "Tipo de identicicação é obrigatório")
+	@NotNull(message = "Informar tipo de ajuste")
 	@Enumerated(EnumType.STRING)
 	@Column(name = "tipo_ajuste")
 	private TipoAjusteEstoque tipoAjuste;

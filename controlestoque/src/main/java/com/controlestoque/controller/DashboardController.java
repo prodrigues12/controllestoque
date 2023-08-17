@@ -10,13 +10,12 @@ import com.controlestoque.Repository.Produtos;
 
 @Controller
 public class DashboardController {
-	
+
 	@Autowired
 	private Pedidos pedRepository;
 	@Autowired
 	private Produtos proRepository;
-	
-	
+
 	@GetMapping("/")
 	public ModelAndView layout() {
 		ModelAndView mv = new ModelAndView("/dashboard");
@@ -28,18 +27,16 @@ public class DashboardController {
 		mv.addObject("totalItensEstoque", proRepository.totalItensEstoque());
 		mv.addObject("estoqueBaixo", proRepository.estoqueBaixo());
 		mv.addObject("estoqueZero", proRepository.estoqueZero());
-		
+
 		return mv;
-		
+
 	}
-	
+
 	@GetMapping("/sobre")
 	public ModelAndView pageSobre() {
 		ModelAndView mv = new ModelAndView("sobre");
 		return mv;
-		
+
 	}
 
-
-	
 }

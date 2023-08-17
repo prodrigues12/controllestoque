@@ -45,15 +45,20 @@ public class ProdutoService {
 			throw new ImpossivelExcluirEntidadeException("Impossivel apagar Produto. Existe movimentação.");
 		}
 	}
+
 	@Transactional
-	public void atualizarEstoque(Long codigos, BigDecimal estoque ) {
+	public void atualizarEstoque(Long codigos, BigDecimal estoque) {
+
 		Produto pro = prodRepository.findByCodigo(codigos);
-		pro.setQtdEstoque(estoque);
+		if (estoque.compareTo(estoque) < 0) {
+			System.out.println("MENOR Q ZERO");
+			pro.setQtdEstoque(pro.getQtdEstoque().subtract(estoque));
+		} else {
+			System.out.println("MAIOR Q ZERO");
+			pro.setQtdEstoque(pro.getQtdEstoque().add(estoque));
+		}
 		prodRepository.save(pro);
-		
-		
+
 	}
-
-
 
 }

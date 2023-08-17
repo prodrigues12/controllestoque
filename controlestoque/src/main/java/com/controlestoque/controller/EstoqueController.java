@@ -3,6 +3,7 @@ package com.controlestoque.controller;
 import java.math.BigDecimal;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.controlestoque.Enums.TipoAjusteEstoque;
 import com.controlestoque.Enums.UnidadeMedia;
@@ -37,8 +39,6 @@ public class EstoqueController {
 	@Autowired
 	private Secoes sessaoRepository;
 
-	@Autowired
-	private ProdutoService prodService;
 
 	@Autowired
 	private EstoqueService estService;
@@ -55,46 +55,32 @@ public class EstoqueController {
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}
-	
-	
-	@GetMapping("/ajuste")
-	public ModelAndView editarEstoque(Estoque estoque) {
-		ModelAndView mv = new ModelAndView("estoque/ajusteEstoque");
-		
-		mv.addObject(mv);
-		mv.addObject("produto", proRepository.findBynome((long) 1));
-		mv.addObject("uniMedida", UnidadeMedia.values());
-		mv.addObject("tipoAjuste", TipoAjusteEstoque.values());
-		return mv;
-	}
-	
-	/*
 
 	@GetMapping("/ajuste/{codigo}")
-	public ModelAndView editarEstoque(@PathVariable("codigo") Produto produto) {
+	public ModelAndView editarEstoque(Estoque estoque, @PathVariable("codigo") Produto produto) {
 		ModelAndView mv = new ModelAndView("estoque/ajusteEstoque");
 
-		mv.addObject(produto);
+		mv.addObject(mv);
+		mv.addObject("produto", proRepository.ajusteEtq(produto.getCodigo()));
 		mv.addObject("uniMedida", UnidadeMedia.values());
 		mv.addObject("tipoAjuste", TipoAjusteEstoque.values());
-
-		mv.addObject(mv);
 		return mv;
 	}
 
 	@RequestMapping(value = "/ajuste/{codigo}", method = RequestMethod.POST)
 	public ModelAndView novoEstoque(@RequestParam("codigo") Long codigo,
-			@RequestParam("qtdEstoque") BigDecimal estoque) {
+			@Valid Estoque estoque, Produto produto,
+			BindingResult result, RedirectAttributes attributes) {
 
-		prodService.atualizarEstoque(codigo, estoque);
-		estService.atualizarEstoque(codigo, estoque);
+		if (result.hasErrors()) {
+			return editarEstoque(estoque, produto);
 
-		
-		return new ModelAndView("redirect:/estoque");
+		} else {
+			
+			estService.atualizarEstoque(estoque, codigo);
+			attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
+			return new ModelAndView("redirect:/estoque");
+		}
 	}
-	
-	*/
-
-	
 
 }

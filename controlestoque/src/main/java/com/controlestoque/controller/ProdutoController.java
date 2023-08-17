@@ -45,8 +45,6 @@ public class ProdutoController {
 	@Autowired
 	private Secoes secaoRepository;
 
-
-
 	@Autowired
 	private ProdutoService prodService;
 

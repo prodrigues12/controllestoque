@@ -17,7 +17,7 @@ public interface Produtos extends JpaRepository<Produto, Long>, ProdutosQueries{
 	public List<Produto>findByNomeContainingIngnoreCase(String nome); 
 	
 	@Query("select p from Produto p where p.codigo = :id")
-	public Produto AjusteEtq(Long id);
+	public Produto ajusteEtq(Long id);
 	
 	@Query("select p from Produto p where p.qtdEstoque <= p.qtdEstMin")
 	public List<Produto> baixoEtq();
@@ -26,7 +26,7 @@ public interface Produtos extends JpaRepository<Produto, Long>, ProdutosQueries{
 	public Produto findByCodigo(Long codigo);
 	
 	@Query("select p.nome from Produto p where p.codigo =:codigo")
-	public String findBynome(Long codigo);
+	public String findByNome(Long codigo);
 
 	@Query("select p from Produto p where p.codigo =0")
 	public Produto ProdutoPallet();
