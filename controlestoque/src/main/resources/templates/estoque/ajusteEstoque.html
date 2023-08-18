@@ -74,7 +74,7 @@
 					<div class="col-md-auto">
 						<label for="turno" class="col-form-label-sm">Tipo de
 							ajuste:</label> <select id="turno"
-							class=" form-control form-select form-select-sm"
+							class=" form-control form-select form-select-sm" required
 							th:field="*{tipoAjuste}">
 							<option value="">Selecione o tipo</option>
 							<option class="form-control" th:each="tipoAjuste : ${tipoAjuste}"
@@ -84,7 +84,7 @@
 
 					<div class=" col-md-auto">
 						<label for="uniMedida" class="col-form-label-sm">
-							Quantidade:</label> <input class="form-control form-control-sm"
+							Quantidade:</label> <input class="form-control form-control-sm" required
 							th:field="*{quantidade}">
 					</div>
 

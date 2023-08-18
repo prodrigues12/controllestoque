@@ -22,7 +22,6 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
-
 	<form method="post"
 		th:action="${produto.produtoNovo} ? @{/produto/novo} : @{/produto/{codigo}(codigo=${produto.codigo})}"
 		th:object="${produto}">

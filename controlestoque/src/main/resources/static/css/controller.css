@@ -120,7 +120,7 @@ a#texto_pequeno  {
 	background-color: #0A2463;
 }
 
-/* #### Botões #### */
+/* #### Botï¿½es #### */
 .btn {
 	border-radius: 999px;
 	box-shadow: #5E5DF0 0 5px 10px -10px;
@@ -355,6 +355,7 @@ table tr td {
 	color: #4F4F4F !important;
 	font-style: normal;
 	font-weight: bold;
+	background-color: #000;
 }
 
 .status-novo {
@@ -388,7 +389,7 @@ table tr td {
 
 /*
 ###################
-# PÁGINAS DO SISTEMA
+# Pï¿½GINAS DO SISTEMA
 ###################
 */
 
@@ -455,13 +456,13 @@ table tr td {
 	text-align: right;
 }
 
-/* Colunas - Pesquisa de usuários */
+/* Colunas - Pesquisa de usuï¿½rios */
 .table-usuarios-col-status {
 	width: 30px;
 	text-align: center;
 }
 
-/* Tabela Cervejas página de Venda */
+/* Tabela Cervejas pï¿½gina de Venda */
 .tabela-produtos {
 	margin-bottom: 15px;
 }
@@ -477,7 +478,7 @@ table tr td {
 
 /*
 ######################################
-# CUSTOMIZAÇÃO DE COMPONENTES
+# CUSTOMIZAï¿½ï¿½O DE COMPONENTES
 ######################################
 */
 .checkbox input[type="checkbox"]:checked+input+label::after {
@@ -505,7 +506,7 @@ table tr td {
 /* Tabela Item */
 .tabela-item {
 	position: relative;
-	/* Para que o painel de exclusão apareça dentro da linha */
+	/* Para que o painel de exclusï¿½o apareï¿½a dentro da linha */
 	padding: 15px 1px;
 	background-color: #0A2463;
 	color: #fff;

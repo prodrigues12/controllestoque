@@ -22,7 +22,7 @@ public class Secao implements Serializable {
 	
 	 
 	@NotBlank(message = "O campo 'Nome' é obrigatório")
-	@Size (min = 3 , max = 30 ,message = "O tamanha do 'Nome' dever conter de {min} à {max} caracteries")
+	@Size (min = 3 , max = 30 ,message = "Nome da seção dever conter de {min} à {max} caracteries")
 	private String nome;
 	
 	@OneToMany(mappedBy = "secao")
