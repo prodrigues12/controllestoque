@@ -147,7 +147,7 @@
 									Separação</a></li>
 
 							<li><a
-								class="dropdown-item  js-submit-btn text-danger pedido-text-primary"
+								class="dropdown-item  js-submit-btn text-danger pedido-text-danger"
 								data:acao="cancelado" href="#"><i class="bx bxs-right-arrow"></i>&nbsp;&nbsp;
 									Cancelado</a></li>
 
@@ -177,7 +177,7 @@
 	</div>
 	<br />
 	<a sec:authorize="isAuthenticated()" type="button" class="btn btn-dark"
-		href="javascript:history.back()">Voltar</a>
+		th:href="@{/pedido}">Voltar</a>
 
 	<th:block
 		th:replace="colaborador/pesquisaRapidaColaborador :: modalColaborador"></th:block>

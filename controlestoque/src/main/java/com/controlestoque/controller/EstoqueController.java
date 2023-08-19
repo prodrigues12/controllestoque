@@ -76,7 +76,6 @@ public class EstoqueController {
 			return editarEstoque(estoque, produto);
 
 		} else {
-			
 			estService.atualizarEstoque(estoque, codigo);
 			attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
 			return new ModelAndView("redirect:/estoque");

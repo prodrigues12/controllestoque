@@ -44,8 +44,8 @@ public class Produto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
-	@Size(min = 7, max = 100, message = "O campo ''Nome'' deve contar de 7 à 100 caracteries")
-	@NotBlank
+	@Size(min = 7, max = 100, message = "- O campo ''Nome'' deve contar de 7 à 100 caracteries")
+	@NotBlank(message = "- Campo não deve estár em branco.")
 	private String nome;
 
 	private String descricao;
@@ -53,19 +53,20 @@ public class Produto implements Serializable {
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal qtdEstoque;
 
-	@DecimalMin(value = "1.0", message = "Estoque deve ser no mínimo 1")
+	@DecimalMin(value = "1.0", message = "- Estoque deve ser no mínimo 1")
 	private BigDecimal qtdEstMin;
 	
 	@NumberFormat(pattern = "#,##0.00")
+	@NotNull(message = "- Campo 'Seção' é obrigatório")
 	private BigDecimal valorUnitario;
 
 
-	@NotNull(message = "Campo 'Seção' é obrigatório")
+	@NotNull(message = "- Campo 'Seção' é obrigatório")
 	@ManyToOne
 	@JoinColumn(name = "codigo_secao")
 	private Secao secao;
 
-	@NotNull(message = "O unidade de medida é obrigatório")
+	@NotNull(message = "- Campo 'Unid. de medida é obrigatório")
 	@Enumerated(EnumType.STRING)
 	private UnidadeMedia uniMedida;
 

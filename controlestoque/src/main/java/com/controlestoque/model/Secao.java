@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -20,9 +21,8 @@ public class Secao implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	 
-	@NotBlank(message = "O campo 'Nome' é obrigatório")
-	@Size (min = 3 , max = 30 ,message = "Nome da seção dever conter de {min} à {max} caracteries")
+	@NotNull(message = " - O campo 'Nome' é obrigatório")
+	@Size (min = 3 , max = 30 ,message = " - Nome da seção dever conter de {min} à {max} caracteries")
 	private String nome;
 	
 	@OneToMany(mappedBy = "secao")

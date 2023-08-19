@@ -23,9 +23,7 @@ import com.controlestoque.Enums.TipoAjusteEstoque;
 @Entity
 public class Estoque  implements Serializable{
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	@Id

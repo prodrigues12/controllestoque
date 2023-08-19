@@ -52,15 +52,16 @@
 	color: #FAF2F2;
 }
 
-.card-pedido{
+.card-pedido {
 	width: 98% !important;
-/* 	height: 70% !important; */
+	/* 	height: 70% !important; */
 }
-.card_relatorio{
-background-color: #c0c0c0;
-color: #000;
 
-}	
+.card_relatorio {
+	background-color: #c0c0c0;
+	color: #000;
+
+}
 
 
 a {
@@ -71,11 +72,11 @@ a {
 }
 
 .select:hover {
-text-decoration: underline;
+	text-decoration: underline;
 }
 
 
-a#texto_pequeno  {
+a#texto_pequeno {
 	color: #0d6efd;
 	font-size: 11px;
 }
@@ -112,7 +113,7 @@ a#texto_pequeno  {
 }
 
 .pagination {
-    display: inline-flex;
+	display: inline-flex;
 }
 
 .table .thead-dark th {
@@ -144,7 +145,8 @@ a#texto_pequeno  {
 	border: 0;
 }
 
-.btn:link, .btn:visited {
+.btn:link,
+.btn:visited {
 	text-decoration: none;
 	display: inline-block;
 	border-radius: 80px;
@@ -190,15 +192,16 @@ a#texto_pequeno  {
 
 .form-control {
 	border-width: 2px !important;
-	border-color: #0A2463 ;
+	border-color: #0A2463;
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
 	font-weight: bold;
 	font-size: 14px;
 }
-.easy-autocomplete-container{
-		border-width: 2px !important;
-	border-color: #0A2463 ;
+
+.easy-autocomplete-container {
+	border-width: 2px !important;
+	border-color: #0A2463;
 	border-top-right-radius: .2rem !important;
 	border-bottom-right-radius: .2rem !important;
 	font-weight: bold;
@@ -219,7 +222,7 @@ a#texto_pequeno  {
 	font-size: 14px;
 }
 
-.form-row-pedido{
+.form-row-pedido {
 	float: right;
 	width: 15%;
 }
@@ -260,33 +263,33 @@ a#texto_pequeno  {
 	color: #3e92cc;
 }
 
-.dropdown_status_pedido{
-background-color:#FFFFF0;
+.dropdown_status_pedido {
+	background-color: #FFFFF0;
 }
 
-.pedido-text-success:hover{
+.pedido-text-success:hover {
 	color: white !important;
-	background: green; 
+	background: green;
 }
 
-.pedido-text-warning:hover{
-	color: black!important;
-	background: yellow; 
+.pedido-text-warning:hover {
+	color: black !important;
+	background: yellow;
 }
 
-.pedido-text-primary:hover{
+.pedido-text-primary:hover {
 	color: white !important;
-	background: #0080ff; 
+	background: #0080ff;
 }
 
-.pedido-text-danger:hover{
+.pedido-text-danger:hover {
 	color: white !important;
-	background: red; 
-} 
+	background: red;
+}
 
-.pedido-text-dark:hover{
+.pedido-text-dark:hover {
 	color: white !important;
-	background: black; 
+	background: black;
 }
 
 .field-action {
@@ -296,7 +299,8 @@ background-color:#FFFFF0;
 .field-action__icon {
 	margin: 6px 0 0 5px;
 }
-.number{
+
+.number {
 	text-align: right;
 }
 
@@ -351,35 +355,50 @@ table tr td {
 	vertical-align: middle;
 }
 
+
 .status-finalizado {
-	color: #4F4F4F !important;
+	color: #FFF !important;
 	font-style: normal;
 	font-weight: bold;
 	background-color: #000;
+	border: 5px double #000;
+	border-radius: 10px;
 }
 
 .status-novo {
-	color: #008000 !important;
+	color: #fff !important;
 	font-style: normal;
 	font-weight: bold;
+	background-color: #008000;
+	border: 5px double #008000;
+	border-radius: 10px;
 }
 
 .status-cancelado {
-	color: #FF0000 !important;
+	color: #fff !important;
 	font-style: normal;
 	font-weight: bold;
+	background-color: #FF0000;
+	border: 5px double #FF0000;
+	border-radius: 10px;
 }
 
 .status-separacao {
-	color: #d9e401 !important;
+	color: #000 !important;
 	font-style: normal;
 	font-weight: bold;
+	background-color:#d9e401;
+	border: 5px double #d9e401;
+	border-radius: 10px;
 }
 
-.status-pendente {
-	color: #00CED1 !important;
+.status-pendente  {
+	color: #fff !important;
 	font-style: normal;
 	font-weight: bold;
+	background-color:#0080ff;
+	border: 5px double #0080ff;
+	border-radius: 10px;
 }
 
 .valor-negativo {
@@ -522,7 +541,7 @@ table tr td {
 	content: "";
 }
 
-.tabela-item ~ .tabela-item {
+.tabela-item~.tabela-item {
 	border-top: 1px solid #ddd;
 }
 
@@ -540,7 +559,8 @@ table tr td {
 	padding-right: 0px;
 }
 
-.tabela-item__coluna--detalhes, .tabela-item__coluna--valores {
+.tabela-item__coluna--detalhes,
+.tabela-item__coluna--valores {
 	margin-left: 60px;
 }
 
@@ -611,18 +631,23 @@ table tr td {
 	font-size: 45px
 }
 
-@media ( min-width : 768px) { /* screen-sm-min */
+@media (min-width : 768px) {
+
+	/* screen-sm-min */
 	.tabela-item__painel-exclusao {
 		width: 40%;
 		padding-top: 10px;
 	}
+
 	.tabela-item__coluna {
 		float: left;
 		margin-left: 0px;
 	}
+
 	.tabela-item__coluna--detalhes {
 		width: calc(70% - 30px);
 	}
+
 	.tabela-item__coluna--valores {
 		width: calc(30% - 30px);
 		text-align: right;

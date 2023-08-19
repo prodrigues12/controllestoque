@@ -154,7 +154,7 @@
 					<td align="left" th:text="${pedido.colaborador.nome}"></td>
 					<td th:text="${pedido.setorMagalu}"></td>
 					<td th:text="${pedido.turno}"></td>
-					<td th:text="${pedido.status}" th:class="${pedido.bootstrapTabelaPedidoPesquisaStatus}"></td>
+					<td> <a th:text="${pedido.status}" th:class="${pedido.bootstrapTabelaPedidoPesquisaStatus}"></a>
 					<td
 						th:text="${#temporals.format(pedido.dataModificacao, 'dd/MM/yyyy')}"></td>
 					<td><a title="Visualizar"

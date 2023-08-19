@@ -1,11 +1,6 @@
 (function() {
-	//  'use strict'
-
-	// Fetch all the forms we want to apply custom Bootstrap validation styles to
+	
 	var forms = document.querySelectorAll('.needs-validation')
-
-
-	// Loop over them and prevent submission
 	Array.prototype.slice.call(forms)
 		.forEach(function(form) {
 			form.addEventListener('submit', function(event) {
@@ -13,7 +8,6 @@
 					event.preventDefault()
 					event.stopPropagation()
 				}
-
 				form.classList.add('was-validated')
 			}, false)
 		})
@@ -23,7 +17,6 @@ function validarPerido(data, id) {
 
 	$(function() {
 		var dataInicio = getDate(data)
-
 		var month = dataInicio.getMonth() + 1;
 		var day = dataInicio.getDate();
 		var year = dataInicio.getFullYear();
@@ -31,9 +24,7 @@ function validarPerido(data, id) {
 			month = '0' + month.toString();
 		if (day < 10)
 			day = '0' + day.toString();
-
 		var maxDate = year + '-' + month + '-' + day;
-
 		$('#' + id).attr('min', maxDate);
 	});
 
