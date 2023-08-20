@@ -80,14 +80,14 @@
 							<option class="form-control" th:each="tipoAjuste : ${tipoAjuste}"
 								th:value="${tipoAjuste}" th:text="${tipoAjuste.descricao}">a</option>
 						</select>
-						<div class="invalid-feedback">Selecionar o tipo de ajuste</div>
+						<div class="invalid-feedback">* Selecionar o tipo de ajuste</div>
 					</div>
 
 					<div class=" col-md-auto ">
 						<label for="quantidade" class="col-form-label-sm">
 							Quantidade:</label> <input id="quantidade" class="form-control form-control-sm" required
 							th:field="*{quantidade}">
-						<div class="invalid-feedback">Informar valor</div>
+						<div class="invalid-feedback">* Informar valor</div>
 					</div>
 
 				</div>

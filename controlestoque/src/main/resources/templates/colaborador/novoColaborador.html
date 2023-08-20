@@ -24,21 +24,22 @@
 
 	<form method="post"
 		th:action="${colaborador.colaboradorNovo} ? @{/colaborador/novo} : @{/colaborador/{codigo}(codigo=${colaborador.codigo})}"
-		th:object="${colaborador}">
+		th:object="${colaborador}" class="needs-validation" novalidate>
 
 		<input type="hidden" th:field="*{codigo}">
 
 		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
+		<br>
 
-	<div class="card border-left-success shadow h-50 ">
+		<div class="card border-left-success shadow h-50 ">
 			<div class="card-header">
-		
-			<div class="row">
+
+				<div class="row">
 					<div class=" col-md-10 center">
 						<span th:if="${colaborador.colaboradorNovo}">Novo
-							Colaborador/Filial</span>
-						<span th:unless="${colaborador.colaboradorNovo}"
+							Colaborador/Filial</span> <span
+							th:unless="${colaborador.colaboradorNovo}"
 							th:text="|Editando colaborador: ${colaborador.nome}|"></span>
 					</div>
 					<div class="col-md-2 center">
@@ -46,7 +47,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div th:replace="fragmentos/fragmentos :: magalu"></div>
 			<div class="card-body">
 
@@ -55,7 +56,8 @@
 					<!-- 				Nome -->
 					<div class="col-md-12">
 						<label class="col-form-label-sm">Nome:</label> <input
-							class="form-control form-control-sm" th:field="*{nome}">
+							class="form-control form-control-sm" th:field="*{nome}" required>
+							<div class="invalid-feedback">* Campo obrigatório</div>
 					</div>
 				</div>
 
@@ -75,22 +77,24 @@
 										th:id="|codigo_${tipoIdentificacao}|"
 										th:value="${tipoIdentificacao}"
 										data:documento="${tipoIdentificacao.documento}"
-										data:mascara="${tipoIdentificacao.mascara}"> <label
-										class="form-check-label" for="radioIdentificacao"
+										data:mascara="${tipoIdentificacao.mascara}" required>
+									<label class="form-check-label" for="radioIdentificacao"
 										th:for="|codigo_${tipoIdentificacao}|"
 										th:text="${tipoIdentificacao.descricao}"> Magalu </label>
 								</div>
 							</th:block>
+							
 						</div>
-					</div>
 
+					</div>
 					<!-- 					Matricula/CPF -->
 
 					<div class=" col-md-auto">
 						<label for="cpfCnpjId" class=" col-form-label-sm">ID
 							magalu / CNPJ:</label> <input id="cpfCnpjId"
 							class="form-control form-control-sm" type="text"
-							th:field=*{cpfCnpjId} disabled />
+							th:field=*{cpfCnpjId} disabled required />
+							<div class="invalid-feedback">* Campo obrigatório</div>
 					</div>
 				</div>
 
@@ -118,5 +122,6 @@
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/colaborador.mascara-cpf-cnpj-id.js"></script>
 	<script src="/js/controllestoque.js"></script>
+	<script src="/js/validation.js"></script>
 </body>
 </html>

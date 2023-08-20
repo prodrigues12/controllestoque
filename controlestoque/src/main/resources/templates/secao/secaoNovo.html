@@ -23,10 +23,11 @@
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
 	<form id="form-secao" method="post" th:action="@{/secao/novo}"
-		th:object="${secao}">
+		th:object="${secao}" class="needs-validation" novalidate>
 
 		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
+		<br>
 
 		<div class="card border-left-success shadow h-50 ">
 			<div class="card-header">
@@ -49,7 +50,10 @@
 						<label class="col-form-label-sm">Nome:</label> <input
 							id="nomeSecao" name="nomeSecao"
 							class="form-control form-control-sm" placeholder="Nome da seção"
-							th:field="*{nome}">
+							th:field="*{nome}" required>
+							<div class="invalid-feedback">
+								Campo não pode ser fazio.
+							</div>
 					</div>
 				</div>
 
@@ -79,7 +83,7 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="/js/sindebar.js"></script>
-	<script src="/js/controllestoque.dialogo-salvar.js"></script>
+	<script src="/js/validation.js"></script>
 
 </body>
 </html>

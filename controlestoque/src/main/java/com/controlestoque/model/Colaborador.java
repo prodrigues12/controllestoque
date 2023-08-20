@@ -59,12 +59,10 @@ public class Colaborador implements Serializable{
 		this.cpfCnpjId = TipoIdentificacao.removerFormatacao(this.cpfCnpjId);
 	}
 	
-
 	@PostLoad
 	private void postLoad() {
 		this.cpfCnpjId = this.tipoIdentificacao.formatar(this.cpfCnpjId);
 	}
-
 
 
 	public Long getCodigo() {
@@ -91,7 +89,6 @@ public class Colaborador implements Serializable{
 		this.tipoIdentificacao = tipoIdentificacao;
 	}
 	
-
 	public String getCpfCnpjId() {
 		return cpfCnpjId;
 	}
@@ -100,8 +97,6 @@ public class Colaborador implements Serializable{
 		this.cpfCnpjId = cpfCnpjId;
 	}
 
-	
-	
 	public boolean isColaboradorNovo() {
 		return codigo == null;
 	}
@@ -135,6 +130,5 @@ public class Colaborador implements Serializable{
 		return TipoIdentificacao.removerFormatacao(cpfCnpjId);
 	}
 	
-
 
 }

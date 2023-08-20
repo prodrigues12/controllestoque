@@ -24,19 +24,20 @@
 
 	<form method="post"
 		th:action="${produto.produtoNovo} ? @{/produto/novo} : @{/produto/{codigo}(codigo=${produto.codigo})}"
-		th:object="${produto}">
+		th:object="${produto}" class="needs-validation" novalidate>
 
 		<input type="hidden" th:field="*{codigo}">
 
 		<th:block th:replace="fragmentos/mensagemSucesso"></th:block>
 		<th:block th:replace="fragmentos/mensagensErrosValidacao"></th:block>
+		<br>
 
 		<div class="card border-left-success shadow h-50 ">
 			<div class="card-header">
 				<div class="row">
 					<div class=" col-md-10 center">
-						<span th:if="${produto.produtoNovo}">Novo Produto</span>
-						<span th:unless="${produto.produtoNovo}"
+						<span th:if="${produto.produtoNovo}">Novo Produto</span> <span
+							th:unless="${produto.produtoNovo}"
 							th:text="|Editando produto: ${produto.nome}|"></span>
 					</div>
 					<div class="col-md-2 center">
@@ -66,7 +67,8 @@
 					<!-- 				Nome -->
 					<div class="col-md-11">
 						<label class="col-form-label-sm">Nome:</label> <input
-							class="form-control form-control-sm" th:field="*{nome}">
+							class="form-control form-control-sm" th:field="*{nome}" required>
+							<div class="invalid-feedback">* Campo obrigatório</div>
 
 					</div>
 				</div>
@@ -76,7 +78,9 @@
 					<div class="col-md-12">
 						<label class=" col-form-label-sm">Descrição:</label>
 						<textarea class="form-control form-control-sm"
-							th:field="*{descricao}" placeholder="Descrição do produto "></textarea>
+							th:field="*{descricao}" placeholder="Descrição do produto"
+							required></textarea>
+							<div class="invalid-feedback">* Campo obrigatório</div>
 					</div>
 				</div>
 
@@ -88,7 +92,7 @@
 						<div class="input-group">
 							<select id="secao"
 								class=" form-control form-select form-select-sm"
-								th:field="*{secao}">
+								th:field="*{secao}" required>
 								<option value="">Selecione uma Seção</option>
 								<option class="form-control-label form-control-sm"
 									th:each="secao : ${secao}" th:value="${secao.codigo}"
@@ -96,7 +100,9 @@
 							</select> <a href="#" data-bs-toggle="modal" data-bs-target="#secaoModal">
 								<i class="bx bxs-plus-circle ce-icon"></i>
 							</a>
+							<div class="invalid-feedback">* Campo obrigatório</div>
 						</div>
+						
 					</div>
 
 
@@ -105,18 +111,20 @@
 						<label for="uniMedida" class="col-form-label-sm">Unid. de
 							medida:</label> <select id="uniMedida"
 							class=" form-control form-select form-select-sm"
-							th:field="*{uniMedida}">
+							th:field="*{uniMedida}" required>
 							<option value="">Selecione</option>
 							<option class="form-control" th:each="uniMedida : ${uniMedida}"
 								th:value="${uniMedida}" th:text="${uniMedida.descricao}">a</option>
 						</select>
+						<div class="invalid-feedback">* Campo obrigatório</div>
 					</div>
 
 					<!-- 				Estoque minimo -->
 					<div class="col-md-2">
 						<label for="estoqueMin" class="col-form-label-sm">Estoque
 							minimo:</label> <input id="estoqueMin" type="text"
-							th:field="*{qtdEstMin}" class="form-control form-control-sm number"
+							th:field="*{qtdEstMin}"
+							class="form-control form-control-sm number"
 							placeholder="Ex: 10,00">
 					</div>
 
@@ -125,7 +133,8 @@
 						<label for="estoque" class="col-form-label-sm">Estoque:</label>
 						<div class="input-group">
 							<input id="estoque" type="text" th:field="*{qtdEstoque}"
-								class="form-control form-control-sm number" readonly> &nbsp;
+								class="form-control form-control-sm number" readonly>
+							&nbsp;
 							<div class="input-group-btn">
 								<a class="btn btn-primary"
 									th:href="@{/estoque/ajuste/{codigo}(codigo=${produto.codigo})}">
@@ -134,30 +143,30 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<!-- valor unitario -->
 					<div class="col-md-2">
-						<label for="estoqueMin" class="col-form-label-sm">Valor unitário R$:</label> <input id="estoqueMin" type="text"
-						th:field="*{valorUnitario}"	class="form-control form-control-sm number"
-							placeholder="Ex: 10,00">
+						<label for="estoqueMin" class="col-form-label-sm">Valor
+							unitário R$:</label> <input id="estoqueMin" type="text"
+							class="form-control form-control-sm number"
+							th:field="*{valorUnitario}" required placeholder="Ex: 10,00">
+							<div class="invalid-feedback">* Campo obrigatório</div>
 					</div>
 
 				</div>
 
 				<div class="form-check">
-					<input class="form-check-input" type="checkbox" 
-						id="status_produto" checked> <label
-						class="form-check-label" for="status_produto"> Ativo </label>
+					<input class="form-check-input" type="checkbox" id="status_produto"
+						checked> <label class="form-check-label"
+						for="status_produto"> Ativo </label>
 				</div>
 
 
 				<div class="row mb-3">
 					<!-- 				Botões -->
 					<div class="d-grid gap-1 d-md-flex justify-content-md-end">
-						<a type="button" th:href="@{/produto}"
-							class="btn btn-danger">Cancelar</a>
-						<button type="submit" class="btn btn-success">
-							Salvar</button>
+						<a type="button" th:href="@{/produto}" class="btn btn-danger">Cancelar</a>
+						<button type="submit" class="btn btn-success">Salvar</button>
 					</div>
 				</div>
 			</div>
@@ -173,12 +182,13 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-		<script src="https://cdnout.com/sweetalert"></script>
+	<script src="https://cdnout.com/sweetalert"></script>
 	<script src="/js/vendors/jquery.mask.min.js"></script>
 	<script src="/js/vendors/jquery.maskMoney.min.js"></script>
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/secao.cadastro-rapido.js"></script>
 	<script src="/js/controllestoque.js"></script>
 	<script src="/js/controllestoque.dialogo-salvar-produto.js"></script>
+	<script src="/js/validation.js"></script>
 </body>
 </html>
