@@ -200,6 +200,8 @@ a {
     }
 
     .body-pd {
-        padding-left: calc(var(--nav-width) + 150px)
+        padding-left: calc(var(--nav-width) + 150px);
+        width: auto;
+        
     }
 }

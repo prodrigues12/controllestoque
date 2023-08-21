@@ -32,8 +32,6 @@ public class EstoqueService {
 		Estoque novoEstoque = new Estoque();
 		Produto pro = prodRepository.findByCodigo(codigos);
 		
-		System.out.println("######## "+estoque.getQuantidade());
-		
 		//VALIDANDO TIPO DE AJUSTE
 		if (estoque.getTipoAjuste().equals(TipoAjusteEstoque.ENTRADA)
 				|| estoque.getTipoAjuste().equals(TipoAjusteEstoque.OUTRAS_ENTRADAS)) {

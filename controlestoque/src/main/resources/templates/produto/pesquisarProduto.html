@@ -110,7 +110,7 @@
 					<td th:text="${produto.secao.nome}">Limpeza</td>
 					
 					<td th:text="${#numbers.formatDecimal(produto.qtdEstoque,1,0)}"th:class="${produto.estoqueIgualMenorZero}">4</td>
-					<td th:text="|R$ ${#numbers.formatDecimal(produto.valorUnitario,1,2)}|"></td>
+					<td th:text="|R$ ${#numbers.formatDecimal(produto.valorCusto,1,2)}|"></td>
 					<td><a title="Editar"
 						th:href="@{/produto/{codigo}(codigo=${produto.codigo})}"><i
 							class=" bx bx-edit ce-icon"></i> </a> &nbsp; <a

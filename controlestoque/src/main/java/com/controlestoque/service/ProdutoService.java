@@ -66,5 +66,14 @@ public class ProdutoService {
 		prodRepository.save(pro);
 
 	}
+	
+	@Transactional
+	public void atualizarValorCusto(Long codigos, BigDecimal valorCusto) {
+
+		Produto pro = prodRepository.findByCodigo(codigos);
+		pro.setValorCusto(valorCusto);
+		prodRepository.save(pro);
+
+	}
 
 }

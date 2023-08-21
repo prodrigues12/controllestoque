@@ -33,7 +33,7 @@
 					aria-label="Button group with nested dropdown">
 					<div class="btn-group" role="group">
 						<a id="userLogado"  th:text="|Olá, ${#authentication.getPrincipal().getNome()}|"
-							class="nomeUser" data-bs-toggle="dropdown" aria-expanded="false">
+							class="nomeUser" data-bs-toggle="dropdown" aria-expanded="false" >
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="userLogado">
 							<li><a class="dropdown-item" th:href="@{/sobre}">Sobre</a></li>

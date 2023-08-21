@@ -59,8 +59,11 @@ public class ProdutoController {
 
 	@RequestMapping(value = { "/novo", "{\\d+}" }, method = RequestMethod.POST)
 	public ModelAndView salvarProduto(@Valid Produto produto, BindingResult result, RedirectAttributes attributes) {
+		
+		System.out.println("*********  "+ produto.getSecao().getNome());
 
 		if (result.hasErrors()) {
+			System.out.println("*********  Caindo no hasErrors");
 			return novo(produto);
 			
 		} else {

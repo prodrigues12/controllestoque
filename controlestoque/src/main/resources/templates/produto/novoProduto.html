@@ -132,8 +132,8 @@
 					<div class=" col-md-2" th:unless="${produto.produtoNovo}">
 						<label for="estoque" class="col-form-label-sm">Estoque:</label>
 						<div class="input-group">
-							<input id="estoque" type="text" th:field="*{qtdEstoque}"
-								class="form-control form-control-sm number" readonly>
+							<input id="estoque" type="text" 
+								class="form-control form-control-sm number" th:field="*{qtdEstoque}" readonly>
 							&nbsp;
 							<div class="input-group-btn">
 								<a class="btn btn-primary"
@@ -146,10 +146,20 @@
 
 					<!-- valor unitario -->
 					<div class="col-md-2">
-						<label for="estoqueMin" class="col-form-label-sm">Valor
-							unitário R$:</label> <input id="estoqueMin" type="text"
+						<label for="valorUni" class="col-form-label-sm">Valor
+							unitário R$:</label>
+							<div class="input-group">
+							 <input id="valorUni" type="text"
 							class="form-control form-control-sm number"
-							th:field="*{valorUnitario}" required placeholder="Ex: 10,00">
+							th:field="*{valorCusto}" required placeholder="Ex: 10,00">
+							&nbsp;
+							<div class="input-group-btn">
+								<a class="btn btn-primary"
+									th:href="@{/valorCusto/ajuste/{codigo}(codigo=${produto.codigo})}">
+									<i class="bx bx-money "></i>
+								</a>
+							</div>
+						</div>
 							<div class="invalid-feedback">* Campo obrigatório</div>
 					</div>
 

@@ -57,8 +57,8 @@ public class Produto implements Serializable {
 	private BigDecimal qtdEstMin;
 	
 	@NumberFormat(pattern = "#,##0.00")
-	@NotNull(message = "- Campo 'Seção' é obrigatório")
-	private BigDecimal valorUnitario;
+	@NotNull(message = "- Campo ' Valor do custo' é obrigatório")
+	private BigDecimal valorCusto;
 
 
 	@NotNull(message = "- Campo 'Seção' é obrigatório")
@@ -118,13 +118,13 @@ public class Produto implements Serializable {
 	public void setSecao(Secao secao) {
 		this.secao = secao;
 	}
-	
-	public BigDecimal getValorUnitario() {
-		return valorUnitario;
+
+	public BigDecimal getValorCusto() {
+		return valorCusto;
 	}
 
-	public void setValorUnitario(BigDecimal valorUnitario) {
-		this.valorUnitario = valorUnitario;
+	public void setValorCusto(BigDecimal valorCusto) {
+		this.valorCusto = valorCusto;
 	}
 
 	public UnidadeMedia getUniMedida() {

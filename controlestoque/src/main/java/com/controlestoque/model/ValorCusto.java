@@ -16,7 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 @Entity
-public class ValorUnitario implements Serializable {
+public class ValorCusto implements Serializable {
 
 	/**
 	 * 
@@ -96,7 +96,7 @@ public class ValorUnitario implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ValorUnitario other = (ValorUnitario) obj;
+		ValorCusto other = (ValorCusto) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
