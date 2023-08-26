@@ -60,7 +60,7 @@
 					<div class=" col-md-2">
 						<label for="uniMedida" class="col-form-label-sm"> Valor
 							atual:</label> <input class="form-control form-control-sm number"
-						th:value="'R$ ' + ${#numbers.formatDecimal(produto.valorUnitario,1,2)}" readonly>
+						th:value="'R$ ' + ${#numbers.formatDecimal(produto.valorCusto,1,2)}" readonly>
 					</div>
 
 					<div class=" col-md-1">

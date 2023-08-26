@@ -1,5 +1,5 @@
 (function() {
-	
+
 	var forms = document.querySelectorAll('.needs-validation')
 	Array.prototype.slice.call(forms)
 		.forEach(function(form) {
@@ -42,27 +42,32 @@ function getDate(value) {
 
 
 function validarForm() {
-	
-    if ($('#dataInicio').val().length > 0 ) {
-        $('#dataFim').removeAttr('disabled')
-    } 
-      if ($('#dataFim').val().length > 0 ) {
-	
-        $('#btn-salvar').removeAttr('disabled')
-    } else {
-        $('#btn-salvar').attr('disabled', 'disabled')
-    }
+
+	if ($('#dataInicio').val().length > 0) {
+		$('#dataFim').removeAttr('disabled')
+	}
+	if ($('#dataFim').val().length > 0) {
+
+		$('#btn-salvar').removeAttr('disabled')
+	} else {
+		$('#btn-salvar').attr('disabled', 'disabled')
+	}
 }
 
 $('#dataInicio, #dataFim').on('focusout', validarForm)
 
 $('#dataInicio, #dataFim').keyup(validarForm)
-	
+
+//validando campo custo
+var inputValue = $('#valorCusto').val();
+if (inputValue !== null && inputValue.trim() !== '') {
+	$('#valorCusto').attr('readonly');
+	console.log('caiu no if')
+} else {
+	$('#valorCusto').removeAttr('readonly');
 
 
-
-
-
+}
 
 
 
