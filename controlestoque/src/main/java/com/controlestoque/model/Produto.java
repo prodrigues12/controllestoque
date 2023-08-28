@@ -2,11 +2,9 @@ package com.controlestoque.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 
 import javax.persistence.ColumnResult;
 import javax.persistence.ConstructorResult;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,7 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.persistence.SqlResultSetMapping;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
@@ -26,9 +24,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.format.annotation.NumberFormat;
 
 import com.controlestoque.Enums.UnidadeMedia;
-import com.controlestoque.dto.PedidosMes;
 import com.controlestoque.dto.ProdutosTopFive;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 
@@ -55,11 +51,10 @@ public class Produto implements Serializable {
 
 	@DecimalMin(value = "1.0", message = "- Estoque deve ser no mínimo 1")
 	private BigDecimal qtdEstMin;
-	
+
 	@NumberFormat(pattern = "#,##0.00")
 	@NotNull(message = "- Campo ' Valor do custo' é obrigatório")
 	private BigDecimal valorCusto;
-
 
 	@NotNull(message = "- Campo 'Seção' é obrigatório")
 	@ManyToOne
@@ -69,7 +64,6 @@ public class Produto implements Serializable {
 	@NotNull(message = "- Campo 'Unid. de medida é obrigatório")
 	@Enumerated(EnumType.STRING)
 	private UnidadeMedia uniMedida;
-
 
 	public Long getCodigo() {
 		return codigo;
@@ -135,7 +129,6 @@ public class Produto implements Serializable {
 		this.uniMedida = uniMedida;
 	}
 
-
 	public boolean isProdutoNovo() {
 		return this.codigo == null;
 	}
@@ -144,7 +137,7 @@ public class Produto implements Serializable {
 		if (getQtdEstoque().compareTo(BigDecimal.ZERO) == 0 || getQtdEstoque().compareTo(BigDecimal.ZERO) == -1) {
 			return "valor-negativo";
 		}
-		
+
 		return null;
 
 	}

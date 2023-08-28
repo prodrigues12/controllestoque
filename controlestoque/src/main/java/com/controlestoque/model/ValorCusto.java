@@ -31,7 +31,7 @@ public class ValorCusto implements Serializable {
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dataAlteracao;
 
-	@NumberFormat(pattern = "#,##0.00")
+	//@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal valorCusto;
 
 	@ManyToOne

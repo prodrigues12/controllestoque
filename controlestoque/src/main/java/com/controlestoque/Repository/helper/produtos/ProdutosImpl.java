@@ -165,7 +165,7 @@ public class ProdutosImpl implements ProdutosQueries {
 	@Override
 	public List<ProdutosTopFive> topFiveProdutos() {
 
-		String query = "SELECT  produto.nome AS nome, count(item.quantidade) AS quantidade "
+		String query = "SELECT  produto.nome AS nome, sum(item.quantidade) AS quantidade "
 				+ "FROM item_pedido item INNER JOIN produto produto  INNER JOIN pedido pedido "
 				+ "ON item.codigo_produto = produto.codigo AND item.codigo_pedido = pedido.codigo "
 				+ "AND pedido.data_criacao BETWEEN CURDATE() - INTERVAL 6 MONTH AND CURDATE() "
