@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
@@ -18,9 +19,6 @@ import org.springframework.format.annotation.NumberFormat;
 @Entity
 public class ValorCusto implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -31,8 +29,9 @@ public class ValorCusto implements Serializable {
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate dataAlteracao;
 
-	//@NumberFormat(pattern = "#,##0.00")
-	private BigDecimal valorCusto;
+	@NumberFormat(pattern = "#,##0.00")
+	@NotNull(message = "- Campo ' Valor do custo' é obrigatório")
+	private BigDecimal valor;
 
 	@ManyToOne
 	@JoinColumn(name = "codigo_produto")
@@ -56,12 +55,12 @@ public class ValorCusto implements Serializable {
 		this.dataAlteracao = dataAlteracao;
 	}
 
-	public BigDecimal getValorCusto() {
-		return valorCusto;
+	public BigDecimal getValor() {
+		return valor;
 	}
 
-	public void setValorCusto(BigDecimal valorCusto) {
-		this.valorCusto = valorCusto;
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 
 	public Produto getProduto() {
@@ -104,9 +103,5 @@ public class ValorCusto implements Serializable {
 			return false;
 		return true;
 	}
-
-	
-	
-	
 
 }

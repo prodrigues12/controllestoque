@@ -30,20 +30,17 @@ public class ValorCustoService {
 
 	@Transactional
 	public ValorCusto atualizarValorCusto(ValorCusto valorCusto, Long codigos) {
-
-		ValorCusto novoValorCusto = new ValorCusto();
+		
 		Produto pro = prodRepository.findByCodigo(codigos);
 
-		novoValorCusto.setDataAlteracao(LocalDate.now());
-		novoValorCusto.setValorCusto(valorCusto.getValorCusto());
-		novoValorCusto.setProduto(pro);
-		novoValorCusto.setFornecedor(valorCusto.getFornecedor());
+		valorCusto.setDataAlteracao(LocalDate.now());
+		valorCusto.setProduto(pro);
 		
-		proService.atualizarValorCusto(pro.getCodigo(),novoValorCusto.getValorCusto());
+		proService.atualizarValorCusto(pro.getCodigo(),valorCusto.getValor());
 		
-		valRepository.save(novoValorCusto);
+		valRepository.save(valorCusto);
 
-		return novoValorCusto;
+		return valorCusto;
 	}
-
+	
 }

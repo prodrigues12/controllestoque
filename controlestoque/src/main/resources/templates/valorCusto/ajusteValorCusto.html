@@ -22,8 +22,7 @@
 	<div th:replace="fragmentos/fragmentos :: header"></div>
 	<div th:replace="fragmentos/fragmentos :: sindebar"></div>
 
-	<form method="post"
-		th:action=" @{/valorCusto/ajuste/{codigo}(codigo=${valorCusto.codigo})}"
+	<form method="post"th:action=" @{/valorCusto/ajuste/{codigo}(codigo=${valorCusto.codigo})}"
 		th:object="${valorCusto}" class="needs-validation" novalidate>
 
 		<input type="hidden" th:field="*{codigo}">
@@ -44,43 +43,44 @@
 			<div class="card-body">
 				<div class="row mb-3">
 
-					<div class="col-md-1">
-						<label class="col-form-label-sm">Código:</label> <input
-							class="form-control form-control-sm number" th:value="${produto.codigo}"
-							type="text" readonly>
+										<div class="col-md-1">
+											<label class="col-form-label-sm">Código:</label> <input
+												class="form-control form-control-sm number" th:field="*{codigo}"
+												type="text" readonly>
 
-					</div>
+										</div>
 
-					<div class="col-md-7">
-						<label class="col-form-label-sm">Produto:</label> <input
-							class="form-control form-control-sm " th:value="${produto.nome}"
-							readonly>
-					</div>
+										<div class="col-md-7">
+											<label class="col-form-label-sm">Produto:</label> <input
+												class="form-control form-control-sm " th:value="${produto.nome}"
+												readonly>
+										</div>
 
-					<div class=" col-md-2">
-						<label for="uniMedida" class="col-form-label-sm"> Valor
-							atual:</label> <input class="form-control form-control-sm number"
-						th:value="'R$ ' + ${#numbers.formatDecimal(produto.valorCusto,1,2)}" readonly>
-					</div>
+										<div class=" col-md-2">
+											<label for="uniMedida" class="col-form-label-sm"> Valor
+												atual:</label> <input class="form-control form-control-sm number"
+											th:value="'R$ ' + ${#numbers.formatDecimal(produto.valorCusto,1,2)}" readonly>
+										</div>
 
-					<div class=" col-md-1">
-						<label for="uniMedida" class="col-form-label-sm"> Un.
-							Medida:</label> <input class="form-control form-control-sm"
-							th:value="${produto.uniMedida}" readonly>
-					</div>
+										<div class=" col-md-1">
+											<label for="uniMedida" class="col-form-label-sm"> Un.
+												Medida:</label> <input class="form-control form-control-sm"
+												th:value="${produto.uniMedida}" readonly>
+										</div>
 				</div>
 				<div class="row mb-3">
-						<div class="col-md-4">
-							<label class="col-form-label-sm">Fornecedor:</label> <input
-								class="form-control form-control-sm" th:field="*{fornecedor}" required>
-							<div class="invalid-feedback">* Informe o fornecedor</div>
-						</div>
+					<div class="col-md-4">
+						<label class="col-form-label-sm">Fornecedor:</label> <input
+							class="form-control form-control-sm" th:field="*{fornecedor}"
+							required>
+						<div class="invalid-feedback">* Informe o fornecedor</div>
+					</div>
 
 					<div class=" col-md-2 ">
-						<label for="valorCusto" class="col-form-label-sm">
-							Novo valor uni. R$</label> <input id="valorCusto" type="text"
+						<label for="valorCusto" class="col-form-label-sm"> Novo
+							valor uni. R$</label> <input id="valorCusto" type="text"
 							class="form-control form-control-sm number" required
-							th:field="*{valorCusto}">
+							th:field="*{valor}">
 						<div class="invalid-feedback">* Informar valor</div>
 					</div>
 
@@ -102,12 +102,12 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-	
+
 	<script src="/js/vendors/jquery.maskMoney.min.js"></script>
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/controllestoque.js"></script>
 	<script src="/js/validation.js"></script>
-<script src="/js/mascaras.js"></script>
+	<script src="/js/mascaras.js"></script>
 
 </body>
 </html>

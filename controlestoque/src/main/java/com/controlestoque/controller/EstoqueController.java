@@ -61,7 +61,7 @@ public class EstoqueController {
 		ModelAndView mv = new ModelAndView("estoque/ajusteEstoque");
 
 		mv.addObject(mv);
-		mv.addObject("produto", proRepository.ajusteEtq(produto.getCodigo()));
+		mv.addObject("produto", proRepository.findByCodigo(produto.getCodigo()));
 		mv.addObject("uniMedida", UnidadeMedia.values());
 		mv.addObject("tipoAjuste", TipoAjusteEstoque.values());
 		return mv;

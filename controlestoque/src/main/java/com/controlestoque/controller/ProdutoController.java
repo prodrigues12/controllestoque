@@ -13,10 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -59,13 +57,12 @@ public class ProdutoController {
 
 	@RequestMapping(value = { "/novo", "{\\d+}" }, method = RequestMethod.POST)
 	public ModelAndView salvarProduto(@Valid Produto produto, BindingResult result, RedirectAttributes attributes) {
-		
-		System.out.println("*********  "+ produto.getSecao().getNome());
 
+		System.out.println("############ "+ produto.getValorCusto().getClass().getTypeName());
 		if (result.hasErrors()) {
-			System.out.println("*********  Caindo no hasErrors");
-			return novo(produto);
 			
+			return novo(produto);
+
 		} else {
 			prodService.salvar(produto);
 			attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
@@ -85,12 +82,11 @@ public class ProdutoController {
 		return mv;
 	}
 
-	//autocomplete 
-	@RequestMapping(value = "/autocomplete",consumes = MediaType.APPLICATION_JSON_VALUE)
+	// autocomplete
+	@RequestMapping(value = "/autocomplete", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<ProdutoDTO> pesquisar(String codigoOuNome) {
 		return proRepository.codigoOuNome(codigoOuNome);
 	}
-
 
 	@DeleteMapping("/{codigo}")
 	public @ResponseBody ResponseEntity<?> excluir(@PathVariable("codigo") Produto produto) {
@@ -113,7 +109,7 @@ public class ProdutoController {
 		return mv;
 
 	}
-	
+
 	@GetMapping("/estoqueBaixo")
 	public ModelAndView estoqueBaixo(ProdutoFilter produtoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
@@ -125,7 +121,7 @@ public class ProdutoController {
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}
-	
+
 	@GetMapping("/estoqueZero")
 	public ModelAndView estoqueZero(ProdutoFilter produtoFilter, BindingResult result,
 			@PageableDefault(size = 20) Pageable pageable, HttpServletRequest httpServletRequest) {
@@ -137,17 +133,17 @@ public class ProdutoController {
 		mv.addObject("pagina", paginaWrapper);
 		return mv;
 	}
-	
+
 	@GetMapping("/produtosTopFive")
-	public @ResponseBody List<ProdutosTopFive> listaProdutosTopFive(){
+	public @ResponseBody List<ProdutosTopFive> listaProdutosTopFive() {
 		return proRepository.topFiveProdutos();
-		
+
 	}
-	
+
 	@GetMapping("/valorMes")
-	public @ResponseBody List<ValorMes> listaValorMes(){
+	public @ResponseBody List<ValorMes> listaValorMes() {
 		return proRepository.valorMes();
-		
+
 	}
 
 }

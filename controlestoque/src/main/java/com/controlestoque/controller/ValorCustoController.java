@@ -8,8 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -18,7 +18,6 @@ import com.controlestoque.Enums.TipoAjusteEstoque;
 import com.controlestoque.Enums.UnidadeMedia;
 import com.controlestoque.Repository.Produtos;
 
-import com.controlestoque.model.Produto;
 import com.controlestoque.model.ValorCusto;
 
 import com.controlestoque.service.ValorCustoService;
@@ -34,27 +33,26 @@ public class ValorCustoController {
 	private ValorCustoService valService;
 
 	@GetMapping("/ajuste/{codigo}")
-	public ModelAndView editarEstoque(ValorCusto valorCusto, @PathVariable("codigo") Produto produto) {
+	public ModelAndView editarEstoque(ValorCusto valorCusto, @PathVariable("codigo") Long codigo) {
 		ModelAndView mv = new ModelAndView("valorCusto/ajusteValorCusto");
 
-		mv.addObject(mv);
-		mv.addObject("produto", proRepository.ajusteEtq(produto.getCodigo()));
+		mv.addObject("produto", proRepository.findByCodigo(codigo));
 		mv.addObject("uniMedida", UnidadeMedia.values());
 		mv.addObject("tipoAjuste", TipoAjusteEstoque.values());
 		return mv;
 	}
 
-	@RequestMapping(value = "/ajuste/{codigo}", method = RequestMethod.POST)
-	public ModelAndView novoEstoque(@RequestParam("codigo") Long codigo, @Valid ValorCusto valorCusto, Produto produto,
+	@PostMapping("/ajuste/{codigo}")
+	public ModelAndView novoEstoque(@RequestParam("codigo") Long codigo, @Valid ValorCusto valorCusto,
 			BindingResult result, RedirectAttributes attributes) {
 
 		if (result.hasErrors()) {
-			return editarEstoque(valorCusto, produto);
+			return editarEstoque(valorCusto, codigo);
 
 		} else {
 			valService.atualizarValorCusto(valorCusto, codigo);
 			attributes.addFlashAttribute("mensagem", "Salvo com sucesso");
-			return new ModelAndView("redirect:/valorCusto/ajuste/"+codigo);
+			return new ModelAndView("redirect:/valorCusto/ajuste/" + codigo);
 		}
 	}
 
