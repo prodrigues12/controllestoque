@@ -28,7 +28,8 @@ body {
     padding: 0 1rem;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
-    transition: .5s
+    transition: .5s;
+    margin-top: 0;
 }
 
 a {
@@ -37,7 +38,7 @@ a {
 
 .header {
     width: 100%;
-    height: var(--header-height);
+/*    height: var(--header-height);*/
     position: fixed;
     top: 0;
     left: 0;
@@ -54,8 +55,18 @@ a {
     color: var(--first-color);
     font-size: 1.5rem;
     cursor: pointer;
-    margin-left: 0 cm;
-    
+    margin-left: 0 cm;  
+}
+
+.header-expanded {
+  height: 1rem; /* Ajuste a altura desejada */
+}
+
+.header.header-expanded {
+    /* Largura do cabeçalho quando o toggle está ativado */
+    width: calc(100% - var(--nav-width));
+    /* Altura do cabeçalho quando o toggle está ativado */
+    height: var(--header-height-expanded);
 }
 
 .header_img {

@@ -387,16 +387,16 @@ table tr td {
 	color: #000 !important;
 	font-style: normal;
 	font-weight: bold;
-	background-color:#d9e401;
+	background-color: #d9e401;
 	border: 5px double #d9e401;
 	border-radius: 10px;
 }
 
-.status-pendente  {
+.status-pendente {
 	color: #fff !important;
 	font-style: normal;
 	font-weight: bold;
-	background-color:#0080ff;
+	background-color: #0080ff;
 	border: 5px double #0080ff;
 	border-radius: 10px;
 }
@@ -631,31 +631,107 @@ table tr td {
 	font-size: 45px
 }
 
-@media (min-width : 768px) {
 
-	/* screen-sm-min */
-	.tabela-item__painel-exclusao {
-		width: 40%;
-		padding-top: 10px;
-	}
+/*### DASHBOARD ###*/
 
-	.tabela-item__coluna {
-		float: left;
-		margin-left: 0px;
-	}
-
-	.tabela-item__coluna--detalhes {
-		width: calc(70% - 30px);
-	}
-
-	.tabela-item__coluna--valores {
-		width: calc(30% - 30px);
-		text-align: right;
-	}
+/* Estilos para a seção "Pedidos" */
+.tipo-section {
+    background-color: #e7ecf2; /* Cor de fundo */
+    padding: 5px; /* Espaçamento interno */
+   
 }
 
-.controlle-footer {
-	position: fixed !important;
-	bottom: 0 !important;
-	width: 100% !important;
+
+/* Estilos para as diferentes cores de texto */
+.text-success {
+	color: #28a745;
+}
+
+.text-warning {
+	color: #ffc107;
+}
+
+.text-info {
+	color: #17a2b8;
+}
+
+.text-danger {
+	color: #dc3545;
+}
+
+.text-dark {
+	color: #343a40;
+}
+
+
+/* Estilos para o texto dentro das colunas */
+.col .card-body {
+	padding: 20px;
+}
+
+/* Estilos para o ícone na última coluna */
+.col-md-12 .icon_dasboard {
+	font-size: 36px;
+}
+
+/* Estilos para os números */
+.h5 {
+	font-size: 24px;
+	font-weight: bold;
+	margin: 0;
+}
+
+/* Estilos para os cartões com borda esquerda */
+.card.border-left-success {
+	border-left: 5px solid #28a745;
+}
+
+.card.border-left-warning {
+	border-left: 5px solid #ffc107;
+}
+
+.card.border-left-info {
+	border-left: 5px solid #17a2b8;
+}
+
+.card.border-left-danger {
+	border-left: 5px solid #dc3545;
+}
+
+.card.border-left-primary {
+	border-left: 5px solid #007bff;
+}
+
+.card.border-left-dark {
+	border-left: 5px solid #1a1b1c;
+
+
+	@media (min-width : 768px) {
+
+		/* screen-sm-min */
+		.tabela-item__painel-exclusao {
+			width: 40%;
+			padding-top: 10px;
+		}
+
+		.tabela-item__coluna {
+			float: left;
+			margin-left: 0px;
+		}
+
+		.tabela-item__coluna--detalhes {
+			width: calc(70% - 30px);
+		}
+
+		.tabela-item__coluna--valores {
+			width: calc(30% - 30px);
+			text-align: right;
+		}
+	}
+
+	.controlle-footer {
+		position: fixed !important;
+		bottom: 0 !important;
+		width: 100% !important;
+	}
 }

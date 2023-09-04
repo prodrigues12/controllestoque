@@ -26,17 +26,18 @@
 	<div th:replace="fragmentos/fragmentos :: magalu"></div>
 
 	<div class="row">
+
 		<p>
-		<h4>Pedidos</h4>
 		<div class="row">
+			<h4 class="tipo-section">Pedidos</h4>
 			<div class=" col-md-5">
 
 				<div class="card">
-					<div class="card-header">
+					<div class="card-header div_pedido">
 						<h4>Meus pedidos</h4>
 					</div>
 
-					<div class="row row-cols-1 row-cols-md-2 g-3">
+					<div class="row row-cols-1 row-cols-md-2 g-3 ">
 						<div class="col">
 							<div class="card h-100">
 								<div class="card border-left-success shadow h-100 py-2">
@@ -60,7 +61,7 @@
 						</div>
 						<div class="col">
 							<div class="card h-100">
-								<div class="card border-left-success shadow h-100 py-2">
+								<div class="card border-left-warning shadow h-100 py-2">
 									<div class="card-body">
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-1">
@@ -83,7 +84,7 @@
 						</div>
 						<div class="col">
 							<div class="card h-100">
-								<div class="card border-left-success shadow h-100 py-2">
+								<div class="card border-left-info shadow h-100 py-2">
 									<div class="card-body">
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-1">
@@ -106,7 +107,7 @@
 
 						<div class="col">
 							<div class="card h-100">
-								<div class="card  shadow h-100 ">
+								<div class="card border-left-danger shadow h-100 py-2">
 									<div class="card-body">
 										<div class="row">
 											<div class="col mr-5">
@@ -129,7 +130,7 @@
 
 						<div class="col-md-12">
 							<div class="card h-100">
-								<div class="card border-left-primary shadow h-80 py-2">
+								<div class="card border-left-dark shadow h-80 py-2">
 									<div class="card-body">
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-auto">
@@ -154,8 +155,8 @@
 			</div>
 
 			<div class=" col-md-7">
-				<div class="card">
-					<div class="card-header">
+				<div class="card h-100 shadow">
+					<div class="card-header div_pedido">
 						<h4>Últimos 6 meses com pedidos</h4>
 					</div>
 					<div class="aw-graph-box">
@@ -169,14 +170,13 @@
 				</div>
 			</div>
 		</div>
-
-		<h4>Estoque</h4>
-
+		<p>
 		<div class="row">
+			<h4 class="tipo-section">Estoque</h4>
 
 			<div class="col-md-7">
-				<div class="card">
-					<div class="card-header">
+				<div class="card h-100 shadow">
+					<div class="card-header div_estoque">
 						<h4>Top 5 - Produtos</h4>
 					</div>
 					<div>
@@ -189,8 +189,8 @@
 			<div class="col-md-5">
 				<div class="row row-cols-1 row-cols-md-1 g-3">
 					<div class="col">
-						<div class="card h-100">
-							<div class="card-header">
+						<div class="card h-100 shadow">
+							<div class="card-header div_estoque">
 								<h4>Como estamos?</h4>
 							</div>
 							<div class="card border-left-success shadow h-100 py-2">
@@ -203,7 +203,7 @@
 													th:href="@{/produto}"> Total de Produtos</a>
 											</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800">
-												<span > [[${totalItensEstoque}]] </span>
+												<span> [[${totalItensEstoque}]] </span>
 											</div>
 											<div class="dark"></div>
 
@@ -218,7 +218,7 @@
 					</div>
 					<div class="col">
 						<div class="card h-100">
-							<div class="card border-left-success shadow h-100 py-2">
+							<div class="card border-left-warning shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-1">
@@ -243,7 +243,7 @@
 					</div>
 					<div class="col">
 						<div class="card h-100">
-							<div class="card border-left-success shadow h-100 py-2">
+							<div class="card border-left-danger shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-1">
@@ -267,7 +267,49 @@
 				</div>
 			</div>
 		</div>
+
+		<p>
+		<div class="row">
+			<h4 class="tipo-section">Financeiro</h4>
+			<div class="col-md-4">
+				<div class="card h-100 shadow">
+					<div class="card-header div_estoque">
+						<h4>Valor do pedido por setor</h4>
+					</div>
+					<div>
+						<h5>Grafico</h5>
+					</div>
+				</div>
+
+
+			</div>
+
+			<div class="col-md-4">
+				<div class="card h-100 shadow">
+					<div class="card-header div_estoque">
+						<h4>Valor dos pedido no mês</h4>
+					</div>
+					<div>
+						<h5>Grafico</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card h-100 shadow">
+					<div class="card-header div_estoque">
+						<h4>Valor do pedido por turno</h4>
+					</div>
+					<div>
+						<h5>Grafico</h5>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
 	</div>
+
 	<br />
 
 	<div th:replace="fragmentos/fragmentos :: footer"></div>
@@ -277,7 +319,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-<script src="/js/mascaras.js"></script>
+	<script src="/js/mascaras.js"></script>
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/dashboard.graficos.js"></script>
 </body>
