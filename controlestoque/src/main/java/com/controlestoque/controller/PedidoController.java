@@ -33,6 +33,7 @@ import com.controlestoque.Repository.filter.PedidoFilter;
 import com.controlestoque.controller.page.PageWrapper;
 import com.controlestoque.controller.validator.PedidoValidator;
 import com.controlestoque.dto.PedidosMes;
+import com.controlestoque.dto.ValorCustoMesDTO;
 import com.controlestoque.model.ItemPedido;
 import com.controlestoque.model.Pedido;
 import com.controlestoque.model.Produto;
@@ -181,6 +182,13 @@ public class PedidoController {
 	public @ResponseBody List<PedidosMes> listarTotalPedidoPorMes() {
 		return pedRepository.totalPorMes();
 	}
+	
+	@GetMapping("/valorCustoMes")
+	public @ResponseBody List<ValorCustoMesDTO> listaVaorCustoMes() {
+		return pedRepository.valaorCustoMes();
+	}
+	
+	
 
 	@PostMapping(value = "/novo", params = "novo")
 	public ModelAndView salvar(Pedido pedido, BindingResult result, RedirectAttributes attributes) {

@@ -122,66 +122,73 @@ Controlestoque.GraficosTopProdutos = (function() {
 	return GraficosTopProdutos;
 
 }());
-
-
-/*function GraficoValorMes() {
-		this.ctx = $('#graficoValorMes');
+Controlestoque.GraficoValorCustoMes = (function() {
+	
+	function GraficoValorCustoMes() {
+		this.ctx = $('#graficoValorCustoMes');
 
 	}
-
-	GraficoPedidoMes.prototype.iniciar = function() {
-
+	GraficoValorCustoMes.prototype.iniciar = function() {
 		$.ajax({
-			url: 'produto/valorMes',
+			url: 'pedido/valorCustoMes',
 			method: 'GET',
 			success: onDadosRecebidos.bind(this)
 		});
 	}
+	
+	function onDadosRecebidos(valorCustoMes) {
 
-	function onDadosRecebidos(pedidoMes) {
-
-		var meses = [];
+		var nome = [];
+		var quantidade = [];
 		var valor = [];
 
-		pedidoMes.forEach(function(obj) {
-			meses.unshift(obj.mes);
-			valor.unshift(obj.total)
+		valorCustoMes.forEach(function(obj) {
+			nome.unshift(obj.nome);
+			quantidade.unshift(obj.quantidade);
+			valor.unshift(obj.valor);
 		});
+	
 
-		var grafico = new Chart(this.ctx, {
-			type: 'bar',
-			data: {
-				labels: meses,
-				datasets: [{
-					data: valor,
-					label: 'Pedidos ',
+	var grafico = new Chart(this.ctx, {
+		type: 'bar',
+		data: {
+			labels: nome,
+			datasets: [{
+				data: quantidade,
+				label: 'Quantidade ',
+				backgroundColor: '#DC143C',
+				
+				borderWidth: 1
+			}, {
+				data: valor,
+				label: 'Valor ',
+				backgroundColor: '#20B2AA', // Cor de fundo
+			
+				borderWidth: 1
 
-					backgroundColor: [
-						'#DDA0DD',
-						'#87CEFA',
-						'#90EE90',
-						'#FFB6C1',
-						'#F0E68C',
-						'#FA8072',
-						'#708090'
+			}]
+		},
+			options: {
+				aspectRatio: 3,
+				plugins: {
+					subtitle: {
+						display: true,
+						text: 'Mes atual'
+					},
+					legend: {
+						position: 'top'
+					}
+				}
 
-					],
-					borderColor: '#000',
-					pointBorderColor: '#000',
-					pointBackgroundColor: "#000",
-				}]
-			},
+			}
 
-
-		});
-
+	});
 	}
+	
+	return GraficoValorCustoMes;
 
-	return GraficoPedidoMes;
 
 }());
-
-*/
 
 
 $(function() {
@@ -191,4 +198,7 @@ $(function() {
 
 	var graficosTopProdutos = new Controlestoque.GraficosTopProdutos();
 	graficosTopProdutos.iniciar();
+	
+	var graficoValorCustoMes = new Controlestoque.GraficoValorCustoMes();
+	graficoValorCustoMes.iniciar();
 });

@@ -27,6 +27,7 @@ import com.controlestoque.Enums.TipoIdentificacao;
 import com.controlestoque.Repository.filter.PedidoFilter;
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
 import com.controlestoque.dto.PedidosMes;
+import com.controlestoque.dto.ValorCustoMesDTO;
 import com.controlestoque.model.Pedido;
 
 public class PedidosImpl implements PedidosQueries {
@@ -119,7 +120,7 @@ public class PedidosImpl implements PedidosQueries {
 		@SuppressWarnings("deprecation")
 		Criteria criteria = manager.unwrap(Session.class).createCriteria(Pedido.class);
 		criteria.createAlias("colaborador", "c").add(Restrictions.eq("status", StatusPedido.FINALIZADO));
-		
+
 		adicionarFiltro(filter, criteria);
 
 		return new PageImpl<>(criteria.list(), pageable, total(filter));
@@ -196,7 +197,7 @@ public class PedidosImpl implements PedidosQueries {
 	public Long statusIgualFinalizado() {
 		Optional<Long> optional = Optional.ofNullable(manager.createQuery(
 				"select count(*) from Pedido where status= :status and month(data_modificacao) = MONTH(CURRENT_DATE())"
-				+ " and year(data_modificacao) = year(current_date())",
+						+ " and year(data_modificacao) = year(current_date())",
 				Long.class).setParameter("status", StatusPedido.FINALIZADO).getSingleResult());
 //		select COUNT(*) from Pedido where status= 'FINALIZADO' and data_criacao > date_sub( current_date(), interval 1 month)
 
@@ -240,6 +241,28 @@ public class PedidosImpl implements PedidosQueries {
 
 		Query nativeQuery = manager.createNativeQuery(query, "mappingPedidos");
 		List<PedidosMes> lista = nativeQuery.getResultList();
+		return lista;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ValorCustoMesDTO> valaorCustoMes() {
+
+		String query = "SELECT  produto.nome AS nome, sum(item.quantidade) as quantidade , ((sum(item.quantidade) * produto.valor_custo)) as valor "
+				+ "FROM item_pedido item INNER JOIN produto produto "
+				+ " INNER JOIN pedido pedido ON item.codigo_produto = produto.codigo "
+				+ "AND item.codigo_pedido = pedido.codigo "
+				+ "AND YEAR(pedido.data_criacao) =YEAR(CURDATE()) "
+				+ "AND MONTH(pedido.data_criacao) =MONTH(CURDATE()) "
+				+ "AND pedido.status='FINALIZADO' "
+				+ "group by item.codigo_produto "
+				+ "ORDER BY valor desc limit 8";
+
+		Query nativeQuery = manager.createNativeQuery(query, "mappingPedidosCusto");
+		List<ValorCustoMesDTO> lista = nativeQuery.getResultList();
+
+		System.out.println(lista);
 		return lista;
 
 	}

@@ -40,7 +40,7 @@
 					<div class="row row-cols-1 row-cols-md-2 g-3 ">
 						<div class="col">
 							<div class="card h-100">
-								<div class="card border-left-success shadow h-100 py-2">
+								<div class="card border-left-success-new shadow h-100 py-2">
 									<div class="card-body">
 										<div class="row no-gutters align-items-center">
 											<div class="col mr-1">
@@ -193,7 +193,7 @@
 							<div class="card-header div_estoque">
 								<h4>Como estamos?</h4>
 							</div>
-							<div class="card border-left-success shadow h-100 py-2">
+							<div class="card border-left-success-new shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-1">
@@ -283,17 +283,27 @@
 
 
 			</div>
+		</div>
 
-			<div class="col-md-4">
+		<div class="row">
+			<div class=" col-md-12">
 				<div class="card h-100 shadow">
-					<div class="card-header div_estoque">
-						<h4>Valor dos pedido no mês</h4>
+					<div class="card-header div_pedido">
+						<h4>Produtos x custo</h4>
 					</div>
-					<div>
-						<h5>Grafico</h5>
+					<div class="aw-graph-box">
+						<div class="aw-graph-box__header"></div>
+						<div>
+							<div>
+								<canvas id="graficoValorCustoMes" width="700" height="200"></canvas>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+
+		<div class="row">
 			<div class="col-md-4">
 				<div class="card h-100 shadow">
 					<div class="card-header div_estoque">
@@ -319,8 +329,11 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script src="/js/mascaras.js"></script>
 	<script src="/js/sindebar.js"></script>
 	<script src="/js/dashboard.graficos.js"></script>
+	
+
 </body>
 </html>

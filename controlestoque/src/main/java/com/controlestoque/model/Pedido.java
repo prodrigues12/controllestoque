@@ -1,5 +1,6 @@
 package com.controlestoque.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +28,16 @@ import com.controlestoque.Enums.SetorMagalu;
 import com.controlestoque.Enums.StatusPedido;
 import com.controlestoque.Enums.Turno;
 import com.controlestoque.dto.PedidosMes;
+import com.controlestoque.dto.ValorCustoMesDTO;
 
 @Entity
 @DynamicUpdate
 
 @SqlResultSetMapping(name = "mappingPedidos", classes = @ConstructorResult(targetClass = PedidosMes.class, columns = {
 		@ColumnResult(name = "mes", type = String.class), @ColumnResult(name = "total", type = Integer.class) }))
+
+@SqlResultSetMapping(name = "mappingPedidosCusto", classes = @ConstructorResult(targetClass = ValorCustoMesDTO.class, columns = {
+		@ColumnResult(name = "nome", type = String.class), @ColumnResult(name = "quantidade", type = Integer.class), @ColumnResult(name = "valor", type = BigDecimal.class) }))
 
 public class Pedido {
 

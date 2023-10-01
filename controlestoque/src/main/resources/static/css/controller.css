@@ -577,7 +577,7 @@ table tr td {
 }
 
 .tabela-produto-campo-quantidade {
-	width: 30px;
+	width: 50px;
 	text-align: right;
 }
 
@@ -683,6 +683,9 @@ table tr td {
 
 /* Estilos para os cartões com borda esquerda */
 .card.border-left-success {
+	border-left: 5px solid #0A2463;
+}
+.card.border-left-success-new {
 	border-left: 5px solid #28a745;
 }
 
@@ -728,10 +731,10 @@ table tr td {
 			text-align: right;
 		}
 	}
+}
 
-	.controlle-footer {
+.controlle-footer {
 		position: fixed !important;
 		bottom: 0 !important;
 		width: 100% !important;
 	}
-}
