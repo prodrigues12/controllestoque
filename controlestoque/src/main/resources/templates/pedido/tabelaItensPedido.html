@@ -3,41 +3,36 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:data="http://www.thymeleaf.org/extras/data">
 <head>
-<meta charset="UTF-8"/>
+<meta charset="UTF-8" />
 </head>
+<body>
+
 <div class="tabela-item  js-tabela-item" th:each="item : ${itens}">
-	<div class="tabela-item__coluna  tabela-item__coluna--foto">
 
+	<!-- Codigo produto -->
+	<div class="tabela-item__coluna  tabela-item__coluna--codigo">
+		<span th:text="|Cod: ${item.produto.codigo}|"></span>
 	</div>
-	
-	<div class="tabela-item__coluna  tabela-item__coluna--foto">
-	 <span th:text="|Cod: ${item.produto.codigo}|"></span>
-			</div>
 
+	<!-- Produto e Seção (Centralizados) -->
 	<div class="tabela-item__coluna  tabela-item__coluna--detalhes">
 		<span class="tabela-produto-nome" th:text="${item.produto.nome}">
-		</span>
-		SEÇÃO:
-		 <span class="label label-default"
-			th:text="${item.produto.secao.nome}"></span>
+		</span> <span class="tabela-produto-valor-pequeno"
+			th:text="|SEÇÃO:  ${item.produto.secao.nome}|"></span>
 	</div>
 
-	<div class="tabela-item__coluna  tabela-item__coluna--valores">
-		<div class="tabela-produto-valor-pequeno">
-			<input type="number" maxlength="4"
-				class="tabela-produto-campo-quantidade js-tabela-produto-quantidade-item js-numero"
-				th:value="${item.quantidade}"
-				data:codigo-produto="${item.produto.codigo}" /> <span
-				th:text="${item.produto.uniMedida}">Uni. Mededida:</span>
-		</div>			
-						<div class="tabela-produto-valor-grande">
-	</div>
-
+	<!-- Quantidade e Unidade (Lado Direito) -->
+	<div class="tabela-item__coluna  tabela-item__coluna--quantidade">
+		<input type="number" maxlength="4"
+			class=" js-tabela-produto-quantidade-item js-numero"
+			th:value="${item.quantidade}"
+			data:codigo-produto="${item.produto.codigo}" /> <span
+			th:text="${item.produto.uniMedida}">Uni. Medida:</span>
 	</div>
 
 	<div class="tabela-item__painel-exclusao">
-		<span class="tabela-item__titulo-exclusao">Excluir este item
-			da venda?</span>
+		<span class="tabela-item__titulo-exclusao">Excluir este item da
+			venda?</span>
 		<button type="button" class="btn  btn-danger  js-exclusao-item-btn"
 			data:codigo-produto="${item.produto.codigo}">Sim, excluir</button>
 	</div>
@@ -46,7 +41,7 @@
 
 <div class="tabela-produtos__vazio" th:if="${itens.empty}">
 	<i class=" bx bx-cart"></i> <span>Nenhum item foi adicionado</span>
-
 </div>
-</html>
 
+</body>
+</html>

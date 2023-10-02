@@ -12,6 +12,7 @@
 	background-color: #fff;
 }
 
+
 .nav-link {
 	background-color: #3e92cc;
 }
@@ -524,6 +525,9 @@ table tr td {
 
 /* Tabela Item */
 .tabela-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	position: relative;
 	/* Para que o painel de exclus�o apare�a dentro da linha */
 	padding: 15px 1px;
@@ -549,7 +553,7 @@ table tr td {
 	padding: 0 10px;
 }
 
-.tabela-item__coluna--foto {
+.tabela-item__coluna--codigo {
 	float: left;
 	width: 60px;
 	text-align: center;
@@ -562,6 +566,8 @@ table tr td {
 .tabela-item__coluna--detalhes,
 .tabela-item__coluna--valores {
 	margin-left: 60px;
+	 flex-grow: 1;
+    text-align: left;
 }
 
 .tabela-produto-nome {
@@ -577,17 +583,20 @@ table tr td {
 }
 
 .tabela-produto-campo-quantidade {
-	width: 50px;
+	width: 40px;
 	text-align: right;
 }
-
+.js-tabela-produto-quantidade-item {
+    width: 50px; /* Defina a largura desejada */
+    /* Outros estilos conforme necessário */
+}
 .tabela-produto-valor-pequeno {
-	font-weight: 300;
-	font-size: 1em;
+	font-weight: 50;
+	font-size: 13px;
 }
 
 .tabela-produto-valor-medio {
-	font-weight: 300;
+	font-weight: 200;
 	font-size: 1.3em;
 }
 
@@ -597,15 +606,19 @@ table tr td {
 }
 
 .tabela-item__painel-exclusao {
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	position: absolute;
 	top: 1;
 	right: 100000px;
 	/* 	height: 100%; */
-	width: 50%;
+	width: 40%;
+
 	text-align: center;
 	padding-top: 35px;
 	background-color: #0A2463;
-	opacity: 0;
+	opacity: 1;
 	transition: opacity 0.5s;
 }
 
@@ -636,9 +649,11 @@ table tr td {
 
 /* Estilos para a seção "Pedidos" */
 .tipo-section {
-    background-color: #e7ecf2; /* Cor de fundo */
-    padding: 5px; /* Espaçamento interno */
-   
+	background-color: #e7ecf2;
+	/* Cor de fundo */
+	padding: 5px;
+	/* Espaçamento interno */
+
 }
 
 
@@ -685,6 +700,7 @@ table tr td {
 .card.border-left-success {
 	border-left: 5px solid #0A2463;
 }
+
 .card.border-left-success-new {
 	border-left: 5px solid #28a745;
 }
@@ -719,7 +735,7 @@ table tr td {
 
 		.tabela-item__coluna {
 			float: left;
-			margin-left: 0px;
+			margin-left: 1px;
 		}
 
 		.tabela-item__coluna--detalhes {
@@ -734,7 +750,7 @@ table tr td {
 }
 
 .controlle-footer {
-		position: fixed !important;
-		bottom: 0 !important;
-		width: 100% !important;
-	}
+	position: fixed !important;
+	bottom: 0 !important;
+	width: 100% !important;
+}
