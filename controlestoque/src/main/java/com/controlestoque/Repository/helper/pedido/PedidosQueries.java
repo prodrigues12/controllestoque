@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import com.controlestoque.Repository.filter.PedidoFilter;
 import com.controlestoque.dto.PedidosMes;
 import com.controlestoque.dto.ValorCustoMesDTO;
+import com.controlestoque.dto.ValorCustoTurnoDTO;
 import com.controlestoque.model.Pedido;
 
 public interface PedidosQueries {
@@ -27,8 +28,12 @@ public interface PedidosQueries {
 	public Long statusIgualSeparando();
 
 	public List<PedidosMes> totalPorMes();
+
+	public List<ValorCustoMesDTO> valorCustoMes();
 	
-	public List<ValorCustoMesDTO> valaorCustoMes();
+	public List<ValorCustoTurnoDTO> valorCustoTurno();
+
+//	public List<ValorCustoMesDTO> valorCustoMesSetor();
 
 	public Page<Pedido> filtrarPedidosNovos(PedidoFilter filter, Pageable pageable);
 
@@ -39,7 +44,7 @@ public interface PedidosQueries {
 	public Page<Pedido> filtrarPedidosCancelados(PedidoFilter filter, Pageable pageable);
 
 	public Page<Pedido> filtrarPedidosFinalizados(PedidoFilter filter, Pageable pageable);
-	
+
 	public Page<Pedido> buscarPedidos(PedidoFilter filter, Pageable pageable);
 
 }

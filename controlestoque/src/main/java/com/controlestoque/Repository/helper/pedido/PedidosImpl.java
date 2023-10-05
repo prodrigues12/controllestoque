@@ -28,6 +28,7 @@ import com.controlestoque.Repository.filter.PedidoFilter;
 import com.controlestoque.Repository.paginacao.PaginacaoUtil;
 import com.controlestoque.dto.PedidosMes;
 import com.controlestoque.dto.ValorCustoMesDTO;
+import com.controlestoque.dto.ValorCustoTurnoDTO;
 import com.controlestoque.model.Pedido;
 
 public class PedidosImpl implements PedidosQueries {
@@ -247,7 +248,7 @@ public class PedidosImpl implements PedidosQueries {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ValorCustoMesDTO> valaorCustoMes() {
+	public List<ValorCustoMesDTO> valorCustoMes() {
 
 		String query = "SELECT  produto.nome AS nome, sum(item.quantidade) as quantidade , ((sum(item.quantidade) * produto.valor_custo)) as valor "
 				+ "FROM item_pedido item INNER JOIN produto produto "
@@ -262,10 +263,46 @@ public class PedidosImpl implements PedidosQueries {
 		Query nativeQuery = manager.createNativeQuery(query, "mappingPedidosCusto");
 		List<ValorCustoMesDTO> lista = nativeQuery.getResultList();
 
-		System.out.println(lista);
 		return lista;
 
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ValorCustoTurnoDTO> valorCustoTurno() {
+
+		String query = "SELECT  pedido.turno AS turno, SUM(item.quantidade * produto.valor_custo) AS valor "
+				+ "FROM produto produto "
+				+ "JOIN item_pedido item ON item.codigo_produto = produto.codigo "
+				+ "JOIN pedido pedido On pedido.codigo = item.codigo_pedido "
+				+ "WHERE MONTH(pedido.data_criacao) = MONTH(CURRENT_DATE())"
+				+ "and  YEAR(pedido.data_criacao) = YEAR(CURRENT_DATE())"
+				+ "AND pedido.status='FINALIZADO'"
+				+ "GROUP BY pedido.turno order by pedido.turno";
+
+		Query nativeQuery = manager.createNativeQuery(query, "mappingPedidosCustoTurno");
+		
+		List<ValorCustoTurnoDTO> lista = nativeQuery.getResultList();
+		return lista;
+
+	}
+	
+//	@SuppressWarnings("unchecked")
+//	public List<ValorCustoMesDTO> valorCustoMesSetor() {
+//
+//		String query = "SELECT  pedido.setor_magalu AS setor, SUM(item.quantidade * produto.valor_custo) AS valor_total "
+//				+ "FROM produto produto"
+//				+ "JOIN item_pedido item ON item.codigo_produto = produto.codigo "
+//				+ "JOIN pedido pedido On pedido.codigo = item.codigo_pedido "
+//				+ "WHERE MONTH(pedido.data_criacao) = MONTH(CURRENT_DATE())"
+//				+ "and  YEAR(pedido.data_criacao) = YEAR(CURRENT_DATE())"
+//				+ "AND pedido.status='FINALIZADO'"
+//				+ "GROUP BY pedido.setor_magalu";
+//
+//		Query nativeQuery = manager.createNativeQuery(query, "mappingPedidosCustoSetor");
+//		List<ValorCustoMesDTO> lista = nativeQuery.getResultList();
+//		return lista;
+//
+//	}
 
 	private Long total(PedidoFilter filtro) {
 		@SuppressWarnings("deprecation")

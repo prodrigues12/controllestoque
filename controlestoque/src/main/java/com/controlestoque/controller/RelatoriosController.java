@@ -167,7 +167,6 @@ public class RelatoriosController {
 
 		String local = null;
 
-		HttpHeaders headers = new HttpHeaders();
 		if (estoqueDTO.getStatus().equals("bom")) {
 			local = "classpath:relatorios/relatorio_produto_estoque_acima_minino.jrxml";
 		}
@@ -184,10 +183,14 @@ public class RelatoriosController {
 			local = "classpath:relatorios/relatorio_produto_estoque.jrxml";
 		}
 
-		System.out.println(estoqueDTO.getStatus() + " caminho: " + local);
-
+		// Configurar o cabeçalho da resposta HTTP
+		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_PDF);
 		headers.setContentDispositionFormData("filename", "relatorio_estoque_" + estoqueDTO.getStatus() + ".pdf");
+		
+		headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
+        headers.add("Pragma", "no-cache");
+        headers.add("Expires", "0");
 
 		JasperPrint empReport = JasperFillManager.fillReport(
 				JasperCompileManager.compileReport(ResourceUtils.getFile(local).getAbsolutePath()), parametros,

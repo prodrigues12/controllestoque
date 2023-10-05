@@ -34,6 +34,7 @@ import com.controlestoque.controller.page.PageWrapper;
 import com.controlestoque.controller.validator.PedidoValidator;
 import com.controlestoque.dto.PedidosMes;
 import com.controlestoque.dto.ValorCustoMesDTO;
+import com.controlestoque.dto.ValorCustoTurnoDTO;
 import com.controlestoque.model.ItemPedido;
 import com.controlestoque.model.Pedido;
 import com.controlestoque.model.Produto;
@@ -184,9 +185,17 @@ public class PedidoController {
 	}
 	
 	@GetMapping("/valorCustoMes")
-	public @ResponseBody List<ValorCustoMesDTO> listaVaorCustoMes() {
-		return pedRepository.valaorCustoMes();
+	public @ResponseBody List<ValorCustoMesDTO> listaValorCustoMes() {
+		return pedRepository.valorCustoMes();
 	}
+	@GetMapping("/valorCustoTurno")
+	public @ResponseBody List<ValorCustoTurnoDTO> listaValorCustoTurno() {
+		return pedRepository.valorCustoTurno();
+	}
+//	@GetMapping("/valorCustoSetor")
+//	public @ResponseBody List<ValorCustoMesDTO> listaVaorCustoSetor() {
+//		return pedRepository.valorCustoMes();
+//	}
 	
 	
 

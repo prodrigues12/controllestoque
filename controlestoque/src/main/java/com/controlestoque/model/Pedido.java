@@ -29,6 +29,7 @@ import com.controlestoque.Enums.StatusPedido;
 import com.controlestoque.Enums.Turno;
 import com.controlestoque.dto.PedidosMes;
 import com.controlestoque.dto.ValorCustoMesDTO;
+import com.controlestoque.dto.ValorCustoTurnoDTO;
 
 @Entity
 @DynamicUpdate
@@ -38,6 +39,12 @@ import com.controlestoque.dto.ValorCustoMesDTO;
 
 @SqlResultSetMapping(name = "mappingPedidosCusto", classes = @ConstructorResult(targetClass = ValorCustoMesDTO.class, columns = {
 		@ColumnResult(name = "nome", type = String.class), @ColumnResult(name = "quantidade", type = Integer.class), @ColumnResult(name = "valor", type = BigDecimal.class) }))
+
+@SqlResultSetMapping(name = "mappingPedidosCustoTurno", classes = @ConstructorResult(targetClass = ValorCustoTurnoDTO.class, columns = {
+		@ColumnResult(name = "turno", type = String.class), @ColumnResult(name = "valor", type = BigDecimal.class) }))
+
+//@SqlResultSetMapping(name = "mappingPedidosCustoSetor", classes = @ConstructorResult(targetClass = ValorCustoMesDTO.class, columns = {
+//		@ColumnResult(name = "nome", type = String.class), @ColumnResult(name = "valor", type = BigDecimal.class) }))
 
 public class Pedido {
 
